@@ -5,7 +5,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-
 const httpOptions = {
     headers: new HttpHeaders({
         'Accept': 'application/json',
@@ -19,25 +18,29 @@ const path = GENERAL.ENTORNO.DOCUMENTO_SERVICE;
 export class DocumentoService {
     constructor(private http: HttpClient) {
     }
+
     get(endpoint) {
-        return this.http.get(path + endpoint, httpOptions).pipe(
-          catchError(this.handleError),
-        );
-      }
+      return this.http.get(path + endpoint, httpOptions).pipe(
+        catchError(this.handleError),
+      );
+    }
+
     post(endpoint, element) {
-        return this.http.post(path + endpoint, element, httpOptions).pipe(
-          catchError(this.handleError),
-        );
+      return this.http.post(path + endpoint, element, httpOptions).pipe(
+        catchError(this.handleError),
+      );
     }
+
     put(endpoint, element) {
-        return this.http.put(path + endpoint + '/' + element.Id, element, httpOptions).pipe(
-          catchError(this.handleError),
-        );
+      return this.http.put(path + endpoint + '/' + element.Id, element, httpOptions).pipe(
+        catchError(this.handleError),
+      );
     }
+
     delete(endpoint, element) {
-        return this.http.delete(path + endpoint + '/' + element.Id, httpOptions).pipe(
-          catchError(this.handleError),
-        );
+      return this.http.delete(path + endpoint + '/' + element.Id, httpOptions).pipe(
+        catchError(this.handleError),
+      );
     }
 
     private handleError(error: HttpErrorResponse) {
