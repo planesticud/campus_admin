@@ -4,8 +4,6 @@ import { LugarComponent } from './lugar.component';
 import { ListLugarComponent } from './list-lugar/list-lugar.component';
 import { CrudLugarComponent } from './crud-lugar/crud-lugar.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: LugarComponent,

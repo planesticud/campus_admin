@@ -32,7 +32,7 @@ export let FORM_LUGAR = {
         placeholder_i18n: 'tipo_lugar',
         requerido: true,
         tipo: 'TipoLugar',
-        // key: 'Name',
+        key: 'Nombre',
         opciones: [],
     },
     {

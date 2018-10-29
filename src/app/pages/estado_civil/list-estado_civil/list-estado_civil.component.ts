@@ -119,21 +119,24 @@ export class ListEstadoCivilComponent implements OnInit {
 
   onDelete(event): void {
     const opt: any = {
-      title: 'Deleting?',
-      text: 'Delete EstadoCivil!',
+      title: this.translate.instant('GLOBAL.eliminar'),
+      text: this.translate.instant('GLOBAL.eliminar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
         this.personaService.delete('estado_civil/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
-            this.showToast('info', 'deleted', 'EstadoCivil deleted');
+            this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
+            this.translate.instant('GLOBAL.estado_civil') + ' ' +
+            this.translate.instant('GLOBAL.confirmarEliminar'));
             }
          });
       }
@@ -158,7 +161,6 @@ export class ListEstadoCivilComponent implements OnInit {
       this.cambiotab = !this.cambiotab;
     }
   }
-
 
   itemselec(event): void {
     // console.log("afssaf");

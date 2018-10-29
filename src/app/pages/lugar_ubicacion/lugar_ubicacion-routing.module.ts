@@ -4,8 +4,6 @@ import { LugarUbicacionComponent } from './lugar_ubicacion.component';
 import { ListLugarUbicacionComponent } from './list-lugar_ubicacion/list-lugar_ubicacion.component';
 import { CrudLugarUbicacionComponent } from './crud-lugar_ubicacion/crud-lugar_ubicacion.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: LugarUbicacionComponent,

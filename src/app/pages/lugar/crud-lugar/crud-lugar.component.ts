@@ -1,5 +1,4 @@
 import { TipoLugar } from './../../../@core/data/models/tipo_lugar';
-
 import { Lugar } from './../../../@core/data/models/lugar';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
@@ -74,7 +73,6 @@ export class CrudLugarComponent implements OnInit {
     return 0;
   }
 
-
   public loadLugar(): void {
     if (this.lugar_id !== undefined && this.lugar_id !== 0) {
       this.ubicacionesService.get('lugar/?query=id:' + this.lugar_id)
@@ -90,14 +88,15 @@ export class CrudLugarComponent implements OnInit {
   }
 
   updateLugar(lugar: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update Lugar!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -107,20 +106,23 @@ export class CrudLugarComponent implements OnInit {
           .subscribe(res => {
             this.loadLugar();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'Lugar updated');
-          });
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.lugar') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));          });
       }
     });
   }
 
   createLugar(lugar: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create Lugar!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -130,8 +132,9 @@ export class CrudLugarComponent implements OnInit {
           .subscribe(res => {
             this.info_lugar = <Lugar>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'Lugar created');
-          });
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.lugar') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));          });
       }
     });
   }

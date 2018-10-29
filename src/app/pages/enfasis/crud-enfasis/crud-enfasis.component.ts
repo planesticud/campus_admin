@@ -1,5 +1,4 @@
 import { ProgramaAcademico } from './../../../@core/data/models/programa_academico';
-
 import { Enfasis } from './../../../@core/data/models/enfasis';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
@@ -74,7 +73,6 @@ export class CrudEnfasisComponent implements OnInit {
     return 0;
   }
 
-
   public loadEnfasis(): void {
     if (this.enfasis_id !== undefined && this.enfasis_id !== 0) {
       this.programaAcademicoService.get('enfasis/?query=id:' + this.enfasis_id)
@@ -90,14 +88,15 @@ export class CrudEnfasisComponent implements OnInit {
   }
 
   updateEnfasis(enfasis: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update Enfasis!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -107,7 +106,9 @@ export class CrudEnfasisComponent implements OnInit {
           .subscribe(res => {
             this.loadEnfasis();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'Enfasis updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.enfasis') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -115,12 +116,14 @@ export class CrudEnfasisComponent implements OnInit {
 
   createEnfasis(enfasis: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create Enfasis!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -130,7 +133,9 @@ export class CrudEnfasisComponent implements OnInit {
           .subscribe(res => {
             this.info_enfasis = <Enfasis>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'Enfasis created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.enfasis') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

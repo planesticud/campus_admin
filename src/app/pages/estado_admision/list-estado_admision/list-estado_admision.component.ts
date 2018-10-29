@@ -119,12 +119,14 @@ export class ListEstadoAdmisionComponent implements OnInit {
 
   onDelete(event): void {
     const opt: any = {
-      title: 'Deleting?',
-      text: 'Delete EstadoAdmision!',
+      title: this.translate.instant('GLOBAL.eliminar'),
+      text: this.translate.instant('GLOBAL.eliminar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -133,7 +135,9 @@ export class ListEstadoAdmisionComponent implements OnInit {
         this.admisionesService.delete('estado_admision/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
-            this.showToast('info', 'deleted', 'EstadoAdmision deleted');
+            this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
+            this.translate.instant('GLOBAL.estado_admision') + ' ' +
+            this.translate.instant('GLOBAL.confirmarEliminar'));
             }
          });
       }
@@ -158,7 +162,6 @@ export class ListEstadoAdmisionComponent implements OnInit {
       this.cambiotab = !this.cambiotab;
     }
   }
-
 
   itemselec(event): void {
     // console.log("afssaf");

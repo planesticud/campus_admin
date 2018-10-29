@@ -1,4 +1,3 @@
-
 import { EstadoAdmision } from './../../../@core/data/models/estado_admision';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AdmisionesService } from '../../../@core/data/admisiones.service';
@@ -51,7 +50,6 @@ export class CrudEstadoAdmisionComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formEstadoAdmision.campos.length; index++) {
       const element = this.formEstadoAdmision.campos[index];
@@ -61,7 +59,6 @@ export class CrudEstadoAdmisionComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadEstadoAdmision(): void {
     if (this.estado_admision_id !== undefined && this.estado_admision_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudEstadoAdmisionComponent implements OnInit {
   }
 
   updateEstadoAdmision(estadoAdmision: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update EstadoAdmision!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudEstadoAdmisionComponent implements OnInit {
           .subscribe(res => {
             this.loadEstadoAdmision();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'EstadoAdmision updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.estado_admision') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudEstadoAdmisionComponent implements OnInit {
 
   createEstadoAdmision(estadoAdmision: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create EstadoAdmision!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudEstadoAdmisionComponent implements OnInit {
           .subscribe(res => {
             this.info_estado_admision = <EstadoAdmision>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'EstadoAdmision created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.estado_admision') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

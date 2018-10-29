@@ -4,8 +4,6 @@ import { TipoLugarComponent } from './tipo_lugar.component';
 import { ListTipoLugarComponent } from './list-tipo_lugar/list-tipo_lugar.component';
 import { CrudTipoLugarComponent } from './crud-tipo_lugar/crud-tipo_lugar.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: TipoLugarComponent,

@@ -50,7 +50,6 @@ export class CrudTipoContactoComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formTipoContacto.campos.length; index++) {
       const element = this.formTipoContacto.campos[index];
@@ -60,7 +59,6 @@ export class CrudTipoContactoComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadTipoContacto(): void {
     if (this.tipo_contacto_id !== undefined && this.tipo_contacto_id !== 0) {
@@ -77,14 +75,15 @@ export class CrudTipoContactoComponent implements OnInit {
   }
 
   updateTipoContacto(tipoContacto: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update TipoContacto!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -94,7 +93,9 @@ export class CrudTipoContactoComponent implements OnInit {
           .subscribe(res => {
             this.loadTipoContacto();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'TipoContacto updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.tipo_contacto') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -102,12 +103,14 @@ export class CrudTipoContactoComponent implements OnInit {
 
   createTipoContacto(tipoContacto: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create TipoContacto!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -117,7 +120,9 @@ export class CrudTipoContactoComponent implements OnInit {
           .subscribe(res => {
             this.info_tipo_contacto = <TipoContacto>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'TipoContacto created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.tipo_contacto') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

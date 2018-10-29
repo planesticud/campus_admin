@@ -1,4 +1,3 @@
-
 import { EstadoCivil } from './../../../@core/data/models/estado_civil';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PersonaService } from '../../../@core/data/persona.service';
@@ -51,7 +50,6 @@ export class CrudEstadoCivilComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formEstadoCivil.campos.length; index++) {
       const element = this.formEstadoCivil.campos[index];
@@ -61,7 +59,6 @@ export class CrudEstadoCivilComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadEstadoCivil(): void {
     if (this.estado_civil_id !== undefined && this.estado_civil_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudEstadoCivilComponent implements OnInit {
   }
 
   updateEstadoCivil(estadoCivil: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update EstadoCivil!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudEstadoCivilComponent implements OnInit {
           .subscribe(res => {
             this.loadEstadoCivil();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'EstadoCivil updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.estado_civil') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudEstadoCivilComponent implements OnInit {
 
   createEstadoCivil(estadoCivil: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create EstadoCivil!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudEstadoCivilComponent implements OnInit {
           .subscribe(res => {
             this.info_estado_civil = <EstadoCivil>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'EstadoCivil created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.estado_civil') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

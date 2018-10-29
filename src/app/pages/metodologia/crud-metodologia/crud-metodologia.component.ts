@@ -1,4 +1,3 @@
-
 import { Metodologia } from './../../../@core/data/models/metodologia';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
@@ -51,7 +50,6 @@ export class CrudMetodologiaComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formMetodologia.campos.length; index++) {
       const element = this.formMetodologia.campos[index];
@@ -61,7 +59,6 @@ export class CrudMetodologiaComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadMetodologia(): void {
     if (this.metodologia_id !== undefined && this.metodologia_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudMetodologiaComponent implements OnInit {
   }
 
   updateMetodologia(metodologia: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update Metodologia!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudMetodologiaComponent implements OnInit {
           .subscribe(res => {
             this.loadMetodologia();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'Metodologia updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.metodologia') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudMetodologiaComponent implements OnInit {
 
   createMetodologia(metodologia: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create Metodologia!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudMetodologiaComponent implements OnInit {
           .subscribe(res => {
             this.info_metodologia = <Metodologia>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'Metodologia created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.metodologia') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

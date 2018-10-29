@@ -1,4 +1,3 @@
-
 import { TipoDiscapacidad } from './../../../@core/data/models/tipo_discapacidad';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PersonaService } from '../../../@core/data/persona.service';
@@ -51,7 +50,6 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formTipoDiscapacidad.campos.length; index++) {
       const element = this.formTipoDiscapacidad.campos[index];
@@ -61,7 +59,6 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadTipoDiscapacidad(): void {
     if (this.tipo_discapacidad_id !== undefined && this.tipo_discapacidad_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
   }
 
   updateTipoDiscapacidad(tipoDiscapacidad: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update TipoDiscapacidad!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
           .subscribe(res => {
             this.loadTipoDiscapacidad();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'TipoDiscapacidad updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.tipo_discapacidad') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
 
   createTipoDiscapacidad(tipoDiscapacidad: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create TipoDiscapacidad!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
           .subscribe(res => {
             this.info_tipo_discapacidad = <TipoDiscapacidad>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'TipoDiscapacidad created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.tipo_discapacidad') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

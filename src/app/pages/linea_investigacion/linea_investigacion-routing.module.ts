@@ -4,8 +4,6 @@ import { LineaInvestigacionComponent } from './linea_investigacion.component';
 import { ListLineaInvestigacionComponent } from './list-linea_investigacion/list-linea_investigacion.component';
 import { CrudLineaInvestigacionComponent } from './crud-linea_investigacion/crud-linea_investigacion.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: LineaInvestigacionComponent,

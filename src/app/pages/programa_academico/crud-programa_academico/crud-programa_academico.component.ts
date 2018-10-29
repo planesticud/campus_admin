@@ -1,7 +1,6 @@
 import { Metodologia } from './../../../@core/data/models/metodologia';
 import { NivelFormacion } from './../../../@core/data/models/nivel_formacion';
 import { Titulacion } from './../../../@core/data/models/titulacion';
-
 import { ProgramaAcademico } from './../../../@core/data/models/programa_academico';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
@@ -67,6 +66,7 @@ export class CrudProgramaAcademicoComponent implements OnInit {
           this.formProgramaAcademico.campos[ this.getIndexForm('Metodologia') ].opciones = metodologia;
         });
   }
+
   loadOptionsNivelFormacion(): void {
     let nivelFormacion: Array<any> = [];
       this.programaAcademicoService.get('nivel_formacion/?limit=0')
@@ -77,6 +77,7 @@ export class CrudProgramaAcademicoComponent implements OnInit {
           this.formProgramaAcademico.campos[ this.getIndexForm('NivelFormacion') ].opciones = nivelFormacion;
         });
   }
+
   loadOptionsTitulacion(): void {
     let titulacion: Array<any> = [];
       this.programaAcademicoService.get('titulacion/?limit=0')
@@ -98,7 +99,6 @@ export class CrudProgramaAcademicoComponent implements OnInit {
     return 0;
   }
 
-
   public loadProgramaAcademico(): void {
     if (this.programa_academico_id !== undefined && this.programa_academico_id !== 0) {
       this.programaAcademicoService.get('programa_academico/?query=id:' + this.programa_academico_id)
@@ -114,14 +114,15 @@ export class CrudProgramaAcademicoComponent implements OnInit {
   }
 
   updateProgramaAcademico(programaAcademico: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update ProgramaAcademico!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -131,20 +132,23 @@ export class CrudProgramaAcademicoComponent implements OnInit {
           .subscribe(res => {
             this.loadProgramaAcademico();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'ProgramaAcademico updated');
-          });
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.programa_academico') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));          });
       }
     });
   }
 
   createProgramaAcademico(programaAcademico: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create ProgramaAcademico!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -154,7 +158,9 @@ export class CrudProgramaAcademicoComponent implements OnInit {
           .subscribe(res => {
             this.info_programa_academico = <ProgramaAcademico>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'ProgramaAcademico created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.programa_academico') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

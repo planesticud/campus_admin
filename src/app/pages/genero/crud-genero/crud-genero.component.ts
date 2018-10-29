@@ -1,4 +1,3 @@
-
 import { Genero } from './../../../@core/data/models/genero';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PersonaService } from '../../../@core/data/persona.service';
@@ -51,7 +50,6 @@ export class CrudGeneroComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formGenero.campos.length; index++) {
       const element = this.formGenero.campos[index];
@@ -61,7 +59,6 @@ export class CrudGeneroComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadGenero(): void {
     if (this.genero_id !== undefined && this.genero_id !== 0) {
@@ -80,12 +77,14 @@ export class CrudGeneroComponent implements OnInit {
   updateGenero(genero: any): void {
 
     const opt: any = {
-      title: 'Update?',
-      text: 'Update Genero!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +94,9 @@ export class CrudGeneroComponent implements OnInit {
           .subscribe(res => {
             this.loadGenero();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'Genero updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.genero') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +104,14 @@ export class CrudGeneroComponent implements OnInit {
 
   createGenero(genero: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create Genero!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +121,9 @@ export class CrudGeneroComponent implements OnInit {
           .subscribe(res => {
             this.info_genero = <Genero>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'Genero created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.genero') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

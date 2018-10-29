@@ -4,8 +4,6 @@ import { NivelFormacionComponent } from './nivel_formacion.component';
 import { ListNivelFormacionComponent } from './list-nivel_formacion/list-nivel_formacion.component';
 import { CrudNivelFormacionComponent } from './crud-nivel_formacion/crud-nivel_formacion.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: NivelFormacionComponent,

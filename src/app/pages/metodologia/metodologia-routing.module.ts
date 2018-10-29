@@ -4,8 +4,6 @@ import { MetodologiaComponent } from './metodologia.component';
 import { ListMetodologiaComponent } from './list-metodologia/list-metodologia.component';
 import { CrudMetodologiaComponent } from './crud-metodologia/crud-metodologia.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: MetodologiaComponent,

@@ -23,7 +23,7 @@ export let FORM_LUGAR_UBICACION = {
         placeholder_i18n: 'lugar',
         requerido: true,
         tipo: 'Lugar',
-        // key: 'Name',
+        key: 'Nombre',
         opciones: [],
     },
     {

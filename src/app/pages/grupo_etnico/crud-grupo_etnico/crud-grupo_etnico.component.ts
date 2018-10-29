@@ -1,4 +1,3 @@
-
 import { GrupoEtnico } from './../../../@core/data/models/grupo_etnico';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PersonaService } from '../../../@core/data/persona.service';
@@ -51,7 +50,6 @@ export class CrudGrupoEtnicoComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formGrupoEtnico.campos.length; index++) {
       const element = this.formGrupoEtnico.campos[index];
@@ -61,7 +59,6 @@ export class CrudGrupoEtnicoComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadGrupoEtnico(): void {
     if (this.grupo_etnico_id !== undefined && this.grupo_etnico_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudGrupoEtnicoComponent implements OnInit {
   }
 
   updateGrupoEtnico(grupoEtnico: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update GrupoEtnico!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudGrupoEtnicoComponent implements OnInit {
           .subscribe(res => {
             this.loadGrupoEtnico();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'GrupoEtnico updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.grupo_etnico') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudGrupoEtnicoComponent implements OnInit {
 
   createGrupoEtnico(grupoEtnico: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create GrupoEtnico!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudGrupoEtnicoComponent implements OnInit {
           .subscribe(res => {
             this.info_grupo_etnico = <GrupoEtnico>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'GrupoEtnico created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.grupo_etnico') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

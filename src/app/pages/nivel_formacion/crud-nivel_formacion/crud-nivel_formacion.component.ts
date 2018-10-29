@@ -1,4 +1,3 @@
-
 import { NivelFormacion } from './../../../@core/data/models/nivel_formacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
@@ -51,7 +50,6 @@ export class CrudNivelFormacionComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formNivelFormacion.campos.length; index++) {
       const element = this.formNivelFormacion.campos[index];
@@ -61,7 +59,6 @@ export class CrudNivelFormacionComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadNivelFormacion(): void {
     if (this.nivel_formacion_id !== undefined && this.nivel_formacion_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudNivelFormacionComponent implements OnInit {
   }
 
   updateNivelFormacion(nivelFormacion: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update NivelFormacion!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudNivelFormacionComponent implements OnInit {
           .subscribe(res => {
             this.loadNivelFormacion();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'NivelFormacion updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.nivel_formacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudNivelFormacionComponent implements OnInit {
 
   createNivelFormacion(nivelFormacion: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create NivelFormacion!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudNivelFormacionComponent implements OnInit {
           .subscribe(res => {
             this.info_nivel_formacion = <NivelFormacion>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'NivelFormacion created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.nivel_formacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

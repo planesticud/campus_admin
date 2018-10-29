@@ -4,8 +4,6 @@ import { TipoContactoComponent } from './tipo_contacto.component';
 import { ListTipoContactoComponent } from './list-tipo_contacto/list-tipo_contacto.component';
 import { CrudTipoContactoComponent } from './crud-tipo_contacto/crud-tipo_contacto.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: TipoContactoComponent,

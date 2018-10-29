@@ -4,8 +4,6 @@ import { ProgramaAcademicoComponent } from './programa_academico.component';
 import { ListProgramaAcademicoComponent } from './list-programa_academico/list-programa_academico.component';
 import { CrudProgramaAcademicoComponent } from './crud-programa_academico/crud-programa_academico.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: ProgramaAcademicoComponent,

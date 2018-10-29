@@ -4,8 +4,6 @@ import { EstadoAdmisionComponent } from './estado_admision.component';
 import { ListEstadoAdmisionComponent } from './list-estado_admision/list-estado_admision.component';
 import { CrudEstadoAdmisionComponent } from './crud-estado_admision/crud-estado_admision.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: EstadoAdmisionComponent,

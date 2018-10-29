@@ -1,4 +1,3 @@
-
 import { TipoLugar } from './../../../@core/data/models/tipo_lugar';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
@@ -51,7 +50,6 @@ export class CrudTipoLugarComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formTipoLugar.campos.length; index++) {
       const element = this.formTipoLugar.campos[index];
@@ -61,7 +59,6 @@ export class CrudTipoLugarComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadTipoLugar(): void {
     if (this.tipo_lugar_id !== undefined && this.tipo_lugar_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudTipoLugarComponent implements OnInit {
   }
 
   updateTipoLugar(tipoLugar: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update TipoLugar!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudTipoLugarComponent implements OnInit {
           .subscribe(res => {
             this.loadTipoLugar();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'TipoLugar updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudTipoLugarComponent implements OnInit {
 
   createTipoLugar(tipoLugar: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create TipoLugar!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudTipoLugarComponent implements OnInit {
           .subscribe(res => {
             this.info_tipo_lugar = <TipoLugar>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'TipoLugar created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

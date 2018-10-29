@@ -4,8 +4,6 @@ import { PersonaComponent } from './persona.component';
 import { ListPersonaComponent } from './list-persona/list-persona.component';
 import { CrudPersonaComponent } from './crud-persona/crud-persona.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: PersonaComponent,

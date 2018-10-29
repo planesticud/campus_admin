@@ -4,8 +4,6 @@ import { TitulacionComponent } from './titulacion.component';
 import { ListTitulacionComponent } from './list-titulacion/list-titulacion.component';
 import { CrudTitulacionComponent } from './crud-titulacion/crud-titulacion.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: TitulacionComponent,

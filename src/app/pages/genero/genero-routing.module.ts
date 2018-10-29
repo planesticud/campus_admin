@@ -4,8 +4,6 @@ import { GeneroComponent } from './genero.component';
 import { ListGeneroComponent } from './list-genero/list-genero.component';
 import { CrudGeneroComponent } from './crud-genero/crud-genero.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: GeneroComponent,

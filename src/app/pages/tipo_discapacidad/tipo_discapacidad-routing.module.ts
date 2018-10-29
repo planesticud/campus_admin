@@ -4,8 +4,6 @@ import { TipoDiscapacidadComponent } from './tipo_discapacidad.component';
 import { ListTipoDiscapacidadComponent } from './list-tipo_discapacidad/list-tipo_discapacidad.component';
 import { CrudTipoDiscapacidadComponent } from './crud-tipo_discapacidad/crud-tipo_discapacidad.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: TipoDiscapacidadComponent,

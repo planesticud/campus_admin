@@ -4,8 +4,6 @@ import { GrupoEtnicoComponent } from './grupo_etnico.component';
 import { ListGrupoEtnicoComponent } from './list-grupo_etnico/list-grupo_etnico.component';
 import { CrudGrupoEtnicoComponent } from './crud-grupo_etnico/crud-grupo_etnico.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: GrupoEtnicoComponent,

@@ -4,8 +4,6 @@ import { EnfasisComponent } from './enfasis.component';
 import { ListEnfasisComponent } from './list-enfasis/list-enfasis.component';
 import { CrudEnfasisComponent } from './crud-enfasis/crud-enfasis.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: EnfasisComponent,

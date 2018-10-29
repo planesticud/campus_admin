@@ -51,7 +51,6 @@ export class CrudLineaInvestigacionComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formLineaInvestigacion.campos.length; index++) {
       const element = this.formLineaInvestigacion.campos[index];
@@ -61,7 +60,6 @@ export class CrudLineaInvestigacionComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadLineaInvestigacion(): void {
     if (this.linea_investigacion_id !== undefined && this.linea_investigacion_id !== 0) {
@@ -78,14 +76,15 @@ export class CrudLineaInvestigacionComponent implements OnInit {
   }
 
   updateLineaInvestigacion(lineaInvestigacion: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update LineaInvestigacion!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +94,9 @@ export class CrudLineaInvestigacionComponent implements OnInit {
           .subscribe(res => {
             this.loadLineaInvestigacion();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'LineaInvestigacion updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +104,14 @@ export class CrudLineaInvestigacionComponent implements OnInit {
 
   createLineaInvestigacion(lineaInvestigacion: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create LineaInvestigacion!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +121,9 @@ export class CrudLineaInvestigacionComponent implements OnInit {
           .subscribe(res => {
             this.info_linea_investigacion = <LineaInvestigacion>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'LineaInvestigacion created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

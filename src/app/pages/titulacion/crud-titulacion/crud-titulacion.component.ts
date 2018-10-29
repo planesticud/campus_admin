@@ -1,4 +1,3 @@
-
 import { Titulacion } from './../../../@core/data/models/titulacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
@@ -51,7 +50,6 @@ export class CrudTitulacionComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formTitulacion.campos.length; index++) {
       const element = this.formTitulacion.campos[index];
@@ -61,7 +59,6 @@ export class CrudTitulacionComponent implements OnInit {
     }
     return 0;
   }
-
 
   public loadTitulacion(): void {
     if (this.titulacion_id !== undefined && this.titulacion_id !== 0) {
@@ -78,14 +75,15 @@ export class CrudTitulacionComponent implements OnInit {
   }
 
   updateTitulacion(titulacion: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update Titulacion!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -95,7 +93,9 @@ export class CrudTitulacionComponent implements OnInit {
           .subscribe(res => {
             this.loadTitulacion();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'Titulacion updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.titulacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -103,12 +103,14 @@ export class CrudTitulacionComponent implements OnInit {
 
   createTitulacion(titulacion: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create Titulacion!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -118,7 +120,9 @@ export class CrudTitulacionComponent implements OnInit {
           .subscribe(res => {
             this.info_titulacion = <Titulacion>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'Titulacion created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.titulacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });

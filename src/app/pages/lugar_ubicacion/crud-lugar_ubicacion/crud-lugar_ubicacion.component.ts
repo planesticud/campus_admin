@@ -1,5 +1,4 @@
 import { Lugar } from './../../../@core/data/models/lugar';
-
 import { LugarUbicacion } from './../../../@core/data/models/lugar_ubicacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
@@ -74,7 +73,6 @@ export class CrudLugarUbicacionComponent implements OnInit {
     return 0;
   }
 
-
   public loadLugarUbicacion(): void {
     if (this.lugar_ubicacion_id !== undefined && this.lugar_ubicacion_id !== 0) {
       this.ubicacionesService.get('lugar_ubicacion/?query=id:' + this.lugar_ubicacion_id)
@@ -90,14 +88,15 @@ export class CrudLugarUbicacionComponent implements OnInit {
   }
 
   updateLugarUbicacion(lugarUbicacion: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update LugarUbicacion!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -107,7 +106,9 @@ export class CrudLugarUbicacionComponent implements OnInit {
           .subscribe(res => {
             this.loadLugarUbicacion();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'LugarUbicacion updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+            this.translate.instant('GLOBAL.lugar_ubicacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarActualizar'));
           });
       }
     });
@@ -115,12 +116,14 @@ export class CrudLugarUbicacionComponent implements OnInit {
 
   createLugarUbicacion(lugarUbicacion: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create LugarUbicacion!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
@@ -130,7 +133,9 @@ export class CrudLugarUbicacionComponent implements OnInit {
           .subscribe(res => {
             this.info_lugar_ubicacion = <LugarUbicacion>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'LugarUbicacion created');
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+            this.translate.instant('GLOBAL.lugar_ubicacion') + ' ' +
+            this.translate.instant('GLOBAL.confirmarCrear'));
           });
       }
     });
