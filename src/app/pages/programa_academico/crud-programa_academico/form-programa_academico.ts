@@ -1,4 +1,3 @@
-
 export let FORM_PROGRAMA_ACADEMICO = {
     titulo: 'ProgramaAcademico',
     tipo_formulario: 'mini',

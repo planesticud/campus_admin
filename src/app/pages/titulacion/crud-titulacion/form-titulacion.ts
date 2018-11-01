@@ -1,4 +1,3 @@
-
 export let FORM_TITULACION = {
     titulo: 'Titulacion',
     tipo_formulario: 'mini',

@@ -1,4 +1,3 @@
-
 export let FORM_ESTADO_CIVIL = {
     titulo: 'EstadoCivil',
     tipo_formulario: 'mini',

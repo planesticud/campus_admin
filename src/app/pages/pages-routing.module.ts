@@ -44,6 +44,18 @@ const routes: Routes = [{
     loadChildren: './tipo_contacto/tipo_contacto.module#TipoContactoModule',
     },
     {
+      path: 'idioma',
+      loadChildren: './idioma/idioma.module#IdiomaModule',
+    },
+    {
+      path: 'nivel_idioma',
+      loadChildren: './nivel_idioma/nivel_idioma.module#NivelIdiomaModule',
+    },
+    {
+      path: 'clasificacion_idioma',
+      loadChildren: './clasificacion_idioma/clasificacion_idioma.module#ClasificacionIdiomaModule',
+    },
+    {
     path: 'titulacion',
     loadChildren: './titulacion/titulacion.module#TitulacionModule',
     },

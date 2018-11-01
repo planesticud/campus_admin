@@ -1,4 +1,3 @@
-
 export let FORM_LUGAR_UBICACION = {
     titulo: 'LugarUbicacion',
     tipo_formulario: 'mini',

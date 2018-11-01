@@ -1,4 +1,3 @@
-
 export let FORM_METODOLOGIA = {
     titulo: 'Metodologia',
     tipo_formulario: 'mini',

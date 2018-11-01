@@ -1,4 +1,3 @@
-
 export let FORM_NIVEL_FORMACION = {
     titulo: 'NivelFormacion',
     tipo_formulario: 'mini',

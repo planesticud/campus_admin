@@ -1,4 +1,3 @@
-
 export let FORM_TIPO_CONTACTO = {
     titulo: 'TipoContacto',
     tipo_formulario: 'mini',

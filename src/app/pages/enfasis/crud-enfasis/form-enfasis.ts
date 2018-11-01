@@ -1,4 +1,3 @@
-
 export let FORM_ENFASIS = {
     titulo: 'Enfasis',
     tipo_formulario: 'mini',

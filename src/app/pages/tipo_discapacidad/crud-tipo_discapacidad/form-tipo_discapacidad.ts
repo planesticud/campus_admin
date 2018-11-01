@@ -1,4 +1,3 @@
-
 export let FORM_TIPO_DISCAPACIDAD = {
     titulo: 'TipoDiscapacidad',
     tipo_formulario: 'mini',
