@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EstadoAdmisionComponent } from './estado_admision.component';
 import { ListEstadoAdmisionComponent } from './list-estado_admision/list-estado_admision.component';
 import { CrudEstadoAdmisionComponent } from './crud-estado_admision/crud-estado_admision.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,11 @@ const routes: Routes = [{
   children: [{
     path: 'list-estado_admision',
     component: ListEstadoAdmisionComponent,
+    canActivate: [AuthGuard],
   }, {
     path: 'crud-estado_admision',
     component: CrudEstadoAdmisionComponent,
+    canActivate: [AuthGuard],
   }],
 }];
 

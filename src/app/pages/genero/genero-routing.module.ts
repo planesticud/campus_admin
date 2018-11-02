@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GeneroComponent } from './genero.component';
 import { ListGeneroComponent } from './list-genero/list-genero.component';
 import { CrudGeneroComponent } from './crud-genero/crud-genero.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,7 @@ const routes: Routes = [{
   children: [{
     path: 'list-genero',
     component: ListGeneroComponent,
+    canActivate: [AuthGuard],
   }],
 }];
 
