@@ -5,6 +5,7 @@ import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
 import { FORM_LUGAR } from './form-lugar';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -60,6 +61,14 @@ export class CrudLugarComponent implements OnInit {
             tipoLugar = <Array<TipoLugar>>res;
           }
           this.formLugar.campos[ this.getIndexForm('TipoLugar') ].opciones = tipoLugar;
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
   }
 
@@ -80,6 +89,14 @@ export class CrudLugarComponent implements OnInit {
           if (res !== null) {
             this.info_lugar = <Lugar>res[0];
           }
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
     } else  {
       this.info_lugar = undefined;
@@ -108,7 +125,16 @@ export class CrudLugarComponent implements OnInit {
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
             this.translate.instant('GLOBAL.lugar') + ' ' +
-            this.translate.instant('GLOBAL.confirmarActualizar'));          });
+            this.translate.instant('GLOBAL.confirmarActualizar'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -134,7 +160,16 @@ export class CrudLugarComponent implements OnInit {
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
             this.translate.instant('GLOBAL.lugar') + ' ' +
-            this.translate.instant('GLOBAL.confirmarCrear'));          });
+            this.translate.instant('GLOBAL.confirmarCrear'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }

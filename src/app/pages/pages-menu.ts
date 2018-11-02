@@ -45,6 +45,21 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_contacto',
       },
       {
+        title: 'Idioma',
+        link: '/pages/idioma/list-idioma',
+        key: 'idioma',
+      },
+      {
+        title: 'Nivel Idioma',
+        link: '/pages/nivel_idioma/list-nivel_idioma',
+        key: 'nivel_idioma',
+      },
+      {
+        title: 'Clasificacion Nivel Idioma',
+        link: '/pages/clasificacion_idioma/list-clasificacion_idioma',
+        key: 'clasificacion_nivel_idioma',
+      },
+      {
         title: 'Lista Titulacion',
         link: '/pages/titulacion/list-titulacion',
         key: 'titulacion',

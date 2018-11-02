@@ -1,4 +1,3 @@
-
 export let FORM_LINEA_INVESTIGACION = {
     titulo: 'LineaInvestigacion',
     tipo_formulario: 'mini',

@@ -7,6 +7,7 @@ import { ProgramaAcademicoService } from '../../../@core/data/programa_academico
 import { FORM_PROGRAMA_ACADEMICO } from './form-programa_academico';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -64,6 +65,14 @@ export class CrudProgramaAcademicoComponent implements OnInit {
             metodologia = <Array<Metodologia>>res;
           }
           this.formProgramaAcademico.campos[ this.getIndexForm('Metodologia') ].opciones = metodologia;
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
   }
 
@@ -75,6 +84,14 @@ export class CrudProgramaAcademicoComponent implements OnInit {
             nivelFormacion = <Array<NivelFormacion>>res;
           }
           this.formProgramaAcademico.campos[ this.getIndexForm('NivelFormacion') ].opciones = nivelFormacion;
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
   }
 
@@ -86,6 +103,14 @@ export class CrudProgramaAcademicoComponent implements OnInit {
             titulacion = <Array<Titulacion>>res;
           }
           this.formProgramaAcademico.campos[ this.getIndexForm('Titulacion') ].opciones = titulacion;
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
   }
 
@@ -106,6 +131,14 @@ export class CrudProgramaAcademicoComponent implements OnInit {
           if (res !== null) {
             this.info_programa_academico = <ProgramaAcademico>res[0];
           }
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
     } else  {
       this.info_programa_academico = undefined;
@@ -134,7 +167,16 @@ export class CrudProgramaAcademicoComponent implements OnInit {
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
             this.translate.instant('GLOBAL.programa_academico') + ' ' +
-            this.translate.instant('GLOBAL.confirmarActualizar'));          });
+            this.translate.instant('GLOBAL.confirmarActualizar'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -161,6 +203,14 @@ export class CrudProgramaAcademicoComponent implements OnInit {
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
             this.translate.instant('GLOBAL.programa_academico') + ' ' +
             this.translate.instant('GLOBAL.confirmarCrear'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
       }
     });

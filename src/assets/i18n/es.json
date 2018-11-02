@@ -15,6 +15,9 @@
       "tipo_discapacidad": "Tipo de discapacidad",
       "tipo_lugar": "Tipo de lugar",
       "tipo_contacto": "Tipo de contacto",
+      "idioma": "Idiomas",
+      "nivel_idioma": "Niveles del idioma",
+      "clasificacion_nivel_idioma": "Clasificación del nivel del idioma",
       "enfasis": "Énfasis",
       "programa_academico": "Programas académicos",
       "metodologia": "Metodologías",
@@ -68,6 +71,21 @@
       "lista_tipo_contacto": "Listado de tipo de contacto",
       "crud_tipo_contacto": "Crud de tipo de contacto"
     },
+    "idioma": {
+      "idioma": "Idiomas",
+      "lista_idioma": "Listado de idiomas",
+      "crud_idioma": "Crud de idiomas"
+    },
+    "nivel_idioma": {
+      "nivel_idioma": "Niveles del idioma",
+      "lista_nivel_idioma": "Listado de niveles del idioma",
+      "crud_nivel_idioma": "Crud de niveles del idioma"
+    },
+    "clasificacion_nivel_idioma": {
+      "clasificacion_nivel_idioma": "Clasificación del nivel del idioma",
+      "lista_clasificacion_nivel_idioma": "Listado de clasificación del nivel del idioma",
+      "crud_clasificacion_nivel_idioma": "Crud de clasificación del nivel del idioma"
+    },
     "auth": {
       "auth": "Autenticación",
       "login": "Iniciar sesión",
@@ -75,6 +93,16 @@
       "request-password": "Recuperar contraseña",
       "reset-password": "Reiniciar contraseña"
     }
+  },
+  "ERROR": {
+    "400": "La solicitud contiene sintaxis errónea",
+    "401": "Autorización no es posible, ha fallado o aún no ha sido provista",
+    "403": "El servidor se reusa a responder dado que el cliente no tiene los privilegios adecuados",
+    "404": "Recurso no encontrado",
+    "405": "La petición fue hecha utilizando un método de solicitud no soportado",
+    "408": "Ha excedido el límite de tiempo en retornar resuesta",
+    "409": "La solicitud no pudo ser procesada debido a un conflicto con el estado actual del recurso",
+    "500": "Error interno en el servidor"
   },
   "GLOBAL": {
     "aceptar": "Aceptar",
@@ -172,6 +200,12 @@
     "unidad_tiempo": "Unidad de tiempo",
     "placeholder_unidad_tiempo": "Ej: año",
     "titulacion": "Titulación",
-    "placeholder_titulacion": "Ej: Ingeniero de sistemas"
+    "placeholder_titulacion": "Ej: Ingeniero de sistemas",
+    "idioma": "Idioma",
+    "placeholder_idioma": "Ej: Español",
+    "nivel_idioma": "Nivel del idioma",
+    "placeholder_nivel_idioma": "Ej: Bueno",
+    "clasificacion_nivel_idioma": "Clasificación del idioma",
+    "placeholder_clasificacion_nivel_idioma": "Ej: A1"
   }
 }

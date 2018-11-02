@@ -4,6 +4,7 @@ import { PersonaService } from '../../../@core/data/persona.service';
 import { FORM_ESTADO_CIVIL } from './form-estado_civil';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -67,6 +68,14 @@ export class CrudEstadoCivilComponent implements OnInit {
           if (res !== null) {
             this.info_estado_civil = <EstadoCivil>res[0];
           }
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
     } else  {
       this.info_estado_civil = undefined;
@@ -96,6 +105,14 @@ export class CrudEstadoCivilComponent implements OnInit {
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
             this.translate.instant('GLOBAL.estado_civil') + ' ' +
             this.translate.instant('GLOBAL.confirmarActualizar'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
       }
     });
@@ -123,6 +140,14 @@ export class CrudEstadoCivilComponent implements OnInit {
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
             this.translate.instant('GLOBAL.estado_civil') + ' ' +
             this.translate.instant('GLOBAL.confirmarCrear'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
       }
     });

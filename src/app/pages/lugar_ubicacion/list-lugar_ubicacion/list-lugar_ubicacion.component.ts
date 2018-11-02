@@ -3,6 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -94,6 +95,14 @@ export class ListLugarUbicacionComponent implements OnInit {
         const data = <Array<any>>res;
         this.source.load(data);
           }
+    },
+    (error: HttpErrorResponse) => {
+      Swal({
+        type: 'error',
+        title: error.status + '',
+        text: this.translate.instant('ERROR.' + error.status),
+        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      });
     });
   }
 
@@ -130,6 +139,14 @@ export class ListLugarUbicacionComponent implements OnInit {
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
             this.translate.instant('GLOBAL.lugar_ubicacion') + ' ' +
             this.translate.instant('GLOBAL.confirmarEliminar'));            }
+         },
+         (error: HttpErrorResponse) => {
+           Swal({
+             type: 'error',
+             title: error.status + '',
+             text: this.translate.instant('ERROR.' + error.status),
+             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+           });
          });
       }
     });
@@ -153,7 +170,6 @@ export class ListLugarUbicacionComponent implements OnInit {
       this.cambiotab = !this.cambiotab;
     }
   }
-
 
   itemselec(event): void {
     // console.log("afssaf");

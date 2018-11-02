@@ -1,4 +1,3 @@
-
 export let FORM_GENERO = {
     titulo: 'Genero',
     tipo_formulario: 'mini',

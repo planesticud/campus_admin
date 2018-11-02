@@ -1,4 +1,3 @@
-
 export let FORM_GRUPO_ETNICO = {
     titulo: 'GrupoEtnico',
     tipo_formulario: 'mini',

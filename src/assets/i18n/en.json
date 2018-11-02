@@ -15,6 +15,9 @@
       "tipo_discapacidad": "Impairment type",
       "tipo_lugar": "Place type",
       "tipo_contacto": "Contact type",
+      "idioma": "Language",
+      "nivel_idioma": "Language level",
+      "clasificacion_nivel_idioma": "Language classification",
       "enfasis": "Emphasis",
       "programa_academico": "Academic programs",
       "metodologia": "Methodologies",
@@ -68,6 +71,21 @@
       "lista_tipo_contacto": "Contact type list",
       "crud_tipo_contacto": "Contact type crud"
     },
+    "idioma": {
+      "idioma": "Language",
+      "lista_idioma": "Language list",
+      "crud_idioma": "Language crud"
+    },
+    "nivel_idioma": {
+      "nivel_idioma": "Language level",
+      "lista_nivel_idioma": "Language level list",
+      "crud_nivel_idioma": "Language level crud"
+    },
+    "clasificacion_nivel_idioma": {
+      "clasificacion_nivel_idioma": "Language classification",
+      "lista_clasificacion_nivel_idioma": "Language classification list",
+      "crud_clasificacion_nivel_idioma": "Language classification crud"
+    },
     "auth": {
       "auth": "Authentication",
       "login": "Log in",
@@ -75,6 +93,16 @@
       "request-password": "Request password",
       "reset-password": "Reset password"
     }
+  },
+  "ERROR": {
+    "400": "The request contains incorrect syntax",
+    "401": "Authorization is not possible, has failed or has not yet been provided",
+    "403": "The server refuses to respond because the client does not have the appropriate privileges",
+    "404": "Resource not found",
+    "405": "The request was made using an unsupported application method",
+    "408": "You have exceeded the time limit in returning answer",
+    "409": "The request could not be processed due to a conflict with the current state of the resource",
+    "500": "Internal error on the server"
   },
   "GLOBAL": {
     "aceptar": "Accept",
@@ -172,6 +200,12 @@
     "unidad_tiempo": "Time unit",
     "placeholder_unidad_tiempo": "E.g.: Year",
     "titulacion": "Academic degree",
-    "placeholder_titulacion": "E.g.: Systems engineer"
+    "placeholder_titulacion": "E.g.: Systems engineer",
+    "idioma": "Language",
+    "placeholder_idioma": "E.g.: English",
+    "nivel_idioma": "Language level",
+    "placeholder_nivel_idioma": "E.g.: High",
+    "clasificacion_nivel_idioma": "Language classification",
+    "placeholder_clasificacion_nivel_idioma": "E.g.: A1"
   }
 }

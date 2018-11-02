@@ -1,10 +1,10 @@
-
 import { LineaInvestigacion } from './../../../@core/data/models/linea_investigacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AdmisionesService } from '../../../@core/data/admisiones.service';
 import { FORM_LINEA_INVESTIGACION } from './form-linea_investigacion';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -68,6 +68,14 @@ export class CrudLineaInvestigacionComponent implements OnInit {
           if (res !== null) {
             this.info_linea_investigacion = <LineaInvestigacion>res[0];
           }
+        },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
         });
     } else  {
       this.info_linea_investigacion = undefined;
@@ -97,6 +105,14 @@ export class CrudLineaInvestigacionComponent implements OnInit {
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
             this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
             this.translate.instant('GLOBAL.confirmarActualizar'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
       }
     });
@@ -124,6 +140,14 @@ export class CrudLineaInvestigacionComponent implements OnInit {
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
             this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
             this.translate.instant('GLOBAL.confirmarCrear'));
+          },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
       }
     });
