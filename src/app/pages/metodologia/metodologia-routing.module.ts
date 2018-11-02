@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MetodologiaComponent } from './metodologia.component';
 import { ListMetodologiaComponent } from './list-metodologia/list-metodologia.component';
 import { CrudMetodologiaComponent } from './crud-metodologia/crud-metodologia.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,11 @@ const routes: Routes = [{
   children: [{
     path: 'list-metodologia',
     component: ListMetodologiaComponent,
+    canActivate: [AuthGuard],
   }, {
     path: 'crud-metodologia',
     component: CrudMetodologiaComponent,
+    canActivate: [AuthGuard],
   }],
 }];
 

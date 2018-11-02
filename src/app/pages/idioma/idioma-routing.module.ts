@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IdiomaComponent } from './idioma.component';
 import { ListIdiomaComponent } from './list-idioma/list-idioma.component';
 import { CrudIdiomaComponent } from './crud-idioma/crud-idioma.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,7 @@ const routes: Routes = [{
   children: [{
     path: 'list-idioma',
     component: ListIdiomaComponent,
+    canActivate: [AuthGuard],
   }],
 }];
 

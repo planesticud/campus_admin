@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LugarComponent } from './lugar.component';
 import { ListLugarComponent } from './list-lugar/list-lugar.component';
 import { CrudLugarComponent } from './crud-lugar/crud-lugar.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,11 @@ const routes: Routes = [{
   children: [{
     path: 'list-lugar',
     component: ListLugarComponent,
+    canActivate: [AuthGuard],
   }, {
     path: 'crud-lugar',
     component: CrudLugarComponent,
+    canActivate: [AuthGuard],
   }],
 }];
 
