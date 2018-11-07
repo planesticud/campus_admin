@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
@@ -93,6 +92,7 @@ export class AutenticationService {
         const id_token = window.sessionStorage.getItem('id_token').split('.');
         return JSON.parse(atob(id_token[1]));
     }
+
     public live() {
         if (window.sessionStorage.getItem('id_token') !== null) {
             return true;
@@ -100,6 +100,7 @@ export class AutenticationService {
             return false;
         }
     }
+
     public logoutValid() {
         let state: any;
         let valid = true;
