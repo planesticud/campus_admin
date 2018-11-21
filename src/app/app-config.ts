@@ -41,6 +41,7 @@ export const Config = {
         ADMISIONES_SERVICE: 'http://localhost:8080/v1/',
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
         FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
+        IDIOMA_SERVICE: 'http://localhost:8103/v1/',
         CONF_MENU_SERVICE: 'http://10.20.0.254/configuracion_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co:8244/authorize',
@@ -67,6 +68,8 @@ export const Config = {
         CAMPUS_MID: 'https://autenticacion.udistrital.edu.co:8244/campus_mid/v1/',
         ADMISIONES_SERVICE: 'http://localhost:8080/v1/',
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
+        FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
+        IDIOMA_SERVICE: 'http://localhost:8103/v1/',
         CONF_MENU_SERVICE: 'https://autenticacion.udistrital.edu.co:8244/configuracion_crud_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co:8244/authorize',
@@ -92,15 +95,17 @@ export const Config = {
         CAMPUS_MID: 'https://autenticacion.portaloas.udistrital.edu.co/api/campus_mid_service/v1/',
         ADMISIONES_SERVICE: 'http://localhost:8080/v1/',
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
+        FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
+        IDIOMA_SERVICE: 'http://localhost:8103/v1/',
         CONF_MENU_SERVICE: 'https://autenticacion.portaloas.udistrital.edu.co/api/configuracion_crud_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.portaloas.udistrital.edu.co/oauth2/authorize',
-            CLIENTE_ID: 'iKu3JoaAbsqLoQTpIjjFlz9RfIga',
+            CLIENTE_ID: '9UhxhTiEfueURFLQCGVncYUbnRwa',
             RESPONSE_TYPE: 'id_token token',
             SCOPE: 'openid email role documento',
-            REDIRECT_URL: 'https://pruebascampus.portaloas.udistrital.edu.co/',
+            REDIRECT_URL: 'https://campusvirtualadmin.portaloas.udistrital.edu.co/',
             SIGN_OUT_URL: 'https://autenticacion.portaloas.udistrital.edu.co/oidc/logout',
-            SIGN_OUT_REDIRECT_URL: 'https://pruebascampus.portaloas.udistrital.edu.co/',
+            SIGN_OUT_REDIRECT_URL: 'https://campusvirtualadmin.portaloas.udistrital.edu.co/',
         },
     },
 };
