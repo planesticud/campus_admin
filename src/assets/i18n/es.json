@@ -24,7 +24,9 @@
       "nivel_formacion": "Niveles de formación",
       "titulacion": "Titulaciones",
       "linea_investigacion": "Líneas de investigación",
-      "estado_admision": "Estados admisión"
+      "estado_admision": "Estados admisión",
+      "tipo_descuento_matricula": "Tipo de descuento de matrícula",
+      "descuento_matricula": "Descuento de matrícula"
     },
     "genero": {
       "genero": "Género",
@@ -33,7 +35,7 @@
     },
     "grupo_etnico": {
       "grupo_etnico": "Grupo étnico",
-      "lista_grupo_etnico": "Lista de grupo étnico",
+      "lista_grupo_etnico": "Listado de grupo étnico",
       "crud_grupo_etnico": "Crud de grupo étnico"
     },
     "estado_civil": {
@@ -85,6 +87,16 @@
       "clasificacion_nivel_idioma": "Clasificación del nivel del idioma",
       "lista_clasificacion_nivel_idioma": "Listado de clasificación del nivel del idioma",
       "crud_clasificacion_nivel_idioma": "Crud de clasificación del nivel del idioma"
+    },
+    "tipo_descuento_matricula": {
+      "tipo_descuento_matricula": "Tipo de descuento de matrícula",
+      "lista_tipo_descuento_matricula": "Listado de tipo de descuento de matrícula",
+      "crud_tipo_descuento_matricula": "Crud de tipo de descuento de matrícula"
+    },
+    "descuento_matricula": {
+      "descuento_matricula": "Descuento de matrícula",
+      "lista_descuento_matricula": "Listado de descuento de matrícula",
+      "crud_descuento_matricula": "Crud de descuento de matrícula"
     },
     "auth": {
       "auth": "Autenticación",
@@ -206,6 +218,18 @@
     "nivel_idioma": "Nivel del idioma",
     "placeholder_nivel_idioma": "Ej: Bueno",
     "clasificacion_nivel_idioma": "Clasificación del idioma",
-    "placeholder_clasificacion_nivel_idioma": "Ej: A1"
+    "placeholder_clasificacion_nivel_idioma": "Ej: A1",
+    "tipo_descuento_matricula": "Tipo de descuento de matrícula",
+    "placeholder_tipo_descuento_matricula": "Ej: Tipo de descuento de matrícula",
+    "descuento_matricula": "Descuento de matrícula",
+    "placeholder_descuento_matricula": "Ej: Descuento de matrícula",
+    "metadatos": "Metadatos",
+    "placeholder_metadatos": "Ej: Metadatos",
+    "enlace": "Enlace",
+    "placeholder_enlace": "Ej: Enlace",
+    "descuento": "Descuento",
+    "placeholder_descuento": "Ej: Descuento",
+    "id_tipo_descuento_matricula": "Id del tipo de descuento",
+    "placeholder_id_tipo_descuento_matricula": "Ej: 12"
   }
 }

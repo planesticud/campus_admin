@@ -15,6 +15,7 @@ export const Config = {
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
         FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
         IDIOMA_SERVICE: 'http://localhost:8103/v1/',
+        MATRICULA_DESCUENTOS_SERVICE: 'http://localhost:8107/v1/',
         CONF_MENU_SERVICE: 'http://10.20.0.254/configuracion_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co:8244/authorize',
@@ -42,6 +43,7 @@ export const Config = {
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
         FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
         IDIOMA_SERVICE: 'http://localhost:8103/v1/',
+        MATRICULA_DESCUENTOS_SERVICE: 'http://localhost:8107/v1/',
         CONF_MENU_SERVICE: 'http://10.20.0.254/configuracion_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co:8244/authorize',
@@ -70,6 +72,7 @@ export const Config = {
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
         FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
         IDIOMA_SERVICE: 'http://localhost:8103/v1/',
+        MATRICULA_DESCUENTOS_SERVICE: 'http://localhost:8107/v1/',
         CONF_MENU_SERVICE: 'https://autenticacion.udistrital.edu.co:8244/configuracion_crud_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co:8244/authorize',
@@ -97,6 +100,7 @@ export const Config = {
         PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
         FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
         IDIOMA_SERVICE: 'http://localhost:8103/v1/',
+        MATRICULA_DESCUENTOS_SERVICE: 'http://localhost:8107/v1/',
         CONF_MENU_SERVICE: 'https://autenticacion.portaloas.udistrital.edu.co/api/configuracion_crud_api/v1/menu_opcion_padre/ArbolMenus/',
         TOKEN: {
             AUTORIZATION_URL: 'https://autenticacion.portaloas.udistrital.edu.co/oauth2/authorize',
@@ -111,5 +115,5 @@ export const Config = {
 };
 
 export const GENERAL = {
-    ENTORNO: Config.PREPROD_NUBE,
+    ENTORNO: Config.LOCAL,
 };

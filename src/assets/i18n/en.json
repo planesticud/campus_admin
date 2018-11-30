@@ -24,7 +24,9 @@
       "nivel_formacion": "Training levels",
       "titulacion": "Academic title",
       "linea_investigacion": "Research lines",
-      "estado_admision": "Admission states"
+      "estado_admision": "Admission states",
+      "tipo_descuento_matricula": "Type of tuition discount",
+      "descuento_matricula": "Tuition discount"
     },
     "genero": {
       "genero": "Gender",
@@ -85,6 +87,16 @@
       "clasificacion_nivel_idioma": "Language classification",
       "lista_clasificacion_nivel_idioma": "Language classification list",
       "crud_clasificacion_nivel_idioma": "Language classification crud"
+    },
+    "tipo_descuento_matricula": {
+      "tipo_descuento_matricula": "Type of tuition discount",
+      "lista_tipo_descuento_matricula": "Type of tuition discount list",
+      "crud_tipo_descuento_matricula": "Type of tuition discount crud"
+    },
+    "descuento_matricula": {
+      "descuento_matricula": "Tuition discount",
+      "lista_descuento_matricula": "Tuition discount list",
+      "crud_descuento_matricula": "Tuition discount crud"
     },
     "auth": {
       "auth": "Authentication",
@@ -206,6 +218,18 @@
     "nivel_idioma": "Language level",
     "placeholder_nivel_idioma": "E.g.: High",
     "clasificacion_nivel_idioma": "Language classification",
-    "placeholder_clasificacion_nivel_idioma": "E.g.: A1"
+    "placeholder_clasificacion_nivel_idioma": "E.g.: A1",
+    "tipo_descuento_matricula": "Type of tuition discount",
+    "placeholder_tipo_descuento_matricula": "E.g: Type of tuition discount",
+    "descuento_matricula": "Tuition discount",
+    "placeholder_descuento_matricula": "E.g.: Tuition discount",
+    "metadatos": "Metadata",
+    "placeholder_metadatos": "E.g.: Metadata",
+    "enlace": "Link",
+    "placeholder_enlace": "E.g.: Link",
+    "descuento": "Descuento",
+    "placeholder_descuento": "E.g.: Discount",
+    "id_tipo_descuento_matricula": "Discount type id",
+    "placeholder_id_tipo_descuento_matricula": "E.g.: 12"
   }
 }

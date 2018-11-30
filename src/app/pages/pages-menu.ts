@@ -94,6 +94,16 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/linea_investigacion/list-linea_investigacion',
         key: 'linea_investigacion',
       },
+      {
+        title: 'Lista Descuento Matricula',
+        link: '/pages/descuento_matricula/list-descuento_matricula',
+        key: 'descuento_matricula',
+      },
+      {
+        title: 'Lista Tipo Descuento Matricula',
+        link: '/pages/tipo_descuento_matricula/list-tipo_descuento_matricula',
+        key: 'tipo_descuento_matricula',
+      },
     ],
   },
   {

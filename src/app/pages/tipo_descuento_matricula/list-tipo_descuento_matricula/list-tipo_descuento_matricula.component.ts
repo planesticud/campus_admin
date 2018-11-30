@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { IdiomaService } from '../../../@core/data/idioma.service';
+import { MatriculaDescuentosService } from '../../../@core/data/matricula_descuentos.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -8,11 +8,11 @@ import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
 @Component({
-  selector: 'ngx-list-nivel-idioma',
-  templateUrl: './list-nivel_idioma.component.html',
-  styleUrls: ['./list-nivel_idioma.component.scss'],
+  selector: 'ngx-list-tipo-descuento-matricula',
+  templateUrl: './list-tipo_descuento_matricula.component.html',
+  styleUrls: ['./list-tipo_descuento_matricula.component.scss'],
   })
-export class ListNivelIdiomaComponent implements OnInit {
+export class ListTipoDescuentoMatriculaComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
@@ -20,7 +20,7 @@ export class ListNivelIdiomaComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private translate: TranslateService, private idiomaService: IdiomaService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private matriculaDescuentosService: MatriculaDescuentosService, private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -97,7 +97,7 @@ export class ListNivelIdiomaComponent implements OnInit {
   }
 
   loadData(): void {
-    this.idiomaService.get('valor_nivel_idioma/?limit=0').subscribe(res => {
+    this.matriculaDescuentosService.get('tipo_descuento_matricula/?limit=0').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
@@ -140,20 +140,20 @@ export class ListNivelIdiomaComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.idiomaService.delete('valor_nivel_idioma/', event.data).subscribe(res => {
+        this.matriculaDescuentosService.delete('tipo_descuento_matricula/', event.data)
+        .subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-            this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
-            this.translate.instant('GLOBAL.confirmarEliminar'));
-          }
+            this.translate.instant('GLOBAL.tipo_descuento_matricula') + ' ' +
+            this.translate.instant('GLOBAL.confirmarEliminar'));            }
          },
          (error: HttpErrorResponse) => {
            Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
            });
          });
       }
@@ -203,5 +203,4 @@ export class ListNivelIdiomaComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

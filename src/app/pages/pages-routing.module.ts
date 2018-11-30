@@ -84,6 +84,14 @@ const routes: Routes = [{
     loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
     },
     {
+    path: 'tipo_descuento_matricula',
+    loadChildren: './tipo_descuento_matricula/tipo_descuento_matricula.module#TipoDescuentoMatriculaModule',
+    },
+    {
+    path: 'descuento_matricula',
+    loadChildren: './descuento_matricula/descuento_matricula.module#DescuentoMatriculaModule',
+    },
+    {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

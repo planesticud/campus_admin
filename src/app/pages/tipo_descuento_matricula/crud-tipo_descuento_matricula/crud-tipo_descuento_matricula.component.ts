@@ -1,7 +1,7 @@
-import { NivelIdioma } from '../../../@core/data/models/nivel_idioma';
+import { TipoDescuentoMatricula } from '../../../@core/data/models/tipo_descuento_matricula';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IdiomaService } from '../../../@core/data/idioma.service';
-import { FORM_NIVEL_IDIOMA } from './form-nivel_idioma';
+import { MatriculaDescuentosService } from '../../../@core/data/matricula_descuentos.service';
+import { FORM_TIPO_DESCUENTO_MATRICULA } from './form-tipo_descuento_matricula';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,41 +9,42 @@ import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
 @Component({
-  selector: 'ngx-crud-nivel-idioma',
-  templateUrl: './crud-nivel_idioma.component.html',
-  styleUrls: ['./crud-nivel_idioma.component.scss'],
+  selector: 'ngx-crud-tipo-descuento-matricula',
+  templateUrl: './crud-tipo_descuento_matricula.component.html',
+  styleUrls: ['./crud-tipo_descuento_matricula.component.scss'],
 })
-export class CrudNivelIdiomaComponent implements OnInit {
+export class CrudTipoDescuentoMatriculaComponent implements OnInit {
   config: ToasterConfig;
-  nivel_idioma_id: number;
+  tipo_descuento_matricula_id: number;
 
-  @Input('nivel_idioma_id')
-  set name(nivel_idioma_id: number) {
-    this.nivel_idioma_id = nivel_idioma_id;
-    this.loadNivelIdioma();
+  @Input('tipo_descuento_matricula_id')
+  set name(tipo_descuento_matricula_id: number) {
+    this.tipo_descuento_matricula_id = tipo_descuento_matricula_id;
+    this.loadTipoDescuentoMatricula();
   }
 
   @Output() eventChange = new EventEmitter();
 
-  info_nivel_idioma: NivelIdioma;
-  formNivelIdioma: any;
-  regNivelIdioma: any;
+  info_tipo_descuento_matricula: TipoDescuentoMatricula;
+  formTipoDescuentoMatricula: any;
+  regTipoDescuentoMatricula: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private idiomaService: IdiomaService, private toasterService: ToasterService) {
-    this.formNivelIdioma = FORM_NIVEL_IDIOMA;
+  constructor(private translate: TranslateService, private matriculaDescuentosService: MatriculaDescuentosService, private toasterService: ToasterService) {
+    this.formTipoDescuentoMatricula = FORM_TIPO_DESCUENTO_MATRICULA;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-  }
+   }
 
   construirForm() {
-    this.formNivelIdioma.titulo = this.translate.instant('GLOBAL.nivel_idioma');
-    this.formNivelIdioma.btn = this.translate.instant('GLOBAL.guardar');
-    for (let i = 0; i < this.formNivelIdioma.campos.length; i++) {
-      this.formNivelIdioma.campos[i].label = this.translate.instant('GLOBAL.' + this.formNivelIdioma.campos[i].label_i18n);
-      this.formNivelIdioma.campos[i].placeholder = this.translate.instant('GLOBAL.placeholder_' + this.formNivelIdioma.campos[i].label_i18n);
+    this.formTipoDescuentoMatricula.titulo = this.translate.instant('GLOBAL.tipo_descuento_matricula');
+    this.formTipoDescuentoMatricula.btn = this.translate.instant('GLOBAL.guardar');
+    for (let i = 0; i < this.formTipoDescuentoMatricula.campos.length; i++) {
+      this.formTipoDescuentoMatricula.campos[i].label = this.translate.instant('GLOBAL.' + this.formTipoDescuentoMatricula.campos[i].label_i18n);
+      this.formTipoDescuentoMatricula.campos[i].placeholder = this.translate.instant('GLOBAL.placeholder_' +
+      this.formTipoDescuentoMatricula.campos[i].label_i18n);
     }
   }
 
@@ -52,8 +53,8 @@ export class CrudNivelIdiomaComponent implements OnInit {
   }
 
   getIndexForm(nombre: String): number {
-    for (let index = 0; index < this.formNivelIdioma.campos.length; index++) {
-      const element = this.formNivelIdioma.campos[index];
+    for (let index = 0; index < this.formTipoDescuentoMatricula.campos.length; index++) {
+      const element = this.formTipoDescuentoMatricula.campos[index];
       if (element.nombre === nombre) {
         return index
       }
@@ -61,12 +62,12 @@ export class CrudNivelIdiomaComponent implements OnInit {
     return 0;
   }
 
-  public loadNivelIdioma(): void {
-    if (this.nivel_idioma_id !== undefined && this.nivel_idioma_id !== 0) {
-      this.idiomaService.get('valor_nivel_idioma/?query=id:' + this.nivel_idioma_id)
+  public loadTipoDescuentoMatricula(): void {
+    if (this.tipo_descuento_matricula_id !== undefined && this.tipo_descuento_matricula_id !== 0) {
+      this.matriculaDescuentosService.get('tipo_descuento_matricula/?query=id:' + this.tipo_descuento_matricula_id)
         .subscribe(res => {
           if (res !== null) {
-            this.info_nivel_idioma = <NivelIdioma>res[0];
+            this.info_tipo_descuento_matricula = <TipoDescuentoMatricula>res[0];
           }
         },
         (error: HttpErrorResponse) => {
@@ -78,12 +79,12 @@ export class CrudNivelIdiomaComponent implements OnInit {
           });
         });
     } else  {
-      this.info_nivel_idioma = undefined;
+      this.info_tipo_descuento_matricula = undefined;
       this.clean = !this.clean;
     }
   }
 
-  updateNivelIdioma(nivel_idioma: any): void {
+  updateTipoDescuentoMatricula(tipoDescuentoMatricula: any): void {
     const opt: any = {
       title: this.translate.instant('GLOBAL.actualizar'),
       text: this.translate.instant('GLOBAL.actualizar') + '?',
@@ -97,13 +98,13 @@ export class CrudNivelIdiomaComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.info_nivel_idioma = <NivelIdioma>nivel_idioma;
-        this.idiomaService.put('valor_nivel_idioma', this.info_nivel_idioma)
+        this.info_tipo_descuento_matricula = <TipoDescuentoMatricula>tipoDescuentoMatricula;
+        this.matriculaDescuentosService.put('tipo_descuento_matricula', this.info_tipo_descuento_matricula)
           .subscribe(res => {
-            this.loadNivelIdioma();
+            this.loadTipoDescuentoMatricula();
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
-            this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
+            this.translate.instant('GLOBAL.tipo_descuento_matricula') + ' ' +
             this.translate.instant('GLOBAL.confirmarActualizar'));
           },
           (error: HttpErrorResponse) => {
@@ -118,7 +119,7 @@ export class CrudNivelIdiomaComponent implements OnInit {
     });
   }
 
-  createNivelIdioma(nivel_idioma: any): void {
+  createTipoDescuentoMatricula(tipoDescuentoMatricula: any): void {
     const opt: any = {
       title: this.translate.instant('GLOBAL.crear'),
       text: this.translate.instant('GLOBAL.crear') + '?',
@@ -132,13 +133,13 @@ export class CrudNivelIdiomaComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.info_nivel_idioma = <NivelIdioma>nivel_idioma;
-        this.idiomaService.post('valor_nivel_idioma', this.info_nivel_idioma)
+        this.info_tipo_descuento_matricula = <TipoDescuentoMatricula>tipoDescuentoMatricula;
+        this.matriculaDescuentosService.post('tipo_descuento_matricula', this.info_tipo_descuento_matricula)
           .subscribe(res => {
-            this.info_nivel_idioma = <NivelIdioma>res;
+            this.info_tipo_descuento_matricula = <TipoDescuentoMatricula>res;
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
-            this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
+            this.translate.instant('GLOBAL.tipo_descuento_matricula') + ' ' +
             this.translate.instant('GLOBAL.confirmarCrear'));
           },
           (error: HttpErrorResponse) => {
@@ -154,15 +155,15 @@ export class CrudNivelIdiomaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadNivelIdioma();
+    this.loadTipoDescuentoMatricula();
   }
 
   validarForm(event) {
     if (event.valid) {
-      if (this.info_nivel_idioma === undefined) {
-        this.createNivelIdioma(event.data.NivelIdioma);
+      if (this.info_tipo_descuento_matricula === undefined) {
+        this.createTipoDescuentoMatricula(event.data.TipoDescuentoMatricula);
       } else {
-        this.updateNivelIdioma(event.data.NIvelIdioma);
+        this.updateTipoDescuentoMatricula(event.data.TipoDescuentoMatricula);
       }
     }
   }
@@ -187,5 +188,4 @@ export class CrudNivelIdiomaComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }
