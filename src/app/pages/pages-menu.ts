@@ -94,6 +94,11 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/linea_investigacion/list-linea_investigacion',
         key: 'linea_investigacion',
       },
+      {
+        title: 'Lista Tipo Proyecto',
+        link: '/pages/tipo_proyecto/list-tipo_proyecto',
+        key: 'tipo_proyecto',
+      },
     ],
   },
   {

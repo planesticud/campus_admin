@@ -53,15 +53,36 @@ export class ListTipoProyectoComponent implements OnInit {
           },
         },
         Nombre: {
-          title: this.translate.instant('GLOBAL.tipo_poyecto_nombre'),
+          title: this.translate.instant('GLOBAL.nombre'),
           // type: 'string;',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
-          title: this.translate.instant('GLOBAL.tipo_proyecto_descripcion'),
+          title: this.translate.instant('GLOBAL.descripcion'),
           // type: 'string;',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        CodigoAbreviacion: {
+          title: this.translate.instant('GLOBAL.codigo_abreviacion'),
+          // type: 'string;',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        NumeroOrden: {
+          title: this.translate.instant('GLOBAL.numero_orden'),
+          // type: 'number;',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        Activo: {
+          title: this.translate.instant('GLOBAL.activo'),
+          // type: 'boolean;',
           valuePrepareFunction: (value) => {
             return value;
           },
