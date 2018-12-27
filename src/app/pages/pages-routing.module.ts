@@ -84,6 +84,14 @@ const routes: Routes = [{
     loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
     },
     {
+    path: 'tipo_proyecto',
+    loadChildren: './tipo_proyecto/tipo_proyecto.module#TipoProyectoModule',
+    },
+    {
+      path: 'grupo_investigacion',
+      loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
+      },
+    {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
