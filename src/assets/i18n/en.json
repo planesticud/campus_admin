@@ -25,7 +25,8 @@
             "titulacion": "Academic title",
             "linea_investigacion": "Research lines",
             "estado_admision": "Admission states",
-            "tipo_proyecto": "Project type"
+            "tipo_proyecto": "Project type",
+            "grupo_investigacion": "Research Group"
         },
         "genero": {
             "genero": "Gender",

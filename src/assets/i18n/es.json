@@ -25,7 +25,8 @@
             "titulacion": "Titulaciones",
             "linea_investigacion": "Líneas de investigación",
             "estado_admision": "Estados admisión",
-            "tipo_proyecto": "Tipo proyecto"
+            "tipo_proyecto": "Tipo proyecto",
+            "grupo_investigacion": "Grupo de investigacion"
         },
         "genero": {
             "genero": "Género",
