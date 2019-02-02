@@ -1,7 +1,7 @@
 
 import { PeriodoAcademico } from './../../../@core/data/models/periodo_academico';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PeriodoAcademicoService } from '../../../@core/data/periodo_academico.service';
+import { AdmisionesService } from '../../../@core/data/admisiones.service';
 import { FORM_PERIODO_ACADEMICO } from './form-periodo_academico';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,7 +30,7 @@ export class CrudPeriodoAcademicoComponent implements OnInit {
   regPeriodoAcademico: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private periodoAcademicoService: PeriodoAcademicoService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private admisionesService: AdmisionesService, private toasterService: ToasterService) {
     this.formPeriodoAcademico = FORM_PERIODO_ACADEMICO;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -65,7 +65,7 @@ export class CrudPeriodoAcademicoComponent implements OnInit {
 
   public loadPeriodoAcademico(): void {
     if (this.periodo_academico_id !== undefined && this.periodo_academico_id !== 0) {
-      this.periodoAcademicoService.get('periodo_academico/?query=id:' + this.periodo_academico_id)
+      this.admisionesService.get('periodo_academico/?query=id:' + this.periodo_academico_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_periodo_academico = <PeriodoAcademico>res[0];
@@ -91,7 +91,7 @@ export class CrudPeriodoAcademicoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_periodo_academico = <PeriodoAcademico>periodoAcademico;
-        this.periodoAcademicoService.put('periodo_academico', this.info_periodo_academico)
+        this.admisionesService.put('periodo_academico', this.info_periodo_academico)
           .subscribe(res => {
             this.loadPeriodoAcademico();
             this.eventChange.emit(true);
@@ -114,7 +114,7 @@ export class CrudPeriodoAcademicoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_periodo_academico = <PeriodoAcademico>periodoAcademico;
-        this.periodoAcademicoService.post('periodo_academico', this.info_periodo_academico)
+        this.admisionesService.post('periodo_academico', this.info_periodo_academico)
           .subscribe(res => {
             this.info_periodo_academico = <PeriodoAcademico>res;
             this.eventChange.emit(true);

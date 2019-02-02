@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { PeriodoAcademicoService } from '../../../@core/data/periodo_academico.service';
+import { AdmisionesService } from '../../../@core/data/admisiones.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
@@ -19,7 +19,7 @@ export class ListPeriodoAcademicoComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private translate: TranslateService, private periodoAcademicoService: PeriodoAcademicoService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private admisionesService: AdmisionesService, private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -96,7 +96,7 @@ export class ListPeriodoAcademicoComponent implements OnInit {
   }
 
   loadData(): void {
-    this.periodoAcademicoService.get('periodo_academico/?limit=0').subscribe(res => {
+    this.admisionesService.get('periodo_academico/?limit=0').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
@@ -130,7 +130,7 @@ export class ListPeriodoAcademicoComponent implements OnInit {
     .then((willDelete) => {
 
       if (willDelete.value) {
-        this.periodoAcademicoService.delete('periodo_academico/', event.data).subscribe(res => {
+        this.admisionesService.delete('periodo_academico/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', 'deleted', 'PeriodoAcademico deleted');

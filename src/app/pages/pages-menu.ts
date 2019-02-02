@@ -75,6 +75,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'nivel_idioma',
       },
       {
+        title: 'Lista Periodo Academico',
+        link: '/pages/periodo_academico/list-periodo_academico',
+        key: 'periodo_academico',
+      },
+      {
         title: 'Lista Programa Academico',
         link: '/pages/programa_academico/list-programa_academico',
         key: 'programa_academico',

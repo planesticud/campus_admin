@@ -88,9 +88,13 @@ const routes: Routes = [{
     loadChildren: './tipo_proyecto/tipo_proyecto.module#TipoProyectoModule',
     },
     {
-      path: 'grupo_investigacion',
-      loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
-      },
+    path: 'grupo_investigacion',
+    loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
+    },
+    {
+    path: 'periodo_academico',
+    loadChildren: './periodo_academico/periodo_academico.module#PeriodoAcademicoModule',
+    },
     {
     path: '',
     redirectTo: 'dashboard',
