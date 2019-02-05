@@ -217,7 +217,7 @@ export class ListAdmisionComponent implements OnInit {
   }
   onVerInfo(event): void {
     console.info('info chida')
-    this.router.navigate( ['/pages/detalleInfo', event.data.Id] )
+    this.router.navigate( ['/pages/detalle_admision/list-detalle_admision', event.data.Id] )
   }
 
   onDelete(event): void {

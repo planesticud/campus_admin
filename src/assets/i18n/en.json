@@ -7,6 +7,9 @@
     },
     "MENU": {
         "dashboard": "Dashboard",
+        "admision": {
+            "admision": "Admissions"
+        },
         "parametricas": {
             "parametricas": "Parametric tables",
             "genero": "Gender",
@@ -210,6 +213,36 @@
         "placeholder_nivel_idioma": "E.g.: High",
         "clasificacion_nivel_idioma": "Language classification",
         "placeholder_clasificacion_nivel_idioma": "E.g.: A1",
-        "tipo_proyecto": "Project type"
+        "tipo_proyecto": "Project type",
+        "info_persona": "Personal information",
+        "idiomas": "Languages",
+        "informacion_contacto": "Contact information",
+        "nativo": "Native language",
+        "experiencia_laboral": "Job experience",
+        "formacion_academica": "Academic training",
+        "propuesta": "Thesis proposal",
+        "formatoproyecto": "Project format",
+        "telefono": "Telephone",
+        "nivel_escribe": "Writing level",
+        "nivel_escucha": "Listening level",
+        "nivel_habla": "Speech level",
+        "nivel_lee": "Reading level",
+        "cargo": "Role",
+        "nombre_empresa": "Company name",
+        "tipo_dedicacion": "Dedication type",
+        "tipo_vinculacion": "Link type",
+        "fecha_inicio": "Start date",
+        "fecha_fin": "End date",
+        "titulo_obtenido": "Obtained title",
+        "titulo_trabajo_grado": "Thesis Title",
+        "descripcion_trabajo_grado": "Thesis description",
+        "titulo_proyecto": "title of the project",
+        "resumen": "Summary",
+        "tipoproyecto": "Modality",
+        "filtrar": "Filter",
+        "Limpiar": "Clean",
+        "aspirante": "Applicant",
+        "periodo": "Period",
+        "periodo_academico": "Academic Period"
     }
 }
