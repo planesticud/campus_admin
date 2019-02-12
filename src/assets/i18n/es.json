@@ -7,6 +7,9 @@
     },
     "MENU": {
         "dashboard": "Inicio",
+        "admision": {
+            "admision": "Admisiones"
+        },
         "parametricas": {
             "parametricas": "Tablas paramétricas",
             "genero": "Género",
@@ -26,7 +29,8 @@
             "linea_investigacion": "Líneas de investigación",
             "estado_admision": "Estados admisión",
             "tipo_proyecto": "Tipo proyecto",
-            "grupo_investigacion": "Grupo de investigacion"
+            "grupo_investigacion": "Grupo de investigacion",
+            "periodo_academico": "Periodo Académico"
         },
         "genero": {
             "genero": "Género",
@@ -209,6 +213,36 @@
         "placeholder_nivel_idioma": "Ej: Bueno",
         "clasificacion_nivel_idioma": "Clasificación del idioma",
         "placeholder_clasificacion_nivel_idioma": "Ej: A1",
-        "tipo_proyecto": "Tipo proyecto"
+        "tipo_proyecto": "Tipo proyecto",
+        "info_persona": "Información personal",
+        "idiomas": "Idiomas",
+        "informacion_contacto": "Información de contacto",
+        "nativo": "Idioma nativo",
+        "experiencia_laboral": "Experiencia laboral",
+        "formacion_academica": "Formación académica",
+        "propuesta": "Propuesta",
+        "formatoproyecto": "Formato del proyecto",
+        "telefono": "Teléfono",
+        "nivel_escribe": "Nivel de escritura",
+        "nivel_escucha": "Nivel de escucha",
+        "nivel_habla": "Nivel de habla",
+        "nivel_lee": "Nivel de lectura",
+        "cargo": "Cargo",
+        "nombre_empresa": "Nombre de la empresa",
+        "tipo_dedicacion": "Tipo de dedicación",
+        "tipo_vinculacion": "Tipo de vinculación",
+        "fecha_inicio": "Fecha de inicio",
+        "fecha_fin": "Fecha de finalización",
+        "titulo_obtenido": "Título obtenido",
+        "titulo_trabajo_grado": "Título del trabajo de grado",
+        "descripcion_trabajo_grado": "Descripción del trabajo de grado",
+        "titulo_proyecto": "titulo del proyecto",
+        "resumen": "Resumen",
+        "tipoproyecto": "Modalidad",
+        "filtrar": "Filtrar",
+        "Limpiar": "Limpiar",
+        "aspirante": "Aspirante",
+        "periodo": "Período",
+        "periodo_academico": "Periodo Academico"
     }
 }

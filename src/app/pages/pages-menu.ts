@@ -15,69 +15,9 @@ export const MENU_ITEMS: MenuItem[] = [
     key: 'parametricas',
     children: [
       {
-        title: 'Genero',
-        link: '/pages/genero/list-genero',
-        key: 'genero',
-      },
-      {
-        title: 'Grupo Etnico',
-        link: '/pages/grupo_etnico/list-grupo_etnico',
-        key: 'grupo_etnico',
-      },
-      {
-        title: 'Estado Civil',
-        link: '/pages/estado_civil/list-estado_civil',
-        key: 'estado_civil',
-      },
-      {
-        title: 'Tipo Discapacidad',
-        link: '/pages/tipo_discapacidad/list-tipo_discapacidad',
-        key: 'tipo_discapacidad',
-      },
-      {
-        title: 'Tipo Lugar',
-        link: '/pages/tipo_lugar/list-tipo_lugar',
-        key: 'tipo_lugar',
-      },
-      {
-        title: 'Tipo Contacto',
-        link: '/pages/tipo_contacto/list-tipo_contacto',
-        key: 'tipo_contacto',
-      },
-      {
-        title: 'Idioma',
-        link: '/pages/idioma/list-idioma',
-        key: 'idioma',
-      },
-      {
-        title: 'Nivel Idioma',
-        link: '/pages/nivel_idioma/list-nivel_idioma',
-        key: 'nivel_idioma',
-      },
-      {
         title: 'Clasificacion Nivel Idioma',
         link: '/pages/clasificacion_idioma/list-clasificacion_idioma',
         key: 'clasificacion_nivel_idioma',
-      },
-      {
-        title: 'Lista Titulacion',
-        link: '/pages/titulacion/list-titulacion',
-        key: 'titulacion',
-      },
-      {
-        title: 'Lista Nivel Formacion',
-        link: '/pages/nivel_formacion/list-nivel_formacion',
-        key: 'nivel_formacion',
-      },
-      {
-        title: 'Lista Metodologia',
-        link: '/pages/metodologia/list-metodologia',
-        key: 'metodologia',
-      },
-      {
-        title: 'Lista Programa Academico',
-        link: '/pages/programa_academico/list-programa_academico',
-        key: 'programa_academico',
       },
       {
         title: 'Lista Enfasis',
@@ -90,9 +30,74 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'estado_admision',
       },
       {
+        title: 'Estado Civil',
+        link: '/pages/estado_civil/list-estado_civil',
+        key: 'estado_civil',
+      },
+      {
+        title: 'Genero',
+        link: '/pages/genero/list-genero',
+        key: 'genero',
+      },
+      {
+        title: 'Grupo Etnico',
+        link: '/pages/grupo_etnico/list-grupo_etnico',
+        key: 'grupo_etnico',
+      },
+      {
+        title: 'Lista Grupo Investigacion',
+        link: '/pages/grupo_investigacion/list-grupo_investigacion',
+        key: 'grupo_investigacion',
+      },
+      {
+        title: 'Idioma',
+        link: '/pages/idioma/list-idioma',
+        key: 'idioma',
+      },
+      {
         title: 'Lista Linea Investigacion',
         link: '/pages/linea_investigacion/list-linea_investigacion',
         key: 'linea_investigacion',
+      },
+      {
+        title: 'Lista Metodologia',
+        link: '/pages/metodologia/list-metodologia',
+        key: 'metodologia',
+      },
+      {
+        title: 'Lista Nivel Formacion',
+        link: '/pages/nivel_formacion/list-nivel_formacion',
+        key: 'nivel_formacion',
+      },
+      {
+        title: 'Nivel Idioma',
+        link: '/pages/nivel_idioma/list-nivel_idioma',
+        key: 'nivel_idioma',
+      },
+      {
+        title: 'Lista Periodo Academico',
+        link: '/pages/periodo_academico/list-periodo_academico',
+        key: 'periodo_academico',
+      },
+      {
+        title: 'Lista Programa Academico',
+        link: '/pages/programa_academico/list-programa_academico',
+        key: 'programa_academico',
+      },
+      {
+        title: 'Tipo Contacto',
+        link: '/pages/tipo_contacto/list-tipo_contacto',
+        key: 'tipo_contacto',
+      },
+      {
+        title: 'Tipo Discapacidad',
+        link: '/pages/tipo_discapacidad/list-tipo_discapacidad',
+        key: 'tipo_discapacidad',
+      },
+      {
+        title: 'Tipo Lugar',
+        link: '/pages/tipo_lugar/list-tipo_lugar',
+        key: 'tipo_lugar',
       },
       {
         title: 'Lista Tipo Proyecto',
@@ -100,9 +105,9 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_proyecto',
       },
       {
-        title: 'Lista Grupo Investigacion',
-        link: '/pages/grupo_investigacion/list-grupo_investigacion',
-        key: 'grupo_investigacion',
+        title: 'Lista Titulacion',
+        link: '/pages/titulacion/list-titulacion',
+        key: 'titulacion',
       },
     ],
   },
@@ -134,6 +139,19 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Lugar',
         link: '/pages/lugar/list-lugar',
         key: 'lista_lugar',
+      },
+    ],
+  },
+  {
+    title: 'Admision',
+    icon: 'nb-compose',
+    link: '/pages/admision',
+    key: 'admision',
+    children: [
+      {
+        title: 'Lista Admision',
+        link: '/pages/admision/list-admision',
+        key: 'admision',
       },
     ],
   },

@@ -12,6 +12,10 @@ const routes: Routes = [{
     component: DashboardComponent,
     },
     {
+      path: 'admision',
+      loadChildren: './admision/admision.module#AdmisionModule',
+    },
+    {
     path: 'genero',
     loadChildren: './genero/genero.module#GeneroModule',
     },
@@ -88,9 +92,17 @@ const routes: Routes = [{
     loadChildren: './tipo_proyecto/tipo_proyecto.module#TipoProyectoModule',
     },
     {
-      path: 'grupo_investigacion',
-      loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
-      },
+    path: 'grupo_investigacion',
+    loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
+    },
+    {
+    path: 'periodo_academico',
+    loadChildren: './periodo_academico/periodo_academico.module#PeriodoAcademicoModule',
+    },
+    {
+    path: 'detalle_admision',
+    loadChildren: './detalle_admision/detalle_admision.module#DetalleAdmisionModule',
+    },
     {
     path: '',
     redirectTo: 'dashboard',
