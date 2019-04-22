@@ -1,43 +1,46 @@
-workspace:
-  base: /go
-  path: src/github.com/udistrital/${DRONE_REPO##udistrital/}
+kind: pipeline
+name: campus_admin
+
+steps:
+- name: build
+  image: node
+  commands:
+  - apt-get update -y
+  - apt-get install -y zip
+  - rm -rf node_modules
+  - npm i
+  - npm run lint
+  - npm run build --build-optimizer=false
   when:
-      branch: [master, develop]
-      event: push
-
-pipeline:
-
-  # build and test the go program
-  nodejs:
-    image: node:9.5.0
-    commands:
-     - apt-get update -y
-     - apt-get install -y zip
-     - npm install
-     - npm run lint:ci
-     - npm run build:prod
-
-    when:
-      branch: [master, develop]
-      event: push
-
-  # upload app.zip to s3 bucket for CodePipline
-  publish_s3:
-    image: plugins/s3
-    secrets: [ aws_access_key_id, aws_secret_access_key ]
-    region: "us-east-1"
-    bucket: "campus-cliente-${DRONE_BRANCH}"
+    branch:
+    - develop
+    event:
+    - push
+- name: publish-s3  
+  image: plugins/s3
+  settings:
+    bucket: campus-admin
+    acl: public-read
+    access_key:
+      from_secret: aws_access_key_id
+    secret_key:
+      from_secret: aws_secret_access_key
+    region: us-east-1
     source: dist/**/*
     target: /
-    strip_prefix: dist/
-    when:
-      branch: [master, develop]
-      event: push
-
-  #Notify results to telegram    
-  notify_telegram:
-    image: appleboy/drone-telegram    
-    secrets: [ telegram_token, telegram_to ]
+    strip_prefix: dist
+  when:
+    branch:
+    - develop
+    event:
+    - push
+- name: notify
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: telegram2
+    to:
+      from_secret: id2
     format: html
     message: >
       {{#success build.status}}
@@ -48,6 +51,10 @@ pipeline:
         <code>{{commit.branch}}</code>@<a href="{{commit.link}}">{{truncate commit.sha 7}}</a>
       {{/success}}
     when:
-      status: [success, failure]
-      branch: [master, develop]
-      event: push
+    status:
+    - failure
+    - success
+    branch:
+    - develop
+    event:
+    - push
