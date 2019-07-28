@@ -1,12 +1,117 @@
 {
   "HOME": {
+    "HOME": "Dashboard",
+    "THEME": "Theme",
+    "SIDEBAR": "Sidebar",
     "TITLE": "Virtual campus",
     "SELECT": "Change language",
-    "LOGIN": "Log in",
+    "LOGIN": "Login",
     "LOGOUT": "Logout"
   },
   "MENU": {
     "dashboard": "Dashboard",
+    "directorio": "Institutional directory",
+    "atencion_usuario": {
+      "atencion_usuario": "Customer service",
+      "defensor_ciudadano": "Citizen defender",
+      "espacios_participacion": "Participation spaces",
+      "sdqs": "District system of complaints and solutions - SDQS",
+      "pqrs": "Citizen guide for the management of PQRS",
+      "notificaciones_judiciales": "Judicial notifications"
+    },
+    "ilud": "Language courses",
+    "facultades": "Buildings",
+    "programas": {
+      "programas": "Programs",
+      "programas_pregrado": "Undergraduate programs",
+      "programas_posgrado": "Postgraduate programs"
+    },
+    "editorial": "UD editorial",
+    "tienda": "UD store",
+    "laud": "LaUD 90.4 FM",
+    "sedes": "Venues list",
+    "procesos_admisiones": {
+      "procesos_admisiones": "Admissions",
+      "admisiones_pregrado": "Undergraduate",
+      "admisiones_inscripcion": "Postgraduate",
+      "estado_admision": "Admission status"
+    },
+    "extension": "Extension courses",
+    "movilidad_academica": "Academic mobility",
+    "convocatorias_academicas": "Academic calls",
+    "sistema_comunicaciones": "Integrated communications system",
+    "investigacion": {
+      "investigacion": "Research",
+      "cidc": "Research and scientific development center - CIDC",
+      "semilleros": "Extracurricular research groups",
+      "grupos_investigacion": "Investigation groups",
+      "revistas_cientificas": "Scientific journals",
+      "ieie": "Educational studies and research institute – IEIE",
+      "rita": "Advanced technology research network - RITA",
+      "siciud": "Research system - SICIUD"
+    },
+    "inscripcion": {
+      "inscripcion": "Enrollment",
+      "inscripcion_pregrado": "Undergraduate",
+      "inscripcion_posgrado": "Postgraduate",
+      "inscripcion_perfil": "Profile"
+    },
+    "calendario_academico": "Academic calendar",
+    "evaluacion_ingreso": {
+      "evaluacion_ingreso": "Evaluation",
+      "realizar_evaluacion": "Performing evaluation"
+    },
+    "agenda": {
+      "agenda": "Schedule",
+      "ver_agenda": "View schedule"
+    },
+    "pago_linea": {
+      "pago_linea": "Online payment",
+      "pago_inscripcion": "Enrollment payment",
+      "pago_certificado": "Certificate payment"
+    },
+    "condor_estudiante": "Academic management system",
+    "correo_institucional": "Institutional e-mail",
+    "biblioteca": {
+      "biblioteca": "Library",
+      "sistema_biblioteca": "Library system",
+      "bdigital": "Digital library",
+      "catalogo_linea": "Online catalogue",
+      "repositorio_institucional": "Institutional repository",
+      "servicio_descubrimiento": "Discovery service"
+    },
+    "bienestar": {
+      "bienestar": "Institucional welfare",
+      "apoyo_alimentario": "Food support",
+      "reliquidacion": "Tuition recalculation",
+      "deportes": "Sports",
+      "salud": "Health",
+      "inscripcion_linea": "Online registration",
+      "bienestar_linea": "Online welfare"
+    },
+    "licenciamiento": {
+      "licenciamiento": "Licensing",
+      "microsoft": "Microsoft office",
+      "antivirus": "Kaspersky endpoint security",
+      "microsoft_imagine": "Microsoft imagine",
+      "microsoft_azure": "Microsoft azure"
+    },
+    "aulas_virtuales": {
+      "aulas_virtuales": "Virtual classrooms",
+      "facultad_ingenieria": "Engineering",
+      "facultad_ambiente": "Environment and natural resources",
+      "facultad_tecnologica": "Technological",
+      "facultad_ciencias": "Education sciences",
+      "aulas_programas": "Virtual programs"
+    },
+    "laboratorios": "Laboratories",
+    "espacios_web": "Web spaces",
+    "certificado": {
+      "certificado": "Certificate",
+      "solicitud_certificado": "Certificate request",
+      "estado_solicitud": "Request state"
+    },
+    "egresados": "Graduate's page",
     "parametricas": {
       "parametricas": "Parametric tables",
       "genero": "Gender",
@@ -88,10 +193,10 @@
     },
     "auth": {
       "auth": "Authentication",
-      "login": "Log in",
+      "login": "Login",
       "register": "Sign up",
-      "request-password": "Request password",
-      "reset-password": "Reset password"
+      "request-password": "Password recovery",
+      "reset-password": "Password reset"
     }
   },
   "ERROR": {
@@ -102,23 +207,80 @@
     "405": "The request was made using an unsupported application method",
     "408": "You have exceeded the time limit in returning answer",
     "409": "The request could not be processed due to a conflict with the current state of the resource",
-    "500": "Internal error on the server"
+    "500": "Internal error on the server",
+    "maximo_descuentos": "You have exceeded the limit of allowable discounts",
+    "repetir_descuentos": "You are trying to enter a discount already selected",
+    "maximo_documentos": "You have exceeded the limit of allowable documents",
+    "repetir_documentos": "You are trying to enter a document already selected",
+    "carga_datos": "Recharge the page or close and open the window again to successfully load your data"
+  },
+  "FOOTER": {
+    "copyright": "© Copyright 2019. | Website created and managed by Planestic-UD | Academic Vice Rectory",
+    "horario": "Monday to Friday from 8am to 5pm UTC-5",
+    "directorio": "Institutional directory",
+    "notificacion_judicial": "Legal notices",
+    "atencion_ciudadano": "Citizen attention",
+    "centro_relevo": "Interpretation service",
+    "codigo_postal": "Postal code",
+    "lugar": "Bogotá DC - Colombian republic",
+    "direccion": "Career 7 No. 40B - 53",
+    "contactenos": "Contact us",
+    "hora_legal": "Colombian legal time",
+    "reforma": "University reform",
+    "reforma_nombre": "University reform",
+    "sga": "Environmental management system",
+    "transparencia": "Transparency and access to public information",
+    "elecciones": "University elections",
+    "elecciones_nombre": "University elections",
+    "distrinautas": "Distrinautas",
+    "recomendados": "Recommended websites",
+    "pui": "Institutional university project",
+    "pui_nombre": "Institutional university project",
+    "estatuto_general": "General regulations",
+    "general": "General",
+    "estatuto_docente": "Teachers' regulations",
+    "estatuto_estudiantil": "Students' regulations",
+    "estatuto_academico": "Academic regulations",
+    "derechos_pecuniarios": "Pecuniary rights",
+    "academica": "Academic",
+    "normatividad": "Normativity",
+    "politica_privacidad": "Privacy policy",
+    "mapa_sitio": "Sitemap",
+    "sdqs": "District complaint and solutions system",
+    "sdqs_nombre": "District complaint and solutions system",
+    "representante": "Legal representative",
+    "acreditacion": "Institutional accreditation of high quality",
+    "acreditacion_resolucion": "Resolution No. 23096 of December 15, 2016",
+    "acuerdo": "Creation agreement",
+    "acuerdo_dato": "No. 10 of 1948 of the Bogotá Council",
+    "norma": "Higher Education Institution subject to inspection and surveillance by the Ministry of National Education",
+    "nombre": "Francisco José de Caldas District University"
   },
   "GLOBAL": {
     "aceptar": "Accept",
     "cancelar": "Cancel",
     "salir": "Exit",
-    "eliminar": "Remove",
+    "eliminar": "Delete",
+    "cargar": "Load",
     "actualizar": "Update",
     "crear": "Create",
-    "registrar": "Add",
-    "guardar" : "Save",
+    "registrar": "Register",
+    "guardar": "Save",
     "regresar": "Return",
-    "formulario": "Form",
-    "lista": "List",
+    "filtrar": "Filter",
+    "limpiar": "Clean",
+    "acciones": "Actions",
+    "inscribirse": "Enroll in",
     "ir_inicio": "Go to dashboard",
+    "nueva_inscripcion": "New enrollment",
     "no_existe": "The page you were looking for doesn't exist",
     "404": "Error 404 - Page not found",
+    "formulario": "Form",
+    "lista": "List",
+    "perfil": "Profile",
+    "inscrito": "Has been enrolled in the academic period:",
+    "error": "Error",
+    "advertencia": "Warning",
     "confirmarEliminar": "has been removed",
     "confirmarActualizar": "has been updated",
     "confirmarCrear": "has been created",
@@ -126,7 +288,7 @@
     "alerta_documental_image": "The image has been saved in our document manager",
     "alerta_documental_documento": "The document has been saved in our document manager",
     "id": "Id",
-    "placeholder_id": "E.g.: 55",    
+    "placeholder_id": "E.g.: 55",
     "nombre": "Name",
     "placeholder_nombre": "E.g.: Name",
     "descripcion": "Description",
@@ -206,6 +368,7 @@
     "nivel_idioma": "Language level",
     "placeholder_nivel_idioma": "E.g.: High",
     "clasificacion_nivel_idioma": "Language classification",
-    "placeholder_clasificacion_nivel_idioma": "E.g.: A1"
+    "placeholder_clasificacion_nivel_idioma": "E.g.: A1",
+    "nivel_escribe": "Writing level"
   }
 }

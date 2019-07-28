@@ -1,7 +1,7 @@
 import { TipoLugar } from './../../../@core/data/models/tipo_lugar';
 import { Lugar } from './../../../@core/data/models/lugar';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
+import { UbicacionService } from '../../../@core/data/ubicacion.service';
 import { FORM_LUGAR } from './form-lugar';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -31,7 +31,7 @@ export class CrudLugarComponent implements OnInit {
   regLugar: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private ubicacionesService: UbicacionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private ubicacionService: UbicacionService, private toasterService: ToasterService) {
     this.formLugar = FORM_LUGAR;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -55,7 +55,7 @@ export class CrudLugarComponent implements OnInit {
 
   loadOptionsTipoLugar(): void {
     let tipoLugar: Array<any> = [];
-      this.ubicacionesService.get('tipo_lugar/?limit=0')
+      this.ubicacionService.get('tipo_lugar/?limit=0')
         .subscribe(res => {
           if (res !== null) {
             tipoLugar = <Array<TipoLugar>>res;
@@ -84,7 +84,7 @@ export class CrudLugarComponent implements OnInit {
 
   public loadLugar(): void {
     if (this.lugar_id !== undefined && this.lugar_id !== 0) {
-      this.ubicacionesService.get('lugar/?query=id:' + this.lugar_id)
+      this.ubicacionService.get('lugar/?query=id:' + this.lugar_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_lugar = <Lugar>res[0];
@@ -119,7 +119,7 @@ export class CrudLugarComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_lugar = <Lugar>lugar;
-        this.ubicacionesService.put('lugar', this.info_lugar)
+        this.ubicacionService.put('lugar', this.info_lugar)
           .subscribe(res => {
             this.loadLugar();
             this.eventChange.emit(true);
@@ -154,7 +154,7 @@ export class CrudLugarComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_lugar = <Lugar>lugar;
-        this.ubicacionesService.post('lugar', this.info_lugar)
+        this.ubicacionService.post('lugar', this.info_lugar)
           .subscribe(res => {
             this.info_lugar = <Lugar>res;
             this.eventChange.emit(true);
@@ -208,5 +208,4 @@ export class CrudLugarComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

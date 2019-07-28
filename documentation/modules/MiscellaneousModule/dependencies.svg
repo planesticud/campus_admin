@@ -22,41 +22,53 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_MiscellaneousModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="81,-70 81,-195 415,-195 415,-70 81,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="23,-70 23,-195 473,-195 473,-70 23,-70"/>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_MiscellaneousModule_imports</title>
-<polygon fill="none" stroke="#000000" points="89,-78 89,-130 407,-130 407,-78 89,-78"/>
+<polygon fill="none" stroke="#000000" points="31,-78 31,-130 465,-130 465,-78 31,-78"/>
 </g>
 <!-- ThemeModule -->
 <g id="node1" class="node">
 <title>ThemeModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="399.4231,-122 396.4231,-126 375.4231,-126 372.4231,-122 300.5769,-122 300.5769,-86 399.4231,-86 399.4231,-122"/>
-<text text-anchor="middle" x="350" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ThemeModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="457.4231,-122 454.4231,-126 433.4231,-126 430.4231,-122 358.5769,-122 358.5769,-86 457.4231,-86 457.4231,-122"/>
+<text text-anchor="middle" x="408" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ThemeModule</text>
 </g>
 <!-- MiscellaneousModule -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>MiscellaneousModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="333.4144,-187 330.4144,-191 309.4144,-191 306.4144,-187 192.5856,-187 192.5856,-151 333.4144,-151 333.4144,-187"/>
-<text text-anchor="middle" x="263" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">MiscellaneousModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="318.4144,-187 315.4144,-191 294.4144,-191 291.4144,-187 177.5856,-187 177.5856,-151 318.4144,-151 318.4144,-187"/>
+<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">MiscellaneousModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;MiscellaneousModule -->
 <g id="edge1" class="edge">
 <title>ThemeModule&#45;&gt;MiscellaneousModule</title>
-<path fill="none" stroke="#000000" d="M316.9979,-122.1061C316.9979,-122.1061 316.9979,-140.991 316.9979,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="313.498,-140.9909 316.9979,-150.991 320.498,-140.991 313.498,-140.9909"/>
+<path fill="none" stroke="#000000" d="M408,-122.1061C408,-141.3391 408,-169 408,-169 408,-169 328.6441,-169 328.6441,-169"/>
+<polygon fill="#000000" stroke="#000000" points="328.6441,-165.5001 318.6441,-169 328.644,-172.5001 328.6441,-165.5001"/>
 </g>
 <!-- MiscellaneousRoutingModule -->
 <g id="node2" class="node">
 <title>MiscellaneousRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="282.5322,-122 279.5322,-126 258.5322,-126 255.5322,-122 97.4678,-122 97.4678,-86 282.5322,-86 282.5322,-122"/>
-<text text-anchor="middle" x="190" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MiscellaneousRoutingModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="340.5322,-122 337.5322,-126 316.5322,-126 313.5322,-122 155.4678,-122 155.4678,-86 340.5322,-86 340.5322,-122"/>
+<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">MiscellaneousRoutingModule</text>
 </g>
 <!-- MiscellaneousRoutingModule&#45;&gt;MiscellaneousModule -->
 <g id="edge2" class="edge">
 <title>MiscellaneousRoutingModule&#45;&gt;MiscellaneousModule</title>
-<path fill="none" stroke="#000000" d="M237.7795,-122.1061C237.7795,-122.1061 237.7795,-140.991 237.7795,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="234.2795,-140.9909 237.7795,-150.991 241.2795,-140.991 234.2795,-140.9909"/>
+<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+</g>
+<!-- SharedModule -->
+<g id="node3" class="node">
+<title>SharedModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="137.4231,-122 134.4231,-126 113.4231,-126 110.4231,-122 38.5769,-122 38.5769,-86 137.4231,-86 137.4231,-122"/>
+<text text-anchor="middle" x="88" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">SharedModule</text>
+</g>
+<!-- SharedModule&#45;&gt;MiscellaneousModule -->
+<g id="edge3" class="edge">
+<title>SharedModule&#45;&gt;MiscellaneousModule</title>
+<path fill="none" stroke="#000000" d="M88,-122.1061C88,-141.3391 88,-169 88,-169 88,-169 167.3559,-169 167.3559,-169"/>
+<polygon fill="#000000" stroke="#000000" points="167.356,-172.5001 177.3559,-169 167.3559,-165.5001 167.356,-172.5001"/>
 </g>
 </g>
 </svg>

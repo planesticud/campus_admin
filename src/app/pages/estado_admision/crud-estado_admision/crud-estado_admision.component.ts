@@ -1,6 +1,6 @@
 import { EstadoAdmision } from './../../../@core/data/models/estado_admision';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AdmisionesService } from '../../../@core/data/admisiones.service';
+import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { FORM_ESTADO_ADMISION } from './form-estado_admision';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,7 +30,7 @@ export class CrudEstadoAdmisionComponent implements OnInit {
   regEstadoAdmision: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: AdmisionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
     this.formEstadoAdmision = FORM_ESTADO_ADMISION;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {

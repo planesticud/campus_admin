@@ -1,6 +1,6 @@
 import { LineaInvestigacion } from './../../../@core/data/models/linea_investigacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AdmisionesService } from '../../../@core/data/admisiones.service';
+import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { FORM_LINEA_INVESTIGACION } from './form-linea_investigacion';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,7 +30,7 @@ export class CrudLineaInvestigacionComponent implements OnInit {
   regLineaInvestigacion: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: AdmisionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
     this.formLineaInvestigacion = FORM_LINEA_INVESTIGACION;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {

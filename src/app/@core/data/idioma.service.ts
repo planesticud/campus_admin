@@ -5,10 +5,11 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 const httpOptions = {
-    headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
-    }),
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+  }),
 }
 
 const path = GENERAL.ENTORNO.IDIOMA_SERVICE;
@@ -56,8 +57,7 @@ export class IdiomaService {
     }
     // return an observable with a user-facing error message
     return throwError({
-      status: error.status,
-      message: 'Something bad happened; please try again later.',
-    });
+      code: error.status,
+      message: 'Something bad happened; please try again later.'});
   };
 }

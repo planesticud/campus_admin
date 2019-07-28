@@ -8,7 +8,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./dinamicform.component.scss'],
 })
 
-
 export class DinamicformComponent implements OnInit, OnChanges {
 
   @Input('normalform') normalform: any;
@@ -143,7 +142,6 @@ export class DinamicformComponent implements OnInit, OnChanges {
   }
 
   validCampo(c): boolean {
-
     if (c.etiqueta === 'file') {
       console.info((c.etiqueta === 'file' && c.valor.name === undefined));
     }
@@ -201,7 +199,6 @@ export class DinamicformComponent implements OnInit, OnChanges {
     return true;
   }
 
-
   clearForm() {
     this.normalform.campos.forEach(d => {
       d.valor = null;
@@ -209,7 +206,6 @@ export class DinamicformComponent implements OnInit, OnChanges {
   }
 
   validForm() {
-
     const result = {};
     let requeridos = 0;
     let resueltos = 0;
@@ -273,7 +269,6 @@ export class DinamicformComponent implements OnInit, OnChanges {
     }
     this.resultAux.emit(dataTemp);
   }
-
 
   setPercentage(): void {
     let requeridos = 0;

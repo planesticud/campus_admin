@@ -1,12 +1,117 @@
 {
   "HOME": {
-    "TITLE": "Campus Virtual",
+    "HOME": "Inicio",
+    "THEME": "Apariencia",
+    "SIDEBAR": "Menú lateral",
+    "TITLE": "Campus virtual",
     "SELECT": "Cambiar idioma",
     "LOGIN": "Iniciar sesión",
     "LOGOUT": "Cerrar sesión"
   },
   "MENU": {
     "dashboard": "Inicio",
+    "directorio": "Directorio institucional",
+    "atencion_usuario": {
+      "atencion_usuario": "Atención al ciudadano",
+      "defensor_ciudadano": "Defensor del ciudadano",
+      "espacios_participacion": "Espacios de participación",
+      "sdqs": "Sistema distrital de quejas y soluciones - SDQS",
+      "pqrs": "Guía ciudadana para la gestión de las PQRS",
+      "notificaciones_judiciales": "Notificaciones judiciales"
+    },
+    "ilud": "Cursos de idiomas",
+    "facultades": "Facultades",
+    "programas": {
+      "programas": "Programas",
+      "programas_pregrado": "Programas de pregrado",
+      "programas_posgrado": "Programas de posgrado"
+    },
+    "editorial": "Editorial UD",
+    "tienda": "Tienda UD",
+    "laud": "LaUD 90.4 FM",
+    "sedes": "Listado de sedes",
+    "procesos_admisiones": {
+      "procesos_admisiones": "Admisiones",
+      "admisiones_pregrado": "Pregrado",
+      "admisiones_inscripcion": "Posgrado",
+      "estado_admision": "Estado de admisión"
+    },
+    "extension": "Cursos de extensión",
+    "movilidad_academica": "Movilidad académica",
+    "convocatorias_academicas": "Convocatorias académicas",
+    "sistema_comunicaciones": "Sistema integrado de comunicaciones",
+    "investigacion": {
+      "investigacion": "Investigación",
+      "cidc": "Centro de investigaciones y desarrollo científico - CIDC",
+      "semilleros": "Semilleros de investigación",
+      "grupos_investigacion": "Grupos de investigación",
+      "revistas_cientificas": "Revistas científicas",
+      "ieie": "Instituto de estudios e investigaciones educativas – IEIE",
+      "rita": "Red de investigaciones de tecnología avanzada - RITA",
+      "siciud": "Sistema de investigaciones - SICIUD"
+    },
+    "inscripcion": {
+      "inscripcion": "Inscripción",
+      "inscripcion_pregrado": "Pregrado",
+      "inscripcion_posgrado": "Posgrado",
+      "inscripcion_perfil": "Perfil"
+    },
+    "calendario_academico": "Calendario académico",
+    "evaluacion_ingreso": {
+      "evaluacion_ingreso": "Evaluación de ingreso",
+      "realizar_evaluacion": "Realizar evaluación"
+    },
+    "agenda": {
+      "agenda": "Agenda",
+      "ver_agenda": "Ver agenda"
+    },
+    "pago_linea": {
+      "pago_linea": "Pago en línea",
+      "pago_inscripcion": "Pago de inscripción",
+      "pago_certificado": "Pago de certificado"
+    },
+    "condor_estudiante": "Sistema de gestión académico",
+    "correo_institucional": "Correo institucional",
+    "biblioteca": {
+      "biblioteca": "Biblioteca",
+      "sistema_biblioteca": "Sistema de bibliotecas",
+      "bdigital": "Biblioteca digital",
+      "catalogo_linea": "Catálogo en línea",
+      "repositorio_institucional": "Repositorio institucional",
+      "servicio_descubrimiento": "Servicio de descubrimiento"
+    },
+    "bienestar": {
+      "bienestar": "Bienestar institucional",
+      "apoyo_alimentario": "Apoyo alimentario",
+      "reliquidacion": "Reliquidación de matrícula",
+      "deportes": "Deportes",
+      "salud": "Salud",
+      "inscripcion_linea": "Inscripciones en línea",
+      "bienestar_linea": "Bienestar en línea"
+    },
+    "licenciamiento": {
+      "licenciamiento": "Licenciamientos",
+      "microsoft": "Microsoft office",
+      "antivirus": "Kaspersky endpoint security",
+      "microsoft_imagine": "Microsoft imagine",
+      "microsoft_azure": "Microsoft azure"
+    },
+    "aulas_virtuales": {
+      "aulas_virtuales": "Aulas virtuales",
+      "facultad_ingenieria": "Ingeniería",
+      "facultad_ambiente": "Medio ambiente y recursos naturales",
+      "facultad_tecnologica": "Tecnológica",
+      "facultad_ciencias": "Ciencias de la educación",
+      "aulas_programas": "Programas virtuales"
+    },
+    "laboratorios": "Laboratorios",
+    "espacios_web": "Espacios web",
+    "certificado": {
+      "certificado": "Certificado",
+      "solicitud_certificado": "Solicitud de certificado",
+      "estado_solicitud": "Estado de solicitud"
+    },
+    "egresados": "Página de egresados",
     "parametricas": {
       "parametricas": "Tablas paramétricas",
       "genero": "Género",
@@ -87,11 +192,11 @@
       "crud_clasificacion_nivel_idioma": "Crud de clasificación del nivel del idioma"
     },
     "auth": {
-      "auth": "Autenticación",
-      "login": "Iniciar sesión",
-      "register": "Registro",
-      "request-password": "Recuperar contraseña",
-      "reset-password": "Reiniciar contraseña"
+      "auth": "Authentication",
+      "login": "Login",
+      "register": "Sign up",
+      "request-password": "Password recovery",
+      "reset-password": "Password reset"
     }
   },
   "ERROR": {
@@ -102,23 +207,80 @@
     "405": "La petición fue hecha utilizando un método de solicitud no soportado",
     "408": "Ha excedido el límite de tiempo en retornar resuesta",
     "409": "La solicitud no pudo ser procesada debido a un conflicto con el estado actual del recurso",
-    "500": "Error interno en el servidor"
+    "500": "Error interno en el servidor",
+    "maximo_descuentos": "Ha superado el límite de descuentos permitidos",
+    "repetir_descuentos": "Intenta ingresar un descuento ya seleccionado",
+    "maximo_documentos": "Ha superado el límite de documentos permitidos",
+    "repetir_documentos": "Intenta ingresar un documento ya seleccionado",
+    "carga_datos": "Recargue la página o cierre y abra de nuevo la ventana para poder cargar exitosamente sus datos"
+  },
+  "FOOTER": {
+    "copyright": "© Copyright 2019. | Sitio creado y administrado por Planestic-UD | Vicerrectoría Académica",
+    "horario": "Lunes a viernes de 8 a.m.a 5 p.m.",
+    "directorio": "Directorio institucional",
+    "notificacion_judicial": "Notificaciones judiciales",
+    "atencion_ciudadano": "Atención al cuidadano",
+    "centro_relevo": "Centro de relevo",
+    "codigo_postal": "Código postal",
+    "lugar": "Bogotá D.C. - República de Colombia",
+    "direccion": "Carrera 7 N° 40B - 53",
+    "contactenos": "Contáctenos",
+    "hora_legal": "Hora legal colombiana",
+    "reforma": "Reforma Universidad Distrital",
+    "reforma_nombre": "Reforma UD",
+    "sga": "Sistema de gestión ambiental",
+    "transparencia": "Transparencia y acceso a información pública",
+    "elecciones": "Elecciones Universidad Distrital",
+    "elecciones_nombre": "Elecciones UD",
+    "distrinautas": "Distrinautas",
+    "recomendados": "Recomendados",
+    "pui": "PUI",
+    "pui_nombre": "Proyecto universitario institucional",
+    "estatuto_general": "Estatuto general",
+    "general": "General",
+    "estatuto_docente": "Estatuto docente",
+    "estatuto_estudiantil": "Estatuto estudiantil",
+    "estatuto_academico": "Estatuto académico",
+    "derechos_pecuniarios": "Derechos pecuniarios",
+    "academica": "Académica",
+    "normatividad": "Normatividad",
+    "politica_privacidad": "Política de privacidad",
+    "mapa_sitio": "Mapa del sitio",
+    "sdqs": "SDQS",
+    "sdqs_nombre": "Sistema distrital de quejas y soluciones",
+    "representante": "Representante legal",
+    "acreditacion": "Acreditación institucional de alta calidad",
+    "acreditacion_resolucion": "Resolución N° 23096 del 15 de diciembre del 2016",
+    "acuerdo": "Acuerdo de creación",
+    "acuerdo_dato": "N° 10 de 1948 del Concejo de Bogotá",
+    "nombre": "Universidad Distrital Francisco José de Caldas",
+    "norma": "Institución de Educación Superior sujeta a inspección y vigilancia por el Ministerio de Educación Nacional"
   },
   "GLOBAL": {
     "aceptar": "Aceptar",
     "cancelar": "Cancelar",
     "salir": "Salir",
     "eliminar": "Eliminar",
+    "cargar": "Cargar",
     "actualizar": "Actualizar",
     "crear": "Crear",
     "registrar": "Registrar",
-    "guardar" : "Guardar",
+    "guardar": "Guardar",
     "regresar": "Regresar",
-    "formulario": "Formulario",
-    "lista": "Listado",
+    "filtrar": "Filtrar",
+    "limpiar": "Limpiar",
+    "acciones": "Acciones",
+    "inscribirse": "Inscribirse",
     "ir_inicio": "Ir al inicio",
+    "nueva_inscripcion": "Nueva inscripción",
     "no_existe": "La página que estabas buscando no existe",
     "404": "Error 404 - Página no encontrada",
+    "formulario": "Formulario",
+    "lista": "Listado",
+    "perfil": "Perfil",
+    "inscrito": "Ha sido inscrito al período académico:",
+    "error": "Error",
+    "advertencia": "Advertencia",
     "confirmarEliminar": "ha sido eliminado(a)",
     "confirmarActualizar": "ha sido actualizado(a)",
     "confirmarCrear": "ha sido creado(a)",
@@ -126,7 +288,7 @@
     "alerta_documental_image": "La imagen se ha guardado en nuestro gestor documental",
     "alerta_documental_documento": "El documento se ha guardado en nuestro gestor documental",
     "id": "Id",
-    "placeholder_id": "Ej: 55",    
+    "placeholder_id": "Ej: 55",
     "nombre": "Nombre",
     "placeholder_nombre": "Ej: Nombre",
     "descripcion": "Descripción",
@@ -206,6 +368,7 @@
     "nivel_idioma": "Nivel del idioma",
     "placeholder_nivel_idioma": "Ej: Bueno",
     "clasificacion_nivel_idioma": "Clasificación del idioma",
-    "placeholder_clasificacion_nivel_idioma": "Ej: A1"
+    "placeholder_clasificacion_nivel_idioma": "Ej: A1",
+    "nivel_escribe": "Nivel escritura"
   }
 }

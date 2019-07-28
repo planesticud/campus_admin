@@ -1,23 +1,23 @@
 import { Component, EventEmitter, Output, OnChanges, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'ngx-select',
-    template: `
+  selector: 'ngx-select',
+  template: `
     <div class="{{campo.claseGrid}}">
-        <div class="form-group">
-            <label for="{{campo.nombre}}" class="form-control-label"><small>{{campo.label}}</small>
-                <small id="{{campo.nombre}}" class="text-muted">
-                    {{campo.alerta}}
-                </small>
-            </label>
-            <select [(ngModel)]="campo.valor.Id" (ngModelChange)="validCampo()" class="{{campo.clase}}"
-            [ngModelOptions]="{standalone: true}">
-                <option class="{{campo.clase}}" *ngFor="let item of campo.opciones"
-                [ngValue]="item.Id" [selected]="campo.valor.Id === item.Id">
-                    {{item.valor}}
-                </option>
-            </select>
-        </div>
+      <div class="form-group">
+        <label for="{{campo.nombre}}" class="form-control-label"><small>{{campo.label}}</small>
+          <small id="{{campo.nombre}}" class="text-muted">
+            {{campo.alerta}}
+          </small>
+        </label>
+        <select [(ngModel)]="campo.valor.Id" (ngModelChange)="validCampo()" class="{{campo.clase}}"
+          [ngModelOptions]="{standalone: true}">
+          <option class="{{campo.clase}}" *ngFor="let item of campo.opciones"
+            [ngValue]="item.Id" [selected]="campo.valor.Id === item.Id">
+            {{item.valor}}
+          </option>
+        </select>
+      </div>
     </div>
   `,
 })
