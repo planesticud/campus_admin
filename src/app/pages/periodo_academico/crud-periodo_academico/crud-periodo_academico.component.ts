@@ -1,7 +1,7 @@
 
 import { PeriodoAcademico } from './../../../@core/data/models/periodo_academico';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AdmisionesService } from '../../../@core/data/admisiones.service';
+import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { FORM_PERIODO_ACADEMICO } from './form-periodo_academico';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,7 +30,7 @@ export class CrudPeriodoAcademicoComponent implements OnInit {
   regPeriodoAcademico: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: AdmisionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
     this.formPeriodoAcademico = FORM_PERIODO_ACADEMICO;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {

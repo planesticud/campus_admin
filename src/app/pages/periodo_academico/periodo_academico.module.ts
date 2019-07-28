@@ -5,7 +5,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
 import { CrudPeriodoAcademicoComponent } from './crud-periodo_academico/crud-periodo_academico.component';
-import { AdmisionesService } from '../../@core/data/admisiones.service';
+import { InscripcionService } from '../../@core/data/inscripcion.service';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { AdmisionesService } from '../../@core/data/admisiones.service';
     ...routedComponents,
   ],
   providers: [
-    AdmisionesService,
+    InscripcionService,
   ],
   exports: [
     CrudPeriodoAcademicoComponent,
