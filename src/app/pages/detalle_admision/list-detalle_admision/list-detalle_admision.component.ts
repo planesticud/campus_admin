@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import 'style-loader!angular2-toaster/toaster.css';
-import { AdmisionesService } from './../../../@core/data/admisiones.service';
+import { InscripcionService } from './../../../@core/data/inscripcion.service';
 import { CampusMidService } from '../../../@core/data/campus_mid.service';
 import { ExperienciaService } from '../../../@core/data/experiencia.service';
 import { OrganizacionService } from '../../../@core/data/organizacion.service';
@@ -32,7 +32,7 @@ export class ListDetalleAdmisionComponent implements OnInit {
   constructor(
     private campusMidService: CampusMidService,
     private translate: TranslateService,
-    private admisionesService: AdmisionesService,
+    private admisionesService: InscripcionService,
     private experienciaService: ExperienciaService,
     private organizacionService: OrganizacionService,
     private documentoService: DocumentoService,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { AdmisionesService } from '../../../@core/data/admisiones.service';
+import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
 import { PersonaService } from '../../../@core/data/persona.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
@@ -28,7 +28,7 @@ export class ListAdmisionComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService,
-    private admisionesService: AdmisionesService,
+    private admisionesService: InscripcionService,
     private toasterService: ToasterService,
     private personaService: PersonaService,
     private router: Router,

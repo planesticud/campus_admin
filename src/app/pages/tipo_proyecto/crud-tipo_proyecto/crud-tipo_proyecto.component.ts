@@ -1,7 +1,6 @@
-
 import { TipoProyecto } from './../../../@core/data/models/tipo_proyecto';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AdmisionesService } from '../../../@core/data/admisiones.service';
+import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { FORM_TIPO_PROYECTO } from './form-tipo_proyecto';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,7 +29,7 @@ export class CrudTipoProyectoComponent implements OnInit {
   regTipoProyecto: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: AdmisionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
     this.formTipoProyecto = FORM_TIPO_PROYECTO;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
