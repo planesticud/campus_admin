@@ -6,10 +6,11 @@ import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
 const httpOptions = {
-    headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
-    }),
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+  }),
 }
 
 const path = GENERAL.ENTORNO.ORGANIZACION_SERVICE;
@@ -54,11 +55,11 @@ export class OrganizacionService {
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError({
-      status: error.status,
-      message: 'Something bad happened; please try again later.',
-    });
+      }
+      // return an observable with a user-facing error message
+      return throwError({
+        status: error.status,
+        message: 'Something bad happened; please try again later.',
+      });
   };
 }

@@ -3,30 +3,16 @@ import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
-
 import { throwIfAlreadyLoaded } from './module-import-guard';
+// import { AuthInterceptor } from './_Interceptor/auth.Interceptor';
 import { DataModule } from './data/data.module';
 import { AnalyticsService } from './utils/analytics.service';
-import {DocumentoService} from './data/documento.service'
+import { DocumentoService } from './data/documento.service'
 import { AuthGuard } from './_guards/auth.guard';
-
-const socialLinks = [
-  {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'socicon-github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'socicon-facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'socicon-twitter',
-  },
-];
+// import { ListService } from './store/services/list.service';
+// import { StoreModule } from '@ngrx/store';
+// import { rootReducer } from './store/rootReducer';
+// import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
   getRole() {
@@ -45,14 +31,6 @@ export const NB_CORE_PROVIDERS = [
         delay: 3000,
       }),
     ],
-    forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
-    },
   }).providers,
 
   NbSecurityModule.forRoot({

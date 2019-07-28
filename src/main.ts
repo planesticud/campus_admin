@@ -64,6 +64,5 @@ if (window.localStorage.getItem('access_token') === null ||
   }
 }
 
-
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

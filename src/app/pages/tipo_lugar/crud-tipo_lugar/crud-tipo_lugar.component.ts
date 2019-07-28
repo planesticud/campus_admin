@@ -1,6 +1,6 @@
 import { TipoLugar } from './../../../@core/data/models/tipo_lugar';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
+import { UbicacionService } from '../../../@core/data/ubicacion.service';
 import { FORM_TIPO_LUGAR } from './form-tipo_lugar';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,7 +30,7 @@ export class CrudTipoLugarComponent implements OnInit {
   regTipoLugar: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private ubicacionesService: UbicacionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private ubicacionService: UbicacionService, private toasterService: ToasterService) {
     this.formTipoLugar = FORM_TIPO_LUGAR;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -63,7 +63,7 @@ export class CrudTipoLugarComponent implements OnInit {
 
   public loadTipoLugar(): void {
     if (this.tipo_lugar_id !== undefined && this.tipo_lugar_id !== 0) {
-      this.ubicacionesService.get('tipo_lugar/?query=id:' + this.tipo_lugar_id)
+      this.ubicacionService.get('tipo_lugar/?query=id:' + this.tipo_lugar_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_tipo_lugar = <TipoLugar>res[0];
@@ -98,7 +98,7 @@ export class CrudTipoLugarComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_lugar = <TipoLugar>tipoLugar;
-        this.ubicacionesService.put('tipo_lugar', this.info_tipo_lugar)
+        this.ubicacionService.put('tipo_lugar', this.info_tipo_lugar)
           .subscribe(res => {
             this.loadTipoLugar();
             this.eventChange.emit(true);
@@ -133,7 +133,7 @@ export class CrudTipoLugarComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_lugar = <TipoLugar>tipoLugar;
-        this.ubicacionesService.post('tipo_lugar', this.info_tipo_lugar)
+        this.ubicacionService.post('tipo_lugar', this.info_tipo_lugar)
           .subscribe(res => {
             this.info_tipo_lugar = <TipoLugar>res;
             this.eventChange.emit(true);

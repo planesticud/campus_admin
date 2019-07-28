@@ -8,44 +8,40 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
-    path: 'dashboard',
-    component: DashboardComponent,
+      path: 'dashboard',
+      component: DashboardComponent,
     },
     {
-      path: 'admision',
-      loadChildren: './admision/admision.module#AdmisionModule',
+      path: 'genero',
+      loadChildren: './genero/genero.module#GeneroModule',
     },
     {
-    path: 'genero',
-    loadChildren: './genero/genero.module#GeneroModule',
+      path: 'grupo_etnico',
+      loadChildren: './grupo_etnico/grupo_etnico.module#GrupoEtnicoModule',
     },
     {
-    path: 'grupo_etnico',
-    loadChildren: './grupo_etnico/grupo_etnico.module#GrupoEtnicoModule',
+      path: 'estado_civil',
+      loadChildren: './estado_civil/estado_civil.module#EstadoCivilModule',
     },
     {
-    path: 'estado_civil',
-    loadChildren: './estado_civil/estado_civil.module#EstadoCivilModule',
+      path: 'tipo_discapacidad',
+      loadChildren: './tipo_discapacidad/tipo_discapacidad.module#TipoDiscapacidadModule',
     },
     {
-    path: 'tipo_discapacidad',
-    loadChildren: './tipo_discapacidad/tipo_discapacidad.module#TipoDiscapacidadModule',
+      path: 'persona',
+      loadChildren: './persona/persona.module#PersonaModule',
     },
     {
-    path: 'persona',
-    loadChildren: './persona/persona.module#PersonaModule',
+      path: 'tipo_lugar',
+      loadChildren: './tipo_lugar/tipo_lugar.module#TipoLugarModule',
     },
     {
-    path: 'tipo_lugar',
-    loadChildren: './tipo_lugar/tipo_lugar.module#TipoLugarModule',
+      path: 'lugar',
+      loadChildren: './lugar/lugar.module#LugarModule',
     },
     {
-    path: 'lugar',
-    loadChildren: './lugar/lugar.module#LugarModule',
-    },
-    {
-    path: 'tipo_contacto',
-    loadChildren: './tipo_contacto/tipo_contacto.module#TipoContactoModule',
+      path: 'tipo_contacto',
+      loadChildren: './tipo_contacto/tipo_contacto.module#TipoContactoModule',
     },
     {
       path: 'idioma',
@@ -60,53 +56,69 @@ const routes: Routes = [{
       loadChildren: './clasificacion_idioma/clasificacion_idioma.module#ClasificacionIdiomaModule',
     },
     {
-    path: 'titulacion',
-    loadChildren: './titulacion/titulacion.module#TitulacionModule',
+      path: 'titulacion',
+      loadChildren: './titulacion/titulacion.module#TitulacionModule',
     },
     {
-    path: 'nivel_formacion',
-    loadChildren: './nivel_formacion/nivel_formacion.module#NivelFormacionModule',
+      path: 'nivel_formacion',
+      loadChildren: './nivel_formacion/nivel_formacion.module#NivelFormacionModule',
     },
     {
-    path: 'metodologia',
-    loadChildren: './metodologia/metodologia.module#MetodologiaModule',
+      path: 'metodologia',
+      loadChildren: './metodologia/metodologia.module#MetodologiaModule',
     },
     {
-    path: 'programa_academico',
-    loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
+      path: 'programa_academico',
+      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
     },
     {
-    path: 'enfasis',
-    loadChildren: './enfasis/enfasis.module#EnfasisModule',
+      path: 'enfasis',
+      loadChildren: './enfasis/enfasis.module#EnfasisModule',
     },
     {
-    path: 'estado_admision',
-    loadChildren: './estado_admision/estado_admision.module#EstadoAdmisionModule',
+      path: 'estado_admision',
+      loadChildren: './estado_admision/estado_admision.module#EstadoAdmisionModule',
     },
     {
-    path: 'linea_investigacion',
-    loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
+      path: 'linea_investigacion',
+      loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
     },
     {
-    path: 'tipo_proyecto',
-    loadChildren: './tipo_proyecto/tipo_proyecto.module#TipoProyectoModule',
+      path: 'tipo_duracion',
+      loadChildren: './tipo_duracion/tipo_duracion.module#TipoDuracionModule',
     },
     {
-    path: 'grupo_investigacion',
-    loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
+      path: 'tipo_descuento',
+      loadChildren: './tipo_descuento/tipo_descuento.module#TipoDescuentoModule',
     },
     {
-    path: 'periodo_academico',
-    loadChildren: './periodo_academico/periodo_academico.module#PeriodoAcademicoModule',
+      path: 'requisito',
+      loadChildren: './requisito/requisito.module#RequisitoModule',
     },
     {
-    path: 'detalle_admision',
-    loadChildren: './detalle_admision/detalle_admision.module#DetalleAdmisionModule',
+      path: 'requisito_tipo_descuento',
+      loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
     },
     {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+      path: 'descuentos_dependencia',
+      loadChildren: './descuentos_dependencia/descuentos_dependencia.module#DescuentosDependenciaModule',
+    },
+    {
+      path: 'solicitud_descuento',
+      loadChildren: './solicitud_descuento/solicitud_descuento.module#SolicitudDescuentoModule',
+    },
+    {
+      path: 'validacion_descuento',
+      loadChildren: './validacion_descuento/validacion_descuento.module#ValidacionDescuentoModule',
+    },
+    {
+      path: 'soporte_descuento',
+      loadChildren: './soporte_descuento/soporte_descuento.module#SoporteDescuentoModule',
+    },
+    {
+      path: '',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
     },
   ],
 }];
@@ -117,4 +129,3 @@ const routes: Routes = [{
 })
 export class PagesRoutingModule {
 }
-

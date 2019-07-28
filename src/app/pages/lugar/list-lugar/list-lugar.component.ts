@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UbicacionesService } from '../../../@core/data/ubicaciones.service';
+import { UbicacionService } from '../../../@core/data/ubicacion.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class ListLugarComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private translate: TranslateService, private ubicacionesService: UbicacionesService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private ubicacionService: UbicacionService, private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -83,7 +83,7 @@ export class ListLugarComponent implements OnInit {
   }
 
   loadData(): void {
-    this.ubicacionesService.get('lugar/?limit=0').subscribe(res => {
+    this.ubicacionService.get('lugar/?limit=0').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
@@ -126,7 +126,7 @@ export class ListLugarComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.ubicacionesService.delete('lugar/', event.data).subscribe(res => {
+        this.ubicacionService.delete('lugar/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
@@ -188,5 +188,4 @@ export class ListLugarComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

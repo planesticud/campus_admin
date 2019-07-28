@@ -1,5 +1,4 @@
 <div class="dinamic-form" [ngSwitch]="normalform.tipo_formulario">
-
   <!-- Form  basic -->
   <form class="form-horizontal" *ngSwitchCase="'basic'">
     <fieldset>
@@ -86,7 +85,6 @@
     <div align="center">
       <button class="btn btn-success btn-tiny" (click)="validForm()" [hidden]="!normalform.btn">{{normalform.btn}}</button>
       <button class="btn btn-primary btn-tiny" (click)="clearForm()" [hidden]="!normalform.btnLimpiar">{{normalform.btnLimpiar}}</button>
-
     </div>
     <br>
   </form>
@@ -106,9 +104,7 @@
             {{c.alerta}}
           </small>
         </label>
-
         <div class="{{normalform.clase}}">
-
           <!-- input -->
           <input *ngSwitchCase="'input'" [(ngModel)]="c.valor" (ngModelChange)="validCampo(c)" [ngModelOptions]="{standalone: true}"
             type="{{c.tipo}}" id="{{c.nombre}}" class="{{c.clase}}" placeholder="{{c.placeholder}}" [disabled]="c.deshabilitar"
@@ -139,7 +135,6 @@
             <input type="checkbox" class="customised-control-input" [disabled]="c.deshabilitar" [checked]="c.valor" (change)="c.valor = !c.valor"> {{c.nombre}}?
           </div>
 
-
           <!-- date material -->
           <mat-form-field *ngSwitchCase="'mat-date'">
             <input matInput [matDatepicker]="picker" (dateChange)="onChangeDate($event,c)">
@@ -151,7 +146,6 @@
           <select *ngSwitchCase="'select'" [(ngModel)]="c.valor.Id" (ngModelChange)="validCampo(c)" class="{{c.clase}}" [ngModelOptions]="{standalone: true}">
             <option class="{{c.clase}}" *ngFor="let item of c.opciones" [ngValue]="item.Id" [selected]="c.valor.Id === item.Id">
               {{item.valor}}
-
             </option>
           </select>
 
@@ -165,7 +159,6 @@
 
           <!-- input-file -->
           <input type="file" name="{{c.nombre}}" class="{{c.clase}}" *ngSwitchCase="'file'" (change)="onChange($event,c)" />
-
         </div>
       </div>
     </fieldset>
@@ -221,7 +214,6 @@
           </div>
 
           <!-- date material -->
-
           <mat-form-field *ngSwitchCase="'mat-date'">
             <input matInput [matDatepicker]="picker" (dateChange)="onChangeDate($event,c)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -232,7 +224,6 @@
           <select *ngSwitchCase="'select'" [(ngModel)]="c.valor.Id" (ngModelChange)="validCampo(c)" class="{{c.clase}}" [ngModelOptions]="{standalone: true}">
             <option class="{{c.clase}}" *ngFor="let item of c.opciones" [ngValue]="item.Id" [selected]="c.valor.Id === item.Id">
               {{item.valor}}
-
             </option>
           </select>
 
@@ -255,8 +246,6 @@
               </nb-card>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -361,7 +350,6 @@
                   <input type="file" id="{{c.nombre}}" (change)="onChange($event,c)" />
                   <br>
                   <mat-hint class="text-danger">{{c.alerta}}</mat-hint>
-
                 </div>
                 <div class="col-4">
                   <nb-card-body class="col-4" *ngIf="c.tipo == 'image'">
@@ -388,7 +376,6 @@
         <button class="btn btn-primary btn-sm" (click)="clearForm()" [hidden]="!normalform.btnLimpiar">{{normalform.btnLimpiar}}</button>
         <button class="btn btn-success btn-sm" (click)="validForm()" [hidden]="!normalform.btn">{{normalform.btn}}</button>
       </div>
-
     </fieldset>
     <!-- Botones de form con acción de botones -->
   </form>

@@ -6,10 +6,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
 const httpOptions = {
-    headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
-    }),
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+  }),
 }
 
 const path = GENERAL.ENTORNO.ENTE_SERVICE;
