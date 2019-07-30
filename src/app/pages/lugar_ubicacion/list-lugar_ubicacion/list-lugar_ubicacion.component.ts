@@ -17,7 +17,6 @@ export class ListLugarUbicacionComponent implements OnInit {
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService, private ubicacionService: UbicacionService, private toasterService: ToasterService) {
@@ -30,6 +29,9 @@ export class ListLugarUbicacionComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -48,35 +50,35 @@ export class ListLugarUbicacionComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Lugar: {
           title: this.translate.instant('GLOBAL.lugar'),
-          // type: 'lugar;',
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Direccion: {
           title: this.translate.instant('GLOBAL.direccion'),
-          // type: 'string;',
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoPostal: {
           title: this.translate.instant('GLOBAL.codigo_postal'),
-          // type: 'string;',
+          width: '25%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Estrato: {
           title: this.translate.instant('GLOBAL.estrato'),
-          // type: 'number;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -94,16 +96,18 @@ export class ListLugarUbicacionComponent implements OnInit {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
-          }
+      }
     },
-    (error: HttpErrorResponse) => {
-      Swal({
-        type: 'error',
-        title: error.status + '',
-        text: this.translate.instant('ERROR.' + error.status),
-        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.lugar_ubicacion'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
       });
-    });
   }
 
   ngOnInit() {
@@ -137,17 +141,20 @@ export class ListLugarUbicacionComponent implements OnInit {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-            this.translate.instant('GLOBAL.lugar_ubicacion') + ' ' +
-            this.translate.instant('GLOBAL.confirmarEliminar'));            }
-         },
-         (error: HttpErrorResponse) => {
-           Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-           });
-         });
+              this.translate.instant('GLOBAL.lugar_ubicacion') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
+          }
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.lugar_ubicacion'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -172,7 +179,6 @@ export class ListLugarUbicacionComponent implements OnInit {
   }
 
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {

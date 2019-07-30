@@ -1,6 +1,6 @@
 import { LineaInvestigacion } from './../../../@core/data/models/linea_investigacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { InscripcionService } from '../../../@core/data/inscripcion.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { FORM_LINEA_INVESTIGACION } from './form-linea_investigacion';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -30,13 +30,13 @@ export class CrudLineaInvestigacionComponent implements OnInit {
   regLineaInvestigacion: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private coreService: CoreService, private toasterService: ToasterService) {
     this.formLineaInvestigacion = FORM_LINEA_INVESTIGACION;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-   }
+  }
 
   construirForm() {
     this.formLineaInvestigacion.titulo = this.translate.instant('GLOBAL.linea_investigacion');
@@ -63,20 +63,22 @@ export class CrudLineaInvestigacionComponent implements OnInit {
 
   public loadLineaInvestigacion(): void {
     if (this.linea_investigacion_id !== undefined && this.linea_investigacion_id !== 0) {
-      this.admisionesService.get('linea_investigacion/?query=id:' + this.linea_investigacion_id)
+      this.coreService.get('linea_investigacion/?query=id:' + this.linea_investigacion_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_linea_investigacion = <LineaInvestigacion>res[0];
           }
         },
-        (error: HttpErrorResponse) => {
-          Swal({
-            type: 'error',
-            title: error.status + '',
-            text: this.translate.instant('ERROR.' + error.status),
-            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.linea_investigacion'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
-        });
     } else  {
       this.info_linea_investigacion = undefined;
       this.clean = !this.clean;
@@ -98,22 +100,26 @@ export class CrudLineaInvestigacionComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_linea_investigacion = <LineaInvestigacion>lineaInvestigacion;
-        this.admisionesService.put('linea_investigacion', this.info_linea_investigacion)
+        this.coreService.put('linea_investigacion', this.info_linea_investigacion)
           .subscribe(res => {
             this.loadLineaInvestigacion();
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
-            this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
-            this.translate.instant('GLOBAL.confirmarActualizar'));
+              this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
+              this.translate.instant('GLOBAL.confirmarActualizar'));
+            this.info_linea_investigacion = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.actualizar') + '-' +
+                  this.translate.instant('GLOBAL.requisito'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -133,22 +139,26 @@ export class CrudLineaInvestigacionComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_linea_investigacion = <LineaInvestigacion>lineaInvestigacion;
-        this.admisionesService.post('linea_investigacion', this.info_linea_investigacion)
+        this.coreService.post('linea_investigacion', this.info_linea_investigacion)
           .subscribe(res => {
             this.info_linea_investigacion = <LineaInvestigacion>res;
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
-            this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
-            this.translate.instant('GLOBAL.confirmarCrear'));
+              this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
+              this.translate.instant('GLOBAL.confirmarCrear'));
+            this.info_linea_investigacion = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.crear') + '-' +
+                  this.translate.instant('GLOBAL.linea_investigacion'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -187,5 +197,4 @@ export class CrudLineaInvestigacionComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

@@ -57,36 +57,42 @@ export class ListDescuentosDependenciaComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         TipoDescuentoId: {
           title: this.translate.instant('GLOBAL.tipo_descuento_id'),
+          width: '40%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         PeriodoId: {
           title: this.translate.instant('GLOBAL.periodo_id'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         DependenciaId: {
           title: this.translate.instant('GLOBAL.dependencia_id'),
+          width: '25%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         PorcentajeDescuento: {
           title: this.translate.instant('GLOBAL.porcentaje_descuento'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },

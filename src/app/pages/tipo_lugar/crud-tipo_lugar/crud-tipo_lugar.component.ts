@@ -36,7 +36,7 @@ export class CrudTipoLugarComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-   }
+  }
 
   construirForm() {
     this.formTipoLugar.titulo = this.translate.instant('GLOBAL.tipo_lugar');
@@ -69,14 +69,16 @@ export class CrudTipoLugarComponent implements OnInit {
             this.info_tipo_lugar = <TipoLugar>res[0];
           }
         },
-        (error: HttpErrorResponse) => {
-          Swal({
-            type: 'error',
-            title: error.status + '',
-            text: this.translate.instant('ERROR.' + error.status),
-            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.tipo_lugar'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
-        });
     } else  {
       this.info_tipo_lugar = undefined;
       this.clean = !this.clean;
@@ -103,14 +105,18 @@ export class CrudTipoLugarComponent implements OnInit {
             this.loadTipoLugar();
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
-            this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
-            this.translate.instant('GLOBAL.confirmarActualizar'));
-          },
+              this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
+              this.translate.instant('GLOBAL.confirmarActualizar'));
+            this.info_tipo_lugar = undefined;
+            this.clean = !this.clean;
+        },
           (error: HttpErrorResponse) => {
             Swal({
               type: 'error',
               title: error.status + '',
               text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.actualizar') + '-' +
+                this.translate.instant('GLOBAL.tipo_lugar'),
               confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
             });
           });
@@ -138,17 +144,21 @@ export class CrudTipoLugarComponent implements OnInit {
             this.info_tipo_lugar = <TipoLugar>res;
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
-            this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
-            this.translate.instant('GLOBAL.confirmarCrear'));
+              this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
+              this.translate.instant('GLOBAL.confirmarCrear'));
+            this.info_tipo_lugar = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.crear') + '-' +
+                  this.translate.instant('GLOBAL.tipo_lugar'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -187,5 +197,4 @@ export class CrudTipoLugarComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

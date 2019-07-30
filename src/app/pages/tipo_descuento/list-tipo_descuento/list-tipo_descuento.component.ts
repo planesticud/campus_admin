@@ -52,48 +52,56 @@ export class ListTipoDescuentoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
+          width: '10%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        ConceptoAcademicoId: {
+          title: this.translate.instant('GLOBAL.concepto_academico_id'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        ConceptoAcademico: {
-          title: this.translate.instant('GLOBAL.concepto_academico'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         General: {
           title: this.translate.instant('GLOBAL.general'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },

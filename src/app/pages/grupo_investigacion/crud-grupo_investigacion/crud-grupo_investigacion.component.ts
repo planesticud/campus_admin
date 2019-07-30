@@ -1,10 +1,10 @@
-
 import { GrupoInvestigacion } from './../../../@core/data/models/grupo_investigacion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { InscripcionService } from '../../../@core/data/inscripcion.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { FORM_GRUPO_INVESTIGACION } from './form-grupo_investigacion';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -30,13 +30,13 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
   regGrupoInvestigacion: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private coreService: CoreService, private toasterService: ToasterService) {
     this.formGrupoInvestigacion = FORM_GRUPO_INVESTIGACION;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-   }
+  }
 
   construirForm() {
     this.formGrupoInvestigacion.titulo = this.translate.instant('GLOBAL.grupo_investigacion');
@@ -51,7 +51,6 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formGrupoInvestigacion.campos.length; index++) {
       const element = this.formGrupoInvestigacion.campos[index];
@@ -62,15 +61,24 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
     return 0;
   }
 
-
   public loadGrupoInvestigacion(): void {
     if (this.grupo_investigacion_id !== undefined && this.grupo_investigacion_id !== 0) {
-      this.admisionesService.get('grupo_investigacion/?query=id:' + this.grupo_investigacion_id)
+      this.coreService.get('grupo_investigacion/?query=id:' + this.grupo_investigacion_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_grupo_investigacion = <GrupoInvestigacion>res[0];
           }
-        });
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.grupo_investigacion'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
     } else  {
       this.info_grupo_investigacion = undefined;
       this.clean = !this.clean;
@@ -78,24 +86,29 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
   }
 
   updateGrupoInvestigacion(grupoInvestigacion: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update GrupoInvestigacion!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_grupo_investigacion = <GrupoInvestigacion>grupoInvestigacion;
-        this.admisionesService.put('grupo_investigacion', this.info_grupo_investigacion)
+        this.coreService.put('grupo_investigacion', this.info_grupo_investigacion)
           .subscribe(res => {
             this.loadGrupoInvestigacion();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'GrupoInvestigacion updated');
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+              this.translate.instant('GLOBAL.grupo_investigacion') + ' ' +
+              this.translate.instant('GLOBAL.confirmarActualizar'));
+            this.info_grupo_investigacion = undefined;
+            this.clean = !this.clean;
           });
       }
     });
@@ -103,23 +116,39 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
 
   createGrupoInvestigacion(grupoInvestigacion: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create GrupoInvestigacion!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_grupo_investigacion = <GrupoInvestigacion>grupoInvestigacion;
-        this.admisionesService.post('grupo_investigacion', this.info_grupo_investigacion)
+        this.coreService.post('grupo_investigacion', this.info_grupo_investigacion)
           .subscribe(res => {
             this.info_grupo_investigacion = <GrupoInvestigacion>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'GrupoInvestigacion created');
-          });
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+              this.translate.instant('GLOBAL.grupo_investigacion') + ' ' +
+              this.translate.instant('GLOBAL.confirmarCrear'));
+            this.info_grupo_investigacion = undefined;
+            this.clean = !this.clean;
+          },
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.crear') + '-' +
+                  this.translate.instant('GLOBAL.grupo_investigacion'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+            });
       }
     });
   }
@@ -158,5 +187,4 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

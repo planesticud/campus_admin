@@ -1,4 +1,3 @@
-
 export class Requisito {
   Id: number;
   Nombre: string;

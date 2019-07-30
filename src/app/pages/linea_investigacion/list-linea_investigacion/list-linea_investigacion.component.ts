@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { InscripcionService } from '../../../@core/data/inscripcion.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,16 +11,15 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-linea-investigacion',
   templateUrl: './list-linea_investigacion.component.html',
   styleUrls: ['./list-linea_investigacion.component.scss'],
-  })
+})
 export class ListLineaInvestigacionComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private coreService: CoreService, private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -30,6 +29,9 @@ export class ListLineaInvestigacionComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -48,49 +50,42 @@ export class ListLineaInvestigacionComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          // type: 'string;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Activo: {
-          title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          // type: 'number;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
-        GrupoInvestigacion: {
-          title: this.translate.instant('GLOBAL.grupo_investigacion'),
-          // type: 'number;',
+        Activo: {
+          title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -104,20 +99,22 @@ export class ListLineaInvestigacionComponent implements OnInit {
   }
 
   loadData(): void {
-    this.admisionesService.get('linea_investigacion/?limit=0').subscribe(res => {
+    this.coreService.get('linea_investigacion/?limit=0').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
-          }
+      }
     },
-    (error: HttpErrorResponse) => {
-      Swal({
-        type: 'error',
-        title: error.status + '',
-        text: this.translate.instant('ERROR.' + error.status),
-        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.linea_investigacion'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
       });
-    });
   }
 
   ngOnInit() {
@@ -147,25 +144,28 @@ export class ListLineaInvestigacionComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.admisionesService.delete('linea_investigacion/', event.data).subscribe(res => {
+        this.coreService.delete('linea_investigacion/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
             this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
             this.translate.instant('GLOBAL.confirmarEliminar'));
-            }
-         },
-         (error: HttpErrorResponse) => {
-           Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-           });
-         });
+          }
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.linea_investigacion'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
+
 
   activetab(): void {
     this.cambiotab = !this.cambiotab;
@@ -187,7 +187,6 @@ export class ListLineaInvestigacionComponent implements OnInit {
   }
 
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -210,5 +209,4 @@ export class ListLineaInvestigacionComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

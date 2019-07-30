@@ -59,48 +59,56 @@ export class ListValidacionDescuentoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         ReciboMatriculaId: {
           title: this.translate.instant('GLOBAL.recibo_matricula_id'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         SolicitudDescuentoId: {
           title: this.translate.instant('GLOBAL.solicitud_descuento_id'),
+          width: '40%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         TipoDuracionId: {
           title: this.translate.instant('GLOBAL.tipo_duracion_id'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         ValorBase: {
           title: this.translate.instant('GLOBAL.valor_base'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         ValorConDescuento: {
           title: this.translate.instant('GLOBAL.valor_con_descuento'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Autorizado: {
           title: this.translate.instant('GLOBAL.autorizado'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },

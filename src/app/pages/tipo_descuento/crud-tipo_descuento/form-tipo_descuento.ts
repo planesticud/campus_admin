@@ -7,17 +7,7 @@ export let FORM_TIPO_DESCUENTO = {
   campos: [
     {
       etiqueta: 'input',
-      claseGrid: 'col-lg-3 col-md-3 col-sm-12 col-xs-12',
-      nombre: 'Id',
-      label_i18n: 'id',
-      placeholder_i18n: 'id',
-      requerido: true,
-      tipo: 'number',
-      minimo: 1,
-    },
-    {
-      etiqueta: 'input',
-      claseGrid: 'col-lg-9 col-md-9 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
       nombre: 'Nombre',
       label_i18n: 'nombre',
       placeholder_i18n: 'nombre',
@@ -45,6 +35,15 @@ export let FORM_TIPO_DESCUENTO = {
     {
       etiqueta: 'input',
       claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      nombre: 'ConceptoAcademicoId',
+      label_i18n: 'concepto_academico_id',
+      placeholder_i18n: 'concepto_academico_id',
+      requerido: true,
+      tipo: 'number',
+    },
+    {
+      etiqueta: 'input',
+      claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'NumeroOrden',
       label_i18n: 'numero_orden',
       placeholder_i18n: 'numero_orden',
@@ -52,17 +51,8 @@ export let FORM_TIPO_DESCUENTO = {
       tipo: 'number',
     },
     {
-      etiqueta: 'input',
-      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
-      nombre: 'ConceptoAcademico',
-      label_i18n: 'concepto_academico',
-      placeholder_i18n: 'concepto_academico',
-      requerido: true,
-      tipo: 'number',
-    },
-    {
       etiqueta: 'checkbox',
-      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'General',
       label_i18n: 'general',
       placeholder_i18n: 'general',
@@ -71,7 +61,7 @@ export let FORM_TIPO_DESCUENTO = {
     },
     {
       etiqueta: 'checkbox',
-      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'Activo',
       label_i18n: 'activo',
       placeholder_i18n: 'activo',

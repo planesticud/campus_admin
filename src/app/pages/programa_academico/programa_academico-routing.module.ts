@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProgramaAcademicoComponent } from './programa_academico.component';
 import { ListProgramaAcademicoComponent } from './list-programa_academico/list-programa_academico.component';
 import { CrudProgramaAcademicoComponent } from './crud-programa_academico/crud-programa_academico.component';
-import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -11,11 +10,9 @@ const routes: Routes = [{
   children: [{
     path: 'list-programa_academico',
     component: ListProgramaAcademicoComponent,
-    canActivate: [AuthGuard],
   }, {
     path: 'crud-programa_academico',
     component: CrudProgramaAcademicoComponent,
-    canActivate: [AuthGuard],
   }],
 }];
 

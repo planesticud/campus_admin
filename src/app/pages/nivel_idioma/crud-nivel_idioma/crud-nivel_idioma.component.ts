@@ -36,7 +36,7 @@ export class CrudNivelIdiomaComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-   }
+  }
 
   construirForm() {
     this.formNivelIdioma.titulo = this.translate.instant('GLOBAL.nivel_idioma');
@@ -69,14 +69,16 @@ export class CrudNivelIdiomaComponent implements OnInit {
             this.info_nivel_idioma = <NivelIdioma>res[0];
           }
         },
-        (error: HttpErrorResponse) => {
-          Swal({
-            type: 'error',
-            title: error.status + '',
-            text: this.translate.instant('ERROR.' + error.status),
-            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.nivel_idioma'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
-        });
     } else  {
       this.info_nivel_idioma = undefined;
       this.clean = !this.clean;
@@ -103,17 +105,21 @@ export class CrudNivelIdiomaComponent implements OnInit {
             this.loadNivelIdioma();
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
-            this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
-            this.translate.instant('GLOBAL.confirmarActualizar'));
+              this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
+              this.translate.instant('GLOBAL.confirmarActualizar'));
+            this.info_nivel_idioma = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.actualizar') + '-' +
+                  this.translate.instant('GLOBAL.nivel_idioma'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -138,17 +144,21 @@ export class CrudNivelIdiomaComponent implements OnInit {
             this.info_nivel_idioma = <NivelIdioma>res;
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
-            this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
-            this.translate.instant('GLOBAL.confirmarCrear'));
+              this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
+              this.translate.instant('GLOBAL.confirmarCrear'));
+            this.info_nivel_idioma = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.crear') + '-' +
+                  this.translate.instant('GLOBAL.nivel_idioma'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -187,5 +197,4 @@ export class CrudNivelIdiomaComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

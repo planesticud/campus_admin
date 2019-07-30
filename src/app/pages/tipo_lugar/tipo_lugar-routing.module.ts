@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { TipoLugarComponent } from './tipo_lugar.component';
 import { ListTipoLugarComponent } from './list-tipo_lugar/list-tipo_lugar.component';
 import { CrudTipoLugarComponent } from './crud-tipo_lugar/crud-tipo_lugar.component';
-import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -11,7 +10,6 @@ const routes: Routes = [{
   children: [{
     path: 'list-tipo_lugar',
     component: ListTipoLugarComponent,
-    canActivate: [AuthGuard],
   }],
 }];
 

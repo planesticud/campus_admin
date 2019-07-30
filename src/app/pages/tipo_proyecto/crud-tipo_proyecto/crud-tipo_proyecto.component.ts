@@ -4,6 +4,7 @@ import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { FORM_TIPO_PROYECTO } from './form-tipo_proyecto';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -29,13 +30,15 @@ export class CrudTipoProyectoComponent implements OnInit {
   regTipoProyecto: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService,
+    private inscripcionService: InscripcionService,
+    private toasterService: ToasterService) {
     this.formTipoProyecto = FORM_TIPO_PROYECTO;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-   }
+  }
 
   construirForm() {
     this.formTipoProyecto.titulo = this.translate.instant('GLOBAL.tipo_proyecto');
@@ -50,7 +53,6 @@ export class CrudTipoProyectoComponent implements OnInit {
     this.translate.use(language);
   }
 
-
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formTipoProyecto.campos.length; index++) {
       const element = this.formTipoProyecto.campos[index];
@@ -61,64 +63,104 @@ export class CrudTipoProyectoComponent implements OnInit {
     return 0;
   }
 
-
   public loadTipoProyecto(): void {
     if (this.tipo_proyecto_id !== undefined && this.tipo_proyecto_id !== 0) {
-      this.admisionesService.get('tipo_proyecto/?query=id:' + this.tipo_proyecto_id)
+      this.inscripcionService.get('tipo_proyecto/?query=id:' + this.tipo_proyecto_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_tipo_proyecto = <TipoProyecto>res[0];
           }
-        });
-    } else  {
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.tipo_proyecto'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
+    } else {
       this.info_tipo_proyecto = undefined;
       this.clean = !this.clean;
     }
   }
 
   updateTipoProyecto(tipoProyecto: any): void {
-
     const opt: any = {
-      title: 'Update?',
-      text: 'Update TipoProyecto!',
+      title: this.translate.instant('GLOBAL.actualizar'),
+      text: this.translate.instant('GLOBAL.actualizar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_proyecto = <TipoProyecto>tipoProyecto;
-        this.admisionesService.put('tipo_proyecto', this.info_tipo_proyecto)
+        this.inscripcionService.put('tipo_proyecto', this.info_tipo_proyecto)
           .subscribe(res => {
             this.loadTipoProyecto();
             this.eventChange.emit(true);
-            this.showToast('info', 'updated', 'TipoProyecto updated');
-          });
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
+              this.translate.instant('GLOBAL.tipo_proyecto') + ' ' +
+              this.translate.instant('GLOBAL.confirmarActualizar'));
+            this.info_tipo_proyecto = undefined;
+            this.clean = !this.clean;
+          },
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.actualizar') + '-' +
+                  this.translate.instant('GLOBAL.tipo_proyecto'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+            });
       }
     });
   }
 
   createTipoProyecto(tipoProyecto: any): void {
     const opt: any = {
-      title: 'Create?',
-      text: 'Create TipoProyecto!',
+      title: this.translate.instant('GLOBAL.crear'),
+      text: this.translate.instant('GLOBAL.crear') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_proyecto = <TipoProyecto>tipoProyecto;
-        this.admisionesService.post('tipo_proyecto', this.info_tipo_proyecto)
+        this.inscripcionService.post('tipo_proyecto', this.info_tipo_proyecto)
           .subscribe(res => {
             this.info_tipo_proyecto = <TipoProyecto>res;
             this.eventChange.emit(true);
-            this.showToast('info', 'created', 'TipoProyecto created');
-          });
+            this.showToast('info', this.translate.instant('GLOBAL.crear'),
+              this.translate.instant('GLOBAL.tipo_proyecto') + ' ' +
+              this.translate.instant('GLOBAL.confirmarCrear'));
+            this.info_tipo_proyecto = undefined;
+            this.clean = !this.clean;
+          },
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.crear') + '-' +
+                  this.translate.instant('GLOBAL.tipo_proyecto'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+            });
       }
     });
   }
@@ -157,5 +199,4 @@ export class CrudTipoProyectoComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

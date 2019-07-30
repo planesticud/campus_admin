@@ -6,18 +6,8 @@ export let FORM_SOPORTE_DESCUENTO = {
   modelo: 'SoporteDescuento',
   campos: [
     {
-      etiqueta: 'input',
-      claseGrid: 'col-lg-3 col-md-3 col-sm-12 col-xs-12',
-      nombre: 'Id',
-      label_i18n: 'id',
-      placeholder_i18n: 'id',
-      requerido: true,
-      tipo: 'number',
-      minimo: 1,
-    },
-    {
       etiqueta: 'select',
-      claseGrid: 'col-lg-9 col-md-9 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-12 col-md-12 col-sm-12 col-xs-12',
       nombre: 'SolicitudDescuentoId',
       label_i18n: 'solicitud_descuento_id',
       placeholder_i18n: 'solicitud_descuento_id',

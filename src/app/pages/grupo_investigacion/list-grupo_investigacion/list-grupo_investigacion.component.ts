@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { InscripcionService } from '../../../@core/data/inscripcion.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -10,16 +11,15 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-grupo-investigacion',
   templateUrl: './list-grupo_investigacion.component.html',
   styleUrls: ['./list-grupo_investigacion.component.scss'],
-  })
+})
 export class ListGrupoInvestigacionComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private coreService: CoreService, private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -29,6 +29,9 @@ export class ListGrupoInvestigacionComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -47,42 +50,42 @@ export class ListGrupoInvestigacionComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          // type: 'string;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          // type: 'number;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -96,12 +99,22 @@ export class ListGrupoInvestigacionComponent implements OnInit {
   }
 
   loadData(): void {
-    this.admisionesService.get('grupo_investigacion/?limit=0').subscribe(res => {
+    this.coreService.get('grupo_investigacion/?limit=0').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
-          }
-    });
+      }
+    },
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.grupo_investigacion'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
+      });
   }
 
   ngOnInit() {
@@ -119,23 +132,36 @@ export class ListGrupoInvestigacionComponent implements OnInit {
 
   onDelete(event): void {
     const opt: any = {
-      title: 'Deleting?',
-      text: 'Delete GrupoInvestigacion!',
+      title: this.translate.instant('GLOBAL.eliminar'),
+      text: this.translate.instant('GLOBAL.eliminar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
-        this.admisionesService.delete('grupo_investigacion/', event.data).subscribe(res => {
+        this.coreService.delete('grupo_investigacion/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
-            this.showToast('info', 'deleted', 'GrupoInvestigacion deleted');
-            }
-         });
+            this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
+              this.translate.instant('GLOBAL.grupo_investigacion') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
+          }
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.grupo_investigacion'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -159,9 +185,7 @@ export class ListGrupoInvestigacionComponent implements OnInit {
     }
   }
 
-
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -184,5 +208,4 @@ export class ListGrupoInvestigacionComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

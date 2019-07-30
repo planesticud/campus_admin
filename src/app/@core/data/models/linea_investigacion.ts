@@ -5,5 +5,4 @@ export class LineaInvestigacion {
   CodigoAbreviacion: string;
   Activo: boolean;
   NumeroOrden: number;
-  GrupoInvestigacion: number;
 }

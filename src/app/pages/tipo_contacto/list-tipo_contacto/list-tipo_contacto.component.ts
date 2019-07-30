@@ -11,13 +11,12 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-tipo-contacto',
   templateUrl: './list-tipo_contacto.component.html',
   styleUrls: ['./list-tipo_contacto.component.scss'],
-  })
+})
 export class ListTipoContactoComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService, private enteService: EnteService, private toasterService: ToasterService) {
@@ -30,6 +29,9 @@ export class ListTipoContactoComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -48,42 +50,42 @@ export class ListTipoContactoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          // type: 'string;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Activo: {
-          title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          // type: 'number;',
+          width: '10%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        Activo: {
+          title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -101,16 +103,18 @@ export class ListTipoContactoComponent implements OnInit {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
-          }
+      }
     },
-    (error: HttpErrorResponse) => {
-      Swal({
-        type: 'error',
-        title: error.status + '',
-        text: this.translate.instant('ERROR.' + error.status),
-        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.tipo_contacto'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
       });
-    });
   }
 
   ngOnInit() {
@@ -145,18 +149,20 @@ export class ListTipoContactoComponent implements OnInit {
             this.loadData();
             this.showToast('info', 'deleted', 'TipoContacto deleted');
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-            this.translate.instant('GLOBAL.tipo_contacto') + ' ' +
-            this.translate.instant('GLOBAL.confirmarEliminar'));
+              this.translate.instant('GLOBAL.tipo_contacto') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
             }
          },
-         (error: HttpErrorResponse) => {
-           Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-           });
-         });
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.tipo_contacto'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -181,7 +187,6 @@ export class ListTipoContactoComponent implements OnInit {
   }
 
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -204,5 +209,4 @@ export class ListTipoContactoComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

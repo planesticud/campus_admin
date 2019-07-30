@@ -25,9 +25,9 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'enfasis',
       },
       {
-        title: 'Lista Estado Admision',
-        link: '/pages/estado_admision/list-estado_admision',
-        key: 'estado_admision',
+        title: 'Lista Estado Inscripcion',
+        link: '/pages/estado_inscripcion/list-estado_inscripcion',
+        key: 'estado_inscripcion',
       },
       {
         title: 'Estado Civil',
@@ -75,8 +75,8 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'nivel_idioma',
       },
       {
-        title: 'Lista Periodo Academico',
-        link: '/pages/periodo_academico/list-periodo_academico',
+        title: 'Lista Periodo',
+        link: '/pages/periodo/list-periodo',
         key: 'periodo_academico',
       },
       {

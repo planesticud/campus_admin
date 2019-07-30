@@ -1,4 +1,3 @@
-
 export class TipoDuracion {
   Id: number;
   Nombre: string;

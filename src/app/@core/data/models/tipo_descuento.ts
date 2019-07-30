@@ -1,4 +1,3 @@
-
 export class TipoDescuento {
   Id: number;
   Nombre: string;

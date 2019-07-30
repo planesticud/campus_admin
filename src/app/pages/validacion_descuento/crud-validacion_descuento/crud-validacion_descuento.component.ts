@@ -49,7 +49,7 @@ export class CrudValidacionDescuentoComponent implements OnInit {
     });
     this.loadOptionsSolicitudDescuentoId();
     this.loadOptionsTipoDuracionId();
-   }
+  }
 
   construirForm() {
     this.formValidacionDescuento.titulo = this.translate.instant('GLOBAL.validacion_descuento');

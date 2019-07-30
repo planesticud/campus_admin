@@ -11,13 +11,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'ngx-list-idioma',
   templateUrl: './list-idioma.component.html',
   styleUrls: ['./list-idioma.component.scss'],
-  })
+})
 export class ListIdiomaComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService, private idiomaService: IdiomaService, private toasterService: ToasterService) {
@@ -30,6 +29,9 @@ export class ListIdiomaComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -48,42 +50,42 @@ export class ListIdiomaComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          // type: 'string;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Activo: {
-          title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          // type: 'number;',
+          width: '10%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        Activo: {
+          title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -103,14 +105,16 @@ export class ListIdiomaComponent implements OnInit {
         this.source.load(data);
       }
     },
-    (error: HttpErrorResponse) => {
-      Swal({
-        type: 'error',
-        title: error.status + '',
-        text: this.translate.instant('ERROR.' + error.status),
-        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.idioma'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
       });
-    });
   }
 
   ngOnInit() {
@@ -144,18 +148,20 @@ export class ListIdiomaComponent implements OnInit {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-            this.translate.instant('GLOBAL.idioma') + ' ' +
-            this.translate.instant('GLOBAL.confirmarEliminar'));
-            }
-         },
-         (error: HttpErrorResponse) => {
-           Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-           });
-         });
+              this.translate.instant('GLOBAL.idioma') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
+          }
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.idioma'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -180,7 +186,6 @@ export class ListIdiomaComponent implements OnInit {
   }
 
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -203,5 +208,4 @@ export class ListIdiomaComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

@@ -7,17 +7,7 @@ export let FORM_REQUISITO = {
   campos: [
     {
       etiqueta: 'input',
-      claseGrid: 'col-lg-3 col-md-3 col-sm-12 col-xs-12',
-      nombre: 'Id',
-      label_i18n: 'id',
-      placeholder_i18n: 'id',
-      requerido: true,
-      tipo: 'number',
-      minimo: 1,
-    },
-    {
-      etiqueta: 'input',
-      claseGrid: 'col-lg-9 col-md-9 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
       nombre: 'Nombre',
       label_i18n: 'nombre',
       placeholder_i18n: 'nombre',
@@ -35,7 +25,7 @@ export let FORM_REQUISITO = {
     },
     {
       etiqueta: 'input',
-      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'CodigoAbreviacion',
       label_i18n: 'codigo_abreviacion',
       placeholder_i18n: 'codigo_abreviacion',
@@ -44,7 +34,7 @@ export let FORM_REQUISITO = {
     },
     {
       etiqueta: 'input',
-      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'NumeroOrden',
       label_i18n: 'numero_orden',
       placeholder_i18n: 'numero_orden',
@@ -53,7 +43,7 @@ export let FORM_REQUISITO = {
     },
     {
       etiqueta: 'checkbox',
-      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'Activo',
       label_i18n: 'activo',
       placeholder_i18n: 'activo',

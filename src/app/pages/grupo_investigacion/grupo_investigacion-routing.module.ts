@@ -4,8 +4,6 @@ import { GrupoInvestigacionComponent } from './grupo_investigacion.component';
 import { ListGrupoInvestigacionComponent } from './list-grupo_investigacion/list-grupo_investigacion.component';
 import { CrudGrupoInvestigacionComponent } from './crud-grupo_investigacion/crud-grupo_investigacion.component';
 
-
-
 const routes: Routes = [{
   path: '',
   component: GrupoInvestigacionComponent,

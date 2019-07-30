@@ -38,7 +38,7 @@ export class CrudTipoDuracionComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-   }
+  }
 
   construirForm() {
     this.formTipoDuracion.titulo = this.translate.instant('GLOBAL.tipo_duracion');

@@ -6,7 +6,6 @@ import { ThemeModule } from '../@theme/theme.module';
 import { SharedModule } from '../shared/shared.module';
 import { MenuService } from '../@core/data/menu.service';
 
-
 const PAGES_COMPONENTS = [
   PagesComponent,
 ];

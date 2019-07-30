@@ -3,6 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -10,13 +11,12 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-tipo-proyecto',
   templateUrl: './list-tipo_proyecto.component.html',
   styleUrls: ['./list-tipo_proyecto.component.scss'],
-  })
+})
 export class ListTipoProyectoComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService, private admisionesService: InscripcionService, private toasterService: ToasterService) {
@@ -29,6 +29,9 @@ export class ListTipoProyectoComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -47,42 +50,42 @@ export class ListTipoProyectoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          // type: 'string;',
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          // type: 'string;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          // type: 'number;',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -100,8 +103,18 @@ export class ListTipoProyectoComponent implements OnInit {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
-          }
-    });
+      }
+    },
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.tipo_proyecto'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
+      });
   }
 
   ngOnInit() {
@@ -119,23 +132,36 @@ export class ListTipoProyectoComponent implements OnInit {
 
   onDelete(event): void {
     const opt: any = {
-      title: 'Deleting?',
-      text: 'Delete TipoProyecto!',
+      title: this.translate.instant('GLOBAL.eliminar'),
+      text: this.translate.instant('GLOBAL.eliminar') + '?',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
+      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
         this.admisionesService.delete('tipo_proyecto/', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
-            this.showToast('info', 'deleted', 'TipoProyecto deleted');
+            this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
+              this.translate.instant('GLOBAL.tipo_proyecto') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
             }
-         });
+         },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.tipo_proyecto'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -159,9 +185,7 @@ export class ListTipoProyectoComponent implements OnInit {
     }
   }
 
-
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -184,5 +208,4 @@ export class ListTipoProyectoComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

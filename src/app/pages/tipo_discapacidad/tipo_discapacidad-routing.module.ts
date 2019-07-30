@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { TipoDiscapacidadComponent } from './tipo_discapacidad.component';
 import { ListTipoDiscapacidadComponent } from './list-tipo_discapacidad/list-tipo_discapacidad.component';
 import { CrudTipoDiscapacidadComponent } from './crud-tipo_discapacidad/crud-tipo_discapacidad.component';
-import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -11,7 +10,6 @@ const routes: Routes = [{
   children: [{
     path: 'list-tipo_discapacidad',
     component: ListTipoDiscapacidadComponent,
-    canActivate: [AuthGuard],
   }],
 }];
 

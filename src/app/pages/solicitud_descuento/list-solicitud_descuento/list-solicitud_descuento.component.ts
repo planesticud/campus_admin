@@ -59,24 +59,28 @@ export class ListSolicitudDescuentoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         DescuentosDependenciaId: {
           title: this.translate.instant('GLOBAL.descuentos_dependencia_id'),
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         PeriodoId: {
           title: this.translate.instant('GLOBAL.periodo_id'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         PersonaId: {
           title: this.translate.instant('GLOBAL.persona_id'),
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value.PrimerNombre + ' ' + value.SegundoNombre + ' ' +
               value.PrimerApellido + ' ' + value.SegundoApellido;
@@ -84,12 +88,14 @@ export class ListSolicitudDescuentoComponent implements OnInit {
         },
         Estado: {
           title: this.translate.instant('GLOBAL.estado'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },

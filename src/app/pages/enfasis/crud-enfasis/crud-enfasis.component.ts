@@ -38,7 +38,7 @@ export class CrudEnfasisComponent implements OnInit {
       this.construirForm();
     });
     this.loadOptionsProgramaAcademico();
-   }
+  }
 
   construirForm() {
     this.formEnfasis.titulo = this.translate.instant('GLOBAL.enfasis');
@@ -62,14 +62,17 @@ export class CrudEnfasisComponent implements OnInit {
           }
           this.formEnfasis.campos[ this.getIndexForm('ProgramaAcademico') ].opciones = programaAcademico;
         },
-        (error: HttpErrorResponse) => {
-          Swal({
-            type: 'error',
-            title: error.status + '',
-            text: this.translate.instant('ERROR.' + error.status),
-            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.programa_academico') + '|' +
+                this.translate.instant('GLOBAL.enfasis'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
-        });
   }
 
   getIndexForm(nombre: String): number {
@@ -90,14 +93,16 @@ export class CrudEnfasisComponent implements OnInit {
             this.info_enfasis = <Enfasis>res[0];
           }
         },
-        (error: HttpErrorResponse) => {
-          Swal({
-            type: 'error',
-            title: error.status + '',
-            text: this.translate.instant('ERROR.' + error.status),
-            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.enfasis'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
           });
-        });
     } else  {
       this.info_enfasis = undefined;
       this.clean = !this.clean;
@@ -124,17 +129,21 @@ export class CrudEnfasisComponent implements OnInit {
             this.loadEnfasis();
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
-            this.translate.instant('GLOBAL.enfasis') + ' ' +
-            this.translate.instant('GLOBAL.confirmarActualizar'));
+              this.translate.instant('GLOBAL.enfasis') + ' ' +
+              this.translate.instant('GLOBAL.confirmarActualizar'));
+            this.info_enfasis = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.actualizar') + '-' +
+                  this.translate.instant('GLOBAL.enfasis'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -159,17 +168,21 @@ export class CrudEnfasisComponent implements OnInit {
             this.info_enfasis = <Enfasis>res;
             this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
-            this.translate.instant('GLOBAL.enfasis') + ' ' +
-            this.translate.instant('GLOBAL.confirmarCrear'));
+              this.translate.instant('GLOBAL.enfasis') + ' ' +
+              this.translate.instant('GLOBAL.confirmarCrear'));
+            this.info_enfasis = undefined;
+            this.clean = !this.clean;
           },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.crear') + '-' +
+                  this.translate.instant('GLOBAL.enfasis'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
             });
-          });
       }
     });
   }
@@ -208,5 +221,4 @@ export class CrudEnfasisComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

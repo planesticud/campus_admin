@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'ngx-list-requisito',
   templateUrl: './list-requisito.component.html',
   styleUrls: ['./list-requisito.component.scss'],
-  })
+})
 export class ListRequisitoComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
@@ -52,36 +52,42 @@ export class ListRequisitoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -139,7 +145,6 @@ export class ListRequisitoComponent implements OnInit {
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
         this.descuentosService.delete('requisito/', event.data).subscribe(res => {
           if (res !== null) {
@@ -148,7 +153,7 @@ export class ListRequisitoComponent implements OnInit {
               this.translate.instant('GLOBAL.requisito') + ' ' +
               this.translate.instant('GLOBAL.confirmarEliminar'));
           }
-         },
+        },
           (error: HttpErrorResponse) => {
             Swal({
               type: 'error',

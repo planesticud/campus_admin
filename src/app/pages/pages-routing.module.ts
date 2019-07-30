@@ -76,12 +76,16 @@ const routes: Routes = [{
       loadChildren: './enfasis/enfasis.module#EnfasisModule',
     },
     {
-      path: 'estado_admision',
-      loadChildren: './estado_admision/estado_admision.module#EstadoAdmisionModule',
+      path: 'estado_inscripcion',
+      loadChildren: './estado_inscripcion/estado_inscripcion.module#EstadoInscripcionModule',
     },
     {
       path: 'linea_investigacion',
       loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
+    },
+    {
+      path: 'tipo_proyecto',
+      loadChildren: './tipo_proyecto/tipo_proyecto.module#TipoProyectoModule',
     },
     {
       path: 'tipo_duracion',

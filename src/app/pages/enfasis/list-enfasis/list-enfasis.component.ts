@@ -11,13 +11,12 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-enfasis',
   templateUrl: './list-enfasis.component.html',
   styleUrls: ['./list-enfasis.component.scss'],
-  })
+})
 export class ListEnfasisComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService, private programaAcademicoService: ProgramaAcademicoService, private toasterService: ToasterService) {
@@ -30,6 +29,9 @@ export class ListEnfasisComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -48,51 +50,51 @@ export class ListEnfasisComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Nombre: {
-          title: this.translate.instant('GLOBAL.nombre'),
-          // type: 'string;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Descripcion: {
-          title: this.translate.instant('GLOBAL.descripcion'),
-          // type: 'string;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        CodigoAbreviacion: {
-          title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          // type: 'string;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Activo: {
-          title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        NumeroOrden: {
-          title: this.translate.instant('GLOBAL.numero_orden'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         ProgramaAcademico: {
           title: this.translate.instant('GLOBAL.programa_academico'),
-          // type: 'programa_academico;',
+          width: '14%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
+          },
+        },
+        Nombre: {
+          title: this.translate.instant('GLOBAL.nombre'),
+          width: '35%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        Descripcion: {
+          title: this.translate.instant('GLOBAL.descripcion'),
+          width: '25%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        CodigoAbreviacion: {
+          title: this.translate.instant('GLOBAL.codigo_abreviacion'),
+          width: '8%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        NumeroOrden: {
+          title: this.translate.instant('GLOBAL.numero_orden'),
+          width: '8%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        Activo: {
+          title: this.translate.instant('GLOBAL.activo'),
+          width: '5%',
+          valuePrepareFunction: (value) => {
+            return value;
           },
         },
       },
@@ -108,16 +110,18 @@ export class ListEnfasisComponent implements OnInit {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
-          }
+      }
     },
-    (error: HttpErrorResponse) => {
-      Swal({
-        type: 'error',
-        title: error.status + '',
-        text: this.translate.instant('ERROR.' + error.status),
-        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.enfasis'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
       });
-    });
   }
 
   ngOnInit() {
@@ -151,18 +155,20 @@ export class ListEnfasisComponent implements OnInit {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-            this.translate.instant('GLOBAL.enfasis') + ' ' +
-            this.translate.instant('GLOBAL.confirmarEliminar'));
-            }
-         },
-         (error: HttpErrorResponse) => {
-           Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-           });
-         });
+              this.translate.instant('GLOBAL.enfasis') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
+          }
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.eliminar') + '-' +
+                this.translate.instant('GLOBAL.enfasis'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
       }
     });
   }
@@ -210,5 +216,4 @@ export class ListEnfasisComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

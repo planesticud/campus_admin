@@ -11,13 +11,12 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-persona',
   templateUrl: './list-persona.component.html',
   styleUrls: ['./list-persona.component.scss'],
-  })
+})
 export class ListPersonaComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService, private personaService: PersonaService, private toasterService: ToasterService) {
@@ -30,6 +29,9 @@ export class ListPersonaComponent implements OnInit {
 
   cargarCampos() {
     this.settings = {
+      actions: {
+        columnTitle: '',
+      },
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -48,63 +50,63 @@ export class ListPersonaComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         PrimerNombre: {
           title: this.translate.instant('GLOBAL.primer_nombre'),
-          // type: 'string;',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         SegundoNombre: {
           title: this.translate.instant('GLOBAL.segundo_nombre'),
-          // type: 'string;',
+          width: '14%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         PrimerApellido: {
           title: this.translate.instant('GLOBAL.primer_apellido'),
-          // type: 'string;',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         SegundoApellido: {
           title: this.translate.instant('GLOBAL.segundo_apellido'),
-          // type: 'string;',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         FechaNacimiento: {
           title: this.translate.instant('GLOBAL.fecha_nacimiento'),
-          // type: 'Date;',
+          width: '13%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Usuario: {
           title: this.translate.instant('GLOBAL.usuario'),
-          // type: 'string;',
+          width: '13%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Ente: {
           title: this.translate.instant('GLOBAL.ente'),
-          // type: 'number;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Foto: {
           title: this.translate.instant('GLOBAL.foto'),
-          // type: 'string;',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -124,14 +126,16 @@ export class ListPersonaComponent implements OnInit {
         this.source.load(data);
           }
     },
-    (error: HttpErrorResponse) => {
-      Swal({
-        type: 'error',
-        title: error.status + '',
-        text: this.translate.instant('ERROR.' + error.status),
-        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+      (error: HttpErrorResponse) => {
+        Swal({
+          type: 'error',
+          title: error.status + '',
+          text: this.translate.instant('ERROR.' + error.status),
+          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+            this.translate.instant('GLOBAL.persona'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
       });
-    });
   }
 
   ngOnInit() {
@@ -165,17 +169,20 @@ export class ListPersonaComponent implements OnInit {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-            this.translate.instant('GLOBAL.persona') + ' ' +
-            this.translate.instant('GLOBAL.confirmarEliminar'));            }
+              this.translate.instant('GLOBAL.persona') + ' ' +
+              this.translate.instant('GLOBAL.confirmarEliminar'));
+          }
          },
-         (error: HttpErrorResponse) => {
-           Swal({
-             type: 'error',
-             title: error.status + '',
-             text: this.translate.instant('ERROR.' + error.status),
-             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+           (error: HttpErrorResponse) => {
+             Swal({
+               type: 'error',
+               title: error.status + '',
+               text: this.translate.instant('ERROR.' + error.status),
+               footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                 this.translate.instant('GLOBAL.persona'),
+               confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+             });
            });
-         });
       }
     });
   }
@@ -200,7 +207,6 @@ export class ListPersonaComponent implements OnInit {
   }
 
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -223,5 +229,4 @@ export class ListPersonaComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

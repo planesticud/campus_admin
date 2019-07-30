@@ -53,24 +53,28 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         TipoDescuentoId: {
           title: this.translate.instant('GLOBAL.tipo_descuento_id'),
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         RequisitoId: {
           title: this.translate.instant('GLOBAL.requisito_id'),
+          width: '35%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
