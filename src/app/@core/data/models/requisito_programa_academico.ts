@@ -4,7 +4,7 @@ import { Requisito } from './requisito';
 import { ProgramaAcademico } from './programa.academico';
 export class RequisitoProgramaAcademico {
   Id: number;
-  Nombre: string;//demas
+  Nombre: string;
   ProgramaAcademicoId: ProgramaAcademico;
   PeriodoId: Periodo;
   RequisitoId: Requisito;

@@ -1,9 +1,8 @@
-import { Component, OnInit,  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { RequisitoService } from '../../../@core/data/requisito.service';
 import { CoreService } from '../../../@core/data/core.service';
 import { ProgramaAcademicoService } from './../../../@core/data/programa.academico.service';
-
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
@@ -19,14 +18,11 @@ export class ListRequisitoProgramaAcademicoComponent implements OnInit {
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
   source: LocalDataSource = new LocalDataSource();
   data: any;
 
-  
-
-  constructor(private translate: TranslateService, 
-    private requisitoService: RequisitoService, 
+  constructor(private translate: TranslateService,
+    private requisitoService: RequisitoService,
     private coreService: CoreService,
     private programaAcademico: ProgramaAcademicoService,
     private toasterService: ToasterService) {
@@ -105,38 +101,23 @@ export class ListRequisitoProgramaAcademicoComponent implements OnInit {
     this.translate.use(language);
   }
 
-/*
-loadData(): void {
-    this.requisitoService.get('requisito_programa_academico/?limit=0')
-    .subscribe(res => {
-      if (res !== null) {
-        const data = <Array<any>>res;
-        this.source.load(data);
-          }
-    });
-  }
-*/
- 
   loadData(): void {
     this.requisitoService.get('requisito_programa_academico/?limit=0')
-    .subscribe(res => { 
+    .subscribe(res => {
       if (res !== null) {
         this.data = <Array<any>>res;
         this.data.forEach(element => {
           this.coreService.get('periodo/' + element.PeriodoId)
           .subscribe(res2 => {
-            if(res2 !== null){
+            if (res2 !== null) {
               element.PeriodoId = <any>res2;
-
               this.programaAcademico.get('programa_academico/' + element.ProgramaAcademicoId)
               .subscribe(res3 => {
-                if(res3 !== null){
-                  element.ProgramaAcademicoId=<any>res3;
+                if (res3 !== null) {
+                  element.ProgramaAcademicoId = <any>res3;
                   this.source.load(this.data);
                 }
               });
-
-              
             }
           });
         });
@@ -168,7 +149,6 @@ loadData(): void {
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
         this.requisitoService.delete('requisito_programa_academico/', event.data).subscribe(res => {
           if (res !== null) {
@@ -198,7 +178,6 @@ loadData(): void {
       this.cambiotab = !this.cambiotab;
     }
   }
-
 
   itemselec(event): void {
     // console.log("afssaf");

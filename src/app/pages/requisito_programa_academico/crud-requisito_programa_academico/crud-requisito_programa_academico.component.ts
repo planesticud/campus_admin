@@ -34,15 +34,15 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
   regRequisitoProgramaAcademico: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, 
+  constructor(private translate: TranslateService,
     private requisitoService: RequisitoService,
     private coreService: CoreService,
-    private programaAcademicoService: ProgramaAcademicoService, 
+    private programaAcademicoService: ProgramaAcademicoService,
     private toasterService: ToasterService) {
     this.formRequisitoProgramaAcademico = FORM_REQUISITO_PROGRAMA_ACADEMICO;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.construirForm();
+    this.construirForm();
     });
     this.loadPeriodo();
     this.loadRequisito();
@@ -54,7 +54,8 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
     this.formRequisitoProgramaAcademico.btn = this.translate.instant('GLOBAL.guardar');
     for (let i = 0; i < this.formRequisitoProgramaAcademico.campos.length; i++) {
       this.formRequisitoProgramaAcademico.campos[i].label = this.translate.instant('GLOBAL.' + this.formRequisitoProgramaAcademico.campos[i].label_i18n);
-      this.formRequisitoProgramaAcademico.campos[i].placeholder = this.translate.instant('GLOBAL.placeholder_' + this.formRequisitoProgramaAcademico.campos[i].label_i18n);
+      this.formRequisitoProgramaAcademico.campos[i]
+      .placeholder = this.translate.instant('GLOBAL.placeholder_' + this.formRequisitoProgramaAcademico.campos[i].label_i18n);
     }
   }
 
@@ -73,30 +74,30 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
     return 0;
   }
 
-  public loadPeriodo(): void {//para el combobox periodo
+  public loadPeriodo(): void {
     this.coreService.get('periodo/?limit=0')
       .subscribe(res => {
-        let periodo = <Array<Periodo>>res;
+        const periodo = <Array<Periodo>>res;
         if (res !== null) {
           this.formRequisitoProgramaAcademico.campos[this.getIndexForm('PeriodoId')].opciones = periodo;
         }
       });
   }
 
-  public loadRequisito(): void {//para el combobox requisito
+  public loadRequisito(): void {
     this.requisitoService.get('requisito/?limit=0')
       .subscribe(res => {
-        let requisito = <Array<Requisito>>res;
+        const requisito = <Array<Requisito>>res;
         if (res !== null) {
           this.formRequisitoProgramaAcademico.campos[this.getIndexForm('RequisitoId')].opciones = requisito;
         }
       });
   }
 
-  public loadProgramaAcademico(): void {//para el combobox programa Academico
+  public loadProgramaAcademico(): void {
     this.programaAcademicoService.get('programa_academico/?limit=0')
       .subscribe(res => {
-        let programaAcademico = <Array<ProgramaAcademico>>res;
+        const programaAcademico = <Array<ProgramaAcademico>>res;
         if (res !== null) {
           this.formRequisitoProgramaAcademico.campos[this.getIndexForm('ProgramaAcademicoId')].opciones = programaAcademico;
         }
@@ -108,7 +109,7 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
       this.requisitoService.get('requisito_programa_academico/?query=id:' + this.requisito_programa_academico_id)
         .subscribe(res => {
           if (res !== null) {
-            let info = <RequisitoProgramaAcademico>res[0];
+            const info = <RequisitoProgramaAcademico>res[0];
             this.coreService.get('periodo/' + info.PeriodoId)
               .subscribe(res2 => {
                 const periodo = <Periodo>res2;
@@ -117,14 +118,13 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
                   this.requisitoService.get('requisito/' + info.RequisitoId.Id)
                   .subscribe(res3 => {
                     const requisito = <Requisito>res3;
-                    if(res3 !== null){
-                      info.RequisitoId=requisito;
+                    if (res3 !== null) {
+                      info.RequisitoId = requisito;
                       this.programaAcademicoService.get('programa_academico/' + info.ProgramaAcademicoId)
                       .subscribe(res4 => {
-                        //console.info(JSON.stringify(res4));
                         const programaAcademico = <ProgramaAcademico>res4;
-                        if(res4 !== null){
-                          info.ProgramaAcademicoId=programaAcademico;
+                        if (res4 !== null) {
+                          info.ProgramaAcademicoId = programaAcademico;
                           this.info_requisito_programa_academico = info;
                         }
                       });
@@ -154,11 +154,10 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_requisito_programa_academico = <RequisitoProgramaAcademico>requisitoProgramaAcademico;
-        const periodo = this.info_requisito_programa_academico.PeriodoId.Id;//
-        const programa_academico = this.info_requisito_programa_academico.ProgramaAcademicoId.Id;//
-        this.info_requisito_programa_academico.PeriodoId = <any>periodo;//
-        this.info_requisito_programa_academico.ProgramaAcademicoId = <any>programa_academico;//
-        
+        const periodo = this.info_requisito_programa_academico.PeriodoId.Id;
+        const programa_academico = this.info_requisito_programa_academico.ProgramaAcademicoId.Id;
+        this.info_requisito_programa_academico.PeriodoId = <any>periodo;
+        this.info_requisito_programa_academico.ProgramaAcademicoId = <any>programa_academico;
         this.requisitoService.put('requisito_programa_academico', this.info_requisito_programa_academico)
           .subscribe(res => {
             this.loadRequisitoProgramaAcademico();
@@ -182,11 +181,10 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_requisito_programa_academico = <RequisitoProgramaAcademico>requisitoProgramaAcademico;
-        const periodo = this.info_requisito_programa_academico.PeriodoId.Id;//
-        const programa_academico = this.info_requisito_programa_academico.ProgramaAcademicoId.Id;//
-        this.info_requisito_programa_academico.PeriodoId = <any>periodo;//
-        this.info_requisito_programa_academico.ProgramaAcademicoId = <any>programa_academico;//
-
+        const periodo = this.info_requisito_programa_academico.PeriodoId.Id;
+        const programa_academico = this.info_requisito_programa_academico.ProgramaAcademicoId.Id;
+        this.info_requisito_programa_academico.PeriodoId = <any>periodo;
+        this.info_requisito_programa_academico.ProgramaAcademicoId = <any>programa_academico;
         this.requisitoService.post('requisito_programa_academico', this.info_requisito_programa_academico)
           .subscribe(res => {
             this.info_requisito_programa_academico = <RequisitoProgramaAcademico>res;
@@ -231,5 +229,4 @@ export class CrudRequisitoProgramaAcademicoComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
-
 }

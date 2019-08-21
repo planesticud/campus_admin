@@ -5,7 +5,6 @@ import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-t
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
-import { InfoCaracteristica } from '../../../@core/data/models/info_caracteristica';
 
 @Component({
   selector: 'ngx-list-evaluacion-inscripcion',
@@ -21,14 +20,13 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
   requisito: any;
 
-
-  constructor(private translate: TranslateService, 
+  constructor(private translate: TranslateService,
     private requisitoService: RequisitoService,
     private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.cargarCampos();
+    this.cargarCampos();
     });
   }
 
@@ -38,20 +36,11 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
         add: false,
         delete: false,
       },
-      //add: {
-      //  addButtonContent: '<i class="nb-plus"></i>',
-      //  createButtonContent: '<i class="nb-checkmark"></i>',
-      //  cancelButtonContent: '<i class="nb-close"></i>',
-      //},
       edit: {
         editButtonContent: '<i class="nb-edit"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
-      //delete: {
-      //  deleteButtonContent: '<i class="nb-trash"></i>',
-      //  confirmDelete: true,
-      //},
       mode: 'external',
       columns: {
         Id: {
@@ -82,17 +71,6 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
             return value.RequisitoId.Nombre;
           },
         },
-        //EntrevistaId: {
-        //  title: this.translate.instant('GLOBAL.entrevista_id'),
-        //  // type: 'number;',
-        //  valuePrepareFunction: (value) => {
-        //    if(value!==null){
-        //    return value.Id;
-        //    }else{
-        //      return '';
-        //    }
-        //  },
-        //},
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
           // type: 'boolean;',
@@ -113,14 +91,12 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
     .subscribe(res => {
       if (res !== null) {
         this.data = <Array<any>>res;
-      //console.info(JSON.stringify(this.data));
-       var i = 0;
+        let i = 0;
         this.data.forEach(element => {
-      // console.info(JSON.stringify(element.RequisitoProgramaAcademicoId.RequisitoId.Nombre));
-         if(element.RequisitoProgramaAcademicoId.RequisitoId !== null ){
-            this.data.splice(i,1);
-          }        
-          i=i+1;
+        if (element.RequisitoProgramaAcademicoId.RequisitoId !== null) {
+           this.data.splice(i, 1);
+          }
+          i = i + 1;
         });
         this.source.load(this.data);
       }
@@ -181,7 +157,6 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
       this.cambiotab = !this.cambiotab;
     }
   }
-
 
   itemselec(event): void {
     // console.log("afssaf");

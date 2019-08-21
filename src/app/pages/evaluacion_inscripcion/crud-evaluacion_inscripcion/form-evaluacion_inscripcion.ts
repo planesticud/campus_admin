@@ -36,18 +36,6 @@ export let FORM_EVALUACION_INSCRIPCION = {
         key: 'Nombre',
         opciones: [],
     },
-    //{
-    //    etiqueta: 'select',
-    //    claseGrid: 'col-6',
-    //    nombre: 'EntrevistaId',
-     //   label_i18n: 'entrevista_id',
-    //    placeholder_i18n: 'entrevista_id',
-    //    requerido: false,
-    //    deshabilitar: true,
-    //    tipo: 'Entrevista',
-    //    key: 'Id',
-    //    opciones: [],
-    //},
     {
         etiqueta: 'checkbox',
         claseGrid: 'col-6',

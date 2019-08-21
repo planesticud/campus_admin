@@ -31,32 +31,32 @@ export class CrudEvaluacionInscripcionComponent implements OnInit {
   regEvaluacionInscripcion: any;
   clean: boolean;
 
-  constructor(private translate: TranslateService, 
+  constructor(private translate: TranslateService,
     private requisitoService: RequisitoService,
     private toasterService: ToasterService) {
     this.formEvaluacionInscripcion = FORM_EVALUACION_INSCRIPCION;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.construirForm();
+    this.construirForm();
     });
     this.loadRequisitoProgramaAcademico();
     this.loadEntrevista();
-    
-   }
+  }
 
   construirForm() {
     this.formEvaluacionInscripcion.titulo = this.translate.instant('GLOBAL.evaluacion_inscripcion');
     this.formEvaluacionInscripcion.btn = this.translate.instant('GLOBAL.guardar');
     for (let i = 0; i < this.formEvaluacionInscripcion.campos.length; i++) {
-      this.formEvaluacionInscripcion.campos[i].label = this.translate.instant('GLOBAL.' + this.formEvaluacionInscripcion.campos[i].label_i18n);
-      this.formEvaluacionInscripcion.campos[i].placeholder = this.translate.instant('GLOBAL.placeholder_' + this.formEvaluacionInscripcion.campos[i].label_i18n);
+      this.formEvaluacionInscripcion.campos[i].label = this.translate.instant('GLOBAL.' +
+      this.formEvaluacionInscripcion.campos[i].label_i18n);
+      this.formEvaluacionInscripcion.campos[i].placeholder = this.translate.instant('GLOBAL.placeholder_' +
+      this.formEvaluacionInscripcion.campos[i].label_i18n);
     }
   }
 
   useLanguage(language: string) {
     this.translate.use(language);
   }
-
 
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formEvaluacionInscripcion.campos.length; index++) {
@@ -68,36 +68,34 @@ export class CrudEvaluacionInscripcionComponent implements OnInit {
     return 0;
   }
 
-  
-
-  public loadRequisitoProgramaAcademico(): void {//para el combobox requisito_programa_academico
+  public loadRequisitoProgramaAcademico(): void {
     this.requisitoService.get('requisito_programa_academico/?limit=0')
       .subscribe(res => {
-        let requisitoProgramaAcademico = <Array<RequisitoProgramaAcademico>>res;
+        const requisitoProgramaAcademico = <Array<RequisitoProgramaAcademico>>res;
         if (res !== null) {
           this.formEvaluacionInscripcion.campos[this.getIndexForm('RequisitoProgramaAcademicoId')].opciones = requisitoProgramaAcademico;
         }
       });
   }
 
-  public loadEntrevista(): void {//para el combobox entrevista
+  public loadEntrevista(): void {
     this.requisitoService.get('entrevista/?limit=0')
       .subscribe(res => {
-        let entrevista = <Array<Entrevista>>res;
+        const entrevista = <Array<Entrevista>>res;
         if (res !== null) {
           this.formEvaluacionInscripcion.campos[this.getIndexForm('EntrevistaId')].opciones = entrevista;
         }
       });
   }
-  
+
   public loadEvaluacionInscripcion(): void {
      if (this.evaluacion_inscripcion_id !== undefined && this.evaluacion_inscripcion_id !== 0) {
        this.requisitoService.get('evaluacion_inscripcion/?query=Id:' + this.evaluacion_inscripcion_id)
          .subscribe(res => {
            if (res !== null) {
-            let info = <EvaluacionInscripcion>res[0];
-            info.RequisitoProgramaAcademicoId.Nombre = info.RequisitoProgramaAcademicoId.RequisitoId.Nombre;
-            this.info_evaluacion_inscripcion = info;
+             const info = <EvaluacionInscripcion>res[0];
+             info.RequisitoProgramaAcademicoId.Nombre = info.RequisitoProgramaAcademicoId.RequisitoId.Nombre;
+             this.info_evaluacion_inscripcion = info;
           }
          });
      } else  {
@@ -107,7 +105,6 @@ export class CrudEvaluacionInscripcionComponent implements OnInit {
   }
 
   updateEvaluacionInscripcion(evaluacionInscripcion: any): void {
-
     const opt: any = {
       title: 'Update?',
       text: 'Update EvaluacionInscripcion!',
@@ -122,8 +119,8 @@ export class CrudEvaluacionInscripcionComponent implements OnInit {
         this.info_evaluacion_inscripcion = <EvaluacionInscripcion>evaluacionInscripcion;
         const requisito_ProgramaAcademico = this.info_evaluacion_inscripcion.RequisitoProgramaAcademicoId;
         const entrevista2 = this.info_evaluacion_inscripcion.EntrevistaId;
-        this.info_evaluacion_inscripcion.RequisitoProgramaAcademicoId =<any>requisito_ProgramaAcademico;
-        this.info_evaluacion_inscripcion.EntrevistaId=<any>entrevista2;
+        this.info_evaluacion_inscripcion.RequisitoProgramaAcademicoId = <any>requisito_ProgramaAcademico;
+        this.info_evaluacion_inscripcion.EntrevistaId = <any>entrevista2;
         this.requisitoService.put('evaluacion_inscripcion', this.info_evaluacion_inscripcion)
           .subscribe(res => {
             this.loadEvaluacionInscripcion();
@@ -149,8 +146,8 @@ export class CrudEvaluacionInscripcionComponent implements OnInit {
         this.info_evaluacion_inscripcion = <EvaluacionInscripcion>evaluacionInscripcion;
         const requisito_ProgramaAcademico = this.info_evaluacion_inscripcion.RequisitoProgramaAcademicoId;
         const entrevista2 = this.info_evaluacion_inscripcion.EntrevistaId;
-        this.info_evaluacion_inscripcion.RequisitoProgramaAcademicoId =<any>requisito_ProgramaAcademico;
-        this.info_evaluacion_inscripcion.EntrevistaId=<any>entrevista2;
+        this.info_evaluacion_inscripcion.RequisitoProgramaAcademicoId = <any>requisito_ProgramaAcademico;
+        this.info_evaluacion_inscripcion.EntrevistaId = <any>entrevista2;
         this.requisitoService.post('evaluacion_inscripcion', this.info_evaluacion_inscripcion)
           .subscribe(res => {
             this.info_evaluacion_inscripcion = <EvaluacionInscripcion>res;
