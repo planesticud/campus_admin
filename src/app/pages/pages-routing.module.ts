@@ -120,6 +120,18 @@ const routes: Routes = [{
       loadChildren: './soporte_descuento/soporte_descuento.module#SoporteDescuentoModule',
     },
     {
+      path: 'requisito_academico',
+      loadChildren: './requisito_academico/requisito_academico.module#RequisitoAcademicoModule',
+    },
+    {
+      path: 'requisito_programa_academico',
+      loadChildren: './requisito_programa_academico/requisito_programa_academico.module#RequisitoProgramaAcademicoModule',
+    },
+    {
+      path: 'evaluacion_inscripcion',
+      loadChildren: './evaluacion_inscripcion/evaluacion_inscripcion.module#EvaluacionInscripcionModule',
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

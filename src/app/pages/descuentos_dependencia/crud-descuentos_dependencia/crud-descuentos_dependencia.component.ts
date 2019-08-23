@@ -3,8 +3,7 @@ import { ProgramaAcademico } from './../../../@core/data/models/programa_academi
 import { DescuentosDependencia } from './../../../@core/data/models/descuentos_dependencia';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DescuentoAcademicoService } from '../../../@core/data/descuento_academico.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
-// import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
+import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
 import { FORM_DESCUENTOS_DEPENDENCIA } from './form-descuentos_dependencia';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -37,8 +36,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
 
   constructor(private translate: TranslateService,
     private descuentosService: DescuentoAcademicoService,
-    private programaAcademico: ProgramaAcademicoService,
-    // private programaAcademico: ProgramaOikosService,
+    private programaAcademico: ProgramaOikosService,
     private toasterService: ToasterService) {
     this.formDescuentosDependencia = FORM_DESCUENTOS_DEPENDENCIA;
     this.construirForm();
@@ -86,7 +84,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
 
   loadOptionsDependenciaId(): void {
     let dependenciaId: Array<any> = [];
-    this.programaAcademico.get('programa_academico/?limit=9')
+    this.programaAcademico.get('dependencia/?limit=0')
       .subscribe(res => {
         if (res !== null) {
           dependenciaId = <Array<ProgramaAcademico>>res;
@@ -136,7 +134,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
                       title: error.status + '',
                       text: this.translate.instant('ERROR.' + error.status),
                       footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                        this.translate.instant('GLOBAL.dependencia_id'),
+                        this.translate.instant('GLOBAL.programa_academico'),
                       confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
                     });
                   });

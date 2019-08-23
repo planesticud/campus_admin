@@ -9,6 +9,7 @@ export const Config = {
     CAMPUS_MID: 'http://localhost:8095/v1/',
     CORE_SERVICE: 'http://localhost:8102/v1/',
     DESCUENTO_ACADEMICO_SERVICE: 'http://localhost:9013/v1/',
+    DOCENTE_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/docentes/v1/',
     DOCUMENTO_PROGRAMA_SERVICE: 'http://localhost:9014/v1/',
     DOCUMENTO_SERVICE: 'http://localhost:8094/v1/',
     ENTE_SERVICE: 'http://localhost:8096/v1/',
@@ -25,6 +26,7 @@ export const Config = {
     PROGRAMA_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/programa_ud/v1/',
     UBICACION_SERVICE: 'http://localhost:8085/v1/',
     VALIDACION_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/homologacion/v1/',
+    VALIDACION_SNIES_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/snies/v1/',
     WSO2_SERVICE: 'http://jbpm.udistritaloas.edu.co:8280/services',
     TOKEN: {
       AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co/oauth2/authorize',
@@ -43,6 +45,7 @@ export const Config = {
     CAMPUS_MID: 'https://autenticacion.udistrital.edu.co/apioas/mid_campus/v1/',
     CORE_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/data_core/v1/',
     DESCUENTO_ACADEMICO_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/descuento_acad/v1/',
+    DOCENTE_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/docentes/v1/',
     DOCUMENTO_PROGRAMA_SERVICE: ' https://autenticacion.udistrital.edu.co/apioas/documento_programa/v1/',
     DOCUMENTO_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/documento/v1/',
     ENTE_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/ente/v1/',
@@ -59,6 +62,7 @@ export const Config = {
     PROGRAMA_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/programa_ud/v1/',
     UBICACION_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/ubicacion/v1/',
     VALIDACION_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/homologacion/v1/',
+    VALIDACION_SNIES_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/snies/v1/',
     WSO2_SERVICE: 'http://jbpm.udistritaloas.edu.co:8280/services',
     TOKEN: {
       AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co/oauth2/authorize',
@@ -77,6 +81,7 @@ export const Config = {
     CAMPUS_MID: '',
     CORE_SERVICE: '',
     DESCUENTO_ACADEMICO_SERVICE: '',
+    DOCENTE_SERVICE: '',
     DOCUMENTO_PROGRAMA_SERVICE: '',
     DOCUMENTO_SERVICE: '',
     ENTE_SERVICE: '',
@@ -92,6 +97,8 @@ export const Config = {
     PROGRAMA_ACADEMICO_SERVICE: '',
     PROGRAMA_OIKOS_SERVICE: '',
     UBICACION_SERVICE: '',
+    VALIDACION_OIKOS_SERVICE: '',
+    VALIDACION_SNIES_SERVICE: '',
     WSO2_SERVICE: 'http://jbpm.udistritaloas.edu.co:8280/services',
     TOKEN: {
       AUTORIZATION_URL: 'https://autenticacion.portaloas.udistrital.edu.co/oauth2/authorize',

@@ -70,7 +70,7 @@
       "pago_inscripcion": "Pago de inscripción",
       "pago_certificado": "Pago de certificado"
     },
-    "condor_estudiante": "Sistema de gestión académico",
+    "condor_funcionario": "Sistema de gestión académico",
     "correo_institucional": "Correo institucional",
     "biblioteca": {
       "biblioteca": "Biblioteca",
@@ -140,7 +140,10 @@
       "descuentos_dependencia": "Descuentos de dependencia",
       "solicitud_descuento": "Solicitudes de descuento",
       "validacion_descuento": "Validación de descuentos",
-      "soporte_descuento": "Soportes de descuento"
+      "soporte_descuento": "Soportes de descuento",
+      "requisito_programa_academico": "Requisitos de inscripción programas",
+      "requisito_academico": "Requisitos de inscripción",
+      "evaluacion_inscripcion": "Evaluaciones de inscripción"
     },
     "admision": {
       "admision": "Admisiones"
@@ -244,6 +247,21 @@
       "soporte_descuento": "Soportes de descuento",
       "lista_soporte_descuento": "Lista de soportes de descuento",
       "crud_soporte_descuento": "Crud de soportes de descuento"
+    },
+    "requisito_programa_academico": {
+      "requisito_programa_academico": "Requisitos de inscripción programas",
+      "lista_requisito_programa_academico": "Lista de requisitos de inscripción programas",
+      "crud_requisito_programa_academico": "Crud de requisitos de inscripción programas"
+    },
+    "requisito_academico": {
+      "requisito_academico": "Requisitos de inscripción",
+      "lista_requisito": "Lista de requisitos de inscripción",
+      "crud_requisito": "Crud de requisitos de inscripción"
+    },
+    "evaluacion_inscripcion": {
+      "evaluacion_inscripcion": "Evaluaciones de inscripción",
+      "lista_evaluacion_inscripcion": "Lista de evaluaciones de inscripción",
+      "crud_evaluacion_inscripcion": "Crud de evaluaciones de inscripción"
     },
     "auth": {
       "auth": "Autenticación",
@@ -472,6 +490,20 @@
     "soporte_descuento": "Soporte de descuento",
     "placeholder_soporte_descuento": "Ej: Soporte de descuento",
     "documento_id": "Documento",
-    "placeholder_documento_id": "Ej: Documento"
+    "placeholder_documento_id": "Ej: Documento",
+    "requisito_programa_academico": "Requisito de inscripción programa",
+    "placeholder_requisito_programa_academico": "Ej: Requisito de inscripción programa",
+    "requisito_academico": "Requisito de inscripción",
+    "placeholder_requisito_academico": "Ej: Entrevista",
+    "evaluacion_inscripcion": "Evaluación de inscripción",
+    "placeholder_evaluacion_inscripcion": "Ej: Evaluación de inscripción",
+    "entrevista": "Entrevista",
+    "placeholder_entrevista": "Ej: Entrevista",
+    "inscripcion": "Inscripción",
+    "placeholder_inscripcion": "Ej: Inscripción",
+    "nota": "Calificación asignada",
+    "placeholder_nota": "Ej: 100",
+    "porcentaje": "Porcentaje",
+    "placeholder_porcentaje": "Ej: 10%"
   }
 }
