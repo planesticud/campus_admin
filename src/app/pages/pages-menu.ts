@@ -149,6 +149,21 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/soporte_descuento/list-soporte_descuento',
         key: 'soporte_descuento',
       },
+      {
+        title: 'Lista Requisito Criterios',
+        link: '/pages/requisito_academico/list-requisito_academico',
+        key: 'requisito_academico',
+      },
+      {
+        title: 'Lista Requisito Programa Academico Criterios',
+        link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
+        key: 'requisito_programa_academico',
+      },
+      {
+        title: 'Lista Evaluacion Inscripcion',
+        link: '/pages/evaluacion_inscripcion/list-evaluacion_inscripcion',
+        key: 'evaluacion_inscripcion',
+      },
     ],
   },
   {

@@ -2,7 +2,6 @@ import { DescuentosDependenciaRoutingModule, routedComponents } from './descuent
 import { NgModule } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
 import { DescuentoAcademicoService } from '../../@core/data/descuento_academico.service';
-import { ProgramaAcademicoService } from '../../@core/data/programa_academico.service';
 import { ProgramaOikosService } from '../../@core/data/programa_oikos.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
@@ -22,7 +21,6 @@ import { CrudDescuentosDependenciaComponent } from './crud-descuentos_dependenci
   ],
   providers: [
     DescuentoAcademicoService,
-    ProgramaAcademicoService,
     ProgramaOikosService,
   ],
   exports: [
