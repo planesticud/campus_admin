@@ -398,6 +398,25 @@ export const MENU_PUBLICO: MenuItem[] = [
         home: false,
         key: 'rita',
       },
+
+    ],
+  },
+  {
+    title: 'Requisito Programa Academico',
+    icon: 'nb-compose',
+    link: '/pages/requisito_programa_academico',
+    key: 'requisito_programa_academico',
+    children: [
+      {
+        title: 'Lista Requisito Programa Academico',
+        link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
+        key: 'lista_requisito_programa_academico',
+      },
+      {
+        title: 'CRUD Requisito Programa Academico',
+        link: '/pages/requisito_programa_academico/crud-requisito_programa_academico',
+        key: 'crud_requisito_programa_academico',
+      },
     ],
   },
 ];

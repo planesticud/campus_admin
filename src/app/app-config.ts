@@ -21,6 +21,7 @@ export const Config = {
     ORGANIZACION_SERVICE: 'http://localhost:8097/v1/',
     PERSONA_SERVICE: 'http://localhost:8083/v1/',
     PRODUCCION_ACADEMICA_SERVICE: 'http://localhost:9012/v1/',
+    REQUISITO_SERVICE: 'http://localhost:9012/v1/',
     PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
     PROGRAMA_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/programa_ud/v1/',
     UBICACION_SERVICE: 'http://localhost:8085/v1/',

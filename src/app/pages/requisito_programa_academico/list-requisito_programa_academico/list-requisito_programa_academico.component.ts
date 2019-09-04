@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { RequisitoService } from '../../../@core/data/requisito.service';
 import { CoreService } from '../../../@core/data/core.service';
-import { ProgramaAcademicoService } from './../../../@core/data/programa.academico.service';
+import { ProgramaAcademicoService } from './../../../@core/data/programa_academico.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';

@@ -2,8 +2,8 @@
 import { Periodo } from './../../../@core/data/models/periodo';
 import { Requisito } from './../../../@core/data/models/requisito';
 import { RequisitoProgramaAcademico } from './../../../@core/data/models/requisito_programa_academico';
-import { ProgramaAcademico } from './../../../@core/data/models/programa.academico';
-import { ProgramaAcademicoService } from './../../../@core/data/programa.academico.service';
+import { ProgramaAcademico } from './../../../@core/data/models/programa_academico';
+import { ProgramaAcademicoService } from './../../../@core/data/programa_academico.service';
 import { CoreService } from '../../../@core/data/core.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RequisitoService } from '../../../@core/data/requisito.service';
