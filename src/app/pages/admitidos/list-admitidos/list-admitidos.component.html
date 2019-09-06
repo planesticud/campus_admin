@@ -1,0 +1,43 @@
+<div class="col-md-12 col-lg-12 ">
+  <nb-card>
+    <nb-card-body>
+        <toaster-container [toasterconfig]="config"></toaster-container>
+        <nb-tabset fullWidth (changeTab)="selectTab($event)">
+            <nb-tab tabTitle="{{ 'GLOBAL.lista' | translate }}" [active]="!cambiotab">
+              <br />
+                  <ng2-smart-table [settings]="settings" [source]="source" (delete)="onDelete($event)" (rowSelect)="itemselec($event)" (edit)="onEdit($event)" (create)="onCreate($event)">
+                    </ng2-smart-table>
+
+
+              <!--button (click)="activetab()" >cambiar</button-->
+            </nb-tab>
+            <!-- <nb-tab tabTitle="{{ 'GLOBAL.formulario' | translate }}" [active]="cambiotab">
+              <ngx-crud-admitidos [admitidos_id]="uid" (eventChange)="onChange($event)"></ngx-crud-admitidos>
+              <button (click)="activetab()" class="btn btn-info btn-sm"> <i class="nb-arrow-dropleft"></i> {{ 'GLOBAL.regresar' | translate }}</button>
+            </nb-tab> -->
+          </nb-tabset>
+    </nb-card-body>
+  </nb-card>
+  <nb-card>
+    <nb-card-body>
+        <button _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="exportAsXLSX()">
+          <i _ngcontent-c3="" class="fa fa-file-excel-o"></i>
+          <span _ngcontent-c3="">Descargar</span>
+        </button>
+        <!-- <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button> -->
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<!-- <table>
+ <tr>
+   <td>Eid</td>
+   <td>Ename</td>
+   <td>Esal</td>
+ </tr>
+ <tr *ngFor="let item of data">
+   <td>{{item.eid}}</td>
+   <td>{{item.ename}}</td>
+   <td>{{item.esal}}</td>
+ </tr>
+</table> -->
