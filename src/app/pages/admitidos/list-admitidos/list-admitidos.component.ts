@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+// import { Inscripcion } from './../../../@core/data/models/inscripcion';
+
 // import { ListadoAdmitidosService } from '../../../@core/data/listado_admitidos.service';
-import { AdmisionesService } from '../../../@core/data/admisiones.service';
+import { InscripcionService } from '../../../@core/data/inscripcion.service';
+// import { InscripcionService } from '../../../@core/data/admision.service';
+import { CampusMidService } from '../../../@core/data/campus_mid.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
 import { PersonaService } from '../../../@core/data/persona.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ExcelService } from '../../../@core/data/excel.service';
 
 @Component({
@@ -20,14 +26,22 @@ export class ListAdmitidosComponent implements OnInit {
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
+  posgrados = [];
+  periodo = [];
+  estados = [];
+  selectedValuePrograma: any;
+  selectedValuePeriodo: any;
+  selectedValueEstado: any;
 
   source: LocalDataSource = new LocalDataSource();
   dataExcel: any;
 
   constructor(private translate: TranslateService,
-    private admisionesService: AdmisionesService,
+    private admisionesService: InscripcionService,
     private personaService: PersonaService,
     private programaAcademicoService: ProgramaAcademicoService,
+    private campusMidService: CampusMidService,
+    private coreService: CoreService,
     private excelService: ExcelService,
     private toasterService: ToasterService) {
     this.loadData();
@@ -35,6 +49,7 @@ export class ListAdmitidosComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.cargarCampos();
     });
+    this.loadInfoSelectFiltro();
   }
 
   cargarCampos() {
@@ -52,6 +67,11 @@ export class ListAdmitidosComponent implements OnInit {
       delete: {
         deleteButtonContent: '<i class="nb-trash"></i>',
         confirmDelete: true,
+      },
+      actions: {
+        add: false,
+        edit: false,
+        delete: false,
       },
       mode: 'external',
       columns: {
@@ -105,7 +125,8 @@ export class ListAdmitidosComponent implements OnInit {
     this.translate.use(language);
   }
 
-  loadData(): void {
+  loadData(query?: string): void {
+    if (query) {
      this.admisionesService.get('inscripcion/?query=EstadoInscripcionId:3' ).subscribe(res => {
        if (res !== null) {
          // const data = <Array<any>>res;
@@ -148,6 +169,7 @@ export class ListAdmitidosComponent implements OnInit {
          });
        }
     });
+   }
   }
 
   ngOnInit() {
@@ -210,6 +232,99 @@ export class ListAdmitidosComponent implements OnInit {
     // console.log("afssaf");
   }
 
+  loadInfoSelectFiltro() {
+    // TODO: Cambiar por OIKOS
+    this.programaAcademicoService.get('programa_academico/?limit=10')
+      .subscribe(res => {
+        const r = <any>res;
+        if (res !== null && r.Type !== 'error') {
+          this.posgrados = <any>res;
+          this.loadData();
+        }
+      },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            footer: this.translate.instant('GLOBAL.cargar') + '-' +
+              this.translate.instant('GLOBAL.programa_academico'),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
+        });
+      this.coreService.get('periodo/?limit=0')
+      .subscribe(res => {
+        const r = <any>res;
+        if (res !== null && r.Type !== 'error') {
+          this.periodo = <any>res;
+          this.loadData();
+        }
+      },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            footer: this.translate.instant('GLOBAL.cargar') + '-' +
+              this.translate.instant('GLOBAL.periodo'),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
+        });
+        this.admisionesService.get('estado_inscripcion/?limit=0')
+          .subscribe(res => {
+            const r = <any>res;
+            if (res !== null && r.Type !== 'error') {
+              this.estados = <any>res;
+              this.loadData();
+            }
+          },
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                  this.translate.instant('GLOBAL.programa_academico'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+            });
+  }
+
+  Filtrar() {
+    if (this.selectedValuePeriodo && this.selectedValuePrograma) {
+      // if (this.selectedValuePrograma) {
+        if (this.selectedValuePrograma && !this.selectedValuePeriodo) {
+          this.loadData(`inscripcion/?query=ProgramaAcademico:${this.selectedValuePrograma.Id}`);
+        } else if ( !this.selectedValuePrograma && this.selectedValuePeriodo ) {
+          this.loadData(`inscripcion/?query=Periodo:${this.selectedValuePeriodo.Id}`);
+        } else if ( (this.selectedValuePrograma !== undefined && this.selectedValuePrograma !== 0 )
+        && (this.selectedValuePeriodo !== undefined && this.selectedValuePeriodo !== 0 ) ) {
+          this.loadData(`inscripcion/?query=ProgramaAcademico:${this.selectedValuePeriodo.Id},Periodo:${this.selectedValuePeriodo.Id}`);
+        } else {
+          this.loadData();
+        }
+      } else {
+      // TODO: Mensaje solicitando periodo;
+        console.info ('Solicitar Programa y periodo');
+      }
+    // } else {
+    //   // TODO: Mensaje solicitando periodo;
+    //     console.info ('Solicitar Periodo');
+    // }
+  }
+
+  ClearFiltro() {
+    this.loadData();
+    this.selectedValuePrograma = '--Seleccionar--'
+    this.selectedValuePrograma = 0;
+    this.selectedValuePeriodo = '--Seleccionar--'
+    this.selectedValuePeriodo = 0;
+    // TODO: Borrar
+    this.calcularNotas();
+    this.exportAsXLSX();
+    // TODO: \Borrar
+  }
+
   private showToast(type: string, title: string, body: string) {
     this.config = new ToasterConfig({
       // 'toast-top-full-width', 'toast-bottom-full-width', 'toast-top-left', 'toast-top-center'
@@ -232,7 +347,18 @@ export class ListAdmitidosComponent implements OnInit {
   }
 
   private exportAsXLSX(): void {
-   this.excelService.exportAsExcelFile(this.dataExcel, 'sample');
+   this.excelService.exportAsExcelFile(this.dataExcel, 'sample')
+  }
+
+  private calcularNotas(): void {
+    this.admisionesService.get('inscripcion/' ).subscribe(res => {
+      const inscripciones = <Array<any>>res;
+      inscripciones.forEach(element => {
+          this.campusMidService.get('evaluacion_inscripcion/' + element.id).subscribe(resNota => {
+            resNota;
+          });
+      })
+    });
   }
 
 }

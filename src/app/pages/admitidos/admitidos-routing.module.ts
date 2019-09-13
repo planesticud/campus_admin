@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdmitidosComponent } from './admitidos.component';
 import { ListAdmitidosComponent } from './list-admitidos/list-admitidos.component';
-import { CrudAdmitidosComponent } from './crud-admitidos/crud-admitidos.component';
+// import { CrudAdmitidosComponent } from './crud-admitidos/crud-admitidos.component';
 
 
 
@@ -12,9 +12,9 @@ const routes: Routes = [{
   children: [{
     path: 'list-admitidos',
     component: ListAdmitidosComponent,
-  }, {
-    path: 'crud-admitidos',
-    component: CrudAdmitidosComponent,
+  // }, {
+  //   path: 'crud-admitidos',
+  //   component: CrudAdmitidosComponent,
   }],
 }];
 
@@ -32,5 +32,5 @@ export class AdmitidosRoutingModule { }
 export const routedComponents = [
   AdmitidosComponent,
   ListAdmitidosComponent,
-  CrudAdmitidosComponent,
+  // CrudAdmitidosComponent,
 ];

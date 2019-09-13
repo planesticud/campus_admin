@@ -132,6 +132,10 @@ const routes: Routes = [{
       loadChildren: './evaluacion_inscripcion/evaluacion_inscripcion.module#EvaluacionInscripcionModule',
     },
     {
+      path: 'admitidos',
+      loadChildren: './admitidos/admitidos.module#AdmitidosModule',
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

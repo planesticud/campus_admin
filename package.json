@@ -66,6 +66,7 @@
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
+    "file-saver": "^2.0.2",
     "font-awesome": "4.7.0",
     "html2canvas": "^1.0.0-alpha.12",
     "intl": "1.2.5",
@@ -89,6 +90,7 @@
     "ts-md5": "^1.2.4",
     "typeface-exo": "0.0.22",
     "web-animations-js": "2.2.5",
+    "xlsx": "^0.15.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

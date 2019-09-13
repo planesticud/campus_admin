@@ -1,14 +1,17 @@
 import { AdmitidosRoutingModule, routedComponents } from './admitidos-routing.module';
 import { NgModule } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
-import { AdmisionesService } from '../../@core/data/admisiones.service';
+// import { AdmisionesService } from '../../@core/data/admisiones.service';
+import { InscripcionService } from '../../@core/data/inscripcion.service';
+import { CoreService } from '../../@core/data/core.service';
+import { CampusMidService } from '../../@core/data/campus_mid.service';
 import { PersonaService } from '../../@core/data/persona.service';
 import { ExcelService } from '../../@core/data/excel.service';
 import { ProgramaAcademicoService } from '../../@core/data/programa_academico.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
-import { CrudAdmitidosComponent } from './crud-admitidos/crud-admitidos.component';
+// import { CrudAdmitidosComponent } from './crud-admitidos/crud-admitidos.component';
 
 @NgModule({
   imports: [
@@ -22,13 +25,15 @@ import { CrudAdmitidosComponent } from './crud-admitidos/crud-admitidos.componen
     ...routedComponents,
   ],
   providers: [
-    AdmisionesService,
+    InscripcionService,
     ProgramaAcademicoService,
     PersonaService,
     ExcelService,
+    CampusMidService,
+    CoreService,
   ],
   exports: [
-    CrudAdmitidosComponent,
+    // CrudAdmitidosComponent,
   ],
 })
 export class AdmitidosModule { }

@@ -5,7 +5,7 @@ import { ExcelService } from './excel.service';
 describe('ExcelService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ExcelService]
+      providers: [ExcelService],
     });
   });
 
