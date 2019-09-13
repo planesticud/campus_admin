@@ -1,0 +1,13 @@
+<!-- <mat-form-field style="width: 100%;">
+    <mat-label>{{ 'GLOBAL.aviso_programa' | translate }}:</mat-label>
+    <mat-select [(ngModel)]="selectedValue" (ngModelChange)="pruebita()">
+        <mat-option>--Seleccionar--</mat-option>
+        <mat-option *ngFor="let item of posgrados" [value]="item">
+            {{item.Nombre}}
+        </mat-option>
+    </mat-select>
+</mat-form-field> -->
+
+<toaster-container [toasterconfig]="config"></toaster-container>
+<ngx-dinamicform [normalform]="formEntrevistador" [modeloData]="info_entrevistador" (result)="validarForm($event)" [clean]="clean">
+</ngx-dinamicform>

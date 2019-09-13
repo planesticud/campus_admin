@@ -1,0 +1,91 @@
+<!-- <div class="dinamic-form" *ngIf="!editando"> -->
+<div class="dinamic-form" align="center">
+  <div class="col-6">
+    <form class="form-horizontal">
+        <fieldset [ngClass]="{'fieldseter':true}">
+            <legend align="left">
+                <small>{{'GLOBAL.asignar_entrevista' | translate}}</small>
+            </legend>
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field style="width: 100%;" floatLabel="always">
+                            <mat-label>*{{'GLOBAL.tipo_entrevista' | translate}}:</mat-label>
+                            <mat-select [placeholder]="tipoEntrevista?tipoEntrevista.Nombre:translate.instant('GLOBAL.placeholder_tipo_entrevista')" [(ngModel)]="tipoEntrevista" [ngModelOptions]="{standalone: true}">
+                                <mat-option>--Seleccionar--</mat-option>
+                                <mat-option *ngFor="let item of tiposEntrevista" [value]="item">
+                                    {{item.Nombre?item.Nombre:item | json}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint class="text-danger" *ngIf="!tipoEntrevista">{{'GLOBAL.alerta_tipo_entrevista' | translate}}</mat-hint>
+                    </mat-form-field>
+                </div>
+                <!-- <div class="col-12" *ngIf="estadoEntrevista"> -->
+                <div class="col-6">
+                    <mat-form-field style="width: 100%;" floatLabel="always">
+                            <mat-label>*{{'GLOBAL.estado_entrevista' | translate}}:</mat-label>
+                            <mat-select [placeholder]="estadoEntrevista?estadoEntrevista.Nombre:translate.instant('GLOBAL.placeholder_estado_entrevista')" [(ngModel)]="estadoEntrevista" [ngModelOptions]="{standalone: true}">
+                                <mat-option>--Seleccionar--</mat-option>
+                                <mat-option *ngFor="let item of estadosEntrevista" [value]="item">
+                                    {{item.Nombre?item.Nombre:item | json}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint class="text-danger" *ngIf="!estadoEntrevista">{{'GLOBAL.alerta_estado_entrevista' | translate}}</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field  style="width: 100%;" floatLabel="always">
+                        <mat-label>* {{'GLOBAL.fecha_entrevista' | translate}}:</mat-label>
+                        <input matInput [(ngModel)]="fecha_entrevista" [matDatepicker]="picker" [ngModelOptions]="{standalone: true}" [placeholder]="translate.instant('GLOBAL.placeholder_fecha_entrevista')" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+    </div>
+</div>
+<div class="dinamic-form" align="center">
+<mat-card class="col-6">
+<mat-card-title>{{'GLOBAL.entrevistador' | translate}}</mat-card-title>
+<mat-card-actions>
+<form class="form-horizontal" align="center">
+    <fieldset [ngClass]="{'fieldseter':true}">
+        <legend align="left">
+            <small>{{'GLOBAL.entrevistador' | translate}}</small>
+        </legend>
+        <div class="row">
+            <div class="col-10">
+                <mat-form-field style="width: 100%;" floatLabel="always">
+                    <mat-label>*{{'GLOBAL.agregar_entrevistador' | translate}}:</mat-label>
+                    <mat-select [placeholder]="translate.instant('GLOBAL.placeholder_agregar_entrevistador')" [(ngModel)]="entrevistador" [ngModelOptions]="{standalone: true}" [(value)]="entrevistadorSeleccionado">
+                        <mat-option>--Seleccionar--</mat-option>
+                        <mat-option *ngFor="let entrevistado of entrevistadores" [value]="entrevistado">
+                          {{entrevistado.Nombre}}
+                            <!-- {{entrevistado.PrimerNombre}} {{persona.SegundoNombre}} {{persona.PrimerApellido}} {{persona.SegundoApellido}} -->
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint class="text-danger" *ngIf="!entrevistadorSeleccionado">{{'GLOBAL.alerta_agregar_entrevistador' | translate}}</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="col-2" align="center">
+                <button class="btn btn-success btn-sm" (click)="agregarEntrevistador(true,3)">{{'GLOBAL.agregar' | translate}}</button>
+            </div>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                    <ng2-smart-table [settings]="settings_entrevistadores" [(source)]="source" (delete)="onDeleteEntrevistador($event)" (create)="onCreateEntrevistador($event)">
+                        </ng2-smart-table>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</mat-card-actions>
+</mat-card>
+</div>
+
+<div align="right" class="form-group">
+    <button class="btn btn-success btn-sm" (click)="validarForm()">{{'GLOBAL.guardar' | translate}}</button>
+</div>

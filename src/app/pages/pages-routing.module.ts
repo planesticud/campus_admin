@@ -132,6 +132,34 @@ const routes: Routes = [{
       loadChildren: './evaluacion_inscripcion/evaluacion_inscripcion.module#EvaluacionInscripcionModule',
     },
     {
+      path: 'tipo_entrevista',
+      loadChildren: './tipo_entrevista/tipo_entrevista.module#TipoEntrevistaModule',
+    },
+    {
+      path: 'estado_entrevista',
+      loadChildren: './estado_entrevista/estado_entrevista.module#EstadoEntrevistaModule',
+    },
+    {
+      path: 'entrevistador',
+      loadChildren: './entrevistador/entrevistador.module#EntrevistadorModule',
+    },
+    // {
+    //   path: 'entrevista',
+    //   loadChildren: './entrevista/entrevista.module#EntrevistaModule',
+    // },
+    {
+      path: 'asignar_entrevista',
+      loadChildren: './asignar_entrevista/asignar_entrevista.module#AsignarEntrevistaModule',
+    },
+    // {
+    //   path: 'entrevistador_entrevista',
+    //   loadChildren: './entrevistador_entrevista/entrevistador_entrevista.module#EntrevistadorEntrevistaModule',
+    // },
+    // {
+    //   path: 'asignar_entrevistador',
+    //   loadChildren: './entrevista/entrevista.module#EntrevistaModule',
+    // },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

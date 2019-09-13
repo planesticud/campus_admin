@@ -143,7 +143,7 @@
       "soporte_descuento": "Discount support",
       "requisito_programa_academico": "Enrollment requirements by program",
       "requisito_academico": "Enrollment requirements",
-      "evaluacion_inscripcion": "Enrollment assessments"      
+      "evaluacion_inscripcion": "Enrollment assessments"
     },
     "admision": {
       "admision": "Admissions"
@@ -498,12 +498,22 @@
     "evaluacion_inscripcion": "Enrollment assessment",
     "placeholder_evaluacion_inscripcion": "E.g.: Enrollment assessment",
     "entrevista": "Interview",
+    "asignar_entrevista": "Programar Entrevista",
     "placeholder_entrevista": "E.g.: Interview",
+    "tipo_entrevista": "Tipo de entrevista",
+    "estado_entrevista": "Estado de la entrevista",
+    "fecha_entrevista": "Fecha de la entrevista",
+    "entrevistador": "Entrevistador",
+    "nombre_entrevistador": "Nombre del entrevistador",
+    "aspirante": "Nombre del aspirante",
+    "entrevistas_asignadas": "Entrevistas asignadas",
+    "error_entrevistador_ya_existe": "Ya se agregó este entrevistador",
+    "agregar": "Agregar",
     "inscripcion": "Enrollment",
     "placeholder_inscripcion": "E.g.: Enrollment",
     "nota": "Assigned rating",
     "placeholder_nota": "E.g.: 100",
     "porcentaje": "Percentage",
-    "placeholder_porcentaje": "E.g.: 10%"    
+    "placeholder_porcentaje": "E.g.: 10%"
   }
 }

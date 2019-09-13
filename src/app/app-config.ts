@@ -13,6 +13,7 @@ export const Config = {
     DOCUMENTO_PROGRAMA_SERVICE: 'http://localhost:9014/v1/',
     DOCUMENTO_SERVICE: 'http://localhost:8094/v1/',
     ENTE_SERVICE: 'http://localhost:8096/v1/',
+    ENTREVISTA_SERVICE: 'http://localhost:9018/v1/',
     EVALUACION_INSCRIPCION_SERVICE: 'http://localhost:9016/v1/',
     EXPERIENCIA_SERVICE: 'http://localhost:8099/v1/',
     FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
