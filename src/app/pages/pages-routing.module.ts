@@ -98,11 +98,15 @@ const routes: Routes = [{
     {
       path: 'requisito',
       loadChildren: './requisito/requisito.module#RequisitoModule',
-    },
-    {
-      path: 'requisito_tipo_descuento',
-      loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
-    },
+      },
+      {
+      path: 'requisito_programa_academico',
+      loadChildren: './requisito_programa_academico/requisito_programa_academico.module#RequisitoProgramaAcademicoModule',
+      },
+      {
+      path: 'evaluacion_inscripcion',
+      loadChildren: './evaluacion_inscripcion/evaluacion_inscripcion.module#EvaluacionInscripcionModule',
+      },
     {
       path: 'descuentos_dependencia',
       loadChildren: './descuentos_dependencia/descuentos_dependencia.module#DescuentosDependenciaModule',
