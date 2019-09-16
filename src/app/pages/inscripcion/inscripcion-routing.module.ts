@@ -4,6 +4,8 @@ import { InscripcionComponent } from './inscripcion.component';
 import { ListInscripcionComponent } from './list-inscripcion/list-inscripcion.component';
 import { CrudInscripcionComponent } from './crud-inscripcion/crud-inscripcion.component';
 
+
+
 const routes: Routes = [{
   path: '',
   component: InscripcionComponent,

@@ -12,7 +12,8 @@ export const Config = {
     DOCUMENTO_PROGRAMA_SERVICE: 'http://localhost:9014/v1/',
     DOCUMENTO_SERVICE: 'http://localhost:8094/v1/',
     ENTE_SERVICE: 'http://localhost:8096/v1/',
-    //EVALUACION_INSCRIPCION_SERVICE: 'http://localhost:9016/v1/',
+    // EVALUACION_INSCRIPCION_SERVICE: 'http://localhost:9016/v1/',
+    EVALUACION_SERVICE: 'http://localhost:9016/v1/',
     EXPERIENCIA_SERVICE: 'http://localhost:8099/v1/',
     FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
     IDIOMA_SERVICE: 'http://localhost:8103/v1/',
@@ -27,6 +28,7 @@ export const Config = {
     UBICACION_SERVICE: 'http://localhost:8085/v1/',
     VALIDACION_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/homologacion/v1/',
     WSO2_SERVICE: 'http://jbpm.udistritaloas.edu.co:8280/services',
+    SELECADMITIDOS_SERVICE: 'http://localhost:8887/v1/',
     TOKEN: {
       AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co/oauth2/authorize',
       CLIENTE_ID: 'oOAf8PLTAzapsKaWAxPyLEHJfPIa',

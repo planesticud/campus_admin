@@ -128,6 +128,10 @@ const routes: Routes = [{
       loadChildren: './requisito_programa_academico/requisito_programa_academico.module#RequisitoProgramaAcademicoModule',
       },
     {
+      path: 'inscripcion',
+      loadChildren: './inscripcion/inscripcion.module#InscripcionModule',
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

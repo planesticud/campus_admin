@@ -170,6 +170,24 @@ export const MENU_ITEMS: MenuItem[] = [
     ],
   },
   {
+  title: 'Inscripcion',
+    icon: 'nb-compose',
+    link: '/pages/inscripcion',
+    key: 'inscripcion',
+    children: [
+      {
+        title: 'Lista Inscripcion',
+        link: '/pages/inscripcion/list-inscripcion',
+        key: 'lista_inscripcion',
+      },
+      {
+        title: 'CRUD Inscripcion',
+        link: '/pages/inscripcion/crud-inscripcion',
+        key: 'crud_inscripcion',
+      },
+    ],
+  },
+  {
     title: 'Lugar',
     icon: 'nb-compose',
     link: '/pages/lugar',

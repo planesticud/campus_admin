@@ -1,19 +1,20 @@
-import { EstadoInscripcion } from './estado_inscripcion';
-import { TipoInscripcion } from './tipo_inscripcion';
-import { Enfasis } from './enfasis';
-import { Periodo } from './periodo';
+import { Periodo } from '../models/periodo';
+import { TipoInscripcion } from '../models/tipo_inscripcion';
+import { EstadoInscripcion } from '../models/estado_inscripcion';
+import { Persona } from '../models/persona';
 
 export class Inscripcion {
   Id: number;
-  PersonaId: number;
+  PersonaId: Persona;
   ProgramaAcademicoId: number;
   ReciboMatriculaId: number;
   ReciboInscripcionId: number;
   PeriodoId: Periodo;
-  EnfasisId: Enfasis;
+  EnfasisId: number;
   AceptaTerminos: boolean;
-  FechaAceptaTerminos: Date;
-  TipoInscripcionId: TipoInscripcion;
-  EstadoInscripcionId: EstadoInscripcion;
+  FechaAceptaTerminos: string;
   Activo: boolean;
+  EstadoInscripcionId: EstadoInscripcion;
+  TipoInscripcionId: TipoInscripcion;
+  PuntajeTotal: number;
 }

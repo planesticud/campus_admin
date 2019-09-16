@@ -1,18 +1,16 @@
-import { EstadoInscripcion } from './../../../@core/data/models/estado_inscripcion';
-import { TipoInscripcion } from './../../../@core/data/models/tipo_inscripcion';
-import { Enfasis } from './../../../@core/data/models/enfasis';
+
 import { Periodo } from './../../../@core/data/models/periodo';
 import { Inscripcion } from './../../../@core/data/models/inscripcion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { InscripcionService } from '../../../@core/data/inscripcion.service';
+import { SelecadmitidosService } from '../../../@core/data/selecadmitidos.service';
 import { CoreService } from '../../../@core/data/core.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
 import { FORM_INSCRIPCION } from './form-inscripcion';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
+import { EstadoInscripcion } from '../../../@core/data/models/estado_inscripcion';
+import { TipoInscripcion } from '../../../@core/data/models/tipo_inscripcion';
 
 @Component({
   selector: 'ngx-crud-inscripcion',
@@ -37,19 +35,17 @@ export class CrudInscripcionComponent implements OnInit {
   clean: boolean;
 
   constructor(private translate: TranslateService,
-    private inscripcionesService: InscripcionService,
+    private selecadmitidosService: SelecadmitidosService,
     private coreService: CoreService,
-    private programaAcademico: ProgramaAcademicoService,
     private toasterService: ToasterService) {
     this.formInscripcion = FORM_INSCRIPCION;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-    this.loadOptionsEstadoInscripcion();
-    this.loadOptionsTipoInscripcion();
-    this.loadOptionsEnfasis();
-    this.loadOptionsPeriodo();
+    this.loadPeriodo();
+    this.loadEstadoInscripcion();
+    this.loadTipoInscripcion();
    }
 
   construirForm() {
@@ -65,89 +61,6 @@ export class CrudInscripcionComponent implements OnInit {
     this.translate.use(language);
   }
 
-  loadOptionsPeriodo(): void {
-    let periodo: Array<any> = [];
-      this.coreService.get('periodo/?limit=0')
-        .subscribe(res => {
-          if (res !== null) {
-            periodo = <Array<Periodo>>res;
-          }
-          this.formInscripcion.campos[ this.getIndexForm('PeriodoId') ].opciones = periodo;
-        },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                this.translate.instant('GLOBAL.periodo_academico'),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-            });
-          });
-  }
-
-  loadOptionsEstadoInscripcion(): void {
-    let estadoInscripcion: Array<any> = [];
-      this.inscripcionesService.get('estado_inscripcion/?limit=0')
-        .subscribe(res => {
-          if (res !== null) {
-            estadoInscripcion = <Array<EstadoInscripcion>>res;
-          }
-          this.formInscripcion.campos[ this.getIndexForm('EstadoInscripcionId') ].opciones = estadoInscripcion;
-        },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                this.translate.instant('GLOBAL.estado_inscripcion'),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-            });
-          });
-  }
-
-  loadOptionsTipoInscripcion(): void {
-    let tipoInscripcion: Array<any> = [];
-      this.inscripcionesService.get('tipo_inscripcion/?limit=0')
-        .subscribe(res => {
-          if (res !== null) {
-            tipoInscripcion = <Array<TipoInscripcion>>res;
-          }
-          this.formInscripcion.campos[ this.getIndexForm('TipoInscripcionId') ].opciones = tipoInscripcion;
-        },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                this.translate.instant('GLOBAL.tipo_inscripcion'),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-            });
-          });
-  }
-
-  loadOptionsEnfasis(): void {
-    let enfasis: Array<any> = [];
-      this.programaAcademico.get('enfasis/?limit=0')
-        .subscribe(res => {
-          if (res !== null) {
-            enfasis = <Array<Enfasis>>res;
-          }
-          this.formInscripcion.campos[ this.getIndexForm('EnfasisId') ].opciones = enfasis;
-        },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                this.translate.instant('GLOBAL.enfasis'),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-            });
-          });
-  }
 
   getIndexForm(nombre: String): number {
     for (let index = 0; index < this.formInscripcion.campos.length; index++) {
@@ -159,24 +72,66 @@ export class CrudInscripcionComponent implements OnInit {
     return 0;
   }
 
+  public loadPeriodo(): void {
+    this.coreService.get('periodo/?limit=0')
+      .subscribe(res => {
+        const periodo = <Array<Periodo>>res;
+        if (res !== null) {
+          this.formInscripcion.campos[this.getIndexForm('PeriodoId')].opciones = periodo;
+        }
+      });
+  }
+
+  public loadEstadoInscripcion(): void {
+    this.selecadmitidosService.get('estado_inscripcion/?limit=0')
+      .subscribe(res => {
+        const estadoInscripcion = <Array<EstadoInscripcion>>res;
+        if (res !== null) {
+          this.formInscripcion.campos[this.getIndexForm('EstadoInscripcionId')].opciones = estadoInscripcion;
+        }
+      });
+  }
+
+  public loadTipoInscripcion(): void {
+    this.selecadmitidosService.get('tipo_inscripcion/?limit=0')
+      .subscribe(res6 => {
+        const tipoInscripcion = <Array<TipoInscripcion>>res6;
+        if (res6 !== null) {
+          this.formInscripcion.campos[this.getIndexForm('TipoInscripcionId')].opciones = tipoInscripcion;
+        }
+      });
+  }
+
   public loadInscripcion(): void {
     if (this.inscripcion_id !== undefined && this.inscripcion_id !== 0) {
-      this.inscripcionesService.get('inscripcion/?query=id:' + this.inscripcion_id)
+      this.selecadmitidosService.get('inscripcion/?query=id:' + this.inscripcion_id)
         .subscribe(res => {
           if (res !== null) {
-            this.info_inscripcion = <Inscripcion>res[0];
-          }
-        },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                this.translate.instant('GLOBAL.inscripcion'),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-            });
+           const info = <Inscripcion>res[0];
+            this.coreService.get('periodo/' + info.PeriodoId)
+              .subscribe(res2 => {
+                const periodo = <Periodo>res2;
+                if (res2 !== null) {
+                  info.PeriodoId = periodo;
+                  this.selecadmitidosService.get('estado_inscripcion/' + info.EstadoInscripcionId)
+                  .subscribe(res3 => {
+                    const estadoInscripcion = <EstadoInscripcion>res3;
+                    if (res3 !== null) {
+                      info.EstadoInscripcionId = estadoInscripcion;
+                      this.selecadmitidosService.get('tipo_inscripcion/' + info.TipoInscripcionId.Id)
+                  .subscribe(res4 => {
+                    const tipoInscripcion = <TipoInscripcion>res4;
+                    if (res4 !== null) {
+                      info.TipoInscripcionId = tipoInscripcion;
+                    this.info_inscripcion = info;
+                }
+              });
+            }
+              });
+            }
           });
+          }
+        });
     } else  {
       this.info_inscripcion = undefined;
       this.clean = !this.clean;
@@ -184,79 +139,48 @@ export class CrudInscripcionComponent implements OnInit {
   }
 
   updateInscripcion(inscripcion: any): void {
+
     const opt: any = {
-      title: this.translate.instant('GLOBAL.actualizar'),
-      text: this.translate.instant('GLOBAL.actualizar') + '?',
+      title: 'Update?',
+      text: 'Update Inscripcion!',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
-      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_inscripcion = <Inscripcion>inscripcion;
-        this.inscripcionesService.put('inscripcion', this.info_inscripcion)
+        this.selecadmitidosService.put('inscripcion', this.info_inscripcion)
           .subscribe(res => {
             this.loadInscripcion();
             this.eventChange.emit(true);
-            this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
-              this.translate.instant('GLOBAL.inscripcion') + ' ' +
-              this.translate.instant('GLOBAL.confirmarActualizar'));
-            this.info_inscripcion = undefined;
-            this.clean = !this.clean;
-          },
-            (error: HttpErrorResponse) => {
-              Swal({
-                type: 'error',
-                title: error.status + '',
-                text: this.translate.instant('ERROR.' + error.status),
-                footer: this.translate.instant('GLOBAL.actualizar') + '-' +
-                  this.translate.instant('GLOBAL.inscripcion'),
-                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-              });
-            });
+            this.showToast('info', 'updated', 'Inscripcion updated');
+          });
       }
     });
   }
 
   createInscripcion(inscripcion: any): void {
     const opt: any = {
-      title: this.translate.instant('GLOBAL.crear'),
-      text: this.translate.instant('GLOBAL.crear') + '?',
+      title: 'Create?',
+      text: 'Create Inscripcion!',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
       showCancelButton: true,
-      confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-      cancelButtonText: this.translate.instant('GLOBAL.cancelar'),
     };
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_inscripcion = <Inscripcion>inscripcion;
-        this.inscripcionesService.post('inscripcion', this.info_inscripcion)
+        this.selecadmitidosService.post('inscripcion', this.info_inscripcion)
           .subscribe(res => {
             this.info_inscripcion = <Inscripcion>res;
             this.eventChange.emit(true);
-            this.showToast('info', this.translate.instant('GLOBAL.crear'),
-              this.translate.instant('GLOBAL.inscripcion') + ' ' +
-              this.translate.instant('GLOBAL.confirmarCrear'));
-            this.info_inscripcion = undefined;
-            this.clean = !this.clean;
-          },
-            (error: HttpErrorResponse) => {
-              Swal({
-                type: 'error',
-                title: error.status + '',
-                text: this.translate.instant('ERROR.' + error.status),
-                footer: this.translate.instant('GLOBAL.crear') + '-' +
-                  this.translate.instant('GLOBAL.inscripcion'),
-                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-              });
-            });
+            this.showToast('info', 'created', 'Inscripcion created');
+          });
       }
     });
   }
@@ -295,4 +219,5 @@ export class CrudInscripcionComponent implements OnInit {
     };
     this.toasterService.popAsync(toast);
   }
+
 }
