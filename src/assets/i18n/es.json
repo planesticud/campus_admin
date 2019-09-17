@@ -491,6 +491,8 @@
     "placeholder_soporte_descuento": "Ej: Soporte de descuento",
     "documento_id": "Documento",
     "placeholder_documento_id": "Ej: Documento",
+    "tipo_documento": "Tipo documento",
+    "puntaje_total": "Puntaje",
     "requisito_programa_academico": "Requisito de inscripción programa",
     "placeholder_requisito_programa_academico": "Ej: Requisito de inscripción programa",
     "requisito_academico": "Requisito de inscripción",

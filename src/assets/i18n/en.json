@@ -143,7 +143,7 @@
       "soporte_descuento": "Discount support",
       "requisito_programa_academico": "Enrollment requirements by program",
       "requisito_academico": "Enrollment requirements",
-      "evaluacion_inscripcion": "Enrollment assessments"      
+      "evaluacion_inscripcion": "Enrollment assessments"
     },
     "admision": {
       "admision": "Admissions"
@@ -491,6 +491,8 @@
     "placeholder_soporte_descuento": "E.g.: Discount support",
     "documento_id": "Document",
     "placeholder_documento_id": "E.g.: Document",
+    "tipo_documento": "Tipo documento",
+    "puntaje_total": "Puntaje",
     "requisito_programa_academico": "Enrollment requirement by program",
     "placeholder_requisito_programa_academico": "E.g.: Enrollment requirement by program",
     "requisito_academico": "Enrollment requirement",
@@ -504,6 +506,6 @@
     "nota": "Assigned rating",
     "placeholder_nota": "E.g.: 100",
     "porcentaje": "Percentage",
-    "placeholder_porcentaje": "E.g.: 10%"    
+    "placeholder_porcentaje": "E.g.: 10%"
   }
 }

@@ -59,7 +59,7 @@
             </div>
 
             <br />
-              <ng2-smart-table [settings]="settings" [source]="source" (delete)="onDelete($event)" (rowSelect)="itemselec($event)" (edit)="onEdit($event)" (create)="onCreate($event)">
+              <ng2-smart-table matSort [settings]="settings" [source]="source" (delete)="onDelete($event)" (rowSelect)="itemselec($event)" (edit)="onEdit($event)" (create)="onCreate($event)">
               </ng2-smart-table>
               <!--button (click)="activetab()" >cambiar</button-->
           </nb-tab>
