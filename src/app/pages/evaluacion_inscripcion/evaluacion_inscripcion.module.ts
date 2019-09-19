@@ -6,6 +6,10 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
 import { CrudEvaluacionInscripcionComponent } from './crud-evaluacion_inscripcion/crud-evaluacion_inscripcion.component';
+import { InscripcionService } from '../../@core/data/inscripcion.service';
+import { EnteService } from '../../@core/data/ente.service';
+import { CampusMidService } from '../../@core/data/campus_mid.service';
+import { PersonaService } from '../../@core/data/persona.service';
 
 @NgModule({
   imports: [
@@ -20,6 +24,10 @@ import { CrudEvaluacionInscripcionComponent } from './crud-evaluacion_inscripcio
   ],
   providers: [
     RequisitoService,
+    InscripcionService,
+    CampusMidService,
+    EnteService,
+    PersonaService,
   ],
   exports: [
     CrudEvaluacionInscripcionComponent,

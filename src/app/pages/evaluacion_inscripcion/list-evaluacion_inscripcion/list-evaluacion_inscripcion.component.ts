@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- import { LocalDataSource } from 'ng2-smart-table';
+import { LocalDataSource } from 'ng2-smart-table';
 import { RequisitoService } from '../../../@core/data/requisito.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -9,8 +9,7 @@ import * as XLSX from 'ts-xlsx';
 import { RequisitoProgramaAcademico } from './../../../@core/data/models/requisito_programa_academico';
 import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { CampusMidService } from '../../../@core/data/campus_mid.service';
-// import { EnteService } from '../../../@core/data/ente.service';
-// import { PersonaService } from '../../../@core/data/persona.service';
+import { EvaluacionInscripcion } from '../../../@core/data/models/evaluacion_inscripcion';
 
 @Component({
   selector: 'ngx-list-evaluacion-inscripcion',
@@ -28,7 +27,6 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
   file: File;
   excel = [];
   arrayBuffer: any;
-  selectedValueRequisitoProgramaAcademico: any;
   listRequisitoProgramaAcademico: any = [];
   busqueda: boolean; // se usa en la seccion de subir las notas, para saber si es entrevista o idioma
   resultados_notas = [];
@@ -40,8 +38,6 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
     private requisitoService: RequisitoService,
     private inscripcionService: InscripcionService,
     private campusMidService: CampusMidService,
-   // private enteService: EnteService,
-   // private personaService: PersonaService,
     private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
@@ -49,10 +45,9 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
     this.cargarCampos(); });
     this.loadRequisitoProgramaAcademico();
 }
-
-  public loadRequisitoProgramaAcademico(): void {
+public loadRequisitoProgramaAcademico(): void {
     this.requisitoService.get('requisito_programa_academico/?query=ProgramaAcademicoId:' +
-    this.progAcadId + '&PeriodoId:' + this.perId)
+    this.progAcadId + ',PeriodoId:' + this.perId)
       .subscribe(res => {
         const requisitoProgramaAcademico = <Array<RequisitoProgramaAcademico>>res;
         if (res !== null) {
@@ -123,7 +118,9 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
           title: this.translate.instant('GLOBAL.requisito_programa_academico_id'),
           // type: 'number;',
           valuePrepareFunction: (value) => {
-            return value.RequisitoId.Nombre;
+            const oro = value.Id +
+            ' - ' + value.RequisitoId.Nombre;
+            return oro;
           },
         },
         /* EntrevistaId: {
@@ -170,7 +167,7 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
               this.campusMidService.get('persona/ConsultaPersona/?id=' + element.PersonaId)
               .subscribe(res3 => {
                 if (res3 !== null) {
-                  element.nombreCompleto = `${res3['PrimerApellido']} ${res3['SegundoApellido']}
+                  element.nombreCompleto = element.PersonaId + ' ' + `${res3['PrimerApellido']} ${res3['SegundoApellido']}
                   ${res3['PrimerNombre']} ${res3['SegundoNombre']}`
                   element.nombreCompleto = element.nombreCompleto.toUpperCase();
                   element.identificacionP = res3['NumeroDocumento'];
@@ -187,12 +184,11 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
   loadData2(): void {
     this.requisitoService.get('evaluacion_inscripcion/?query=RequisitoProgramaAcademicoId.RequisitoId.Id:' +
     this.modelRequisitoProgramaAcademico +
-    '&RequisitoProgramaAcademicoId.ProgramaAcademicoId:' + this.progAcadId +
-    '&RequisitoProgramaAcademicoId.PeriodoId:' + this.perId)
+    ',RequisitoProgramaAcademicoId.ProgramaAcademicoId:' + this.progAcadId +
+    ',RequisitoProgramaAcademicoId.PeriodoId:' + this.perId)
     .subscribe(res => {
       if (res !== null) {
         this.data = <Array<any>>res;
-       // console.info("lala");
         let i = 0;
         this.data.forEach(ind => {
           if (ind.EntrevistaId !== null) {
@@ -242,31 +238,57 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
       const worksheet = workbook.Sheets[first_sheet_name];
       // console.info(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
       this.excel = XLSX.utils.sheet_to_json(worksheet, { raw: true })
-      // console.info(this.excel);
-     // console.info("Entro a upload");
+     // console.info(this.excel);
       this.AsignarNotasExcel();
     }
     fileReader.readAsArrayBuffer(this.file);
   }
 
   AsignarNotasExcel() {
+    let encontrado = false;
     for (let index = 0; index < this.excel.length; index++) {
       const carga = this.excel[index];
-     // console.info("Entro for 1");
-      this.data.forEach(element => {
-               if ((carga['Documento'].toString() === element.identificacionP) &&
+      this.data.forEach(element => { // Si esta se actualiza
+       if ((carga['Documento'].toString() === element.identificacionP) &&
           (element.RequisitoProgramaAcademicoId.RequisitoId.Id.toString() ===
           this.modelRequisitoProgramaAcademico.toString())) {
-                     element.NotaFinal = carga['Nota'];
+            element.NotaFinal = carga['Nota'];
              delete(element.identificacionP);
              delete(element.nombreCompleto);
-            // console.info(JSON.stringify(element));
+             encontrado = true;
              this.requisitoService.put('evaluacion_inscripcion', element)
              .subscribe(res4 => {
-                this.loadData2();
+              this.loadData2();
               });
             }
         });
+        if (encontrado === false) { // Si no esta se crea nuevo
+          this.campusMidService.get('inscripcion/identificacion/?Identificacion=' + carga['Documento'] +
+           '&ProgramaId=' + this.progAcadId + '&PeriodoId=' + this.perId )
+           .subscribe(res5 => {
+             if (res5 !== null && res5 !== undefined) {
+               const objinscrip = <any>res5;
+              this.requisitoService.get('requisito_programa_academico/?query=PeriodoId:' + this.perId +
+              ',ProgramaAcademicoId:' + this.progAcadId + ',RequisitoId.Id:' + this.modelRequisitoProgramaAcademico)
+              .subscribe(res9 => {
+                if (res9 !== null && res9 !== undefined) {
+                  let polo: EvaluacionInscripcion = new EvaluacionInscripcion();
+                  const objrpa = <any>res9[0];
+                  polo.InscripcionId = objinscrip.Id;
+                  polo.Activo = true;
+                  polo.NotaFinal = carga['Nota'];
+                  polo.RequisitoProgramaAcademicoId = objrpa;
+                  this.requisitoService.post('evaluacion_inscripcion', polo)
+                  .subscribe(res8 => {
+                    polo = <EvaluacionInscripcion>res8;
+                    // this.showToast('info', 'created', 'EvaluacionInscripcionrr created');
+                    this.loadData2();
+                  });
+                }
+              });
+                }
+              });
+             }
       }
   }
 
@@ -274,8 +296,7 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
   ngOnInit() {
   }
  onExito(reqId) {
-    // console.info('CambioComboBox: '+ reqId);
-    this.modelRequisitoProgramaAcademico = reqId;
+    // console.info(JSON.stringify(reqId));
     this.loadData2();
     // ... do other stuff here ...
   }
