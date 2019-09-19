@@ -49,11 +49,11 @@
                 </div>
                 <div class="row">
                   <div class="col">
-                    <button (click)="Filtrar()" class="btn btn-info btn-sm"><i class="nb-search"></i> {{ 'GLOBAL.filtrar' | translate }}</button>
+                    <button (click)="filtrar()" class="btn btn-info btn-sm"><i class="nb-search"></i> {{ 'GLOBAL.filtrar' | translate }}</button>
                   </div>
-                  <div class="col">
+                  <!-- <div class="col">
                     <button (click)="ClearFiltro()" class="btn btn-info btn-sm">{{ 'GLOBAL.Limpiar' | translate }}</button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -72,14 +72,14 @@
   </nb-card>
   <nb-card>
     <nb-card-body>
-      <button _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="calcularNotas()">
+      <!-- <button style="margin: 10px" _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="calcularNotas()">
         <i _ngcontent-c3="" class="fa fa-file-excel-o"></i>
         <span _ngcontent-c3="">Calcular Notas</span>
-      </button>
-        <button _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="exportAsXLSX()">
+      </button> -->
+      <button _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="exportAsXLSX()">
           <i _ngcontent-c3="" class="fa fa-file-excel-o"></i>
           <span _ngcontent-c3="">Descargar</span>
-        </button>
+      </button>
         <!-- <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button> -->
     </nb-card-body>
   </nb-card>

@@ -189,10 +189,11 @@ export class ListAdmitidosComponent implements OnInit {
                     regExcel.Estado = element.EstadoInscripcionId.Nombre
                     regExcel.Puntaje = element.PuntajeTotal
                     this.dataExcel.push(regExcel);
-                    // this.dataExcel.push(regExcel);
+                    // console.info ('DATA_EXCEL: ', JSON.stringify(this.dataExcel));
 
                     data_info.push(element);
-                    data_info.sort(function(a, b){return a - b});
+                    data_info.sort(function(a, b){return b.PuntajeTotal - a.PuntajeTotal});
+                    // data_info.sort((a, b) => (a.PuntajeTotal < b.PuntajeTotal) ? 1 : -1)
                     this.source.load(data_info);
                   }
              });
@@ -328,20 +329,30 @@ export class ListAdmitidosComponent implements OnInit {
             });
   }
 
-  Filtrar() {
+  private filtrar() {
     if (this.selectedValuePeriodo && this.selectedValuePrograma) {
-          // this.loadData(`inscripcion/?query=ProgramaAcademico:${this.selectedValuePrograma.Id}`);
-          if (this.selectedValueEstado !== undefined && this.selectedValueEstado !== 0 ) {
-              // tslint:disable-next-line:max-line-length
-              this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id},EstadoInscripcionId:${this.selectedValueEstado.Id}`);
-          } else {
-            this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id}`);
-          }
+      this.admisionesService.get('inscripcion/?query=ProgramaAcademicoId:' + this.selectedValuePrograma.Id ).subscribe(res => {
+        const inscripciones = <Array<any>>res;
+        inscripciones.forEach(element => {
+            this.campusMidService.get('evaluacion_inscripcion/' + element.Id).subscribe(resNota => {
+              if (resNota) {
+              // this.loadData(`inscripcion/?query=ProgramaAcademico:${this.selectedValuePrograma.Id}`);
+              if (this.selectedValueEstado !== undefined && this.selectedValueEstado !== 0 ) {
+                  // tslint:disable-next-line:max-line-length
+                  this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id},EstadoInscripcionId:${this.selectedValueEstado.Id}`);
+              } else {
+                this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id}`);
+              }
+            }
+            });
+        })
+      });
       } else {
       // TODO: Mensaje solicitando periodo;
         console.info ('Solicitar Programa y periodo');
       }
   }
+
 
   ClearFiltro() {
     this.loadData();
@@ -350,7 +361,7 @@ export class ListAdmitidosComponent implements OnInit {
     this.selectedValuePeriodo = '--Seleccionar--'
     this.selectedValuePeriodo = 0;
     // TODO: Borrar
-    this.calcularNotas();
+    this.filtrar();
     this.exportAsXLSX();
     // TODO: \Borrar
   }
@@ -381,15 +392,15 @@ export class ListAdmitidosComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.dataExcel, 'sample')
   }
 
-  private calcularNotas(): void {
-    this.admisionesService.get('inscripcion/' ).subscribe(res => {
-      const inscripciones = <Array<any>>res;
-      inscripciones.forEach(element => {
-          this.campusMidService.get('evaluacion_inscripcion/' + element.id).subscribe(resNota => {
-            resNota;
-          });
-      })
-    });
-  }
-
+  // private calcularNotas() {
+  //   this.admisionesService.get('inscripcion/?query=ProgramaAcademicoId:' + this.selectedValuePrograma.Id ).subscribe(res => {
+  //     const inscripciones = <Array<any>>res;
+  //     inscripciones.forEach(element => {
+  //         this.campusMidService.get('evaluacion_inscripcion/' + element.Id).subscribe(resNota => {
+  //           resNota;
+  //         });
+  //     })
+  //   });
+  //   return true;
+  // }
 }
