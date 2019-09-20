@@ -171,29 +171,6 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
       });
   }
 
-  agregarEntrevistador(mostrarError: boolean, idEntrevistador: number): void {
-    if (this.source_entrevistadores.find( entrevistador => entrevistador.IdEntrevistador === this.entrevistadorSeleccionado.Id) ) {
-      if (mostrarError) {
-        Swal({
-          type: 'error',
-          title: 'ERROR',
-          text: this.translate.instant('GLOBAL.error_entrevistador_ya_existe'),
-          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-        });
-      }
-    } else {
-      this.source_entrevistadores.push({
-        Nombre: this.entrevistadorSeleccionado.Nombre,
-        IdPersona: this.entrevistadorSeleccionado.PersonaId,
-        IdEntrevistador: this.entrevistadorSeleccionado.Id,
-        PersonaId: this.entrevistadorSeleccionado.PersonaId,
-        EntrevistadorId: this.entrevistadorSeleccionado.Id,
-      });
-      this.entrevistadorSeleccionado = undefined;
-      this.source.load(this.source_entrevistadores);
-    }
-  }
-
   getNombreEntrevistador(persona: Persona) {
     return persona.PrimerNombre + ' ' + persona.SegundoNombre + ' '
       + persona.PrimerApellido + ' ' + persona.SegundoApellido;
@@ -237,6 +214,29 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
           });
       }
     });
+  }
+
+  agregarEntrevistador(mostrarError: boolean, idEntrevistador: number): void {
+    if (this.source_entrevistadores.find( entrevistador => entrevistador.IdEntrevistador === this.entrevistadorSeleccionado.Id) ) {
+      if (mostrarError) {
+        Swal({
+          type: 'error',
+          title: 'ERROR',
+          text: this.translate.instant('GLOBAL.error_entrevistador_ya_existe'),
+          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+        });
+      }
+    } else {
+      this.source_entrevistadores.push({
+        Nombre: this.entrevistadorSeleccionado.Nombre,
+        IdPersona: this.entrevistadorSeleccionado.PersonaId,
+        IdEntrevistador: this.entrevistadorSeleccionado.Id,
+        PersonaId: this.entrevistadorSeleccionado.PersonaId,
+        EntrevistadorId: this.entrevistadorSeleccionado.Id,
+      });
+      this.entrevistadorSeleccionado = undefined;
+      this.source.load(this.source_entrevistadores);
+    }
   }
 
 onDeleteEntrevistador(event): void {

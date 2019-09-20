@@ -18,6 +18,7 @@ import 'style-loader!angular2-toaster/toaster.css';
   })
 export class ListAsignarEntrevistaComponent implements OnInit {
   uid: number;
+  crear = false;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
@@ -173,6 +174,7 @@ export class ListAsignarEntrevistaComponent implements OnInit {
 
   onCreate(event): void {
     this.uid = event.data.Id;
+    this.crear = true;
     this.activetab();
   }
 
@@ -187,7 +189,6 @@ export class ListAsignarEntrevistaComponent implements OnInit {
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
         this.inscripcionService.delete('entrevista/', event.data).subscribe(res => { // Cambiar por asignar entrevista, no se eliminan
           if (res !== null) {
@@ -201,11 +202,18 @@ export class ListAsignarEntrevistaComponent implements OnInit {
 
   activetab(): void {
     this.cambiotab = !this.cambiotab;
+    // this.uid = undefined;
+  }
+
+  regresar(): void {
+    this.crear = false;
+    this.activetab();
   }
 
   selectTab(event): void {
     if (event.tabTitle === this.translate.instant('GLOBAL.lista')) {
       this.cambiotab = false;
+      this.crear = false;
     } else {
       this.cambiotab = true;
     }
