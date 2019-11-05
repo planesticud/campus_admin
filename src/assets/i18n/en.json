@@ -59,11 +59,17 @@
     "calendario_academico": "Academic calendar",
     "evaluacion_ingreso": {
       "evaluacion_ingreso": "Evaluation",
-      "realizar_evaluacion": "Performing evaluation"
+      "realizar_evaluacion": "Performing evaluation",
+      "lista_evaluaciones": "Evaluation list",
+      "nueva_evaluacion": "New evaluation",
+      "lista_preguntas": "Questions list",
+      "calificacion_evaluacion": "Assessment rating",
+      "estaditicas": "Statistics"
     },
     "agenda": {
       "agenda": "Schedule",
-      "ver_agenda": "View schedule"
+      "ver_agenda": "View schedule",
+      "agregar_evento": "New event"
     },
     "pago_linea": {
       "pago_linea": "Online payment",
@@ -72,6 +78,12 @@
     },
     "condor_funcionario": "Academic management system",
     "correo_institucional": "Institutional e-mail",
+    "spagobi": "SPagoBi system",
+    "sigud": "Integrated management system - SIGUD",
+    "comite_curriculo": "Institutional curriculum committee",
+    "resolucion_vacaciones": "Vacation resolutions",
+    "gaia": "Compliment delivery system - GAIA",
+    "agora": "Supplier and contractor bank UD - AGORA",
     "biblioteca": {
       "biblioteca": "Library",
       "sistema_biblioteca": "Library system",
@@ -87,7 +99,8 @@
       "deportes": "Sports",
       "salud": "Health",
       "inscripcion_linea": "Online registration",
-      "bienestar_linea": "Online welfare"
+      "bienestar_linea": "Online welfare",
+      "estaditicas": "Statistics"
     },
     "licenciamiento": {
       "licenciamiento": "Licensing",
@@ -109,7 +122,11 @@
     "certificado": {
       "certificado": "Certificate",
       "solicitud_certificado": "Certificate request",
-      "estado_solicitud": "Request state"
+      "estado_solicitud": "Request state",
+      "lista_solicitudes": "Requests list",
+      "generar_certificado": "Generate certificate",
+      "gestion_firma": "Signature management",
+      "estaditicas": "Statistics"
     },
     "egresados": "Graduate's page",
     "parametricas": {
@@ -145,8 +162,26 @@
       "requisito_academico": "Enrollment requirements",
       "evaluacion_inscripcion": "Enrollment assessments"      
     },
-    "admision": {
-      "admision": "Admissions"
+    "admisiones": {
+      "admisiones": "Admissions",
+      "entrevistas": "Entrance Interview",
+      "carga_notas": "Grades uploading",
+      "estado_admisiones": "Admission status",
+      "asignacion_entrevista": "Interviews assignment",
+      "configuracion_fechas": "Enrollment dates setting",
+      "criterios_admision": "Admission criteria",
+      "seleccion_aspirantes": "Admitted selection",
+      "matricula_admitidos": "Admitted tuition",
+      "estaditicas": "Statistics"
+    },
+    "auditoria": {
+      "auditoria": "Audit",
+      "estaditicas": "Statistics"
+    },
+    "banner": {
+      "banner": "Banner",
+      "nuevo_banner": "New banner",
+      "gestion_banner": "Banners management"
     },
     "genero": {
       "genero": "Gender",

@@ -2472,14 +2472,15 @@ export class AuthInterceptor implements HttpInterceptor {
     const acces_token &#x3D; window.localStorage.getItem(&#x27;access_token&#x27;);
 
     if (acces_token &amp;&amp; req.url.indexOf(&#x27;http://localhost&#x27;) &#x3D;&#x3D;&#x3D; -1) {
-    // Clone the request and replace the original headers with
-    // cloned headers, updated with the authorization.
-    const authToken &#x3D; &#x27;Bearer &#x27; + acces_token;
-    const authReq &#x3D; req.clone({
-      headers: req.headers.set(&#x27;Authorization&#x27;, authToken),
-    });
-    // send cloned request with header to the next handler.
-    return next.handle(authReq).pipe(
+      // Clone the request and replace the original headers with
+      // cloned headers, updated with the authorization.
+      const authToken &#x3D; &#x27;Bearer &#x27; + acces_token;
+      const authReq &#x3D; req.clone({
+        headers: req.headers.set(&#x27;Authorization&#x27;, authToken),
+      });
+
+      // send cloned request with header to the next handler.
+      return next.handle(authReq).pipe(
         tap(event &#x3D;&gt; {
           // There may be other events besides the response.
           if (event instanceof HttpErrorResponse) {
@@ -2487,10 +2488,10 @@ export class AuthInterceptor implements HttpInterceptor {
             this.router.navigate([&#x27;/&#x27;]);
           }
         },
-        (error: any) &#x3D;&gt; {
+          (error: any) &#x3D;&gt; {
             console.info(error);
-        },
-      ));
+          },
+        ));
     } else {
       return next.handle(req);
     }

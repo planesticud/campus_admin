@@ -13,14 +13,15 @@ export class AuthInterceptor implements HttpInterceptor {
     const acces_token = window.localStorage.getItem('access_token');
 
     if (acces_token && req.url.indexOf('http://localhost') === -1) {
-    // Clone the request and replace the original headers with
-    // cloned headers, updated with the authorization.
-    const authToken = 'Bearer ' + acces_token;
-    const authReq = req.clone({
-      headers: req.headers.set('Authorization', authToken),
-    });
-    // send cloned request with header to the next handler.
-    return next.handle(authReq).pipe(
+      // Clone the request and replace the original headers with
+      // cloned headers, updated with the authorization.
+      const authToken = 'Bearer ' + acces_token;
+      const authReq = req.clone({
+        headers: req.headers.set('Authorization', authToken),
+      });
+
+      // send cloned request with header to the next handler.
+      return next.handle(authReq).pipe(
         tap(event => {
           // There may be other events besides the response.
           if (event instanceof HttpErrorResponse) {
@@ -28,10 +29,10 @@ export class AuthInterceptor implements HttpInterceptor {
             this.router.navigate(['/']);
           }
         },
-        (error: any) => {
+          (error: any) => {
             console.info(error);
-        },
-      ));
+          },
+        ));
     } else {
       return next.handle(req);
     }

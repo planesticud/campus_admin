@@ -59,11 +59,17 @@
     "calendario_academico": "Calendario académico",
     "evaluacion_ingreso": {
       "evaluacion_ingreso": "Evaluación de ingreso",
-      "realizar_evaluacion": "Realizar evaluación"
+      "realizar_evaluacion": "Realizar evaluación",
+      "lista_evaluaciones": "Listado de evaluaciones",
+      "nueva_evaluacion": "Crear evaluación",
+      "lista_preguntas": "Listado de preguntas",
+      "calificacion_evaluacion": "Calificación de evaluación",
+      "estadisticas": "Estadísticas"
     },
     "agenda": {
       "agenda": "Agenda",
-      "ver_agenda": "Ver agenda"
+      "ver_agenda": "Ver agenda",
+      "agregar_evento": "Agregar evento"
     },
     "pago_linea": {
       "pago_linea": "Pago en línea",
@@ -72,6 +78,12 @@
     },
     "condor_funcionario": "Sistema de gestión académico",
     "correo_institucional": "Correo institucional",
+    "spagobi": "Sistema SPagoBi",
+    "sigud": "Sistema Integrado de Gestión - SIGUD",
+    "comite_curriculo": "Comité institucional de currículo",
+    "resolucion_vacaciones": "Resoluciones para vacaciones",
+    "gaia": "Sistema de entrega de cumplidos - GAIA",
+    "agora": "Banco de proveedores UD - AGORA",
     "biblioteca": {
       "biblioteca": "Biblioteca",
       "sistema_biblioteca": "Sistema de bibliotecas",
@@ -87,7 +99,8 @@
       "deportes": "Deportes",
       "salud": "Salud",
       "inscripcion_linea": "Inscripciones en línea",
-      "bienestar_linea": "Bienestar en línea"
+      "bienestar_linea": "Bienestar en línea",
+      "estaditicas": "Estadísticas"
     },
     "licenciamiento": {
       "licenciamiento": "Licenciamientos",
@@ -109,7 +122,11 @@
     "certificado": {
       "certificado": "Certificado",
       "solicitud_certificado": "Solicitud de certificado",
-      "estado_solicitud": "Estado de solicitud"
+      "estado_solicitud": "Estado de solicitud",
+      "lista_solicitudes": "Listado de solicitudes",
+      "generar_certificado": "Generar certificado",
+      "gestion_firma": "Gestión de firmas",
+      "estaditicas": "Estadísticas"
     },
     "egresados": "Página de egresados",
     "parametricas": {
@@ -145,8 +162,26 @@
       "requisito_academico": "Requisitos de inscripción",
       "evaluacion_inscripcion": "Evaluaciones de inscripción"
     },
-    "admision": {
-      "admision": "Admisiones"
+    "admisiones": {
+      "admisiones": "Admisiones",
+      "entrevistas": "Entrevista de ingreso",
+      "carga_notas": "Carga de notas",
+      "estado_admisiones": "Estado de admisión",
+      "asignacion_entrevista": "Asignación de entrevistas",
+      "configuracion_fechas": "Configuración de fechas inscripción",
+      "criterios_admision": "Criterios de admisión",
+      "seleccion_aspirantes": "Selección de admitidos",
+      "matricula_admitidos": "Matrícula de admitidos",
+      "estaditicas": "Estadísticas"
+    },
+    "auditoria": {
+      "auditoria": "Auditoría",
+      "estaditicas": "Estadísticas"
+    },
+    "banner": {
+      "banner": "Banner",
+      "nuevo_banner": "Nuevo banner",
+      "gestion_banner": "Gestión de banners"
     },
     "genero": {
       "genero": "Género",
