@@ -4,6 +4,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { EntrevistaService } from '../../@core/data/entrevista.service';
 import { CoreService } from '../../@core/data/core.service';
 import { PersonaService } from '../../@core/data/persona.service';
+import { DocenteService } from '../../@core/data/docente.service';
 import { InscripcionService } from '../../@core/data/inscripcion.service';
 import { ProgramaAcademicoService } from '../../@core/data/programa_academico.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -28,6 +29,7 @@ import { CrudAsignarEntrevistaComponent } from './crud-asignar_entrevista/crud-a
     PersonaService,
     InscripcionService,
     ProgramaAcademicoService,
+    DocenteService,
   ],
   exports: [
     CrudAsignarEntrevistaComponent,

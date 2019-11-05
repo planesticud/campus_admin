@@ -70,15 +70,12 @@ export class ListEntrevistadorComponent implements OnInit {
         },
         ProgramaAcademico: {
           title: this.translate.instant('GLOBAL.programa_academico'),
-          // type: 'number;',
           valuePrepareFunction: (value) => {
-            console.info('VALUE:' + JSON.stringify(value))
             return value.Nombre;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
-          // type: 'boolean;',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -96,32 +93,22 @@ export class ListEntrevistadorComponent implements OnInit {
     if (res !== null) {
       const data = <Array<any>>res;
       // data
-      console.info('TOCTOC: ', JSON.stringify(data));
        for (let index = 0; index < data.length; index++) {
          const datos = data[index];
 
-         this.personaService.get('persona?query=id:' + datos.Id)
+         this.personaService.get('persona?query=id:' + datos.PersonaId)
           .subscribe(res_persona => {
            if (res_persona !== null) {
               const NombreCompleto = res_persona[0].PrimerApellido + ' ' + res_persona[0].SegundoApellido
               + ' ' + res_persona[0].PrimerNombre + ' ' + res_persona[0].SegundoNombre;
                data[index].Persona = res_persona[0];
-               data[index].Persona.NombreCompleto = NombreCompleto;
-               // if ( index === (data.length - 1 )) {
-               //   console.info ('DAtosPAraFOrm: ', JSON.stringify(data));
-               //   this.source.load(data);
-               // }
+               data[index].Persona.NombreCompleto = NombreCompleto.toUpperCase();
 
                this.programaAcademicoService.get('programa_academico/' + datos.ProgramaAcademicoId)
                 .subscribe(res_programa => {
                  if (res_programa !== null) {
-                    // const persona = '${res_persona[0].PrimerApellido} ${res_persona[0].SegundoApellido}'
-                           // + '${res_persona[0].PrimerNombre} ${res_persona[0].SegundoNombre}';
                      data[index].ProgramaAcademico = res_programa;
-                     if ( index === (data.length - 1 )) {
-                       // console.info ('FORM: ', JSON.stringify(data));
                        this.source.load(data);
-                     }
                  }
                })
 

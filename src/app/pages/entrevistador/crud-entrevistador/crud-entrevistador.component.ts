@@ -37,6 +37,7 @@ export class CrudEntrevistadorComponent implements OnInit {
   formEntrevistador: any;
   regEntrevistador: any;
   clean: boolean;
+  element: any;
 
   constructor(private translate: TranslateService,
     private entrevistaService: EntrevistaService,
@@ -105,13 +106,10 @@ export class CrudEntrevistadorComponent implements OnInit {
         if (res !== null) {
           entrevistador = <Array<Persona>>res;
           entrevistador.forEach ( element => {
-            // data_entrevistador = element
             element.NombreCompleto = (element.PrimerNombre).toUpperCase() + ' ' + (element.PrimerApellido).toUpperCase();
-            element.NombreCompleto = element.PrimerApellido + ' ' + element.SegundoApellido
-            + ' ' + element.PrimerNombre + ' ' + element.SegundoNombre;
-
+            element.NombreCompleto = element.PrimerApellido.toUpperCase() + ' ' + element.SegundoApellido.toUpperCase()
+            + ' ' + element.PrimerNombre.toUpperCase() + ' ' + element.SegundoNombre.toUpperCase();
             data_entrevistador.push(element);
-            // console.info ('Datos: ' + JSON.stringify(data_entrevistador));
           });
         }
         this.formEntrevistador.campos[this.getIndexForm('Persona')].opciones = data_entrevistador;
@@ -134,31 +132,26 @@ export class CrudEntrevistadorComponent implements OnInit {
       this.entrevistaService.get('entrevistador/?query=id:' + this.entrevistador_id)
         .subscribe(res => {
           if (res !== null) {
-            this.info_entrevistador = <any>res[0];
-            // console.info ('InfoEntrevistador: ' + JSON.stringify(res[0]));
-           this.programaAcademicoService.get('programa_academico/' + res[0].ProgramaAcademicoId)
-            .subscribe(res_Programa => {
+            this.element = <any>res[0];
+            this.programaAcademicoService.get('programa_academico/' + res[0].ProgramaAcademicoId)
+              .subscribe(res_Programa => {
               if (res_Programa !== null) {
                 const dataPrograma = <any>res_Programa;
-                this.info_entrevistador.ProgramaAcademico = dataPrograma
-                // console.info ('InfoEntrevistador2: ' + JSON.stringify(res[0]));
+                this.element.ProgramaAcademico = dataPrograma
+                this.personaService.get('persona/' + res[0].PersonaId)
+                 .subscribe(res_Persona => {
+                   if (res_Persona !== null) {
+                     const dataPersona = <any>res_Persona;
+                     dataPersona.NombreCompleto = dataPersona['PrimerNombre'] + ' ' + dataPersona['PrimerApellido']
+                     this.element.Persona = dataPersona;
+                   }
+                   this.info_entrevistador = this.element;
+                   // console.info ('DATA PERSONA:' + JSON.stringify(this.info_entrevistador) );
+                });
               }
-            });
-            this.personaService.get('persona/' + res[0].PersonaId)
-             .subscribe(res_Persona => {
-               if (res_Persona !== null) {
-                 // console.info ('PrePersonita:' + JSON.stringify(res_Persona) );
-                 const dataPersona = <any>res_Persona;
-                 // console.info ('Personita:' + JSON.stringify(this.info_persona) );
-                 dataPersona.NombreCompleto = dataPersona['PrimerNombre'] + ' ' + dataPersona['PrimerApellido']
-                 this.info_entrevistador.Persona = dataPersona;
-                 // this.info_programa.Nombre = 'Prog'
-                 // console.info ('Personita2:' + JSON.stringify(this.info_entrevistador) );
-               }
-             })
+             });
           }
         });
-        console.info ('INFOPER:' + JSON.stringify(this.info_entrevistador) );
     } else  {
       this.info_entrevistador = undefined;
       this.clean = !this.clean;
@@ -179,7 +172,6 @@ export class CrudEntrevistadorComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_entrevistador = <Entrevistador>entrevistador;
-        // console.info('MiGaurdar: ' + JSON.stringify(this.info_entrevistador))
         this.entrevistaService.put('entrevistador', this.info_entrevistador)
           .subscribe(res => {
             this.loadEntrevistador();
@@ -203,11 +195,9 @@ export class CrudEntrevistadorComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
          this.info_entrevistador = <Entrevistador>entrevistador;
-        // console.info('AntesCrear: ' + JSON.stringify(entrevistador))
         this.info_entrevistador.Persona = entrevistador.Persona.Id
         this.info_entrevistador.ProgramaAcademico = entrevistador.ProgramaAcademico.Id
         this.info_entrevistador.Activo = entrevistador.Activo
-        // console.info('MiCrear: ' + JSON.stringify(this.info_entrevistador))
         this.entrevistaService.post('entrevistador', this.info_entrevistador)
           .subscribe(res => {
             this.info_entrevistador = <Entrevistador>res;

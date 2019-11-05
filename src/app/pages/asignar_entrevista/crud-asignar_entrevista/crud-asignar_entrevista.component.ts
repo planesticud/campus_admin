@@ -7,6 +7,7 @@ import { Entrevista } from './../../../@core/data/models/entrevista';
 import { Persona } from './../../../@core/data/models/persona';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EntrevistaService } from '../../../@core/data/entrevista.service';
+import { DocenteService } from '../../../@core/data/docente.service';
 import { PersonaService } from '../../../@core/data/persona.service';
 import { FORM_ASIGNAR_ENTREVISTA } from './form-asignar_entrevista';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
@@ -53,6 +54,7 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   constructor(private translate: TranslateService,
      private entrevistaService: EntrevistaService,
      private personaService: PersonaService,
+     private docenteService: DocenteService,
      private toasterService: ToasterService) {
     this.formAsignarEntrevista = FORM_ASIGNAR_ENTREVISTA;
     this.construirForm();
@@ -142,6 +144,11 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   loadOptionsEntrevistador(): Promise<any> {
     return new Promise ((resolve, reject) => {
       // let nuevoEntrevistador: Array<any> = [];
+      // this.docenteService.get('docentes_por_proyecto/20')
+      this.docenteService.get('api')
+        .subscribe(res => {
+          console.info (res);
+        })
       this.entrevistaService.get('entrevistador/?limit=0')
         .subscribe(res => {
           if (Object.keys(res[0]).length > 0) {
