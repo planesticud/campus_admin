@@ -63,7 +63,7 @@ export class CrudEstadoInscripcionComponent implements OnInit {
 
   public loadEstadoInscripcion(): void {
     if (this.estado_inscripcion_id !== undefined && this.estado_inscripcion_id !== 0) {
-      this.admisionesService.get('estado_inscripcion/?query=id:' + this.estado_inscripcion_id)
+      this.admisionesService.get('estado_inscripcion/?query=Id:' + this.estado_inscripcion_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_estado_inscripcion = <EstadoInscripcion>res[0];
@@ -102,13 +102,12 @@ export class CrudEstadoInscripcionComponent implements OnInit {
         this.info_estado_inscripcion = <EstadoInscripcion>estadoInscripcion;
         this.admisionesService.put('estado_inscripcion', this.info_estado_inscripcion)
           .subscribe(res => {
-            this.loadEstadoInscripcion();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.estado_inscripcion') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_estado_inscripcion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudEstadoInscripcionComponent implements OnInit {
         this.info_estado_inscripcion = <EstadoInscripcion>estadoInscripcion;
         this.admisionesService.post('estado_inscripcion', this.info_estado_inscripcion)
           .subscribe(res => {
-            this.info_estado_inscripcion = <EstadoInscripcion>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.estado_inscripcion') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_estado_inscripcion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

@@ -64,7 +64,7 @@
       "nueva_evaluacion": "New evaluation",
       "lista_preguntas": "Questions list",
       "calificacion_evaluacion": "Assessment rating",
-      "estaditicas": "Statistics"
+      "estadisticas": "Statistics"
     },
     "agenda": {
       "agenda": "Schedule",
@@ -100,7 +100,7 @@
       "salud": "Health",
       "inscripcion_linea": "Online registration",
       "bienestar_linea": "Online welfare",
-      "estaditicas": "Statistics"
+      "estadisticas": "Statistics"
     },
     "licenciamiento": {
       "licenciamiento": "Licensing",
@@ -126,7 +126,7 @@
       "lista_solicitudes": "Requests list",
       "generar_certificado": "Generate certificate",
       "gestion_firma": "Signature management",
-      "estaditicas": "Statistics"
+      "estadisticas": "Statistics"
     },
     "egresados": "Graduate's page",
     "parametricas": {
@@ -172,11 +172,11 @@
       "criterios_admision": "Admission criteria",
       "seleccion_aspirantes": "Admitted selection",
       "matricula_admitidos": "Admitted tuition",
-      "estaditicas": "Statistics"
+      "estadisticas": "Statistics"
     },
     "auditoria": {
       "auditoria": "Audit",
-      "estaditicas": "Statistics"
+      "estadisticas": "Statistics"
     },
     "banner": {
       "banner": "Banner",

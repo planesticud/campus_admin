@@ -63,9 +63,9 @@ export class CrudGeneroComponent implements OnInit {
 
   public loadGenero(): void {
     if (this.genero_id !== undefined && this.genero_id !== 0) {
-      this.personaService.get('genero/?query=id:' + this.genero_id)
+      this.personaService.get('genero/?query=Id:' + this.genero_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_genero = <Genero>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudGeneroComponent implements OnInit {
         this.info_genero = <Genero>genero;
         this.personaService.put('genero', this.info_genero)
           .subscribe(res => {
-            this.loadGenero();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.genero') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_genero = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudGeneroComponent implements OnInit {
         this.info_genero = <Genero>genero;
         this.personaService.post('genero', this.info_genero)
           .subscribe(res => {
-            this.info_genero = <Genero>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.genero') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_genero = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

@@ -63,9 +63,9 @@ export class CrudIdiomaComponent implements OnInit {
 
   public loadIdioma(): void {
     if (this.idioma_id !== undefined && this.idioma_id !== 0) {
-      this.idiomaService.get('idioma/?query=id:' + this.idioma_id)
+      this.idiomaService.get('idioma/?query=Id:' + this.idioma_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_idioma = <Idioma>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudIdiomaComponent implements OnInit {
         this.info_idioma = <Idioma>idioma;
         this.idiomaService.put('idioma', this.info_idioma)
           .subscribe(res => {
-            this.loadIdioma();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.idioma') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_idioma = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
         },
           (error: HttpErrorResponse) => {
             Swal({
@@ -141,13 +140,12 @@ export class CrudIdiomaComponent implements OnInit {
         this.info_idioma = <Idioma>idioma;
         this.idiomaService.post('idioma', this.info_idioma)
           .subscribe(res => {
-            this.info_idioma = <Idioma>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.idioma') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_idioma = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

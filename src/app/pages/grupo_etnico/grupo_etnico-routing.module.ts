@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GrupoEtnicoComponent } from './grupo_etnico.component';
 import { ListGrupoEtnicoComponent } from './list-grupo_etnico/list-grupo_etnico.component';
 import { CrudGrupoEtnicoComponent } from './crud-grupo_etnico/crud-grupo_etnico.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-grupo_etnico',
     component: ListGrupoEtnicoComponent,
-  }, {
-    path: 'crud-grupo_etnico',
-    component: CrudGrupoEtnicoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

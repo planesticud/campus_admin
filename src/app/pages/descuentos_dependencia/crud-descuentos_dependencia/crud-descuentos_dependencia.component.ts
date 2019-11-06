@@ -4,12 +4,13 @@ import { DescuentosDependencia } from './../../../@core/data/models/descuentos_d
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DescuentoAcademicoService } from '../../../@core/data/descuento_academico.service';
 import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
+import { CoreService } from '../../../@core/data/core.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { FORM_DESCUENTOS_DEPENDENCIA } from './form-descuentos_dependencia';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'ngx-crud-descuentos-dependencia',
@@ -37,6 +38,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
   constructor(private translate: TranslateService,
     private descuentosService: DescuentoAcademicoService,
     private programaAcademico: ProgramaOikosService,
+    private core: CoreService,
     private toasterService: ToasterService) {
     this.formDescuentosDependencia = FORM_DESCUENTOS_DEPENDENCIA;
     this.construirForm();
@@ -44,6 +46,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
       this.construirForm();
     });
     this.loadOptionsTipoDescuentoId();
+    this.loadOptionsPeriodoId();
     this.loadOptionsDependenciaId();
   }
 
@@ -63,30 +66,30 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
 
   loadOptionsTipoDescuentoId(): void {
     let tipoDescuentoId: Array<any> = [];
-      this.descuentosService.get('tipo_descuento/?limit=0')
-        .subscribe(res => {
-          if (res !== null) {
-            tipoDescuentoId = <Array<TipoDescuento>>res;
-          }
-          this.formDescuentosDependencia.campos[ this.getIndexForm('TipoDescuentoId') ].opciones = tipoDescuentoId;
-        },
-          (error: HttpErrorResponse) => {
-            Swal({
-              type: 'error',
-              title: error.status + '',
-              text: this.translate.instant('ERROR.' + error.status),
-              footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                this.translate.instant('GLOBAL.tipo_descuento'),
-              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
-            });
+    this.descuentosService.get('tipo_descuento/?limit=0')
+      .subscribe(res => {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+          tipoDescuentoId = <Array<TipoDescuento>>res;
+        }
+        this.formDescuentosDependencia.campos[ this.getIndexForm('TipoDescuentoId') ].opciones = tipoDescuentoId;
+      },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            footer: this.translate.instant('GLOBAL.cargar') + '-' +
+              this.translate.instant('GLOBAL.tipo_descuento'),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
           });
+        });
   }
 
   loadOptionsDependenciaId(): void {
     let dependenciaId: Array<any> = [];
     this.programaAcademico.get('dependencia/?limit=0')
       .subscribe(res => {
-        if (res !== null) {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
           dependenciaId = <Array<ProgramaAcademico>>res;
         }
         this.formDescuentosDependencia.campos[ this.getIndexForm('DependenciaId') ].opciones = dependenciaId;
@@ -98,6 +101,27 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
             text: this.translate.instant('ERROR.' + error.status),
             footer: this.translate.instant('GLOBAL.cargar') + '-' +
               this.translate.instant('GLOBAL.tipo_descuento'),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
+        });
+  }
+
+  loadOptionsPeriodoId(): void {
+    let periodoId: Array<any> = [];
+    this.core.get('periodo/?limit=0')
+      .subscribe(res => {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+          periodoId = <Array<ProgramaAcademico>>res;
+        }
+        this.formDescuentosDependencia.campos[ this.getIndexForm('PeriodoId') ].opciones = periodoId;
+      },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            footer: this.translate.instant('GLOBAL.cargar') + '-' +
+              this.translate.instant('GLOBAL.periodo_id'),
             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
           });
         });
@@ -122,11 +146,26 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
             this.descuentosService.get('tipo_descuento/' + this.element.TipoDescuentoId.Id).subscribe(res2 => {
               if (res2 !== null) {
                 this.element.TipoDescuentoId = <any>res2;
-                this.programaAcademico.get('programa_academico/' + this.element.DependenciaId).subscribe(res3 => {
+                this.programaAcademico.get('dependencia/' + this.element.DependenciaId).subscribe(res3 => {
                   if (res3 != null) {
                     this.element.DependenciaId = <any>res3;
+                    this.core.get('periodo/' + this.element.PeriodoId).subscribe(res4 => {
+                      if (res4 != null) {
+                        this.element.PeriodoId = <any>res4;
+                      }
+                      this.info_descuentos_dependencia = this.element;
+                    },
+                    (error: HttpErrorResponse) => {
+                      Swal({
+                        type: 'error',
+                        title: error.status + '',
+                        text: this.translate.instant('ERROR.' + error.status),
+                        footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                          this.translate.instant('GLOBAL.periodo_id'),
+                        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                      });
+                    });
                   }
-                  this.info_descuentos_dependencia = this.element;
                 },
                   (error: HttpErrorResponse) => {
                     Swal({
@@ -184,15 +223,15 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
       if (willDelete.value) {
         this.info_descuentos_dependencia = <DescuentosDependencia>descuentosDependencia;
         this.info_descuentos_dependencia.DependenciaId = this.info_descuentos_dependencia.DependenciaId.Id;
+        this.info_descuentos_dependencia.PeriodoId = this.info_descuentos_dependencia.PeriodoId.Id;
         this.descuentosService.put('descuentos_dependencia', this.info_descuentos_dependencia)
           .subscribe(res => {
-            this.loadDescuentosDependencia();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.descuentos_dependencia') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_descuentos_dependencia = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -224,15 +263,15 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
       if (willDelete.value) {
         this.info_descuentos_dependencia = <DescuentosDependencia>descuentosDependencia;
         this.info_descuentos_dependencia.DependenciaId = this.info_descuentos_dependencia.DependenciaId.Id;
+        this.info_descuentos_dependencia.PeriodoId = this.info_descuentos_dependencia.PeriodoId.Id;
         this.descuentosService.post('descuentos_dependencia', this.info_descuentos_dependencia)
           .subscribe(res => {
-            this.info_descuentos_dependencia = <DescuentosDependencia>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.descuentos_dependencia') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_descuentos_dependencia = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

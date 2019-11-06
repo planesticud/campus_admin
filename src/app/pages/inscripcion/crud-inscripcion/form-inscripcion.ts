@@ -74,7 +74,7 @@ export let FORM_INSCRIPCION = {
       key: 'Nombre',
       opciones: [],
     },
-    {
+    /* {
       etiqueta: 'select',
       claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
       nombre: 'EnfasisId',
@@ -84,7 +84,7 @@ export let FORM_INSCRIPCION = {
       tipo: 'Enfasis',
       key: 'Nombre',
       opciones: [],
-    },
+    }, */
     {
       etiqueta: 'mat-date',
       claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',

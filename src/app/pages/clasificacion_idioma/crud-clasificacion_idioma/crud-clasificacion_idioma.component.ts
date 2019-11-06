@@ -63,9 +63,9 @@ export class CrudClasificacionIdiomaComponent implements OnInit {
 
   public loadClasificacionIdioma(): void {
     if (this.clasificacion_idioma_id !== undefined && this.clasificacion_idioma_id !== 0) {
-      this.idiomaService.get('clasificacion_nivel_idioma/?query=id:' + this.clasificacion_idioma_id)
+      this.idiomaService.get('clasificacion_nivel_idioma/?query=Id:' + this.clasificacion_idioma_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_clasificacion_idioma = <ClasificacionNivelIdioma>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudClasificacionIdiomaComponent implements OnInit {
         this.info_clasificacion_idioma = <ClasificacionNivelIdioma>clasificacion_idioma;
         this.idiomaService.put('clasificacion_nivel_idioma', this.info_clasificacion_idioma)
           .subscribe(res => {
-            this.loadClasificacionIdioma();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.clasificacion_nivel_idioma') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_clasificacion_idioma = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudClasificacionIdiomaComponent implements OnInit {
         this.info_clasificacion_idioma = <ClasificacionNivelIdioma>clasificacion_idioma;
         this.idiomaService.post('clasificacion_nivel_idioma', this.info_clasificacion_idioma)
           .subscribe(res => {
-            this.info_clasificacion_idioma = <ClasificacionNivelIdioma>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.clasificacion_nivel_idioma') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_clasificacion_idioma = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

@@ -35,61 +35,62 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
     this.settings = {
       actions: {
         columnTitle: '',
-        add: false,
         delete: false,
       },
-      // add: {
-      //  addButtonContent: '<i class="nb-plus"></i>',
-      //  createButtonContent: '<i class="nb-checkmark"></i>',
-      //  cancelButtonContent: '<i class="nb-close"></i>',
-      // },
+      add: {
+        addButtonContent: '<i class="nb-plus"></i>',
+        createButtonContent: '<i class="nb-checkmark"></i>',
+        cancelButtonContent: '<i class="nb-close"></i>',
+      },
       edit: {
         editButtonContent: '<i class="nb-edit"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
-      // delete: {
-      //  deleteButtonContent: '<i class="nb-trash"></i>',
-      //  confirmDelete: true,
-      // },
       mode: 'external',
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         InscripcionId: {
           title: this.translate.instant('GLOBAL.inscripcion'),
+          width: '20%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NotaFinal: {
           title: this.translate.instant('GLOBAL.nota'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         RequisitoProgramaAcademicoId: {
           title: this.translate.instant('GLOBAL.requisito_programa_academico'),
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value.RequisitoId.Nombre;
           },
         },
-        // EntrevistaId: {
-        //  title: this.translate.instant('GLOBAL.entrevista'),
-        //  valuePrepareFunction: (value) => {
-        //    if(value!==null){
-        //    return value.Id;
-        //    }else{
-        //      return '';
-        //    }
-        //  },
-        // },
+        EntrevistaId: {
+          title: this.translate.instant('GLOBAL.entrevista'),
+          width: '15%',
+          valuePrepareFunction: (value) => {
+            if (value !== null) {
+              return value.Id;
+            } else {
+              return '';
+            }
+          },
+        },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -156,7 +157,7 @@ export class ListEvaluacionInscripcionComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.requisitoService.delete('evaluacion_inscripcion/', event.data).subscribe(res => {
+        this.requisitoService.delete('evaluacion_inscripcion', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

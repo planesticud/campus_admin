@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { DescuentoAcademicoService } from '../../../@core/data/descuento_academico.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
-// import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
+import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
+import { HttpErrorResponse } from '@angular/common/http';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'ngx-list-descuentos-dependencia',
@@ -24,8 +24,8 @@ export class ListDescuentosDependenciaComponent implements OnInit {
 
   constructor(private translate: TranslateService,
     private descuentosService: DescuentoAcademicoService,
-    private programaAcademico: ProgramaAcademicoService,
-    // private programaAcademico: ProgramaOikosService,
+    private programaAcademico: ProgramaOikosService,
+    private core: CoreService,
     private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
@@ -39,6 +39,7 @@ export class ListDescuentosDependenciaComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -64,7 +65,7 @@ export class ListDescuentosDependenciaComponent implements OnInit {
         },
         TipoDescuentoId: {
           title: this.translate.instant('GLOBAL.tipo_descuento_id'),
-          width: '40%',
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
@@ -73,26 +74,19 @@ export class ListDescuentosDependenciaComponent implements OnInit {
           title: this.translate.instant('GLOBAL.periodo_id'),
           width: '15%',
           valuePrepareFunction: (value) => {
-            return value;
+            return value.Nombre;
           },
         },
         DependenciaId: {
           title: this.translate.instant('GLOBAL.dependencia_id'),
-          width: '25%',
+          width: '40%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
-        PorcentajeDescuento: {
-          title: this.translate.instant('GLOBAL.porcentaje_descuento'),
-          width: '10%',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
-          width: '5%',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -107,17 +101,32 @@ export class ListDescuentosDependenciaComponent implements OnInit {
 
   loadData(): void {
     this.descuentosService.get('descuentos_dependencia/?limit=0').subscribe(res => {
-      if (res !== null) {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         this.data = <Array<any>>res;
         this.data.forEach(element => {
           this.descuentosService.get('tipo_descuento/' + element.TipoDescuentoId.Id).subscribe(res2 => {
             if (res2 !== null) {
               element.TipoDescuentoId = <any>res2;
-              this.programaAcademico.get('programa_academico/' + element.DependenciaId).subscribe(res3 => {
+              this.programaAcademico.get('dependencia/' + element.DependenciaId).subscribe(res3 => {
                 if (res3 != null) {
                   element.DependenciaId = <any>res3;
+                    this.core.get('periodo/' + element.PeriodoId).subscribe(res4 => {
+                      if (res4 != null) {
+                        element.PeriodoId = <any>res4;
+                      }
+                      this.source.load(this.data);
+                    },
+                      (error: HttpErrorResponse) => {
+                        Swal({
+                          type: 'error',
+                          title: error.status + '',
+                          text: this.translate.instant('ERROR.' + error.status),
+                          footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                            this.translate.instant('GLOBAL.periodo_id'),
+                          confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                        });
+                      });
                 }
-                this.source.load(this.data);
               },
                 (error: HttpErrorResponse) => {
                   Swal({
@@ -183,7 +192,7 @@ export class ListDescuentosDependenciaComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.descuentosService.delete('descuentos_dependencia/', event.data).subscribe(res => {
+        this.descuentosService.delete('descuentos_dependencia', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

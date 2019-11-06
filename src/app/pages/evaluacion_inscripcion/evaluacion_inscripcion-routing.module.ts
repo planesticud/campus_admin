@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EvaluacionInscripcionComponent } from './evaluacion_inscripcion.component';
 import { ListEvaluacionInscripcionComponent } from './list-evaluacion_inscripcion/list-evaluacion_inscripcion.component';
 import { CrudEvaluacionInscripcionComponent } from './crud-evaluacion_inscripcion/crud-evaluacion_inscripcion.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-evaluacion_inscripcion',
     component: ListEvaluacionInscripcionComponent,
-  }, {
-    path: 'crud-evaluacion_inscripcion',
-    component: CrudEvaluacionInscripcionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

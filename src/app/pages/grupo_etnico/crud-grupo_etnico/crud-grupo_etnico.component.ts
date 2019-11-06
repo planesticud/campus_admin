@@ -63,9 +63,9 @@ export class CrudGrupoEtnicoComponent implements OnInit {
 
   public loadGrupoEtnico(): void {
     if (this.grupo_etnico_id !== undefined && this.grupo_etnico_id !== 0) {
-      this.personaService.get('grupo_etnico/?query=id:' + this.grupo_etnico_id)
+      this.personaService.get('grupo_etnico/?query=Id:' + this.grupo_etnico_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_grupo_etnico = <GrupoEtnico>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudGrupoEtnicoComponent implements OnInit {
         this.info_grupo_etnico = <GrupoEtnico>grupoEtnico;
         this.personaService.put('grupo_etnico', this.info_grupo_etnico)
           .subscribe(res => {
-            this.loadGrupoEtnico();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.grupo_etnico') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_grupo_etnico = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudGrupoEtnicoComponent implements OnInit {
         this.info_grupo_etnico = <GrupoEtnico>grupoEtnico;
         this.personaService.post('grupo_etnico', this.info_grupo_etnico)
           .subscribe(res => {
-            this.info_grupo_etnico = <GrupoEtnico>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.grupo_etnico') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_grupo_etnico = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

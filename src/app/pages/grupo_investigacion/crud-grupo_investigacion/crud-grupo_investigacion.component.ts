@@ -63,9 +63,9 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
 
   public loadGrupoInvestigacion(): void {
     if (this.grupo_investigacion_id !== undefined && this.grupo_investigacion_id !== 0) {
-      this.coreService.get('grupo_investigacion/?query=id:' + this.grupo_investigacion_id)
+      this.coreService.get('grupo_investigacion/?query=Id:' + this.grupo_investigacion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_grupo_investigacion = <GrupoInvestigacion>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
         this.info_grupo_investigacion = <GrupoInvestigacion>grupoInvestigacion;
         this.coreService.put('grupo_investigacion', this.info_grupo_investigacion)
           .subscribe(res => {
-            this.loadGrupoInvestigacion();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.grupo_investigacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_grupo_investigacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           });
       }
     });
@@ -131,13 +130,12 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
         this.info_grupo_investigacion = <GrupoInvestigacion>grupoInvestigacion;
         this.coreService.post('grupo_investigacion', this.info_grupo_investigacion)
           .subscribe(res => {
-            this.info_grupo_investigacion = <GrupoInvestigacion>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.grupo_investigacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_grupo_investigacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

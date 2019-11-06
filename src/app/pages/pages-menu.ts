@@ -20,19 +20,14 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'clasificacion_nivel_idioma',
       },
       {
-        title: 'Lista Enfasis',
-        link: '/pages/enfasis/list-enfasis',
-        key: 'enfasis',
-      },
-      {
-        title: 'Lista Estado Inscripcion',
-        link: '/pages/estado_inscripcion/list-estado_inscripcion',
-        key: 'estado_inscripcion',
-      },
-      {
         title: 'Estado Civil',
         link: '/pages/estado_civil/list-estado_civil',
         key: 'estado_civil',
+      },
+      {
+        title: 'Estado Inscripcion',
+        link: '/pages/estado_inscripcion/list-estado_inscripcion',
+        key: 'estado_inscripcion',
       },
       {
         title: 'Genero',
@@ -45,7 +40,7 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'grupo_etnico',
       },
       {
-        title: 'Lista Grupo Investigacion',
+        title: 'Grupo Investigacion',
         link: '/pages/grupo_investigacion/list-grupo_investigacion',
         key: 'grupo_investigacion',
       },
@@ -129,11 +124,7 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
         key: 'requisito_tipo_descuento',
       },
-      {
-        title: 'Lista Descuentos Dependencia',
-        link: '/pages/descuentos_dependencia/list-descuentos_dependencia',
-        key: 'descuentos_dependencia',
-      },
+
       {
         title: 'Lista Solicitud Descuento',
         link: '/pages/solicitud_descuento/list-solicitud_descuento',
@@ -159,11 +150,7 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
         key: 'requisito_programa_academico',
       },
-      {
-        title: 'Lista Evaluacion Inscripcion',
-        link: '/pages/evaluacion_inscripcion/list-evaluacion_inscripcion',
-        key: 'evaluacion_inscripcion',
-      },
+
     ],
   },
   {
@@ -331,12 +318,7 @@ export const MENU_PUBLICO: MenuItem[] = [
       },
       {
         title: 'admisiones_inscripcion',
-        url: 'https://autenticacion.udistrital.edu.co/accountrecoveryendpoint/register.do?callback=https%3A%2F%2Fautenticacion.udistrital.edu.co%3A443%2Fa' +
-        'uthenticationendpoint%2Flogin.do%3Fclient_id%3DAcLs_Mb7b3iEntpgIJ5xIxWkRLga%26commonAuthCallerPath%3D%252Foauth2%252Fauthorize%26forceAuth%3Dfals' +
-        'e%26nonce%3D01c6b61219cdcae86b1946726e0e56c7%26passiveAuth%3Dfalse%26redirect_uri%3Dhttps%253A%252F%252Fcliente.campusvirtual.udistrital.edu.co%2' +
-        '52F%26response_type%3Did_token%2Btoken%26scope%3Dopenid%2Bemail%2Brole%2Bdocumento%26state%3Db52bddaac1b1bdf8af7c6a298d02e490%26state_url%3D%2523' +
-        '%252Fpages%252Fdashboard%26tenantDomain%3Dcarbon.super%26sessionDataKey%3D90107bd5-717a-4f58-b36c-b9bea3c04b94%26relyingParty%3DAcLs_Mb7b3iEntpgI' +
-        'J5xIxWkRLga%26type%3Doidc%26sp%3Dcampus_cliente_PREPROD%26isSaaSApp%3Dfalse%26authenticators%3DBasicAuthenticator%3ALOCAL',
+        url: 'https://autenticacion.portaloas.udistrital.edu.co/accountrecoveryendpoint/register.do',
         home: false,
         key: 'admisiones_inscripcion',
       },

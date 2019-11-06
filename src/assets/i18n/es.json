@@ -100,7 +100,7 @@
       "salud": "Salud",
       "inscripcion_linea": "Inscripciones en línea",
       "bienestar_linea": "Bienestar en línea",
-      "estaditicas": "Estadísticas"
+      "estadisticas": "Estadísticas"
     },
     "licenciamiento": {
       "licenciamiento": "Licenciamientos",
@@ -126,7 +126,7 @@
       "lista_solicitudes": "Listado de solicitudes",
       "generar_certificado": "Generar certificado",
       "gestion_firma": "Gestión de firmas",
-      "estaditicas": "Estadísticas"
+      "estadisticas": "Estadísticas"
     },
     "egresados": "Página de egresados",
     "parametricas": {
@@ -172,11 +172,11 @@
       "criterios_admision": "Criterios de admisión",
       "seleccion_aspirantes": "Selección de admitidos",
       "matricula_admitidos": "Matrícula de admitidos",
-      "estaditicas": "Estadísticas"
+      "estadisticas": "Estadísticas"
     },
     "auditoria": {
       "auditoria": "Auditoría",
-      "estaditicas": "Estadísticas"
+      "estadisticas": "Estadísticas"
     },
     "banner": {
       "banner": "Banner",

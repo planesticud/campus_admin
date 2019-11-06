@@ -20,6 +20,10 @@ const routes: Routes = [{
       loadChildren: './grupo_etnico/grupo_etnico.module#GrupoEtnicoModule',
     },
     {
+      path: 'grupo_investigacion',
+      loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
+    },
+    {
       path: 'estado_civil',
       loadChildren: './estado_civil/estado_civil.module#EstadoCivilModule',
     },
@@ -70,10 +74,6 @@ const routes: Routes = [{
     {
       path: 'programa_academico',
       loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
-    },
-    {
-      path: 'enfasis',
-      loadChildren: './enfasis/enfasis.module#EnfasisModule',
     },
     {
       path: 'estado_inscripcion',

@@ -1,6 +1,6 @@
 import { EstadoInscripcion } from './../../../@core/data/models/estado_inscripcion';
 import { TipoInscripcion } from './../../../@core/data/models/tipo_inscripcion';
-import { Enfasis } from './../../../@core/data/models/enfasis';
+// import { Enfasis } from './../../../@core/data/models/enfasis';
 import { Periodo } from './../../../@core/data/models/periodo';
 import { Inscripcion } from './../../../@core/data/models/inscripcion';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -133,7 +133,7 @@ export class CrudInscripcionComponent implements OnInit {
       this.programaAcademico.get('enfasis/?limit=0')
         .subscribe(res => {
           if (res !== null) {
-            enfasis = <Array<Enfasis>>res;
+            enfasis = <Array<any>>res; // <Array<Enfasis>>res;
           }
           this.formInscripcion.campos[ this.getIndexForm('EnfasisId') ].opciones = enfasis;
         },

@@ -63,7 +63,7 @@ export class CrudEstadoCivilComponent implements OnInit {
 
   public loadEstadoCivil(): void {
     if (this.estado_civil_id !== undefined && this.estado_civil_id !== 0) {
-      this.personaService.get('estado_civil/?query=id:' + this.estado_civil_id)
+      this.personaService.get('estado_civil/?query=Id:' + this.estado_civil_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_estado_civil = <EstadoCivil>res[0];
@@ -102,13 +102,12 @@ export class CrudEstadoCivilComponent implements OnInit {
         this.info_estado_civil = <EstadoCivil>estadoCivil;
         this.personaService.put('estado_civil', this.info_estado_civil)
           .subscribe(res => {
-            this.loadEstadoCivil();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.estado_civil') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_estado_civil = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudEstadoCivilComponent implements OnInit {
         this.info_estado_civil = <EstadoCivil>estadoCivil;
         this.personaService.post('estado_civil', this.info_estado_civil)
           .subscribe(res => {
-            this.info_estado_civil = <EstadoCivil>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.estado_civil') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_estado_civil = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

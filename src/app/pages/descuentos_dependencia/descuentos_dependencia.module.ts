@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
 import { DescuentoAcademicoService } from '../../@core/data/descuento_academico.service';
 import { ProgramaOikosService } from '../../@core/data/programa_oikos.service';
+import { CoreService } from '../../@core/data/core.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
@@ -22,6 +23,7 @@ import { CrudDescuentosDependenciaComponent } from './crud-descuentos_dependenci
   providers: [
     DescuentoAcademicoService,
     ProgramaOikosService,
+    CoreService,
   ],
   exports: [
     CrudDescuentosDependenciaComponent,

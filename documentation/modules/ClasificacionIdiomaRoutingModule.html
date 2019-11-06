@@ -116,12 +116,6 @@
                                     <a href="../modules/DetalleInscripcionRoutingModule.html" >DetalleInscripcionRoutingModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/EnfasisModule.html" >EnfasisModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/EnfasisRoutingModule.html" >EnfasisRoutingModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/EstadoCivilModule.html" >EstadoCivilModule</a>
                                 </li>
                                 <li class="link">
@@ -361,9 +355,6 @@
                                     <a href="../components/CrudDescuentosDependenciaComponent.html" >CrudDescuentosDependenciaComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CrudEnfasisComponent.html" >CrudEnfasisComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/CrudEstadoCivilComponent.html" >CrudEstadoCivilComponent</a>
                                 </li>
                                 <li class="link">
@@ -478,9 +469,6 @@
                                     <a href="../components/ElectricityComponent.html" >ElectricityComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/EnfasisComponent.html" >EnfasisComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/EstadoCivilComponent.html" >EstadoCivilComponent</a>
                                 </li>
                                 <li class="link">
@@ -527,9 +515,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/ListDetalleInscripcionComponent.html" >ListDetalleInscripcionComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/ListEnfasisComponent.html" >ListEnfasisComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ListEstadoCivilComponent.html" >ListEstadoCivilComponent</a>
@@ -809,9 +794,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Documento.html" >Documento</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/Enfasis.html" >Enfasis</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EstadoCivil.html" >EstadoCivil</a>
@@ -1245,12 +1227,6 @@
                                            <a href="../modules/DetalleInscripcionRoutingModule.html" >DetalleInscripcionRoutingModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/EnfasisModule.html" >EnfasisModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/EnfasisRoutingModule.html" >EnfasisRoutingModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/EstadoCivilModule.html" >EstadoCivilModule</a>
                                        </li>
                                        <li class="link">
@@ -1490,9 +1466,6 @@
                                            <a href="../components/CrudDescuentosDependenciaComponent.html" >CrudDescuentosDependenciaComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CrudEnfasisComponent.html" >CrudEnfasisComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/CrudEstadoCivilComponent.html" >CrudEstadoCivilComponent</a>
                                        </li>
                                        <li class="link">
@@ -1607,9 +1580,6 @@
                                            <a href="../components/ElectricityComponent.html" >ElectricityComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/EnfasisComponent.html" >EnfasisComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/EstadoCivilComponent.html" >EstadoCivilComponent</a>
                                        </li>
                                        <li class="link">
@@ -1656,9 +1626,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/ListDetalleInscripcionComponent.html" >ListDetalleInscripcionComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/ListEnfasisComponent.html" >ListEnfasisComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ListEstadoCivilComponent.html" >ListEstadoCivilComponent</a>
@@ -1938,9 +1905,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Documento.html" >Documento</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/Enfasis.html" >Enfasis</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EstadoCivil.html" >EstadoCivil</a>
@@ -2318,6 +2282,7 @@ import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { ClasificacionIdiomaComponent } from &#x27;./clasificacion_idioma.component&#x27;;
 import { ListClasificacionIdiomaComponent } from &#x27;./list-clasificacion_idioma/list-clasificacion_idioma.component&#x27;;
 import { CrudClasificacionIdiomaComponent } from &#x27;./crud-clasificacion_idioma/crud-clasificacion_idioma.component&#x27;;
+import { AuthGuard } from &#x27;../../@core/_guards/auth.guard&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;&#x27;,
@@ -2325,6 +2290,12 @@ const routes: Routes &#x3D; [{
   children: [{
     path: &#x27;list-clasificacion_idioma&#x27;,
     component: ListClasificacionIdiomaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        &#x27;ADMIN_CAMPUS&#x27;,
+      ],
+    },
   }],
 }];
 

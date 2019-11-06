@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DescuentosDependenciaComponent } from './descuentos_dependencia.component';
 import { ListDescuentosDependenciaComponent } from './list-descuentos_dependencia/list-descuentos_dependencia.component';
 import { CrudDescuentosDependenciaComponent } from './crud-descuentos_dependencia/crud-descuentos_dependencia.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-descuentos_dependencia',
     component: ListDescuentosDependenciaComponent,
-  }, {
-    path: 'crud-descuentos_dependencia',
-    component: CrudDescuentosDependenciaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GrupoInvestigacionComponent } from './grupo_investigacion.component';
 import { ListGrupoInvestigacionComponent } from './list-grupo_investigacion/list-grupo_investigacion.component';
 import { CrudGrupoInvestigacionComponent } from './crud-grupo_investigacion/crud-grupo_investigacion.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-grupo_investigacion',
     component: ListGrupoInvestigacionComponent,
-  }, {
-    path: 'crud-grupo_investigacion',
-    component: CrudGrupoInvestigacionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 
