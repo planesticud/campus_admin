@@ -2,8 +2,6 @@ export const UD_THEME = {
   name: 'ud',
   base: 'default',
   variables: {
-
-    // Safari fix
     temperature: [
       '#42db7d',
       '#42db7d',
