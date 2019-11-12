@@ -67,7 +67,7 @@ export class CrudPeriodoComponent implements OnInit {
     let tipoPeriodoId: Array<any> = [];
       this.coreService.get('tipo_periodo/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             tipoPeriodoId = <Array<TipoPeriodo>>res;
           }
           this.formPeriodo.campos[ this.getIndexForm('TipoPeriodoId') ].opciones = tipoPeriodoId;
@@ -86,9 +86,9 @@ export class CrudPeriodoComponent implements OnInit {
 
   public loadPeriodo(): void {
     if (this.periodo_id !== undefined && this.periodo_id !== 0) {
-      this.coreService.get('periodo/?query=id:' + this.periodo_id)
+      this.coreService.get('periodo/?query=Id:' + this.periodo_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_periodo = <Periodo>res[0];
           }
         },
@@ -125,13 +125,12 @@ export class CrudPeriodoComponent implements OnInit {
         this.info_periodo = <Periodo>periodo;
         this.coreService.put('periodo', this.info_periodo)
           .subscribe(res => {
-            this.loadPeriodo();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.requisito') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_periodo = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -164,13 +163,12 @@ export class CrudPeriodoComponent implements OnInit {
         this.info_periodo = <Periodo>periodo;
         this.coreService.post('periodo', this.info_periodo)
           .subscribe(res => {
-            this.info_periodo = <Periodo>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.periodo_academico') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_periodo = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

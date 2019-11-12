@@ -496,6 +496,8 @@
     "placeholder_descuentos_dependencia": "E.g.: Program discount",
     "periodo_id": "Period",
     "placeholder_periodo_id": "E.g.: Period",
+    "tipo_periodo": "Period type",
+    "placeholder_tipo_periodo": "E.g.: Period type",
     "dependencia_id": "Program",
     "placeholder_dependencia_id": "E.g.: Program",
     "porcentaje_descuento": "Discount percentage",

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LineaInvestigacionComponent } from './linea_investigacion.component';
 import { ListLineaInvestigacionComponent } from './list-linea_investigacion/list-linea_investigacion.component';
 import { CrudLineaInvestigacionComponent } from './crud-linea_investigacion/crud-linea_investigacion.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-linea_investigacion',
     component: ListLineaInvestigacionComponent,
-  }, {
-    path: 'crud-linea_investigacion',
-    component: CrudLineaInvestigacionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

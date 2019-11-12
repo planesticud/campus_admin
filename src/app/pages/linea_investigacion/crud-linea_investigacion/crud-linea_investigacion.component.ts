@@ -63,9 +63,9 @@ export class CrudLineaInvestigacionComponent implements OnInit {
 
   public loadLineaInvestigacion(): void {
     if (this.linea_investigacion_id !== undefined && this.linea_investigacion_id !== 0) {
-      this.coreService.get('linea_investigacion/?query=id:' + this.linea_investigacion_id)
+      this.coreService.get('linea_investigacion/?query=Id:' + this.linea_investigacion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_linea_investigacion = <LineaInvestigacion>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudLineaInvestigacionComponent implements OnInit {
         this.info_linea_investigacion = <LineaInvestigacion>lineaInvestigacion;
         this.coreService.put('linea_investigacion', this.info_linea_investigacion)
           .subscribe(res => {
-            this.loadLineaInvestigacion();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_linea_investigacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -116,7 +115,7 @@ export class CrudLineaInvestigacionComponent implements OnInit {
                 title: error.status + '',
                 text: this.translate.instant('ERROR.' + error.status),
                 footer: this.translate.instant('GLOBAL.actualizar') + '-' +
-                  this.translate.instant('GLOBAL.requisito'),
+                  this.translate.instant('GLOBAL.linea_investigacion'),
                 confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
               });
             });
@@ -141,13 +140,12 @@ export class CrudLineaInvestigacionComponent implements OnInit {
         this.info_linea_investigacion = <LineaInvestigacion>lineaInvestigacion;
         this.coreService.post('linea_investigacion', this.info_linea_investigacion)
           .subscribe(res => {
-            this.info_linea_investigacion = <LineaInvestigacion>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.linea_investigacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_linea_investigacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

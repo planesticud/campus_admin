@@ -2546,7 +2546,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2701,7 +2701,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:164</a></div>
                                 </td>
                             </tr>
     
@@ -2734,7 +2734,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:180</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:178</a></div>
                                 </td>
                             </tr>
     
@@ -2935,7 +2935,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/pages/linea_investigacion/crud-linea_investigacion/crud-linea_investigacion.component.ts:168</a></div>
                                 </td>
                             </tr>
     
@@ -3229,9 +3229,9 @@ export class CrudLineaInvestigacionComponent implements OnInit {
 
   public loadLineaInvestigacion(): void {
     if (this.linea_investigacion_id !&#x3D;&#x3D; undefined &amp;&amp; this.linea_investigacion_id !&#x3D;&#x3D; 0) {
-      this.coreService.get(&#x27;linea_investigacion/?query&#x3D;id:&#x27; + this.linea_investigacion_id)
+      this.coreService.get(&#x27;linea_investigacion/?query&#x3D;Id:&#x27; + this.linea_investigacion_id)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             this.info_linea_investigacion &#x3D; &lt;LineaInvestigacion&gt;res[0];
           }
         },
@@ -3268,13 +3268,12 @@ export class CrudLineaInvestigacionComponent implements OnInit {
         this.info_linea_investigacion &#x3D; &lt;LineaInvestigacion&gt;lineaInvestigacion;
         this.coreService.put(&#x27;linea_investigacion&#x27;, this.info_linea_investigacion)
           .subscribe(res &#x3D;&gt; {
-            this.loadLineaInvestigacion();
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.actualizar&#x27;),
               this.translate.instant(&#x27;GLOBAL.linea_investigacion&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarActualizar&#x27;));
             this.info_linea_investigacion &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({
@@ -3282,7 +3281,7 @@ export class CrudLineaInvestigacionComponent implements OnInit {
                 title: error.status + &#x27;&#x27;,
                 text: this.translate.instant(&#x27;ERROR.&#x27; + error.status),
                 footer: this.translate.instant(&#x27;GLOBAL.actualizar&#x27;) + &#x27;-&#x27; +
-                  this.translate.instant(&#x27;GLOBAL.requisito&#x27;),
+                  this.translate.instant(&#x27;GLOBAL.linea_investigacion&#x27;),
                 confirmButtonText: this.translate.instant(&#x27;GLOBAL.aceptar&#x27;),
               });
             });
@@ -3307,13 +3306,12 @@ export class CrudLineaInvestigacionComponent implements OnInit {
         this.info_linea_investigacion &#x3D; &lt;LineaInvestigacion&gt;lineaInvestigacion;
         this.coreService.post(&#x27;linea_investigacion&#x27;, this.info_linea_investigacion)
           .subscribe(res &#x3D;&gt; {
-            this.info_linea_investigacion &#x3D; &lt;LineaInvestigacion&gt;res;
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.crear&#x27;),
               this.translate.instant(&#x27;GLOBAL.linea_investigacion&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarCrear&#x27;));
             this.info_linea_investigacion &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({

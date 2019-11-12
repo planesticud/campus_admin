@@ -92,6 +92,14 @@ const routes: Routes = [{
       loadChildren: './tipo_proyecto/tipo_proyecto.module#TipoProyectoModule',
     },
     {
+      path: 'periodo',
+      loadChildren: './periodo/periodo.module#PeriodoModule',
+    },
+    {
+      path: 'tipo_periodo',
+      loadChildren: './tipo_periodo/tipo_periodo.module#TipoPeriodoModule',
+    },
+    {
       path: 'tipo_duracion',
       loadChildren: './tipo_duracion/tipo_duracion.module#TipoDuracionModule',
     },

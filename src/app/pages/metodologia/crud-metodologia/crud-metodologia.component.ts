@@ -63,9 +63,9 @@ export class CrudMetodologiaComponent implements OnInit {
 
   public loadMetodologia(): void {
     if (this.metodologia_id !== undefined && this.metodologia_id !== 0) {
-      this.programaAcademicoService.get('metodologia/?query=id:' + this.metodologia_id)
+      this.programaAcademicoService.get('metodologia/?query=Id:' + this.metodologia_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_metodologia = <Metodologia>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudMetodologiaComponent implements OnInit {
         this.info_metodologia = <Metodologia>metodologia;
         this.programaAcademicoService.put('metodologia', this.info_metodologia)
           .subscribe(res => {
-            this.loadMetodologia();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.metodologia') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_metodologia = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudMetodologiaComponent implements OnInit {
         this.info_metodologia = <Metodologia>metodologia;
         this.programaAcademicoService.post('metodologia', this.info_metodologia)
           .subscribe(res => {
-            this.info_metodologia = <Metodologia>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.metodologia') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_metodologia = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

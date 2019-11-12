@@ -8,7 +8,7 @@ export let FORM_PROGRAMA_ACADEMICO = {
     {
       etiqueta: 'input',
       claseGrid: 'col-lg-3 col-md-3 col-sm-12 col-xs-12',
-      nombre: 'CodigoSnies',
+      nombre: 'Codigo',
       label_i18n: 'codigo_snies',
       placeholder_i18n: 'codigo_snies',
       requerido: true,
@@ -68,6 +68,15 @@ export let FORM_PROGRAMA_ACADEMICO = {
     {
       etiqueta: 'input',
       claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
+      nombre: 'NucleoBasicoConocimiento',
+      label_i18n: 'nucleo_basico_conocimiento',
+      placeholder_i18n: 'nucleo_basico_conocimiento',
+      requerido: true,
+      tipo: 'number',
+    },
+    {
+      etiqueta: 'input',
+      claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
       nombre: 'Duracion',
       label_i18n: 'duracion',
       placeholder_i18n: 'duracion',
@@ -75,14 +84,13 @@ export let FORM_PROGRAMA_ACADEMICO = {
       tipo: 'number',
     },
     {
-      etiqueta: 'selectmultiple',
+      etiqueta: 'input',
       claseGrid: 'col-lg-6 col-md-6 col-sm-12 col-xs-12',
       nombre: 'UnidadTiempo',
       label_i18n: 'unidad_tiempo',
       placeholder_i18n: 'unidad_tiempo',
       requerido: true,
-      tipo: 'text',
-      opciones: [{valor: 'options'}],
+      tipo: 'number',
     },
   ],
 }

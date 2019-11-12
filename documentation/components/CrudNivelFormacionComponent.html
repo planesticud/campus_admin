@@ -2546,7 +2546,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2701,7 +2701,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:164</a></div>
                                 </td>
                             </tr>
     
@@ -2734,7 +2734,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:180</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:178</a></div>
                                 </td>
                             </tr>
     
@@ -2935,7 +2935,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/pages/nivel_formacion/crud-nivel_formacion/crud-nivel_formacion.component.ts:168</a></div>
                                 </td>
                             </tr>
     
@@ -3229,9 +3229,9 @@ export class CrudNivelFormacionComponent implements OnInit {
 
   public loadNivelFormacion(): void {
     if (this.nivel_formacion_id !&#x3D;&#x3D; undefined &amp;&amp; this.nivel_formacion_id !&#x3D;&#x3D; 0) {
-      this.programaAcademicoService.get(&#x27;nivel_formacion/?query&#x3D;id:&#x27; + this.nivel_formacion_id)
+      this.programaAcademicoService.get(&#x27;nivel_formacion/?query&#x3D;Id:&#x27; + this.nivel_formacion_id)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             this.info_nivel_formacion &#x3D; &lt;NivelFormacion&gt;res[0];
           }
         },
@@ -3268,13 +3268,12 @@ export class CrudNivelFormacionComponent implements OnInit {
         this.info_nivel_formacion &#x3D; &lt;NivelFormacion&gt;nivelFormacion;
         this.programaAcademicoService.put(&#x27;nivel_formacion&#x27;, this.info_nivel_formacion)
           .subscribe(res &#x3D;&gt; {
-            this.loadNivelFormacion();
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.actualizar&#x27;),
               this.translate.instant(&#x27;GLOBAL.nivel_formacion&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarActualizar&#x27;));
             this.info_nivel_formacion &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({
@@ -3307,13 +3306,12 @@ export class CrudNivelFormacionComponent implements OnInit {
         this.info_nivel_formacion &#x3D; &lt;NivelFormacion&gt;nivelFormacion;
         this.programaAcademicoService.post(&#x27;nivel_formacion&#x27;, this.info_nivel_formacion)
           .subscribe(res &#x3D;&gt; {
-            this.info_nivel_formacion &#x3D; &lt;NivelFormacion&gt;res;
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.crear&#x27;),
               this.translate.instant(&#x27;GLOBAL.nivel_formacion&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarCrear&#x27;));
             this.info_nivel_formacion &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({

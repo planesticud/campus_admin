@@ -50,17 +50,17 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'idioma',
       },
       {
-        title: 'Lista Linea Investigacion',
+        title: 'Linea Investigacion',
         link: '/pages/linea_investigacion/list-linea_investigacion',
         key: 'linea_investigacion',
       },
       {
-        title: 'Lista Metodologia',
+        title: 'Metodologia',
         link: '/pages/metodologia/list-metodologia',
         key: 'metodologia',
       },
       {
-        title: 'Lista Nivel Formacion',
+        title: 'Nivel Formacion',
         link: '/pages/nivel_formacion/list-nivel_formacion',
         key: 'nivel_formacion',
       },
@@ -70,7 +70,7 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'nivel_idioma',
       },
       {
-        title: 'Lista Periodo',
+        title: 'Periodo',
         link: '/pages/periodo/list-periodo',
         key: 'periodo_academico',
       },

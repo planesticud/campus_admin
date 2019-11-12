@@ -2546,7 +2546,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2701,7 +2701,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:164</a></div>
                                 </td>
                             </tr>
     
@@ -2734,7 +2734,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:180</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:178</a></div>
                                 </td>
                             </tr>
     
@@ -2935,7 +2935,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/pages/metodologia/crud-metodologia/crud-metodologia.component.ts:168</a></div>
                                 </td>
                             </tr>
     
@@ -3229,9 +3229,9 @@ export class CrudMetodologiaComponent implements OnInit {
 
   public loadMetodologia(): void {
     if (this.metodologia_id !&#x3D;&#x3D; undefined &amp;&amp; this.metodologia_id !&#x3D;&#x3D; 0) {
-      this.programaAcademicoService.get(&#x27;metodologia/?query&#x3D;id:&#x27; + this.metodologia_id)
+      this.programaAcademicoService.get(&#x27;metodologia/?query&#x3D;Id:&#x27; + this.metodologia_id)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             this.info_metodologia &#x3D; &lt;Metodologia&gt;res[0];
           }
         },
@@ -3268,13 +3268,12 @@ export class CrudMetodologiaComponent implements OnInit {
         this.info_metodologia &#x3D; &lt;Metodologia&gt;metodologia;
         this.programaAcademicoService.put(&#x27;metodologia&#x27;, this.info_metodologia)
           .subscribe(res &#x3D;&gt; {
-            this.loadMetodologia();
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.actualizar&#x27;),
               this.translate.instant(&#x27;GLOBAL.metodologia&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarActualizar&#x27;));
             this.info_metodologia &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({
@@ -3307,13 +3306,12 @@ export class CrudMetodologiaComponent implements OnInit {
         this.info_metodologia &#x3D; &lt;Metodologia&gt;metodologia;
         this.programaAcademicoService.post(&#x27;metodologia&#x27;, this.info_metodologia)
           .subscribe(res &#x3D;&gt; {
-            this.info_metodologia &#x3D; &lt;Metodologia&gt;res;
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.crear&#x27;),
               this.translate.instant(&#x27;GLOBAL.metodologia&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarCrear&#x27;));
             this.info_metodologia &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({

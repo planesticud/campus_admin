@@ -2240,6 +2240,7 @@ import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { PeriodoComponent } from &#x27;./periodo.component&#x27;;
 import { ListPeriodoComponent } from &#x27;./list-periodo/list-periodo.component&#x27;;
 import { CrudPeriodoComponent } from &#x27;./crud-periodo/crud-periodo.component&#x27;;
+import { AuthGuard } from &#x27;../../@core/_guards/auth.guard&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;&#x27;,
@@ -2247,9 +2248,12 @@ const routes: Routes &#x3D; [{
   children: [{
     path: &#x27;list-periodo&#x27;,
     component: ListPeriodoComponent,
-  }, {
-    path: &#x27;crud-periodo&#x27;,
-    component: CrudPeriodoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        &#x27;ADMIN_CAMPUS&#x27;,
+      ],
+    },
   }],
 }];
 

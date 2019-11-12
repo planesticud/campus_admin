@@ -2546,7 +2546,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2701,7 +2701,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:164</a></div>
                                 </td>
                             </tr>
     
@@ -2734,7 +2734,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:168</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:178</a></div>
                                 </td>
                             </tr>
     
@@ -2935,7 +2935,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/pages/grupo_investigacion/crud-grupo_investigacion/crud-grupo_investigacion.component.ts:168</a></div>
                                 </td>
                             </tr>
     
@@ -3274,7 +3274,17 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
             this.info_grupo_investigacion &#x3D; undefined;
             this.clean &#x3D; !this.clean;
             this.eventChange.emit(true);
-          });
+          },
+            (error: HttpErrorResponse) &#x3D;&gt; {
+              Swal({
+                type: &#x27;error&#x27;,
+                title: error.status + &#x27;&#x27;,
+                text: this.translate.instant(&#x27;ERROR.&#x27; + error.status),
+                footer: this.translate.instant(&#x27;GLOBAL.actualizar&#x27;) + &#x27;-&#x27; +
+                  this.translate.instant(&#x27;GLOBAL.grupo_investigacion&#x27;),
+                confirmButtonText: this.translate.instant(&#x27;GLOBAL.aceptar&#x27;),
+              });
+            });
       }
     });
   }

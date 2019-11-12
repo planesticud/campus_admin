@@ -496,6 +496,8 @@
     "placeholder_descuentos_dependencia": "Ej: Descuento de dependencia",
     "periodo_id": "Periodo",
     "placeholder_periodo_id": "Ej: Periodo",
+    "tipo_periodo": "Tipo periodo",
+    "placeholder_tipo_periodo": "Ej: Tipo periodo",
     "dependencia_id": "Dependencia",
     "placeholder_dependencia_id": "Ej: Dependencia",
     "porcentaje_descuento": "Porcentaje de descuento",

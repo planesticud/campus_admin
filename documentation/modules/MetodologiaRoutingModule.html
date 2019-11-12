@@ -2240,6 +2240,7 @@ import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { MetodologiaComponent } from &#x27;./metodologia.component&#x27;;
 import { ListMetodologiaComponent } from &#x27;./list-metodologia/list-metodologia.component&#x27;;
 import { CrudMetodologiaComponent } from &#x27;./crud-metodologia/crud-metodologia.component&#x27;;
+import { AuthGuard } from &#x27;../../@core/_guards/auth.guard&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;&#x27;,
@@ -2247,9 +2248,12 @@ const routes: Routes &#x3D; [{
   children: [{
     path: &#x27;list-metodologia&#x27;,
     component: ListMetodologiaComponent,
-  }, {
-    path: &#x27;crud-metodologia&#x27;,
-    component: CrudMetodologiaComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        &#x27;ADMIN_CAMPUS&#x27;,
+      ],
+    },
   }],
 }];
 

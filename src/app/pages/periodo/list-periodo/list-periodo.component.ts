@@ -32,6 +32,7 @@ export class ListPeriodoComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -64,7 +65,7 @@ export class ListPeriodoComponent implements OnInit {
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          width: '25%',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -78,14 +79,14 @@ export class ListPeriodoComponent implements OnInit {
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          width: '10%',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          width: '10%',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -107,7 +108,7 @@ export class ListPeriodoComponent implements OnInit {
 
   loadData(): void {
     this.coreService.get('periodo/?limit=0').subscribe(res => {
-      if (res !== null) {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         const data = <Array<any>>res;
         this.source.load(data);
       }
@@ -151,7 +152,7 @@ export class ListPeriodoComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.coreService.delete('periodo/', event.data).subscribe(res => {
+        this.coreService.delete('periodo', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

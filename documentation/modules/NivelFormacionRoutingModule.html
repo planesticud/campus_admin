@@ -2240,6 +2240,7 @@ import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { NivelFormacionComponent } from &#x27;./nivel_formacion.component&#x27;;
 import { ListNivelFormacionComponent } from &#x27;./list-nivel_formacion/list-nivel_formacion.component&#x27;;
 import { CrudNivelFormacionComponent } from &#x27;./crud-nivel_formacion/crud-nivel_formacion.component&#x27;;
+import { AuthGuard } from &#x27;../../@core/_guards/auth.guard&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;&#x27;,
@@ -2247,9 +2248,12 @@ const routes: Routes &#x3D; [{
   children: [{
     path: &#x27;list-nivel_formacion&#x27;,
     component: ListNivelFormacionComponent,
-  }, {
-    path: &#x27;crud-nivel_formacion&#x27;,
-    component: CrudNivelFormacionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        &#x27;ADMIN_CAMPUS&#x27;,
+      ],
+    },
   }],
 }];
 

@@ -61,7 +61,7 @@ export class CrudProgramaAcademicoComponent implements OnInit {
     let metodologia: Array<any> = [];
       this.programaAcademicoService.get('metodologia/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             metodologia = <Array<Metodologia>>res;
           }
           this.formProgramaAcademico.campos[ this.getIndexForm('Metodologia') ].opciones = metodologia;
@@ -72,8 +72,8 @@ export class CrudProgramaAcademicoComponent implements OnInit {
               title: error.status + '',
               text: this.translate.instant('ERROR.' + error.status),
               footer: this.translate.instant('GLOBAL.cargar') + '-' +
-              this.translate.instant('GLOBAL.metodologia') + '|' +
-              this.translate.instant('GLOBAL.titulacion'),
+              this.translate.instant('GLOBAL.programa_academico') + '|' +
+              this.translate.instant('GLOBAL.metodologia'),
               confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
             });
           });
@@ -83,7 +83,7 @@ export class CrudProgramaAcademicoComponent implements OnInit {
     let nivelFormacion: Array<any> = [];
       this.programaAcademicoService.get('nivel_formacion/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             nivelFormacion = <Array<NivelFormacion>>res;
           }
           this.formProgramaAcademico.campos[ this.getIndexForm('NivelFormacion') ].opciones = nivelFormacion;
@@ -105,7 +105,7 @@ export class CrudProgramaAcademicoComponent implements OnInit {
     let titulacion: Array<any> = [];
       this.programaAcademicoService.get('titulacion/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             titulacion = <Array<Titulacion>>res;
           }
           this.formProgramaAcademico.campos[ this.getIndexForm('Titulacion') ].opciones = titulacion;
@@ -135,9 +135,9 @@ export class CrudProgramaAcademicoComponent implements OnInit {
 
   public loadProgramaAcademico(): void {
     if (this.programa_academico_id !== undefined && this.programa_academico_id !== 0) {
-      this.programaAcademicoService.get('programa_academico/?query=id:' + this.programa_academico_id)
+      this.programaAcademicoService.get('programa_academico/?query=Id:' + this.programa_academico_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_programa_academico = <ProgramaAcademico>res[0];
           }
         },
@@ -174,13 +174,12 @@ export class CrudProgramaAcademicoComponent implements OnInit {
         this.info_programa_academico = <ProgramaAcademico>programaAcademico;
         this.programaAcademicoService.put('programa_academico', this.info_programa_academico)
           .subscribe(res => {
-            this.loadProgramaAcademico();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.programa_academico') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_programa_academico = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -213,13 +212,12 @@ export class CrudProgramaAcademicoComponent implements OnInit {
         this.info_programa_academico = <ProgramaAcademico>programaAcademico;
         this.programaAcademicoService.post('programa_academico', this.info_programa_academico)
           .subscribe(res => {
-            this.info_programa_academico = <ProgramaAcademico>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.programa_academico') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_programa_academico = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

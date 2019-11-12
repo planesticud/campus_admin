@@ -108,7 +108,17 @@ export class CrudGrupoInvestigacionComponent implements OnInit {
             this.info_grupo_investigacion = undefined;
             this.clean = !this.clean;
             this.eventChange.emit(true);
-          });
+          },
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.actualizar') + '-' +
+                  this.translate.instant('GLOBAL.grupo_investigacion'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+            });
       }
     });
   }

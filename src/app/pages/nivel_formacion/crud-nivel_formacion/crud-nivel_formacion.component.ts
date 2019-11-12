@@ -63,9 +63,9 @@ export class CrudNivelFormacionComponent implements OnInit {
 
   public loadNivelFormacion(): void {
     if (this.nivel_formacion_id !== undefined && this.nivel_formacion_id !== 0) {
-      this.programaAcademicoService.get('nivel_formacion/?query=id:' + this.nivel_formacion_id)
+      this.programaAcademicoService.get('nivel_formacion/?query=Id:' + this.nivel_formacion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_nivel_formacion = <NivelFormacion>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudNivelFormacionComponent implements OnInit {
         this.info_nivel_formacion = <NivelFormacion>nivelFormacion;
         this.programaAcademicoService.put('nivel_formacion', this.info_nivel_formacion)
           .subscribe(res => {
-            this.loadNivelFormacion();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.nivel_formacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_nivel_formacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudNivelFormacionComponent implements OnInit {
         this.info_nivel_formacion = <NivelFormacion>nivelFormacion;
         this.programaAcademicoService.post('nivel_formacion', this.info_nivel_formacion)
           .subscribe(res => {
-            this.info_nivel_formacion = <NivelFormacion>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.nivel_formacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_nivel_formacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

@@ -63,9 +63,9 @@ export class CrudNivelIdiomaComponent implements OnInit {
 
   public loadNivelIdioma(): void {
     if (this.nivel_idioma_id !== undefined && this.nivel_idioma_id !== 0) {
-      this.idiomaService.get('valor_nivel_idioma/?query=id:' + this.nivel_idioma_id)
+      this.idiomaService.get('valor_nivel_idioma/?query=Id:' + this.nivel_idioma_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_nivel_idioma = <NivelIdioma>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudNivelIdiomaComponent implements OnInit {
         this.info_nivel_idioma = <NivelIdioma>nivel_idioma;
         this.idiomaService.put('valor_nivel_idioma', this.info_nivel_idioma)
           .subscribe(res => {
-            this.loadNivelIdioma();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_nivel_idioma = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudNivelIdiomaComponent implements OnInit {
         this.info_nivel_idioma = <NivelIdioma>nivel_idioma;
         this.idiomaService.post('valor_nivel_idioma', this.info_nivel_idioma)
           .subscribe(res => {
-            this.info_nivel_idioma = <NivelIdioma>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.nivel_idioma') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_nivel_idioma = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
