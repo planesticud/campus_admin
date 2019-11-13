@@ -35,6 +35,7 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -53,21 +54,21 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
       columns: {
         Id: {
           title: this.translate.instant('GLOBAL.id'),
-          width: '15%',
+          width: '5%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         TipoDescuentoId: {
           title: this.translate.instant('GLOBAL.tipo_descuento_id'),
-          width: '35%',
+          width: '40%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
         },
         RequisitoId: {
           title: this.translate.instant('GLOBAL.requisito_id'),
-          width: '35%',
+          width: '40%',
           valuePrepareFunction: (value) => {
             return value.Nombre;
           },
@@ -166,7 +167,7 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
     .then((willDelete) => {
 
       if (willDelete.value) {
-        this.descuentosService.delete('requisito_tipo_descuento/', event.data).subscribe(res => {
+        this.descuentosService.delete('requisito_tipo_descuento', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

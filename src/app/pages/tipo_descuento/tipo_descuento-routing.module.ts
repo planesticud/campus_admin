@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TipoDescuentoComponent } from './tipo_descuento.component';
 import { ListTipoDescuentoComponent } from './list-tipo_descuento/list-tipo_descuento.component';
 import { CrudTipoDescuentoComponent } from './crud-tipo_descuento/crud-tipo_descuento.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-tipo_descuento',
     component: ListTipoDescuentoComponent,
-  }, {
-    path: 'crud-tipo_descuento',
-    component: CrudTipoDescuentoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

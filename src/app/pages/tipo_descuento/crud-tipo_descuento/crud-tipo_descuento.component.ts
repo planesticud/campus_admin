@@ -1,5 +1,7 @@
+import { ConceptoAcademico } from './../../../@core/data/models/concepto_academico';
 import { TipoDescuento } from './../../../@core/data/models/tipo_descuento';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CoreService } from '../../../@core/data/core.service';
 import { DescuentoAcademicoService } from '../../../@core/data/descuento_academico.service';
 import { FORM_TIPO_DESCUENTO } from './form-tipo_descuento';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
@@ -31,6 +33,7 @@ export class CrudTipoDescuentoComponent implements OnInit {
   clean: boolean;
 
   constructor(private translate: TranslateService,
+    private coreService: CoreService,
     private descuentosService: DescuentoAcademicoService,
     private toasterService: ToasterService) {
     this.formTipoDescuento = FORM_TIPO_DESCUENTO;
@@ -38,6 +41,7 @@ export class CrudTipoDescuentoComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
+    this.loadConceptoAcademicoId();
   }
 
   construirForm() {
@@ -63,12 +67,50 @@ export class CrudTipoDescuentoComponent implements OnInit {
     return 0;
   }
 
+  loadConceptoAcademicoId(): void {
+    let conceptoAcademicoId: Array<any> = [];
+      this.coreService.get('concepto_academico/?limit=0')
+        .subscribe(res => {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+            conceptoAcademicoId = <Array<ConceptoAcademico>>res;
+          }
+          this.formTipoDescuento.campos[ this.getIndexForm('ConceptoAcademicoId') ].opciones = conceptoAcademicoId;
+        },
+          (error: HttpErrorResponse) => {
+            Swal({
+              type: 'error',
+              title: error.status + '',
+              text: this.translate.instant('ERROR.' + error.status),
+              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                this.translate.instant('GLOBAL.concepto_academico_id'),
+              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+            });
+          });
+  }
+
   public loadTipoDescuento(): void {
     if (this.tipo_descuento_id !== undefined && this.tipo_descuento_id !== 0) {
-      this.descuentosService.get('tipo_descuento/?query=id:' + this.tipo_descuento_id)
+      this.descuentosService.get('tipo_descuento/?query=Id:' + this.tipo_descuento_id)
         .subscribe(res => {
-          if (res !== null) {
-            this.info_tipo_descuento = <TipoDescuento>res[0];
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+            const tipo = <TipoDescuento>res[0];
+            this.coreService.get('concepto_academico/' + tipo.ConceptoAcademicoId)
+              .subscribe(res3 => {
+                if (res3 !== null) {
+                  tipo.ConceptoAcademicoId = <ConceptoAcademico>res3;
+                  this.info_tipo_descuento = tipo;
+                }
+              },
+                (error: HttpErrorResponse) => {
+                  Swal({
+                    type: 'error',
+                    title: error.status + '',
+                    text: this.translate.instant('ERROR.' + error.status),
+                    footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                      this.translate.instant('GLOBAL.concepto_academico_id'),
+                    confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                  });
+                });
           }
         },
           (error: HttpErrorResponse) => {
@@ -102,15 +144,16 @@ export class CrudTipoDescuentoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_descuento = <TipoDescuento>tipoDescuento;
+        const concepto_id = this.info_tipo_descuento.ConceptoAcademicoId.Id;
+        this.info_tipo_descuento.ConceptoAcademicoId = concepto_id;
         this.descuentosService.put('tipo_descuento', this.info_tipo_descuento)
           .subscribe(res => {
-            this.loadTipoDescuento();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.tipo_descuento') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_tipo_descuento = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,15 +184,16 @@ export class CrudTipoDescuentoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_descuento = <TipoDescuento>tipoDescuento;
+        const concepto_id = this.info_tipo_descuento.ConceptoAcademicoId.Id;
+        this.info_tipo_descuento.ConceptoAcademicoId = concepto_id;
         this.descuentosService.post('tipo_descuento', this.info_tipo_descuento)
           .subscribe(res => {
-            this.info_tipo_descuento = <TipoDescuento>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.tipo_descuento') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_tipo_descuento = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

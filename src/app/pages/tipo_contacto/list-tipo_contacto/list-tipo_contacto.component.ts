@@ -32,6 +32,7 @@ export class ListTipoContactoComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -57,35 +58,35 @@ export class ListTipoContactoComponent implements OnInit {
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          width: '35%',
+          width: '25%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          width: '35%',
+          width: '30%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         CodigoAbreviacion: {
           title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          width: '10%',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          width: '10%',
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Activo: {
           title: this.translate.instant('GLOBAL.activo'),
-          width: '5%',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -100,7 +101,7 @@ export class ListTipoContactoComponent implements OnInit {
 
   loadData(): void {
     this.enteService.get('tipo_contacto/?limit=0').subscribe(res => {
-      if (res !== null) {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         const data = <Array<any>>res;
         this.source.load(data);
       }
@@ -144,7 +145,7 @@ export class ListTipoContactoComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.enteService.delete('tipo_contacto/', event.data).subscribe(res => {
+        this.enteService.delete('tipo_contacto', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', 'deleted', 'TipoContacto deleted');

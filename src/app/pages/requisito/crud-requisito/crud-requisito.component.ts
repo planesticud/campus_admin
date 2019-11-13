@@ -65,9 +65,9 @@ export class CrudRequisitoComponent implements OnInit {
 
   public loadRequisito(): void {
     if (this.requisito_id !== undefined && this.requisito_id !== 0) {
-      this.descuentosService.get('requisito/?query=id:' + this.requisito_id)
+      this.descuentosService.get('requisito/?query=Id:' + this.requisito_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_requisito = <Requisito>res[0];
           }
         },
@@ -104,13 +104,12 @@ export class CrudRequisitoComponent implements OnInit {
         this.info_requisito = <Requisito>requisito;
         this.descuentosService.put('requisito', this.info_requisito)
           .subscribe(res => {
-            this.loadRequisito();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.requisito') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_requisito = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -143,13 +142,12 @@ export class CrudRequisitoComponent implements OnInit {
         this.info_requisito = <Requisito>requisito;
         this.descuentosService.post('requisito', this.info_requisito)
           .subscribe(res => {
-            this.info_requisito = <Requisito>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.requisito') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_requisito = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

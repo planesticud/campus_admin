@@ -766,6 +766,9 @@
                                     <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                 </li>
                                 <li class="link">
@@ -1856,6 +1859,9 @@
                                            <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                        </li>
                                        <li class="link">
@@ -2555,7 +2561,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:208</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="207" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:207</a></div>
                                 </td>
                             </tr>
     
@@ -2774,7 +2780,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="247" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:247</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:245</a></div>
                                 </td>
                             </tr>
     
@@ -2807,7 +2813,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:261</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:259</a></div>
                                 </td>
                             </tr>
     
@@ -3008,7 +3014,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:251</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">src/app/pages/requisito_tipo_descuento/crud-requisito_tipo_descuento/crud-requisito_tipo_descuento.component.ts:249</a></div>
                                 </td>
                             </tr>
     
@@ -3331,7 +3337,7 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
     let tipoDescuentoId: Array&lt;any&gt; &#x3D; [];
       this.descuentosService.get(&#x27;tipo_descuento/?limit&#x3D;0&#x27;)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             tipoDescuentoId &#x3D; &lt;Array&lt;TipoDescuento&gt;&gt;res;
           }
           this.formRequisitoTipoDescuento.campos[ this.getIndexForm(&#x27;TipoDescuentoId&#x27;) ].opciones &#x3D; tipoDescuentoId;
@@ -3352,7 +3358,7 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
     let requisitoId: Array&lt;any&gt; &#x3D; [];
       this.descuentosService.get(&#x27;requisito/?limit&#x3D;0&#x27;)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             requisitoId &#x3D; &lt;Array&lt;Requisito&gt;&gt;res;
           }
           this.formRequisitoTipoDescuento.campos[ this.getIndexForm(&#x27;RequisitoId&#x27;) ].opciones &#x3D; requisitoId;
@@ -3381,9 +3387,9 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
 
   public loadRequisitoTipoDescuento(): void {
     if (this.requisito_tipo_descuento_id !&#x3D;&#x3D; undefined &amp;&amp; this.requisito_tipo_descuento_id !&#x3D;&#x3D; 0) {
-      this.descuentosService.get(&#x27;requisito_tipo_descuento/?query&#x3D;id:&#x27; + this.requisito_tipo_descuento_id)
+      this.descuentosService.get(&#x27;requisito_tipo_descuento/?query&#x3D;Id:&#x27; + this.requisito_tipo_descuento_id)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             this.element &#x3D; &lt;RequisitoTipoDescuento&gt;res[0];
             this.descuentosService.get(&#x27;requisito/&#x27; + this.element.RequisitoId.Id).subscribe(res2 &#x3D;&gt; {
               if (res2 !&#x3D;&#x3D; null) {
@@ -3451,13 +3457,12 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
         this.info_requisito_tipo_descuento &#x3D; &lt;RequisitoTipoDescuento&gt;requisitoTipoDescuento;
         this.descuentosService.put(&#x27;requisito_tipo_descuento&#x27;, this.info_requisito_tipo_descuento)
           .subscribe(res &#x3D;&gt; {
-            this.loadRequisitoTipoDescuento();
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.actualizar&#x27;),
               this.translate.instant(&#x27;GLOBAL.requisito_tipo_descuento&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarActualizar&#x27;));
             this.info_requisito_tipo_descuento &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({
@@ -3490,13 +3495,12 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
         this.info_requisito_tipo_descuento &#x3D; &lt;RequisitoTipoDescuento&gt;requisitoTipoDescuento;
         this.descuentosService.post(&#x27;requisito_tipo_descuento&#x27;, this.info_requisito_tipo_descuento)
           .subscribe(res &#x3D;&gt; {
-            this.info_requisito_tipo_descuento &#x3D; &lt;RequisitoTipoDescuento&gt;res;
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.crear&#x27;),
               this.translate.instant(&#x27;GLOBAL.requisito_tipo_descuento&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarCrear&#x27;));
             this.info_requisito_tipo_descuento &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({

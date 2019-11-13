@@ -766,6 +766,9 @@
                                     <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                 </li>
                                 <li class="link">
@@ -1856,6 +1859,9 @@
                                            <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                        </li>
                                        <li class="link">
@@ -2546,7 +2552,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:128</a></div>
                                 </td>
                             </tr>
     
@@ -2701,7 +2707,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:168</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:166</a></div>
                                 </td>
                             </tr>
     
@@ -2734,7 +2740,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:182</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:180</a></div>
                                 </td>
                             </tr>
     
@@ -2935,7 +2941,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:172</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/pages/requisito_academico/crud-requisito_academico/crud-requisito_academico.component.ts:170</a></div>
                                 </td>
                             </tr>
     
@@ -3231,9 +3237,9 @@ export class CrudRequisitoAcademicoComponent implements OnInit {
 
   public loadRequisito(): void {
     if (this.requisito_id !&#x3D;&#x3D; undefined &amp;&amp; this.requisito_id !&#x3D;&#x3D; 0) {
-      this.evaluacionInscripcionService.get(&#x27;requisito/?query&#x3D;id:&#x27; + this.requisito_id)
+      this.evaluacionInscripcionService.get(&#x27;requisito/?query&#x3D;Id:&#x27; + this.requisito_id)
         .subscribe(res &#x3D;&gt; {
-          if (res !&#x3D;&#x3D; null) {
+          if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             this.info_requisito_academico &#x3D; &lt;Requisito&gt;res[0];
           }
         },
@@ -3270,13 +3276,12 @@ export class CrudRequisitoAcademicoComponent implements OnInit {
         this.info_requisito_academico &#x3D; &lt;Requisito&gt;requisito;
         this.evaluacionInscripcionService.put(&#x27;requisito&#x27;, this.info_requisito_academico)
           .subscribe(res &#x3D;&gt; {
-            this.loadRequisito();
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.actualizar&#x27;),
               this.translate.instant(&#x27;GLOBAL.requisito_academico&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarActualizar&#x27;));
             this.info_requisito_academico &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({
@@ -3309,13 +3314,12 @@ export class CrudRequisitoAcademicoComponent implements OnInit {
         this.info_requisito_academico &#x3D; &lt;Requisito&gt;requisito;
         this.evaluacionInscripcionService.post(&#x27;requisito&#x27;, this.info_requisito_academico)
           .subscribe(res &#x3D;&gt; {
-            this.info_requisito_academico &#x3D; &lt;Requisito&gt;res;
-            this.eventChange.emit(true);
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.crear&#x27;),
               this.translate.instant(&#x27;GLOBAL.requisito_academico&#x27;) + &#x27; &#x27; +
               this.translate.instant(&#x27;GLOBAL.confirmarCrear&#x27;));
             this.info_requisito_academico &#x3D; undefined;
             this.clean &#x3D; !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) &#x3D;&gt; {
               Swal({

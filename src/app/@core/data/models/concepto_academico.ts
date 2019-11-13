@@ -1,10 +1,8 @@
-export class TipoDescuento {
+export class ConceptoAcademico {
   Id: number;
   Nombre: string;
   Descripcion: string;
   CodigoAbreviacion: string;
   Activo: boolean;
   NumeroOrden: number;
-  General: boolean;
-  ConceptoAcademicoId: any;
 }

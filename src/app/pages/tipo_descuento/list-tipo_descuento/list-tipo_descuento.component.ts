@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { CoreService } from '../../../@core/data/core.service';
 import { DescuentoAcademicoService } from '../../../@core/data/descuento_academico.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -20,6 +21,7 @@ export class ListTipoDescuentoComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private translate: TranslateService,
+    private coreService: CoreService,
     private descuentosService: DescuentoAcademicoService,
     private toasterService: ToasterService) {
     this.loadData();
@@ -34,6 +36,7 @@ export class ListTipoDescuentoComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -59,35 +62,35 @@ export class ListTipoDescuentoComponent implements OnInit {
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          width: '30%',
+          width: '25%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          width: '30%',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        CodigoAbreviacion: {
-          title: this.translate.instant('GLOBAL.codigo_abreviacion'),
-          width: '10%',
+          width: '20%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         ConceptoAcademicoId: {
           title: this.translate.instant('GLOBAL.concepto_academico_id'),
-          width: '10%',
+          width: '15%',
+          valuePrepareFunction: (value) => {
+            return value.Nombre;
+          },
+        },
+        CodigoAbreviacion: {
+          title: this.translate.instant('GLOBAL.codigo_abreviacion'),
+          width: '15%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         NumeroOrden: {
           title: this.translate.instant('GLOBAL.numero_orden'),
-          width: '5%',
+          width: '10%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -116,9 +119,27 @@ export class ListTipoDescuentoComponent implements OnInit {
 
   loadData(): void {
     this.descuentosService.get('tipo_descuento/?limit=0').subscribe(res => {
-      if (res !== null) {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         const data = <Array<any>>res;
-        this.source.load(data);
+        data.forEach(element => {
+          this.coreService.get('concepto_academico/' + element.ConceptoAcademicoId)
+            .subscribe(res3 => {
+              if (res3 !== null) {
+                element.ConceptoAcademicoId = <any>res3;
+              }
+              this.source.load(data);
+            },
+              (error: HttpErrorResponse) => {
+                Swal({
+                  type: 'error',
+                  title: error.status + '',
+                  text: this.translate.instant('ERROR.' + error.status),
+                  footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                    this.translate.instant('GLOBAL.concepto_academico_id'),
+                  confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                });
+              });
+        });
       }
     },
       (error: HttpErrorResponse) => {
@@ -160,7 +181,7 @@ export class ListTipoDescuentoComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.descuentosService.delete('tipo_descuento/', event.data).subscribe(res => {
+        this.descuentosService.delete('tipo_descuento', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

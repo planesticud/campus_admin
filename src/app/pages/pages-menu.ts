@@ -75,9 +75,19 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'periodo_academico',
       },
       {
-        title: 'Lista Programa Academico',
-        link: '/pages/programa_academico/list-programa_academico',
-        key: 'programa_academico',
+        title: 'Requisito',
+        link: '/pages/requisito/list-requisito',
+        key: 'requisito',
+      },
+      {
+        title: 'Requisito Criterios',
+        link: '/pages/requisito_academico/list-requisito_academico',
+        key: 'requisito_academico',
+      },
+      {
+        title: 'Requisito Tipo Descuento',
+        link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
+        key: 'requisito_tipo_descuento',
       },
       {
         title: 'Tipo Contacto',
@@ -85,10 +95,17 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_contacto',
       },
       {
+        title: 'Tipo Descuento',
+        link: '/pages/tipo_descuento/list-tipo_descuento',
+        key: 'tipo_descuento',
+      },
+      {
         title: 'Tipo Discapacidad',
         link: '/pages/tipo_discapacidad/list-tipo_discapacidad',
         key: 'tipo_discapacidad',
       },
+
+
       {
         title: 'Tipo Lugar',
         link: '/pages/tipo_lugar/list-tipo_lugar',
@@ -110,22 +127,6 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_duracion',
       },
       {
-        title: 'Lista Tipo Descuento',
-        link: '/pages/tipo_descuento/list-tipo_descuento',
-        key: 'tipo_descuento',
-      },
-      {
-        title: 'Lista Requisito',
-        link: '/pages/requisito/list-requisito',
-        key: 'requisito',
-      },
-      {
-        title: 'Lista Requisito Tipo Descuento',
-        link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
-        key: 'requisito_tipo_descuento',
-      },
-
-      {
         title: 'Lista Solicitud Descuento',
         link: '/pages/solicitud_descuento/list-solicitud_descuento',
         key: 'solicitud_descuento',
@@ -141,16 +142,15 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'soporte_descuento',
       },
       {
-        title: 'Lista Requisito Criterios',
-        link: '/pages/requisito_academico/list-requisito_academico',
-        key: 'requisito_academico',
-      },
-      {
         title: 'Lista Requisito Programa Academico Criterios',
         link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
         key: 'requisito_programa_academico',
       },
-
+      {
+        title: 'Lista Programa Academico',
+        link: '/pages/programa_academico/list-programa_academico',
+        key: 'programa_academico',
+      },
     ],
   },
   {

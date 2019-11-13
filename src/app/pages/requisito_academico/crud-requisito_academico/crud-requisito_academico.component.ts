@@ -65,9 +65,9 @@ export class CrudRequisitoAcademicoComponent implements OnInit {
 
   public loadRequisito(): void {
     if (this.requisito_id !== undefined && this.requisito_id !== 0) {
-      this.evaluacionInscripcionService.get('requisito/?query=id:' + this.requisito_id)
+      this.evaluacionInscripcionService.get('requisito/?query=Id:' + this.requisito_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_requisito_academico = <Requisito>res[0];
           }
         },
@@ -104,13 +104,12 @@ export class CrudRequisitoAcademicoComponent implements OnInit {
         this.info_requisito_academico = <Requisito>requisito;
         this.evaluacionInscripcionService.put('requisito', this.info_requisito_academico)
           .subscribe(res => {
-            this.loadRequisito();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.requisito_academico') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_requisito_academico = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -143,13 +142,12 @@ export class CrudRequisitoAcademicoComponent implements OnInit {
         this.info_requisito_academico = <Requisito>requisito;
         this.evaluacionInscripcionService.post('requisito', this.info_requisito_academico)
           .subscribe(res => {
-            this.info_requisito_academico = <Requisito>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.requisito_academico') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_requisito_academico = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

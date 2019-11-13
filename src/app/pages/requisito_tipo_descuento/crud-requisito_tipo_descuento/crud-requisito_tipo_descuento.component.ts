@@ -63,7 +63,7 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
     let tipoDescuentoId: Array<any> = [];
       this.descuentosService.get('tipo_descuento/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             tipoDescuentoId = <Array<TipoDescuento>>res;
           }
           this.formRequisitoTipoDescuento.campos[ this.getIndexForm('TipoDescuentoId') ].opciones = tipoDescuentoId;
@@ -84,7 +84,7 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
     let requisitoId: Array<any> = [];
       this.descuentosService.get('requisito/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             requisitoId = <Array<Requisito>>res;
           }
           this.formRequisitoTipoDescuento.campos[ this.getIndexForm('RequisitoId') ].opciones = requisitoId;
@@ -113,9 +113,9 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
 
   public loadRequisitoTipoDescuento(): void {
     if (this.requisito_tipo_descuento_id !== undefined && this.requisito_tipo_descuento_id !== 0) {
-      this.descuentosService.get('requisito_tipo_descuento/?query=id:' + this.requisito_tipo_descuento_id)
+      this.descuentosService.get('requisito_tipo_descuento/?query=Id:' + this.requisito_tipo_descuento_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <RequisitoTipoDescuento>res[0];
             this.descuentosService.get('requisito/' + this.element.RequisitoId.Id).subscribe(res2 => {
               if (res2 !== null) {
@@ -183,13 +183,12 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
         this.info_requisito_tipo_descuento = <RequisitoTipoDescuento>requisitoTipoDescuento;
         this.descuentosService.put('requisito_tipo_descuento', this.info_requisito_tipo_descuento)
           .subscribe(res => {
-            this.loadRequisitoTipoDescuento();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.requisito_tipo_descuento') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_requisito_tipo_descuento = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -222,13 +221,12 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
         this.info_requisito_tipo_descuento = <RequisitoTipoDescuento>requisitoTipoDescuento;
         this.descuentosService.post('requisito_tipo_descuento', this.info_requisito_tipo_descuento)
           .subscribe(res => {
-            this.info_requisito_tipo_descuento = <RequisitoTipoDescuento>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.requisito_tipo_descuento') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_requisito_tipo_descuento = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

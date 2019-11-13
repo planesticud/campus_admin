@@ -63,9 +63,9 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
 
   public loadTipoDiscapacidad(): void {
     if (this.tipo_discapacidad_id !== undefined && this.tipo_discapacidad_id !== 0) {
-      this.personaService.get('tipo_discapacidad/?query=id:' + this.tipo_discapacidad_id)
+      this.personaService.get('tipo_discapacidad/?query=Id:' + this.tipo_discapacidad_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_tipo_discapacidad = <TipoDiscapacidad>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
         this.info_tipo_discapacidad = <TipoDiscapacidad>tipoDiscapacidad;
         this.personaService.put('tipo_discapacidad', this.info_tipo_discapacidad)
           .subscribe(res => {
-            this.loadTipoDiscapacidad();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.tipo_discapacidad') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_tipo_discapacidad = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudTipoDiscapacidadComponent implements OnInit {
         this.info_tipo_discapacidad = <TipoDiscapacidad>tipoDiscapacidad;
         this.personaService.post('tipo_discapacidad', this.info_tipo_discapacidad)
           .subscribe(res => {
-            this.info_tipo_discapacidad = <TipoDiscapacidad>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.tipo_discapacidad') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_tipo_discapacidad = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

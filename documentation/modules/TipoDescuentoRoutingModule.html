@@ -766,6 +766,9 @@
                                     <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                 </li>
                                 <li class="link">
@@ -1856,6 +1859,9 @@
                                            <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                        </li>
                                        <li class="link">
@@ -2240,6 +2246,7 @@ import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { TipoDescuentoComponent } from &#x27;./tipo_descuento.component&#x27;;
 import { ListTipoDescuentoComponent } from &#x27;./list-tipo_descuento/list-tipo_descuento.component&#x27;;
 import { CrudTipoDescuentoComponent } from &#x27;./crud-tipo_descuento/crud-tipo_descuento.component&#x27;;
+import { AuthGuard } from &#x27;../../@core/_guards/auth.guard&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;&#x27;,
@@ -2247,9 +2254,12 @@ const routes: Routes &#x3D; [{
   children: [{
     path: &#x27;list-tipo_descuento&#x27;,
     component: ListTipoDescuentoComponent,
-  }, {
-    path: &#x27;crud-tipo_descuento&#x27;,
-    component: CrudTipoDescuentoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        &#x27;ADMIN_CAMPUS&#x27;,
+      ],
+    },
   }],
 }];
 

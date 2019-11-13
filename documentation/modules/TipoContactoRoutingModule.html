@@ -766,6 +766,9 @@
                                     <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                 </li>
                                 <li class="link">
@@ -1856,6 +1859,9 @@
                                            <a href="../classes/ClasificacionNivelIdioma.html" >ClasificacionNivelIdioma</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ConceptoAcademico.html" >ConceptoAcademico</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ContactoEnte.html" >ContactoEnte</a>
                                        </li>
                                        <li class="link">
@@ -2240,6 +2246,7 @@ import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { TipoContactoComponent } from &#x27;./tipo_contacto.component&#x27;;
 import { ListTipoContactoComponent } from &#x27;./list-tipo_contacto/list-tipo_contacto.component&#x27;;
 import { CrudTipoContactoComponent } from &#x27;./crud-tipo_contacto/crud-tipo_contacto.component&#x27;;
+import { AuthGuard } from &#x27;../../@core/_guards/auth.guard&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;&#x27;,
@@ -2247,6 +2254,12 @@ const routes: Routes &#x3D; [{
   children: [{
     path: &#x27;list-tipo_contacto&#x27;,
     component: ListTipoContactoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        &#x27;ADMIN_CAMPUS&#x27;,
+      ],
+    },
   }],
 }];
 

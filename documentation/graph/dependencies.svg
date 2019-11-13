@@ -637,8 +637,8 @@
 <!-- ThemeModule&#45;&gt;DescuentosDependenciaModule -->
 <g id="edge16" class="edge">
 <title>ThemeModule&#45;&gt;DescuentosDependenciaModule</title>
-<path fill="none" stroke="#000000" d="M1182.3944,-207.4854C1182.3944,-219.1399 1182.3944,-232 1182.3944,-232 1182.3944,-232 2513.9946,-232 2513.9946,-232 2513.9946,-232 2513.9946,-232.6831 2513.9946,-232.6831"/>
-<polygon fill="#000000" stroke="#000000" points="2510.4948,-228.8313 2513.9946,-238.8314 2517.4948,-228.8314 2510.4948,-228.8313"/>
+<path fill="none" stroke="#000000" d="M1182.3944,-207.1505C1182.3944,-219.2708 1182.3944,-233 1182.3944,-233 1182.3944,-233 2513.9946,-233 2513.9946,-233 2513.9946,-233 2513.9946,-233.581 2513.9946,-233.581"/>
+<polygon fill="#000000" stroke="#000000" points="2510.4948,-228.8097 2513.9946,-238.8097 2517.4948,-228.8098 2510.4948,-228.8097"/>
 </g>
 <!-- DetalleInscripcionModule -->
 <g id="node25" class="node">
@@ -685,8 +685,8 @@
 <!-- ThemeModule&#45;&gt;EvaluacionInscripcionModule -->
 <g id="edge43" class="edge">
 <title>ThemeModule&#45;&gt;EvaluacionInscripcionModule</title>
-<path fill="none" stroke="#000000" d="M1157.7548,-201C1150.8177,-201 1145.9918,-201 1145.9918,-201 1145.9918,-201 1145.9918,-222 1145.9918,-222 1145.9918,-222 11385.4043,-222 11385.4043,-222 11385.4043,-222 11385.4043,-228.68 11385.4043,-228.68"/>
-<polygon fill="#000000" stroke="#000000" points="11381.9044,-228.6799 11385.4043,-238.68 11388.9044,-228.68 11381.9044,-228.6799"/>
+<path fill="none" stroke="#000000" d="M1157.7548,-201C1150.8177,-201 1145.9918,-201 1145.9918,-201 1145.9918,-201 1145.9918,-223 1145.9918,-223 1145.9918,-223 11385.4043,-223 11385.4043,-223 11385.4043,-223 11385.4043,-228.8056 11385.4043,-228.8056"/>
+<polygon fill="#000000" stroke="#000000" points="11381.9044,-228.8055 11385.4043,-238.8056 11388.9044,-228.8056 11381.9044,-228.8055"/>
 </g>
 <!-- GeneroModule -->
 <g id="node44" class="node">
@@ -709,8 +709,8 @@
 <!-- ThemeModule&#45;&gt;GrupoEtnicoModule -->
 <g id="edge53" class="edge">
 <title>ThemeModule&#45;&gt;GrupoEtnicoModule</title>
-<path fill="none" stroke="#000000" d="M1237.7569,-207.0579C1237.7569,-211.4945 1237.7569,-215 1237.7569,-215 1237.7569,-215 5790.6498,-215 5790.6498,-215 5790.6498,-215 5790.6498,-228.9445 5790.6498,-228.9445"/>
-<polygon fill="#000000" stroke="#000000" points="5787.1499,-228.9444 5790.6498,-238.9445 5794.1499,-228.9445 5787.1499,-228.9444"/>
+<path fill="none" stroke="#000000" d="M1237.7569,-207.1592C1237.7569,-212.0433 1237.7569,-216 1237.7569,-216 1237.7569,-216 5790.6498,-216 5790.6498,-216 5790.6498,-216 5790.6498,-228.8975 5790.6498,-228.8975"/>
+<polygon fill="#000000" stroke="#000000" points="5787.1499,-228.8974 5790.6498,-238.8975 5794.1499,-228.8975 5787.1499,-228.8974"/>
 </g>
 <!-- GrupoInvestigacionModule -->
 <g id="node50" class="node">
@@ -817,8 +817,8 @@
 <!-- ThemeModule&#45;&gt;NivelFormacionModule -->
 <g id="edge99" class="edge">
 <title>ThemeModule&#45;&gt;NivelFormacionModule</title>
-<path fill="none" stroke="#000000" d="M1250.0597,-207.1903C1250.0597,-210.5376 1250.0597,-213 1250.0597,-213 1250.0597,-213 6267.1735,-213 6267.1735,-213 6267.1735,-213 6267.1735,-228.8495 6267.1735,-228.8495"/>
-<polygon fill="#000000" stroke="#000000" points="6263.6736,-228.8494 6267.1735,-238.8495 6270.6736,-228.8495 6263.6736,-228.8494"/>
+<path fill="none" stroke="#000000" d="M1250.0597,-207.1686C1250.0597,-211.0459 1250.0597,-214 1250.0597,-214 1250.0597,-214 6267.1735,-214 6267.1735,-214 6267.1735,-214 6267.1735,-228.5146 6267.1735,-228.5146"/>
+<polygon fill="#000000" stroke="#000000" points="6263.6736,-228.5145 6267.1735,-238.5146 6270.6736,-228.5146 6263.6736,-228.5145"/>
 </g>
 <!-- NivelIdiomaModule -->
 <g id="node78" class="node">
@@ -949,8 +949,8 @@
 <!-- ThemeModule&#45;&gt;SolicitudDescuentoModule -->
 <g id="edge157" class="edge">
 <title>ThemeModule&#45;&gt;SolicitudDescuentoModule</title>
-<path fill="none" stroke="#000000" d="M1200.8486,-207.1274C1200.8486,-217.7109 1200.8486,-229 1200.8486,-229 1200.8486,-229 3811.5732,-229 3811.5732,-229 3811.5732,-229 3811.5732,-229.9793 3811.5732,-229.9793"/>
-<polygon fill="#000000" stroke="#000000" points="3808.0733,-228.793 3811.5732,-238.793 3815.0733,-228.7931 3808.0733,-228.793"/>
+<path fill="none" stroke="#000000" d="M1200.8486,-207.1025C1200.8486,-218.0859 1200.8486,-230 1200.8486,-230 1200.8486,-230 3811.5732,-230 3811.5732,-230 3811.5732,-230 3811.5732,-230.8841 3811.5732,-230.8841"/>
+<polygon fill="#000000" stroke="#000000" points="3808.0733,-228.8408 3811.5732,-238.8408 3815.0733,-228.8409 3808.0733,-228.8408"/>
 </g>
 <!-- SoporteDescuentoModule -->
 <g id="node113" class="node">
@@ -985,8 +985,8 @@
 <!-- ThemeModule&#45;&gt;TipoDescuentoModule -->
 <g id="edge181" class="edge">
 <title>ThemeModule&#45;&gt;TipoDescuentoModule</title>
-<path fill="none" stroke="#000000" d="M1251.29,-170.8457C1251.29,-169.7031 1251.29,-169 1251.29,-169 1251.29,-169 6489.1813,-169 6489.1813,-169 6489.1813,-169 6489.1813,-228.7663 6489.1813,-228.7663"/>
-<polygon fill="#000000" stroke="#000000" points="6485.6813,-228.7663 6489.1813,-238.7663 6492.6813,-228.7664 6485.6813,-228.7663"/>
+<path fill="none" stroke="#000000" d="M1251.29,-170.8457C1251.29,-169.7031 1251.29,-169 1251.29,-169 1251.29,-169 6490.7254,-169 6490.7254,-169 6490.7254,-169 6490.7254,-228.7663 6490.7254,-228.7663"/>
+<polygon fill="#000000" stroke="#000000" points="6487.2255,-228.7663 6490.7254,-238.7663 6494.2255,-228.7664 6487.2255,-228.7663"/>
 </g>
 <!-- TipoDiscapacidadModule -->
 <g id="node125" class="node">
@@ -995,7 +995,7 @@
 <text text-anchor="middle" x="10695" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoDiscapacidadModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;TipoDiscapacidadModule -->
-<g id="edge186" class="edge">
+<g id="edge187" class="edge">
 <title>ThemeModule&#45;&gt;TipoDiscapacidadModule</title>
 <path fill="none" stroke="#000000" d="M1256.3195,-189C1264.0774,-189 1269.5941,-189 1269.5941,-189 1269.5941,-189 1269.5941,-296 1269.5941,-296 1269.5941,-296 10695,-296 10695,-296 10695,-296 10695,-285.1299 10695,-285.1299"/>
 <polygon fill="#000000" stroke="#000000" points="10698.5001,-285.1299 10695,-275.1299 10691.5001,-285.1299 10698.5001,-285.1299"/>
@@ -1007,7 +1007,7 @@
 <text text-anchor="middle" x="6802" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoDuracionModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;TipoDuracionModule -->
-<g id="edge191" class="edge">
+<g id="edge192" class="edge">
 <title>ThemeModule&#45;&gt;TipoDuracionModule</title>
 <path fill="none" stroke="#000000" d="M1246.3689,-170.8321C1246.3689,-168.5522 1246.3689,-167 1246.3689,-167 1246.3689,-167 6741.1806,-167 6741.1806,-167 6741.1806,-167 6741.1806,-228.7872 6741.1806,-228.7872"/>
 <polygon fill="#000000" stroke="#000000" points="6737.6806,-228.7871 6741.1806,-238.7872 6744.6806,-228.7872 6737.6806,-228.7871"/>
@@ -1019,7 +1019,7 @@
 <text text-anchor="middle" x="12992" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoLugarModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;TipoLugarModule -->
-<g id="edge196" class="edge">
+<g id="edge197" class="edge">
 <title>ThemeModule&#45;&gt;TipoLugarModule</title>
 <path fill="none" stroke="#000000" d="M1157.7048,-194C1121.1324,-194 1077.5856,-194 1077.5856,-194 1077.5856,-194 1077.5856,-303 1077.5856,-303 1077.5856,-303 12972.0965,-303 12972.0965,-303 12972.0965,-303 12972.0965,-285.1804 12972.0965,-285.1804"/>
 <polygon fill="#000000" stroke="#000000" points="12975.5966,-285.1804 12972.0965,-275.1804 12968.5966,-285.1805 12975.5966,-285.1804"/>
@@ -1031,7 +1031,7 @@
 <text text-anchor="middle" x="10233" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoPeriodoModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;TipoPeriodoModule -->
-<g id="edge201" class="edge">
+<g id="edge202" class="edge">
 <title>ThemeModule&#45;&gt;TipoPeriodoModule</title>
 <path fill="none" stroke="#000000" d="M1256.4622,-182C1266.2737,-182 1273.618,-182 1273.618,-182 1273.618,-182 1273.618,-293 1273.618,-293 1273.618,-293 10233,-293 10233,-293 10233,-293 10233,-285.4218 10233,-285.4218"/>
 <polygon fill="#000000" stroke="#000000" points="10236.5001,-285.4218 10233,-275.4218 10229.5001,-285.4219 10236.5001,-285.4218"/>
@@ -1043,7 +1043,7 @@
 <text text-anchor="middle" x="9994" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoProyectoModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;TipoProyectoModule -->
-<g id="edge206" class="edge">
+<g id="edge207" class="edge">
 <title>ThemeModule&#45;&gt;TipoProyectoModule</title>
 <path fill="none" stroke="#000000" d="M1256.5127,-179C1267.335,-179 1275.63,-179 1275.63,-179 1275.63,-179 1275.63,-292 1275.63,-292 1275.63,-292 9971.374,-292 9971.374,-292 9971.374,-292 9971.374,-285.32 9971.374,-285.32"/>
 <polygon fill="#000000" stroke="#000000" points="9974.8741,-285.32 9971.374,-275.32 9967.8741,-285.3201 9974.8741,-285.32"/>
@@ -1055,7 +1055,7 @@
 <text text-anchor="middle" x="7322" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">TitulacionModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;TitulacionModule -->
-<g id="edge211" class="edge">
+<g id="edge212" class="edge">
 <title>ThemeModule&#45;&gt;TitulacionModule</title>
 <path fill="none" stroke="#000000" d="M1236.5267,-170.9421C1236.5267,-166.5055 1236.5267,-163 1236.5267,-163 1236.5267,-163 7271.1736,-163 7271.1736,-163 7271.1736,-163 7271.1736,-228.8759 7271.1736,-228.8759"/>
 <polygon fill="#000000" stroke="#000000" points="7267.6736,-228.8758 7271.1736,-238.8759 7274.6736,-228.8759 7267.6736,-228.8758"/>
@@ -1067,10 +1067,10 @@
 <text text-anchor="middle" x="4544" y="-252.8" font-family="Times,serif" font-size="14.00" fill="#000000">ValidacionDescuentoModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge216" class="edge">
+<g id="edge217" class="edge">
 <title>ThemeModule&#45;&gt;ValidacionDescuentoModule</title>
-<path fill="none" stroke="#000000" d="M1213.1514,-207.0664C1213.1514,-216.4587 1213.1514,-226 1213.1514,-226 1213.1514,-226 4483.9808,-226 4483.9808,-226 4483.9808,-226 4483.9808,-228.9672 4483.9808,-228.9672"/>
-<polygon fill="#000000" stroke="#000000" points="4480.4809,-228.9671 4483.9808,-238.9672 4487.4809,-228.9672 4480.4809,-228.9671"/>
+<path fill="none" stroke="#000000" d="M1213.1514,-207.1097C1213.1514,-216.897 1213.1514,-227 1213.1514,-227 1213.1514,-227 4483.9808,-227 4483.9808,-227 4483.9808,-227 4483.9808,-228.8568 4483.9808,-228.8568"/>
+<polygon fill="#000000" stroke="#000000" points="4480.4809,-228.8568 4483.9808,-238.8568 4487.4809,-228.8568 4480.4809,-228.8568"/>
 </g>
 <!-- ClasificacionIdiomaRoutingModule -->
 <g id="node7" class="node">
@@ -1285,47 +1285,47 @@
 <!-- SharedModule&#45;&gt;TipoDescuentoModule -->
 <g id="edge183" class="edge">
 <title>SharedModule&#45;&gt;TipoDescuentoModule</title>
-<path fill="none" stroke="#000000" d="M1256.3689,-101C1791.2855,-101 6493.0415,-101 6493.0415,-101 6493.0415,-101 6493.0415,-228.7995 6493.0415,-228.7995"/>
-<polygon fill="#000000" stroke="#000000" points="6489.5416,-228.7995 6493.0415,-238.7995 6496.5416,-228.7995 6489.5416,-228.7995"/>
+<path fill="none" stroke="#000000" d="M1256.3761,-101C1791.3708,-101 6493.8136,-101 6493.8136,-101 6493.8136,-101 6493.8136,-228.7995 6493.8136,-228.7995"/>
+<polygon fill="#000000" stroke="#000000" points="6490.3137,-228.7995 6493.8136,-238.7995 6497.3137,-228.7995 6490.3137,-228.7995"/>
 </g>
 <!-- SharedModule&#45;&gt;TipoDiscapacidadModule -->
-<g id="edge188" class="edge">
+<g id="edge189" class="edge">
 <title>SharedModule&#45;&gt;TipoDiscapacidadModule</title>
 <path fill="none" stroke="#000000" d="M1211.9211,-131.1679C1211.9211,-133.4478 1211.9211,-135 1211.9211,-135 1211.9211,-135 10535.0328,-135 10535.0328,-135 10535.0328,-135 10535.0328,-257 10535.0328,-257 10535.0328,-257 10604.0791,-257 10604.0791,-257"/>
 <polygon fill="#000000" stroke="#000000" points="10604.0791,-260.5001 10614.0791,-257 10604.0791,-253.5001 10604.0791,-260.5001"/>
 </g>
 <!-- SharedModule&#45;&gt;TipoDuracionModule -->
-<g id="edge193" class="edge">
+<g id="edge194" class="edge">
 <title>SharedModule&#45;&gt;TipoDuracionModule</title>
 <path fill="none" stroke="#000000" d="M1256.5706,-99C1806.4072,-99 6745.2908,-99 6745.2908,-99 6745.2908,-99 6745.2908,-228.8754 6745.2908,-228.8754"/>
 <polygon fill="#000000" stroke="#000000" points="6741.7909,-228.8754 6745.2908,-238.8754 6748.7909,-228.8754 6741.7909,-228.8754"/>
 </g>
 <!-- SharedModule&#45;&gt;TipoLugarModule -->
-<g id="edge198" class="edge">
+<g id="edge199" class="edge">
 <title>SharedModule&#45;&gt;TipoLugarModule</title>
 <path fill="none" stroke="#000000" d="M1198.7982,-94.8701C1198.7982,-84.6855 1198.7982,-74 1198.7982,-74 1198.7982,-74 12882.7721,-74 12882.7721,-74 12882.7721,-74 12882.7721,-257 12882.7721,-257 12882.7721,-257 12922.2727,-257 12922.2727,-257"/>
 <polygon fill="#000000" stroke="#000000" points="12922.2727,-260.5001 12932.2727,-257 12922.2726,-253.5001 12922.2727,-260.5001"/>
 </g>
 <!-- SharedModule&#45;&gt;TipoPeriodoModule -->
-<g id="edge203" class="edge">
+<g id="edge204" class="edge">
 <title>SharedModule&#45;&gt;TipoPeriodoModule</title>
 <path fill="none" stroke="#000000" d="M1202.0789,-131.0579C1202.0789,-135.4945 1202.0789,-139 1202.0789,-139 1202.0789,-139 10088.9774,-139 10088.9774,-139 10088.9774,-139 10088.9774,-257 10088.9774,-257 10088.9774,-257 10158.1512,-257 10158.1512,-257"/>
 <polygon fill="#000000" stroke="#000000" points="10158.1512,-260.5001 10168.1512,-257 10158.1511,-253.5001 10158.1512,-260.5001"/>
 </g>
 <!-- SharedModule&#45;&gt;TipoProyectoModule -->
-<g id="edge208" class="edge">
+<g id="edge209" class="edge">
 <title>SharedModule&#45;&gt;TipoProyectoModule</title>
 <path fill="none" stroke="#000000" d="M1197.1578,-131.207C1197.1578,-136.5549 1197.1578,-141 1197.1578,-141 1197.1578,-141 9876.8761,-141 9876.8761,-141 9876.8761,-141 9876.8761,-257 9876.8761,-257 9876.8761,-257 9916.2077,-257 9916.2077,-257"/>
 <polygon fill="#000000" stroke="#000000" points="9916.2077,-260.5001 9926.2077,-257 9916.2077,-253.5001 9916.2077,-260.5001"/>
 </g>
 <!-- SharedModule&#45;&gt;TitulacionModule -->
-<g id="edge213" class="edge">
+<g id="edge214" class="edge">
 <title>SharedModule&#45;&gt;TitulacionModule</title>
 <path fill="none" stroke="#000000" d="M1167.6311,-131.1467C1167.6311,-144.7395 1167.6311,-161 1167.6311,-161 1167.6311,-161 7275.0338,-161 7275.0338,-161 7275.0338,-161 7275.0338,-228.9431 7275.0338,-228.9431"/>
 <polygon fill="#000000" stroke="#000000" points="7271.5339,-228.9431 7275.0338,-238.9431 7278.5339,-228.9432 7271.5339,-228.9431"/>
 </g>
 <!-- SharedModule&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge218" class="edge">
+<g id="edge219" class="edge">
 <title>SharedModule&#45;&gt;ValidacionDescuentoModule</title>
 <path fill="none" stroke="#000000" d="M1256.4621,-115C1649.8888,-115 4257.4546,-115 4257.4546,-115 4257.4546,-115 4257.4546,-257 4257.4546,-257 4257.4546,-257 4443.7286,-257 4443.7286,-257"/>
 <polygon fill="#000000" stroke="#000000" points="4443.7286,-260.5001 4453.7286,-257 4443.7285,-253.5001 4443.7286,-260.5001"/>
@@ -1493,22 +1493,22 @@
 <polygon fill="#000000" stroke="#000000" points="4758.5883,-285.2014 4755.0881,-275.2015 4751.5883,-285.2015 4758.5883,-285.2014"/>
 </g>
 <!-- DescuentoAcademicoService&#45;&gt;TipoDescuentoModule -->
-<g id="edge185" class="edge">
+<g id="edge186" class="edge">
 <title>DescuentoAcademicoService&#45;&gt;TipoDescuentoModule</title>
-<path fill="none" stroke="#000000" d="M2776.467,-204.9884C2776.467,-208.4004 2776.467,-211 2776.467,-211 2776.467,-211 6485.321,-211 6485.321,-211 6485.321,-211 6485.321,-228.8196 6485.321,-228.8196"/>
-<polygon fill="#000000" stroke="#000000" points="6481.8211,-228.8195 6485.321,-238.8196 6488.8211,-228.8196 6481.8211,-228.8195"/>
+<path fill="none" stroke="#000000" d="M2776.467,-204.9884C2776.467,-208.4004 2776.467,-211 2776.467,-211 2776.467,-211 6484.5489,-211 6484.5489,-211 6484.5489,-211 6484.5489,-228.8196 6484.5489,-228.8196"/>
+<polygon fill="#000000" stroke="#000000" points="6481.049,-228.8195 6484.5489,-238.8196 6488.049,-228.8196 6481.049,-228.8195"/>
 </g>
 <!-- DescuentoAcademicoService&#45;&gt;TipoDuracionModule -->
-<g id="edge195" class="edge">
+<g id="edge196" class="edge">
 <title>DescuentoAcademicoService&#45;&gt;TipoDuracionModule</title>
 <path fill="none" stroke="#000000" d="M2793.03,-203.8129C2793.03,-207.2878 2793.03,-210 2793.03,-210 2793.03,-210 6737.0703,-210 6737.0703,-210 6737.0703,-210 6737.0703,-228.963 6737.0703,-228.963"/>
 <polygon fill="#000000" stroke="#000000" points="6733.5704,-228.963 6737.0703,-238.963 6740.5704,-228.963 6733.5704,-228.963"/>
 </g>
 <!-- DescuentoAcademicoService&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge220" class="edge">
+<g id="edge221" class="edge">
 <title>DescuentoAcademicoService&#45;&gt;ValidacionDescuentoModule</title>
-<path fill="none" stroke="#000000" d="M2759.904,-206.1565C2759.904,-215.4287 2759.904,-225 2759.904,-225 2759.904,-225 4513.9904,-225 4513.9904,-225 4513.9904,-225 4513.9904,-228.7566 4513.9904,-228.7566"/>
-<polygon fill="#000000" stroke="#000000" points="4510.4905,-228.7566 4513.9904,-238.7566 4517.4905,-228.7566 4510.4905,-228.7566"/>
+<path fill="none" stroke="#000000" d="M2759.904,-206.2002C2759.904,-215.8625 2759.904,-226 2759.904,-226 2759.904,-226 4513.9904,-226 4513.9904,-226 4513.9904,-226 4513.9904,-228.9672 4513.9904,-228.9672"/>
+<polygon fill="#000000" stroke="#000000" points="4510.4905,-228.9671 4513.9904,-238.9672 4517.4905,-228.9672 4510.4905,-228.9671"/>
 </g>
 <!-- ProgramaOikosService -->
 <g id="node22" class="node">
@@ -1541,7 +1541,7 @@
 <polygon fill="#000000" stroke="#000000" points="4751.5185,-228.9551 4755.0184,-238.9551 4758.5185,-228.9552 4751.5185,-228.9551"/>
 </g>
 <!-- ProgramaOikosService&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge222" class="edge">
+<g id="edge223" class="edge">
 <title>ProgramaOikosService&#45;&gt;ValidacionDescuentoModule</title>
 <path fill="none" stroke="#000000" d="M2994.5333,-206.1565C2994.5333,-215.4287 2994.5333,-225 2994.5333,-225 2994.5333,-225 4544,-225 4544,-225 4544,-225 4544,-228.7566 4544,-228.7566"/>
 <polygon fill="#000000" stroke="#000000" points="4540.5001,-228.7566 4544,-238.7566 4547.5001,-228.7566 4540.5001,-228.7566"/>
@@ -1555,43 +1555,49 @@
 <!-- CoreService&#45;&gt;DescuentosDependenciaModule -->
 <g id="edge22" class="edge">
 <title>CoreService&#45;&gt;DescuentosDependenciaModule</title>
-<path fill="none" stroke="#000000" d="M3093.9284,-200.9984C3093.9284,-223.0984 3093.9284,-268 3093.9284,-268 3093.9284,-268 2693.73,-268 2693.73,-268"/>
-<polygon fill="#000000" stroke="#000000" points="2693.73,-264.5001 2683.73,-268 2693.7299,-271.5001 2693.73,-264.5001"/>
+<path fill="none" stroke="#000000" d="M3092.2961,-200.3188C3092.2961,-222.163 3092.2961,-268 3092.2961,-268 3092.2961,-268 2693.7145,-268 2693.7145,-268"/>
+<polygon fill="#000000" stroke="#000000" points="2693.7146,-264.5001 2683.7145,-268 2693.7145,-271.5001 2693.7146,-264.5001"/>
 </g>
 <!-- CoreService&#45;&gt;GrupoInvestigacionModule -->
 <g id="edge62" class="edge">
 <title>CoreService&#45;&gt;GrupoInvestigacionModule</title>
-<path fill="none" stroke="#000000" d="M3167.381,-204.6768C3167.381,-230.4624 3167.381,-279 3167.381,-279 3167.381,-279 7560.5437,-279 7560.5437,-279 7560.5437,-279 7560.5437,-278.6168 7560.5437,-278.6168"/>
+<path fill="none" stroke="#000000" d="M3157.5874,-206.3529C3157.5874,-232.5059 3157.5874,-279 3157.5874,-279 3157.5874,-279 7560.5437,-279 7560.5437,-279 7560.5437,-279 7560.5437,-278.6168 7560.5437,-278.6168"/>
 <polygon fill="#000000" stroke="#000000" points="7564.044,-285.1678 7560.5437,-275.1679 7557.044,-285.168 7564.044,-285.1678"/>
 </g>
 <!-- CoreService&#45;&gt;InscripcionModule -->
 <g id="edge74" class="edge">
 <title>CoreService&#45;&gt;InscripcionModule</title>
-<path fill="none" stroke="#000000" d="M3182.0716,-201.2021C3182.0716,-209.5078 3182.0716,-219 3182.0716,-219 3182.0716,-219 5084.579,-219 5084.579,-219 5084.579,-219 5084.579,-228.8903 5084.579,-228.8903"/>
-<polygon fill="#000000" stroke="#000000" points="5081.0791,-228.8903 5084.579,-238.8903 5088.0791,-228.8904 5081.0791,-228.8903"/>
+<path fill="none" stroke="#000000" d="M3170.6456,-204.1367C3170.6456,-212.0059 3170.6456,-220 3170.6456,-220 3170.6456,-220 5084.579,-220 5084.579,-220 5084.579,-220 5084.579,-228.9336 5084.579,-228.9336"/>
+<polygon fill="#000000" stroke="#000000" points="5081.0791,-228.9335 5084.579,-238.9336 5088.0791,-228.9336 5081.0791,-228.9335"/>
 </g>
 <!-- CoreService&#45;&gt;LineaInvestigacionModule -->
 <g id="edge80" class="edge">
 <title>CoreService&#45;&gt;LineaInvestigacionModule</title>
-<path fill="none" stroke="#000000" d="M3152.6905,-206.5457C3152.6905,-232.9893 3152.6905,-280 3152.6905,-280 3152.6905,-280 9498.1928,-280 9498.1928,-280 9498.1928,-280 9498.1928,-279.5122 9498.1928,-279.5122"/>
+<path fill="none" stroke="#000000" d="M3144.5291,-206.9787C3144.5291,-233.4989 3144.5291,-280 3144.5291,-280 3144.5291,-280 9498.1928,-280 9498.1928,-280 9498.1928,-280 9498.1928,-279.5122 9498.1928,-279.5122"/>
 <polygon fill="#000000" stroke="#000000" points="9501.6931,-285.1222 9498.1928,-275.1223 9494.6931,-285.1224 9501.6931,-285.1222"/>
 </g>
 <!-- CoreService&#45;&gt;PeriodoModule -->
 <g id="edge118" class="edge">
 <title>CoreService&#45;&gt;PeriodoModule</title>
-<path fill="none" stroke="#000000" d="M3138,-207.1762C3138,-233.9879 3138,-281 3138,-281 3138,-281 9742.2255,-281 9742.2255,-281 9742.2255,-281 9742.2255,-280.419 9742.2255,-280.419"/>
+<path fill="none" stroke="#000000" d="M3131.4709,-207.1762C3131.4709,-233.9879 3131.4709,-281 3131.4709,-281 3131.4709,-281 9742.2255,-281 9742.2255,-281 9742.2255,-281 9742.2255,-280.419 9742.2255,-280.419"/>
 <polygon fill="#000000" stroke="#000000" points="9745.7256,-285.1902 9742.2255,-275.1903 9738.7256,-285.1903 9745.7256,-285.1902"/>
 </g>
 <!-- CoreService&#45;&gt;RequisitoProgramaAcademicoModule -->
 <g id="edge150" class="edge">
 <title>CoreService&#45;&gt;RequisitoProgramaAcademicoModule</title>
-<path fill="none" stroke="#000000" d="M3108.619,-204.6873C3108.619,-231.67 3108.619,-284 3108.619,-284 3108.619,-284 10928.5838,-284 10928.5838,-284 10928.5838,-284 10928.5838,-283.1159 10928.5838,-283.1159"/>
+<path fill="none" stroke="#000000" d="M3105.3544,-204.2634C3105.3544,-231.1177 3105.3544,-284 3105.3544,-284 3105.3544,-284 10928.5838,-284 10928.5838,-284 10928.5838,-284 10928.5838,-283.1159 10928.5838,-283.1159"/>
 <polygon fill="#000000" stroke="#000000" points="10932.084,-285.1591 10928.5838,-275.1592 10925.084,-285.1592 10932.084,-285.1591"/>
 </g>
+<!-- CoreService&#45;&gt;TipoDescuentoModule -->
+<g id="edge185" class="edge">
+<title>CoreService&#45;&gt;TipoDescuentoModule</title>
+<path fill="none" stroke="#000000" d="M3183.7039,-200.5155C3183.7039,-205.8384 3183.7039,-211 3183.7039,-211 3183.7039,-211 6487.6371,-211 6487.6371,-211 6487.6371,-211 6487.6371,-228.8196 6487.6371,-228.8196"/>
+<polygon fill="#000000" stroke="#000000" points="6484.1372,-228.8195 6487.6371,-238.8196 6491.1372,-228.8196 6484.1372,-228.8195"/>
+</g>
 <!-- CoreService&#45;&gt;TipoPeriodoModule -->
-<g id="edge205" class="edge">
+<g id="edge206" class="edge">
 <title>CoreService&#45;&gt;TipoPeriodoModule</title>
-<path fill="none" stroke="#000000" d="M3123.3095,-206.6807C3123.3095,-233.9102 3123.3095,-283 3123.3095,-283 3123.3095,-283 10200.6147,-283 10200.6147,-283 10200.6147,-283 10200.6147,-282.2058 10200.6147,-282.2058"/>
+<path fill="none" stroke="#000000" d="M3118.4126,-206.241C3118.4126,-233.3781 3118.4126,-283 3118.4126,-283 3118.4126,-283 10200.6147,-283 10200.6147,-283 10200.6147,-283 10200.6147,-282.2058 10200.6147,-282.2058"/>
 <polygon fill="#000000" stroke="#000000" points="10204.1148,-285.0578 10200.6147,-275.0579 10197.1148,-285.0579 10204.1148,-285.0578"/>
 </g>
 <!-- DetalleInscripcionRoutingModule -->
@@ -1631,10 +1637,10 @@
 <polygon fill="#000000" stroke="#000000" points="5142.3434,-228.8159 5145.842,-238.8164 5149.3434,-228.8169 5142.3434,-228.8159"/>
 </g>
 <!-- InscripcionService&#45;&gt;TipoProyectoModule -->
-<g id="edge210" class="edge">
+<g id="edge211" class="edge">
 <title>InscripcionService&#45;&gt;TipoProyectoModule</title>
-<path fill="none" stroke="#000000" d="M9012.3137,-206.7582C9012.3137,-209.2598 9012.3137,-211 9012.3137,-211 9012.3137,-211 9971.374,-211 9971.374,-211 9971.374,-211 9971.374,-228.8196 9971.374,-228.8196"/>
-<polygon fill="#000000" stroke="#000000" points="9967.8741,-228.8195 9971.374,-238.8196 9974.8741,-228.8196 9967.8741,-228.8195"/>
+<path fill="none" stroke="#000000" d="M9012.3137,-206.6655C9012.3137,-209.7539 9012.3137,-212 9012.3137,-212 9012.3137,-212 9971.374,-212 9971.374,-212 9971.374,-212 9971.374,-228.9561 9971.374,-228.9561"/>
+<polygon fill="#000000" stroke="#000000" points="9967.8741,-228.956 9971.374,-238.9561 9974.8741,-228.9561 9967.8741,-228.956"/>
 </g>
 <!-- CampusMidService -->
 <g id="node27" class="node">
@@ -1741,14 +1747,14 @@
 <!-- PersonaService&#45;&gt;GrupoEtnicoModule -->
 <g id="edge57" class="edge">
 <title>PersonaService&#45;&gt;GrupoEtnicoModule</title>
-<path fill="none" stroke="#000000" d="M4378.3366,-203.4485C4378.3366,-209.868 4378.3366,-216 4378.3366,-216 4378.3366,-216 5740.881,-216 5740.881,-216 5740.881,-216 5740.881,-228.8975 5740.881,-228.8975"/>
-<polygon fill="#000000" stroke="#000000" points="5737.3811,-228.8974 5740.881,-238.8975 5744.3811,-228.8975 5737.3811,-228.8974"/>
+<path fill="none" stroke="#000000" d="M4378.3366,-203.656C4378.3366,-210.4307 4378.3366,-217 4378.3366,-217 4378.3366,-217 5740.881,-217 5740.881,-217 5740.881,-217 5740.881,-228.8726 5740.881,-228.8726"/>
+<polygon fill="#000000" stroke="#000000" points="5737.3811,-228.8725 5740.881,-238.8726 5744.3811,-228.8726 5737.3811,-228.8725"/>
 </g>
 <!-- PersonaService&#45;&gt;InscripcionModule -->
 <g id="edge73" class="edge">
 <title>PersonaService&#45;&gt;InscripcionModule</title>
-<path fill="none" stroke="#000000" d="M4350.1122,-206.8708C4350.1122,-212.8386 4350.1122,-218 4350.1122,-218 4350.1122,-218 5105,-218 5105,-218 5105,-218 5105,-228.8701 5105,-228.8701"/>
-<polygon fill="#000000" stroke="#000000" points="5101.5001,-228.8701 5105,-238.8701 5108.5001,-228.8701 5101.5001,-228.8701"/>
+<path fill="none" stroke="#000000" d="M4350.1122,-206.7979C4350.1122,-213.2578 4350.1122,-219 4350.1122,-219 4350.1122,-219 5105,-219 5105,-219 5105,-219 5105,-228.8903 5105,-228.8903"/>
+<polygon fill="#000000" stroke="#000000" points="5101.5001,-228.8903 5105,-238.8903 5108.5001,-228.8904 5101.5001,-228.8903"/>
 </g>
 <!-- PersonaService&#45;&gt;PersonaModule -->
 <g id="edge123" class="edge">
@@ -1769,13 +1775,13 @@
 <polygon fill="#000000" stroke="#000000" points="4755.6287,-228.8055 4759.1287,-238.8056 4762.6287,-228.8056 4755.6287,-228.8055"/>
 </g>
 <!-- PersonaService&#45;&gt;TipoDiscapacidadModule -->
-<g id="edge190" class="edge">
+<g id="edge191" class="edge">
 <title>PersonaService&#45;&gt;TipoDiscapacidadModule</title>
 <path fill="none" stroke="#000000" d="M4307.7756,-205.7402C4307.7756,-231.5213 4307.7756,-278 4307.7756,-278 4307.7756,-278 10654.6504,-278 10654.6504,-278 10654.6504,-278 10654.6504,-277.708 10654.6504,-277.708"/>
 <polygon fill="#000000" stroke="#000000" points="10658.1508,-285.0799 10654.6504,-275.08 10651.1508,-285.0802 10658.1508,-285.0799"/>
 </g>
 <!-- PersonaService&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge223" class="edge">
+<g id="edge224" class="edge">
 <title>PersonaService&#45;&gt;ValidacionDescuentoModule</title>
 <path fill="none" stroke="#000000" d="M4392.4488,-199.8215C4392.4488,-216.8543 4392.4488,-248 4392.4488,-248 4392.4488,-248 4443.6536,-248 4443.6536,-248"/>
 <polygon fill="#000000" stroke="#000000" points="4443.6536,-251.5001 4453.6536,-248 4443.6536,-244.5001 4443.6536,-251.5001"/>
@@ -1993,8 +1999,8 @@
 <!-- ProgramaAcademicoService&#45;&gt;NivelFormacionModule -->
 <g id="edge103" class="edge">
 <title>ProgramaAcademicoService&#45;&gt;NivelFormacionModule</title>
-<path fill="none" stroke="#000000" d="M5364.5004,-207.1223C5364.5004,-209.9729 5364.5004,-212 5364.5004,-212 5364.5004,-212 6305,-212 6305,-212 6305,-212 6305,-228.9561 6305,-228.9561"/>
-<polygon fill="#000000" stroke="#000000" points="6301.5001,-228.956 6305,-238.9561 6308.5001,-228.9561 6301.5001,-228.956"/>
+<path fill="none" stroke="#000000" d="M5364.5004,-206.9438C5364.5004,-210.416 5364.5004,-213 5364.5004,-213 5364.5004,-213 6305,-213 6305,-213 6305,-213 6305,-228.8495 6305,-228.8495"/>
+<polygon fill="#000000" stroke="#000000" points="6301.5001,-228.8494 6305,-238.8495 6308.5001,-228.8495 6301.5001,-228.8494"/>
 </g>
 <!-- ProgramaAcademicoService&#45;&gt;ProgramaAcademicoModule -->
 <g id="edge128" class="edge">
@@ -2015,13 +2021,13 @@
 <polygon fill="#000000" stroke="#000000" points="4873.1568,-228.8455 4876.6562,-238.8457 4880.1568,-228.8459 4873.1568,-228.8455"/>
 </g>
 <!-- ProgramaAcademicoService&#45;&gt;TitulacionModule -->
-<g id="edge215" class="edge">
+<g id="edge216" class="edge">
 <title>ProgramaAcademicoService&#45;&gt;TitulacionModule</title>
 <path fill="none" stroke="#000000" d="M5418.5018,-203.9706C5418.5018,-206.3254 5418.5018,-208 5418.5018,-208 5418.5018,-208 7267.3133,-208 7267.3133,-208 7267.3133,-208 7267.3133,-228.7542 7267.3133,-228.7542"/>
 <polygon fill="#000000" stroke="#000000" points="7263.8134,-228.7542 7267.3133,-238.7542 7270.8134,-228.7542 7263.8134,-228.7542"/>
 </g>
 <!-- ProgramaAcademicoService&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge221" class="edge">
+<g id="edge222" class="edge">
 <title>ProgramaAcademicoService&#45;&gt;ValidacionDescuentoModule</title>
 <path fill="none" stroke="#000000" d="M5283.4982,-204.1298C5283.4982,-217.8694 5283.4982,-236 5283.4982,-236 5283.4982,-236 4604.0192,-236 4604.0192,-236 4604.0192,-236 4604.0192,-236.292 4604.0192,-236.292"/>
 <polygon fill="#000000" stroke="#000000" points="4600.5196,-228.9198 4604.0192,-238.92 4607.5196,-228.9201 4600.5196,-228.9198"/>
@@ -2093,7 +2099,7 @@
 <polygon fill="#000000" stroke="#000000" points="12664.9597,-251.5001 12674.9597,-248 12664.9596,-244.5001 12664.9597,-251.5001"/>
 </g>
 <!-- UbicacionService&#45;&gt;TipoLugarModule -->
-<g id="edge200" class="edge">
+<g id="edge201" class="edge">
 <title>UbicacionService&#45;&gt;TipoLugarModule</title>
 <path fill="none" stroke="#000000" d="M12492.1619,-204.8203C12492.1619,-219.4688 12492.1619,-239 12492.1619,-239 12492.1619,-239 12922.0031,-239 12922.0031,-239"/>
 <polygon fill="#000000" stroke="#000000" points="12922.0031,-242.5001 12932.0031,-239 12922.003,-235.5001 12922.0031,-242.5001"/>
@@ -2585,7 +2591,7 @@
 <text text-anchor="middle" x="10695" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoDiscapacidadRoutingModule</text>
 </g>
 <!-- TipoDiscapacidadRoutingModule&#45;&gt;TipoDiscapacidadModule -->
-<g id="edge187" class="edge">
+<g id="edge188" class="edge">
 <title>TipoDiscapacidadRoutingModule&#45;&gt;TipoDiscapacidadModule</title>
 <path fill="none" stroke="#000000" d="M10695,-207.2228C10695,-207.2228 10695,-228.7269 10695,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="10691.5001,-228.7269 10695,-238.7269 10698.5001,-228.727 10691.5001,-228.7269"/>
@@ -2597,7 +2603,7 @@
 <text text-anchor="middle" x="10699" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudTipoDiscapacidadComponent </text>
 </g>
 <!-- TipoDiscapacidadModule&#45;&gt;CrudTipoDiscapacidadComponent  -->
-<g id="edge189" class="edge">
+<g id="edge190" class="edge">
 <title>TipoDiscapacidadModule&#45;&gt;CrudTipoDiscapacidadComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M10735.3496,-275.2228C10735.3496,-275.2228 10735.3496,-296.7269 10735.3496,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="10731.8497,-296.7269 10735.3496,-306.7269 10738.8497,-296.727 10731.8497,-296.7269"/>
@@ -2609,7 +2615,7 @@
 <text text-anchor="middle" x="6841" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoDuracionRoutingModule</text>
 </g>
 <!-- TipoDuracionRoutingModule&#45;&gt;TipoDuracionModule -->
-<g id="edge192" class="edge">
+<g id="edge193" class="edge">
 <title>TipoDuracionRoutingModule&#45;&gt;TipoDuracionModule</title>
 <path fill="none" stroke="#000000" d="M6810.2206,-207.2228C6810.2206,-207.2228 6810.2206,-228.7269 6810.2206,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="6806.7206,-228.7269 6810.2206,-238.7269 6813.7206,-228.727 6806.7206,-228.7269"/>
@@ -2621,7 +2627,7 @@
 <text text-anchor="middle" x="6837" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudTipoDuracionComponent </text>
 </g>
 <!-- TipoDuracionModule&#45;&gt;CrudTipoDuracionComponent  -->
-<g id="edge194" class="edge">
+<g id="edge195" class="edge">
 <title>TipoDuracionModule&#45;&gt;CrudTipoDuracionComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M6806.1801,-275.2228C6806.1801,-275.2228 6806.1801,-296.7269 6806.1801,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="6802.6801,-296.7269 6806.1801,-306.7269 6809.6801,-296.727 6802.6801,-296.7269"/>
@@ -2633,7 +2639,7 @@
 <text text-anchor="middle" x="12992" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoLugarRoutingModule</text>
 </g>
 <!-- TipoLugarRoutingModule&#45;&gt;TipoLugarModule -->
-<g id="edge197" class="edge">
+<g id="edge198" class="edge">
 <title>TipoLugarRoutingModule&#45;&gt;TipoLugarModule</title>
 <path fill="none" stroke="#000000" d="M13011.9035,-207.2228C13011.9035,-207.2228 13011.9035,-228.7269 13011.9035,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="13008.4036,-228.7269 13011.9035,-238.7269 13015.4036,-228.727 13008.4036,-228.7269"/>
@@ -2645,7 +2651,7 @@
 <text text-anchor="middle" x="12996" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudTipoLugarComponent </text>
 </g>
 <!-- TipoLugarModule&#45;&gt;CrudTipoLugarComponent  -->
-<g id="edge199" class="edge">
+<g id="edge200" class="edge">
 <title>TipoLugarModule&#45;&gt;CrudTipoLugarComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M13011.9035,-275.2228C13011.9035,-275.2228 13011.9035,-296.7269 13011.9035,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="13008.4036,-296.7269 13011.9035,-306.7269 13015.4036,-296.727 13008.4036,-296.7269"/>
@@ -2657,7 +2663,7 @@
 <text text-anchor="middle" x="10233" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoPeriodoRoutingModule</text>
 </g>
 <!-- TipoPeriodoRoutingModule&#45;&gt;TipoPeriodoModule -->
-<g id="edge202" class="edge">
+<g id="edge203" class="edge">
 <title>TipoPeriodoRoutingModule&#45;&gt;TipoPeriodoModule</title>
 <path fill="none" stroke="#000000" d="M10233,-207.2228C10233,-207.2228 10233,-228.7269 10233,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="10229.5001,-228.7269 10233,-238.7269 10236.5001,-228.727 10229.5001,-228.7269"/>
@@ -2669,7 +2675,7 @@
 <text text-anchor="middle" x="10237" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudTipoPeriodoComponent </text>
 </g>
 <!-- TipoPeriodoModule&#45;&gt;CrudTipoPeriodoComponent  -->
-<g id="edge204" class="edge">
+<g id="edge205" class="edge">
 <title>TipoPeriodoModule&#45;&gt;CrudTipoPeriodoComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M10265.3854,-275.2228C10265.3854,-275.2228 10265.3854,-296.7269 10265.3854,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="10261.8854,-296.7269 10265.3854,-306.7269 10268.8854,-296.727 10261.8854,-296.7269"/>
@@ -2681,7 +2687,7 @@
 <text text-anchor="middle" x="9994" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">TipoProyectoRoutingModule</text>
 </g>
 <!-- TipoProyectoRoutingModule&#45;&gt;TipoProyectoModule -->
-<g id="edge207" class="edge">
+<g id="edge208" class="edge">
 <title>TipoProyectoRoutingModule&#45;&gt;TipoProyectoModule</title>
 <path fill="none" stroke="#000000" d="M10016.626,-207.2228C10016.626,-207.2228 10016.626,-228.7269 10016.626,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="10013.1261,-228.7269 10016.626,-238.7269 10020.1261,-228.727 10013.1261,-228.7269"/>
@@ -2693,7 +2699,7 @@
 <text text-anchor="middle" x="9999" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudTipoProyectoComponent </text>
 </g>
 <!-- TipoProyectoModule&#45;&gt;CrudTipoProyectoComponent  -->
-<g id="edge209" class="edge">
+<g id="edge210" class="edge">
 <title>TipoProyectoModule&#45;&gt;CrudTipoProyectoComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M10016.626,-275.2228C10016.626,-275.2228 10016.626,-296.7269 10016.626,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="10013.1261,-296.7269 10016.626,-306.7269 10020.1261,-296.727 10013.1261,-296.7269"/>
@@ -2705,7 +2711,7 @@
 <text text-anchor="middle" x="7360" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">TitulacionRoutingModule</text>
 </g>
 <!-- TitulacionRoutingModule&#45;&gt;TitulacionModule -->
-<g id="edge212" class="edge">
+<g id="edge213" class="edge">
 <title>TitulacionRoutingModule&#45;&gt;TitulacionModule</title>
 <path fill="none" stroke="#000000" d="M7329.7206,-207.2228C7329.7206,-207.2228 7329.7206,-228.7269 7329.7206,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="7326.2206,-228.7269 7329.7206,-238.7269 7333.2206,-228.727 7326.2206,-228.7269"/>
@@ -2717,7 +2723,7 @@
 <text text-anchor="middle" x="7356" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudTitulacionComponent </text>
 </g>
 <!-- TitulacionModule&#45;&gt;CrudTitulacionComponent  -->
-<g id="edge214" class="edge">
+<g id="edge215" class="edge">
 <title>TitulacionModule&#45;&gt;CrudTitulacionComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M7325.6801,-275.2228C7325.6801,-275.2228 7325.6801,-296.7269 7325.6801,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="7322.1801,-296.7269 7325.6801,-306.7269 7329.1801,-296.727 7322.1801,-296.7269"/>
@@ -2729,7 +2735,7 @@
 <text text-anchor="middle" x="4560" y="-184.8" font-family="Times,serif" font-size="14.00" fill="#000000">ValidacionDescuentoRoutingModule</text>
 </g>
 <!-- ValidacionDescuentoRoutingModule&#45;&gt;ValidacionDescuentoModule -->
-<g id="edge217" class="edge">
+<g id="edge218" class="edge">
 <title>ValidacionDescuentoRoutingModule&#45;&gt;ValidacionDescuentoModule</title>
 <path fill="none" stroke="#000000" d="M4574.0096,-207.2228C4574.0096,-207.2228 4574.0096,-228.7269 4574.0096,-228.7269"/>
 <polygon fill="#000000" stroke="#000000" points="4570.5097,-228.7269 4574.0096,-238.7269 4577.5097,-228.727 4570.5097,-228.7269"/>
@@ -2741,7 +2747,7 @@
 <text text-anchor="middle" x="4564" y="-320.8" font-family="Times,serif" font-size="14.00" fill="#000000">CrudValidacionDescuentoComponent </text>
 </g>
 <!-- ValidacionDescuentoModule&#45;&gt;CrudValidacionDescuentoComponent  -->
-<g id="edge219" class="edge">
+<g id="edge220" class="edge">
 <title>ValidacionDescuentoModule&#45;&gt;CrudValidacionDescuentoComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M4544,-275.2228C4544,-275.2228 4544,-296.7269 4544,-296.7269"/>
 <polygon fill="#000000" stroke="#000000" points="4540.5001,-296.7269 4544,-306.7269 4547.5001,-296.727 4540.5001,-296.7269"/>

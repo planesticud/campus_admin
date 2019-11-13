@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RequisitoComponent } from './requisito.component';
 import { ListRequisitoComponent } from './list-requisito/list-requisito.component';
 import { CrudRequisitoComponent } from './crud-requisito/crud-requisito.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-requisito',
     component: ListRequisitoComponent,
-  }, {
-    path: 'crud-requisito',
-    component: CrudRequisitoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 
