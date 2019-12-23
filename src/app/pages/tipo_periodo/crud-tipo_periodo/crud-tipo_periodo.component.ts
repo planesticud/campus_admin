@@ -65,9 +65,9 @@ export class CrudTipoPeriodoComponent implements OnInit {
 
   public loadTipoPeriodo(): void {
     if (this.tipo_periodo_id !== undefined && this.tipo_periodo_id !== 0) {
-      this.coreService.get('tipo_periodo/?query=id:' + this.tipo_periodo_id)
+      this.coreService.get('tipo_periodo/?query=Id:' + this.tipo_periodo_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_tipo_periodo = <TipoPeriodo>res[0];
           }
         },
@@ -87,7 +87,7 @@ export class CrudTipoPeriodoComponent implements OnInit {
     }
   }
 
-  updateTipoPeriodo(tipoProyecto: any): void {
+  updateTipoPeriodo(tipoPeriodo: any): void {
     const opt: any = {
       title: this.translate.instant('GLOBAL.actualizar'),
       text: this.translate.instant('GLOBAL.actualizar') + '?',
@@ -101,16 +101,15 @@ export class CrudTipoPeriodoComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.info_tipo_periodo = <TipoPeriodo>tipoProyecto;
+        this.info_tipo_periodo = <TipoPeriodo>tipoPeriodo;
         this.coreService.put('tipo_periodo', this.info_tipo_periodo)
           .subscribe(res => {
-            this.loadTipoPeriodo();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.tipo_periodo') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_tipo_periodo = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -126,7 +125,7 @@ export class CrudTipoPeriodoComponent implements OnInit {
     });
   }
 
-  createTipoPeriodo(tipoProyecto: any): void {
+  createTipoPeriodo(tipoPeriodo: any): void {
     const opt: any = {
       title: this.translate.instant('GLOBAL.crear'),
       text: this.translate.instant('GLOBAL.crear') + '?',
@@ -140,16 +139,15 @@ export class CrudTipoPeriodoComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.info_tipo_periodo = <TipoPeriodo>tipoProyecto;
+        this.info_tipo_periodo = <TipoPeriodo>tipoPeriodo;
         this.coreService.post('tipo_periodo', this.info_tipo_periodo)
           .subscribe(res => {
-            this.info_tipo_periodo = <TipoPeriodo>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.tipo_periodo') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_tipo_periodo = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

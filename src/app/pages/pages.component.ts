@@ -39,7 +39,7 @@ export class PagesComponent implements OnInit {
       if (this.autenticacion.live()) {
         this.roles = <any>this.autenticacion.getPayload().role;
         if (this.roles.indexOf('ADMIN_CAMPUS') !== -1) {
-          this.rol = 'ADMIN_CAMPUS';
+          this.rol = 'ADMIN_CAMPU';
         }else if (this.roles.indexOf('COORDINADOR') !== -1) {
           this.rol = 'COORDINADOR';
         } else if (this.roles.indexOf('DOCENTE') !== -1) {

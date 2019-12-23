@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TipoProyectoComponent } from './tipo_proyecto.component';
 import { ListTipoProyectoComponent } from './list-tipo_proyecto/list-tipo_proyecto.component';
 import { CrudTipoProyectoComponent } from './crud-tipo_proyecto/crud-tipo_proyecto.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-tipo_proyecto',
     component: ListTipoProyectoComponent,
-  }, {
-    path: 'crud-tipo_proyecto',
-    component: CrudTipoProyectoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

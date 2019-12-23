@@ -104,17 +104,39 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/tipo_discapacidad/list-tipo_discapacidad',
         key: 'tipo_discapacidad',
       },
+      {
+        title: 'Tipo Ente',
+        link: '/pages/tipo_ente/list-tipo_ente',
+        key: 'tipo_ente',
+      },
+      {
+        title: 'Tipo Identificacion',
+        link: '/pages/tipo_identificacion/list-tipo_identificacion',
+        key: 'tipo_identificacion',
+      },
+      {
+        title: 'Tipo Inscripcion',
+        link: '/pages/tipo_inscripcion/list-tipo_inscripcion',
+        key: 'tipo_inscripcion',
+      },
+      {
+        title: 'Tipo Periodo',
+        link: '/pages/tipo_periodo/list-tipo_periodo',
+        key: 'tipo_periodo',
+      },
+      {
+        title: 'Tipo Proyecto',
+        link: '/pages/tipo_proyecto/list-tipo_proyecto',
+        key: 'tipo_proyecto',
+      },
+
+
 
 
       {
         title: 'Tipo Lugar',
         link: '/pages/tipo_lugar/list-tipo_lugar',
         key: 'tipo_lugar',
-      },
-      {
-        title: 'Lista Tipo Proyecto',
-        link: '/pages/tipo_proyecto/list-tipo_proyecto',
-        key: 'tipo_proyecto',
       },
       {
         title: 'Lista Titulacion',

@@ -52,6 +52,14 @@ const routes: Routes = [{
       loadChildren: './tipo_contacto/tipo_contacto.module#TipoContactoModule',
     },
     {
+      path: 'tipo_identificacion',
+      loadChildren: './tipo_identificacion/tipo_identificacion.module#TipoIdentificacionModule',
+    },
+    {
+      path: 'tipo_ente',
+      loadChildren: './tipo_ente/tipo_ente.module#TipoEnteModule',
+    },
+    {
       path: 'idioma',
       loadChildren: './idioma/idioma.module#IdiomaModule',
     },
@@ -82,6 +90,10 @@ const routes: Routes = [{
     {
       path: 'estado_inscripcion',
       loadChildren: './estado_inscripcion/estado_inscripcion.module#EstadoInscripcionModule',
+    },
+    {
+      path: 'tipo_inscripcion',
+      loadChildren: './tipo_inscripcion/tipo_inscripcion.module#TipoInscripcionModule',
     },
     {
       path: 'linea_investigacion',
