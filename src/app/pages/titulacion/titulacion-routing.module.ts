@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TitulacionComponent } from './titulacion.component';
 import { ListTitulacionComponent } from './list-titulacion/list-titulacion.component';
 import { CrudTitulacionComponent } from './crud-titulacion/crud-titulacion.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-titulacion',
     component: ListTitulacionComponent,
-  }, {
-    path: 'crud-titulacion',
-    component: CrudTitulacionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 

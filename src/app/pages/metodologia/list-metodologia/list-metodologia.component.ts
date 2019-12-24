@@ -11,7 +11,7 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-metodologia',
   templateUrl: './list-metodologia.component.html',
   styleUrls: ['./list-metodologia.component.scss'],
-  })
+})
 export class ListMetodologiaComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;

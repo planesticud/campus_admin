@@ -63,9 +63,9 @@ export class CrudTitulacionComponent implements OnInit {
 
   public loadTitulacion(): void {
     if (this.titulacion_id !== undefined && this.titulacion_id !== 0) {
-      this.programaAcademicoService.get('titulacion/?query=id:' + this.titulacion_id)
+      this.programaAcademicoService.get('titulacion/?query=Id:' + this.titulacion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_titulacion = <Titulacion>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudTitulacionComponent implements OnInit {
         this.info_titulacion = <Titulacion>titulacion;
         this.programaAcademicoService.put('titulacion', this.info_titulacion)
           .subscribe(res => {
-            this.loadTitulacion();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.titulacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_titulacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -141,13 +140,12 @@ export class CrudTitulacionComponent implements OnInit {
         this.info_titulacion = <Titulacion>titulacion;
         this.programaAcademicoService.post('titulacion', this.info_titulacion)
           .subscribe(res => {
-            this.info_titulacion = <Titulacion>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.titulacion') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_titulacion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
