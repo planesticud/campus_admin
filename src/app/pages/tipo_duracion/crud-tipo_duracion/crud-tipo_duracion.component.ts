@@ -65,9 +65,9 @@ export class CrudTipoDuracionComponent implements OnInit {
 
   public loadTipoDuracion(): void {
     if (this.tipo_duracion_id !== undefined && this.tipo_duracion_id !== 0) {
-      this.descuentosService.get('tipo_duracion/?query=id:' + this.tipo_duracion_id)
+      this.descuentosService.get('tipo_duracion/?query=Id:' + this.tipo_duracion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_tipo_duracion = <TipoDuracion>res[0];
           }
         },
@@ -104,13 +104,12 @@ export class CrudTipoDuracionComponent implements OnInit {
         this.info_tipo_duracion = <TipoDuracion>tipoDuracion;
         this.descuentosService.put('tipo_duracion', this.info_tipo_duracion)
           .subscribe(res => {
-            this.loadTipoDuracion();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.tipo_duracion') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_tipo_duracion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({
@@ -143,13 +142,12 @@ export class CrudTipoDuracionComponent implements OnInit {
         this.info_tipo_duracion = <TipoDuracion>tipoDuracion;
         this.descuentosService.post('tipo_duracion', this.info_tipo_duracion)
           .subscribe(res => {
-            this.info_tipo_duracion = <TipoDuracion>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.tipo_duracion') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_tipo_duracion = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TipoDuracionComponent } from './tipo_duracion.component';
 import { ListTipoDuracionComponent } from './list-tipo_duracion/list-tipo_duracion.component';
 import { CrudTipoDuracionComponent } from './crud-tipo_duracion/crud-tipo_duracion.component';
+import { AuthGuard } from '../../@core/_guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -10,9 +11,12 @@ const routes: Routes = [{
   children: [{
     path: 'list-tipo_duracion',
     component: ListTipoDuracionComponent,
-  }, {
-    path: 'crud-tipo_duracion',
-    component: CrudTipoDuracionComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [
+        'ADMIN_CAMPUS',
+      ],
+    },
   }],
 }];
 
