@@ -15,9 +15,44 @@ export const MENU_ITEMS: MenuItem[] = [
     key: 'parametricas',
     children: [
       {
+        title: 'Area Conocimiento',
+        link: '/pages/area_conocimiento/list-area_conocimiento',
+        key: 'area_conocimiento',
+      },
+      {
+        title: 'Atributo Lugar',
+        link: '/pages/atributo_lugar/list-atributo_lugar',
+        key: 'atributo_lugar',
+      },
+      {
+        title: 'Atributo Ubicacion',
+        link: '/pages/atributo_ubicacion/list-atributo_ubicacion',
+        key: 'atributo_ubicacion',
+      },
+      {
+        title: 'Cargo',
+        link: '/pages/cargo/list-cargo',
+        key: 'cargo',
+      },
+      {
         title: 'Clasificacion Nivel Idioma',
         link: '/pages/clasificacion_idioma/list-clasificacion_idioma',
         key: 'clasificacion_nivel_idioma',
+      },
+      {
+        title: 'Concepto Academico',
+        link: '/pages/concepto_academico/list-concepto_academico',
+        key: 'concepto_academico',
+      },
+      {
+        title: 'Dependencia Oikos',
+        link: '/pages/dependencia/list-dependencia',
+        key: 'dependencia',
+      },
+      {
+        title: 'Estado Autor Produccion',
+        link: '/pages/estado_autor_produccion/list-estado_autor_produccion',
+        key: 'estado_autor_produccion',
       },
       {
         title: 'Estado Civil',
@@ -25,9 +60,19 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'estado_civil',
       },
       {
+        title: 'Estado Entrevista',
+        link: '/pages/estado_entrevista/list-estado_entrevista',
+        key: 'estado_entrevista',
+      },
+      {
         title: 'Estado Inscripcion',
         link: '/pages/estado_inscripcion/list-estado_inscripcion',
         key: 'estado_inscripcion',
+      },
+      {
+        title: 'Estado Recibo',
+        link: '/pages/estado_recibo/list-estado_recibo',
+        key: 'estado_recibo',
       },
       {
         title: 'Genero',
@@ -70,24 +115,24 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'nivel_idioma',
       },
       {
-        title: 'Periodo',
-        link: '/pages/periodo/list-periodo',
-        key: 'periodo_academico',
+        title: 'Perfil Profesional',
+        link: '/pages/perfil_profesional/list-perfil_profesional',
+        key: 'perfil_profesional',
       },
       {
-        title: 'Requisito',
+        title: 'Requisito Descuento',
         link: '/pages/requisito/list-requisito',
         key: 'requisito',
       },
       {
-        title: 'Requisito Criterios',
+        title: 'Requisito Evaluacion Inscripcion',
         link: '/pages/requisito_academico/list-requisito_academico',
         key: 'requisito_academico',
       },
       {
-        title: 'Requisito Tipo Descuento',
-        link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
-        key: 'requisito_tipo_descuento',
+        title: 'Rol Encargado Evento',
+        link: '/pages/rol_encargado_evento/list-rol_encargado_evento',
+        key: 'rol_encargado_evento',
       },
       {
         title: 'Tipo Contacto',
@@ -95,9 +140,19 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_contacto',
       },
       {
-        title: 'Tipo Descuento',
-        link: '/pages/tipo_descuento/list-tipo_descuento',
-        key: 'tipo_descuento',
+        title: 'Tipo Dato Adicional',
+        link: '/pages/tipo_dato_adicional/list-tipo_dato_adicional',
+        key: 'tipo_dato_adicional',
+      },
+      {
+        title: 'Tipo Dedicacion',
+        link: '/pages/tipo_dedicacion/list-tipo_dedicacion',
+        key: 'tipo_dedicacion',
+      },
+      {
+        title: 'Tipo Dependencia',
+        link: '/pages/tipo_dependencia/list-tipo_dependencia',
+        key: 'tipo_dependencia',
       },
       {
         title: 'Tipo Discapacidad',
@@ -105,9 +160,29 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_discapacidad',
       },
       {
+        title: 'Tipo Documento',
+        link: '/pages/tipo_documento/list-tipo_documento',
+        key: 'tipo_documento',
+      },
+      {
+        title: 'Tipo Documento Programa',
+        link: '/pages/tipo_documento_programa/list-tipo_documento_programa',
+        key: 'tipo_documento_programa',
+      },
+      {
+        title: 'Tipo Duracion',
+        link: '/pages/tipo_duracion/list-tipo_duracion',
+        key: 'tipo_duracion',
+      },
+      {
         title: 'Tipo Ente',
         link: '/pages/tipo_ente/list-tipo_ente',
         key: 'tipo_ente',
+      },
+      {
+        title: 'Tipo Entrevista',
+        link: '/pages/tipo_entrevista/list-tipo_entrevista',
+        key: 'tipo_entrevista',
       },
       {
         title: 'Tipo Identificacion',
@@ -120,58 +195,94 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_inscripcion',
       },
       {
+        title: 'Tipo Lugar',
+        link: '/pages/tipo_lugar/list-tipo_lugar',
+        key: 'tipo_lugar',
+      },
+      {
+        title: 'Tipo Metadato',
+        link: '/pages/tipo_metadato/list-tipo_metadato',
+        key: 'tipo_metadato',
+      },
+      {
+        title: 'Tipo Organizacion',
+        link: '/pages/tipo_organizacion/list-tipo_organizacion',
+        key: 'tipo_organizacion',
+      },
+      {
+        title: 'Tipo Pago',
+        link: '/pages/tipo_pago/list-tipo_pago',
+        key: 'tipo_pago',
+      },
+      {
         title: 'Tipo Periodo',
         link: '/pages/tipo_periodo/list-tipo_periodo',
         key: 'tipo_periodo',
+      },
+      {
+        title: 'Tipo Periodo',
+        link: '/pages/tipo_periodo/list-tipo_periodo',
+        key: 'tipo_periodo',
+      },
+      {
+        title: 'Tipo Produccion',
+        link: '/pages/tipo_produccion/list-tipo_produccion',
+        key: 'tipo_produccion',
       },
       {
         title: 'Tipo Proyecto',
         link: '/pages/tipo_proyecto/list-tipo_proyecto',
         key: 'tipo_proyecto',
       },
-
-
-
-
       {
-        title: 'Tipo Lugar',
-        link: '/pages/tipo_lugar/list-tipo_lugar',
-        key: 'tipo_lugar',
+        title: 'Tipo Publico',
+        link: '/pages/tipo_publico/list-tipo_publico',
+        key: 'tipo_publico',
       },
       {
-        title: 'Lista Titulacion',
+        title: 'Tipo Recibo',
+        link: '/pages/tipo_recibo/list-tipo_recibo',
+        key: 'tipo_recibo',
+      },
+      {
+        title: 'Tipo Recurrencia',
+        link: '/pages/tipo_recurrencia/list-tipo_recurrencia',
+        key: 'tipo_recurrencia',
+      },
+      {
+        title: 'Tipo Relacion Lugar',
+        link: '/pages/tipo_relacion_lugar/list-tipo_relacion_lugar',
+        key: 'tipo_relacion_lugar',
+      },
+      {
+        title: 'Tipo Relacion Organizacion',
+        link: '/pages/tipo_relacion_organizacion/list-tipo_relacion_organizacion',
+        key: 'tipo_relacion_organizacion',
+      },
+      {
+        title: 'Tipo Relacion Personas',
+        link: '/pages/tipo_relacion_personas/list-tipo_relacion_personas',
+        key: 'tipo_relacion_personas',
+      },
+      {
+        title: 'Tipo Relacion Ubicacion Ente',
+        link: '/pages/tipo_relacion_ubicacion_ente/list-tipo_relacion_ubicacion_ente',
+        key: 'tipo_relacion_ubicacion_ente',
+      },
+      {
+        title: 'Tipo Vinculacion',
+        link: '/pages/tipo_vinculacion/list-tipo_vinculacion',
+        key: 'tipo_vinculacion',
+      },
+      {
+        title: 'Titulacion',
         link: '/pages/titulacion/list-titulacion',
         key: 'titulacion',
       },
       {
-        title: 'Lista Tipo Duracion',
-        link: '/pages/tipo_duracion/list-tipo_duracion',
-        key: 'tipo_duracion',
-      },
-      {
-        title: 'Lista Solicitud Descuento',
-        link: '/pages/solicitud_descuento/list-solicitud_descuento',
-        key: 'solicitud_descuento',
-      },
-      {
-        title: 'Lista Validacion Descuento',
-        link: '/pages/validacion_descuento/list-validacion_descuento',
-        key: 'validacion_descuento',
-      },
-      {
-        title: 'Lista Soporte Descuento',
-        link: '/pages/soporte_descuento/list-soporte_descuento',
-        key: 'soporte_descuento',
-      },
-      {
-        title: 'Lista Requisito Programa Academico Criterios',
-        link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
-        key: 'requisito_programa_academico',
-      },
-      {
-        title: 'Lista Programa Academico',
-        link: '/pages/programa_academico/list-programa_academico',
-        key: 'programa_academico',
+        title: 'Unidad Tiempo',
+        link: '/pages/unidad_tiempo/list-unidad_tiempo',
+        key: 'unidad_tiempo',
       },
     ],
   },
@@ -203,6 +314,53 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Lugar',
         link: '/pages/lugar/list-lugar',
         key: 'lista_lugar',
+      },
+
+
+
+
+
+
+
+      {
+        title: 'Lista Solicitud Descuento',
+        link: '/pages/solicitud_descuento/list-solicitud_descuento',
+        key: 'solicitud_descuento',
+      },
+      {
+        title: 'Lista Validacion Descuento',
+        link: '/pages/validacion_descuento/list-validacion_descuento',
+        key: 'validacion_descuento',
+      },
+      {
+        title: 'Lista Soporte Descuento',
+        link: '/pages/soporte_descuento/list-soporte_descuento',
+        key: 'soporte_descuento',
+      },
+      {
+        title: 'Lista Requisito Programa Academico Criterios',
+        link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
+        key: 'requisito_programa_academico',
+      },
+      {
+        title: 'Lista Programa Academico',
+        link: '/pages/programa_academico/list-programa_academico',
+        key: 'programa_academico',
+      },
+      {
+        title: 'Lista Periodo',
+        link: '/pages/periodo/list-periodo',
+        key: 'periodo_academico',
+      },
+      {
+        title: 'Lista Requisito Tipo Descuento',
+        link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
+        key: 'requisito_tipo_descuento',
+      },
+      {
+        title: 'Lista Tipo Descuento',
+        link: '/pages/tipo_descuento/list-tipo_descuento',
+        key: 'tipo_descuento',
       },
     ],
   },

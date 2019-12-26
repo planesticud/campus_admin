@@ -3423,6 +3423,54 @@ const routes: Routes &#x3D; [{
       loadChildren: &#x27;./programas_virtuales/programas_virtuales.module#ProgramasVirtualesModule&#x27;,
     },
     {
+      path: &#x27;area_conocimiento&#x27;,
+      loadChildren: &#x27;./area_conocimiento/area_conocimiento.module#AreaConocimientoModule&#x27;,
+    },
+    {
+      path: &#x27;atributo_lugar&#x27;,
+      loadChildren: &#x27;./atributo_lugar/atributo_lugar.module#AtributoLugarModule&#x27;,
+    },
+    {
+      path: &#x27;atributo_ubicacion&#x27;,
+      loadChildren: &#x27;./atributo_ubicacion/atributo_ubicacion.module#AtributoUbicacionModule&#x27;,
+    },
+    {
+      path: &#x27;cargo&#x27;,
+      loadChildren: &#x27;./cargo/cargo.module#CargoModule&#x27;,
+    },
+    {
+      path: &#x27;clasificacion_idioma&#x27;,
+      loadChildren: &#x27;./clasificacion_idioma/clasificacion_idioma.module#ClasificacionIdiomaModule&#x27;,
+    },
+    {
+      path: &#x27;concepto_academico&#x27;,
+      loadChildren: &#x27;./concepto_academico/concepto_academico.module#ConceptoAcademicoModule&#x27;,
+    },
+    {
+      path: &#x27;dependencia&#x27;,
+      loadChildren: &#x27;./dependencia/dependencia.module#DependenciaModule&#x27;,
+    },
+    {
+      path: &#x27;estado_autor_produccion&#x27;,
+      loadChildren: &#x27;./estado_autor_produccion/estado_autor_produccion.module#EstadoAutorProduccionModule&#x27;,
+    },
+    {
+      path: &#x27;estado_civil&#x27;,
+      loadChildren: &#x27;./estado_civil/estado_civil.module#EstadoCivilModule&#x27;,
+    },
+    {
+      path: &#x27;estado_entrevista&#x27;,
+      loadChildren: &#x27;./estado_entrevista/estado_entrevista.module#EstadoEntrevistaModule&#x27;,
+    },
+    {
+      path: &#x27;estado_inscripcion&#x27;,
+      loadChildren: &#x27;./estado_inscripcion/estado_inscripcion.module#EstadoInscripcionModule&#x27;,
+    },
+    {
+      path: &#x27;estado_recibo&#x27;,
+      loadChildren: &#x27;./estado_recibo/estado_recibo.module#EstadoReciboModule&#x27;,
+    },
+    {
       path: &#x27;genero&#x27;,
       loadChildren: &#x27;./genero/genero.module#GeneroModule&#x27;,
     },
@@ -3435,100 +3483,176 @@ const routes: Routes &#x3D; [{
       loadChildren: &#x27;./grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule&#x27;,
     },
     {
-      path: &#x27;estado_civil&#x27;,
-      loadChildren: &#x27;./estado_civil/estado_civil.module#EstadoCivilModule&#x27;,
-    },
-    {
-      path: &#x27;tipo_discapacidad&#x27;,
-      loadChildren: &#x27;./tipo_discapacidad/tipo_discapacidad.module#TipoDiscapacidadModule&#x27;,
-    },
-    {
-      path: &#x27;persona&#x27;,
-      loadChildren: &#x27;./persona/persona.module#PersonaModule&#x27;,
-    },
-    {
-      path: &#x27;tipo_lugar&#x27;,
-      loadChildren: &#x27;./tipo_lugar/tipo_lugar.module#TipoLugarModule&#x27;,
-    },
-    {
-      path: &#x27;lugar&#x27;,
-      loadChildren: &#x27;./lugar/lugar.module#LugarModule&#x27;,
-    },
-    {
-      path: &#x27;tipo_contacto&#x27;,
-      loadChildren: &#x27;./tipo_contacto/tipo_contacto.module#TipoContactoModule&#x27;,
-    },
-    {
-      path: &#x27;tipo_identificacion&#x27;,
-      loadChildren: &#x27;./tipo_identificacion/tipo_identificacion.module#TipoIdentificacionModule&#x27;,
-    },
-    {
-      path: &#x27;tipo_ente&#x27;,
-      loadChildren: &#x27;./tipo_ente/tipo_ente.module#TipoEnteModule&#x27;,
-    },
-    {
       path: &#x27;idioma&#x27;,
       loadChildren: &#x27;./idioma/idioma.module#IdiomaModule&#x27;,
-    },
-    {
-      path: &#x27;nivel_idioma&#x27;,
-      loadChildren: &#x27;./nivel_idioma/nivel_idioma.module#NivelIdiomaModule&#x27;,
-    },
-    {
-      path: &#x27;clasificacion_idioma&#x27;,
-      loadChildren: &#x27;./clasificacion_idioma/clasificacion_idioma.module#ClasificacionIdiomaModule&#x27;,
-    },
-    {
-      path: &#x27;titulacion&#x27;,
-      loadChildren: &#x27;./titulacion/titulacion.module#TitulacionModule&#x27;,
-    },
-    {
-      path: &#x27;nivel_formacion&#x27;,
-      loadChildren: &#x27;./nivel_formacion/nivel_formacion.module#NivelFormacionModule&#x27;,
-    },
-    {
-      path: &#x27;metodologia&#x27;,
-      loadChildren: &#x27;./metodologia/metodologia.module#MetodologiaModule&#x27;,
-    },
-    {
-      path: &#x27;programa_academico&#x27;,
-      loadChildren: &#x27;./programa_academico/programa_academico.module#ProgramaAcademicoModule&#x27;,
-    },
-    {
-      path: &#x27;estado_inscripcion&#x27;,
-      loadChildren: &#x27;./estado_inscripcion/estado_inscripcion.module#EstadoInscripcionModule&#x27;,
-    },
-    {
-      path: &#x27;tipo_inscripcion&#x27;,
-      loadChildren: &#x27;./tipo_inscripcion/tipo_inscripcion.module#TipoInscripcionModule&#x27;,
     },
     {
       path: &#x27;linea_investigacion&#x27;,
       loadChildren: &#x27;./linea_investigacion/linea_investigacion.module#LineaInvestigacionModule&#x27;,
     },
     {
-      path: &#x27;tipo_proyecto&#x27;,
-      loadChildren: &#x27;./tipo_proyecto/tipo_proyecto.module#TipoProyectoModule&#x27;,
+      path: &#x27;metodologia&#x27;,
+      loadChildren: &#x27;./metodologia/metodologia.module#MetodologiaModule&#x27;,
     },
     {
-      path: &#x27;periodo&#x27;,
-      loadChildren: &#x27;./periodo/periodo.module#PeriodoModule&#x27;,
+      path: &#x27;nivel_formacion&#x27;,
+      loadChildren: &#x27;./nivel_formacion/nivel_formacion.module#NivelFormacionModule&#x27;,
     },
     {
-      path: &#x27;tipo_periodo&#x27;,
-      loadChildren: &#x27;./tipo_periodo/tipo_periodo.module#TipoPeriodoModule&#x27;,
+      path: &#x27;nivel_idioma&#x27;,
+      loadChildren: &#x27;./nivel_idioma/nivel_idioma.module#NivelIdiomaModule&#x27;,
+    },
+    {
+      path: &#x27;perfil_profesional&#x27;,
+      loadChildren: &#x27;./perfil_profesional/perfil_profesional.module#PerfilProfesionalModule&#x27;,
+    },
+    {
+      path: &#x27;requisito&#x27;,
+      loadChildren: &#x27;./requisito/requisito.module#RequisitoModule&#x27;,
+    },
+    {
+      path: &#x27;requisito_academico&#x27;,
+      loadChildren: &#x27;./requisito_academico/requisito_academico.module#RequisitoAcademicoModule&#x27;,
+    },
+    {
+      path: &#x27;rol_encargado_evento&#x27;,
+      loadChildren: &#x27;./rol_encargado_evento/rol_encargado_evento.module#RolEncargadoEventoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_contacto&#x27;,
+      loadChildren: &#x27;./tipo_contacto/tipo_contacto.module#TipoContactoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_dato_adicional&#x27;,
+      loadChildren: &#x27;./tipo_dato_adicional/tipo_dato_adicional.module#TipoDatoAdicionalModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_dedicacion&#x27;,
+      loadChildren: &#x27;./tipo_dedicacion/tipo_dedicacion.module#TipoDedicacionModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_dependencia&#x27;,
+      loadChildren: &#x27;./tipo_dependencia/tipo_dependencia.module#TipoDependenciaModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_discapacidad&#x27;,
+      loadChildren: &#x27;./tipo_discapacidad/tipo_discapacidad.module#TipoDiscapacidadModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_documento&#x27;,
+      loadChildren: &#x27;./tipo_documento/tipo_documento.module#TipoDocumentoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_documento_programa&#x27;,
+      loadChildren: &#x27;./tipo_documento_programa/tipo_documento_programa.module#TipoDocumentoProgramaModule&#x27;,
     },
     {
       path: &#x27;tipo_duracion&#x27;,
       loadChildren: &#x27;./tipo_duracion/tipo_duracion.module#TipoDuracionModule&#x27;,
     },
     {
-      path: &#x27;tipo_descuento&#x27;,
-      loadChildren: &#x27;./tipo_descuento/tipo_descuento.module#TipoDescuentoModule&#x27;,
+      path: &#x27;tipo_ente&#x27;,
+      loadChildren: &#x27;./tipo_ente/tipo_ente.module#TipoEnteModule&#x27;,
     },
     {
-      path: &#x27;requisito&#x27;,
-      loadChildren: &#x27;./requisito/requisito.module#RequisitoModule&#x27;,
+      path: &#x27;tipo_entrevista&#x27;,
+      loadChildren: &#x27;./tipo_entrevista/tipo_entrevista.module#TipoEntrevistaModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_identificacion&#x27;,
+      loadChildren: &#x27;./tipo_identificacion/tipo_identificacion.module#TipoIdentificacionModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_inscripcion&#x27;,
+      loadChildren: &#x27;./tipo_inscripcion/tipo_inscripcion.module#TipoInscripcionModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_lugar&#x27;,
+      loadChildren: &#x27;./tipo_lugar/tipo_lugar.module#TipoLugarModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_metadato&#x27;,
+      loadChildren: &#x27;./tipo_metadato/tipo_metadato.module#TipoMetadatoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_organizacion&#x27;,
+      loadChildren: &#x27;./tipo_organizacion/tipo_organizacion.module#TipoOrganizacionModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_pago&#x27;,
+      loadChildren: &#x27;./tipo_pago/tipo_pago.module#TipoPagoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_periodo&#x27;,
+      loadChildren: &#x27;./tipo_periodo/tipo_periodo.module#TipoPeriodoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_produccion&#x27;,
+      loadChildren: &#x27;./tipo_produccion/tipo_produccion.module#TipoProduccionModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_proyecto&#x27;,
+      loadChildren: &#x27;./tipo_proyecto/tipo_proyecto.module#TipoProyectoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_publico&#x27;,
+      loadChildren: &#x27;./tipo_publico/tipo_publico.module#TipoPublicoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_recibo&#x27;,
+      loadChildren: &#x27;./tipo_recibo/tipo_recibo.module#TipoReciboModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_recurrencia&#x27;,
+      loadChildren: &#x27;./tipo_recurrencia/tipo_recurrencia.module#TipoRecurrenciaModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_relacion_lugar&#x27;,
+      loadChildren: &#x27;./tipo_relacion_lugar/tipo_relacion_lugar.module#TipoRelacionLugarModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_relacion_organizacion&#x27;,
+      loadChildren: &#x27;./tipo_relacion_organizacion/tipo_relacion_organizacion.module#TipoRelacionOrganizacionModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_relacion_personas&#x27;,
+      loadChildren: &#x27;./tipo_relacion_personas/tipo_relacion_personas.module#TipoRelacionPersonasModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_relacion_ubicacion_ente&#x27;,
+      loadChildren: &#x27;./tipo_relacion_ubicacion_ente/tipo_relacion_ubicacion_ente.module#TipoRelacionUbicacionEnteModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_vinculacion&#x27;,
+      loadChildren: &#x27;./tipo_vinculacion/tipo_vinculacion.module#TipoVinculacionModule&#x27;,
+    },
+    {
+      path: &#x27;titulacion&#x27;,
+      loadChildren: &#x27;./titulacion/titulacion.module#TitulacionModule&#x27;,
+    },
+    {
+      path: &#x27;unidad_tiempo&#x27;,
+      loadChildren: &#x27;./unidad_tiempo/unidad_tiempo.module#UnidadTiempoModule&#x27;,
+    },
+    {
+      path: &#x27;persona&#x27;,
+      loadChildren: &#x27;./persona/persona.module#PersonaModule&#x27;,
+    },
+    {
+      path: &#x27;lugar&#x27;,
+      loadChildren: &#x27;./lugar/lugar.module#LugarModule&#x27;,
+    },
+    {
+      path: &#x27;programa_academico&#x27;,
+      loadChildren: &#x27;./programa_academico/programa_academico.module#ProgramaAcademicoModule&#x27;,
+    },
+    {
+      path: &#x27;periodo&#x27;,
+      loadChildren: &#x27;./periodo/periodo.module#PeriodoModule&#x27;,
+    },
+    {
+      path: &#x27;tipo_descuento&#x27;,
+      loadChildren: &#x27;./tipo_descuento/tipo_descuento.module#TipoDescuentoModule&#x27;,
     },
     {
       path: &#x27;requisito_tipo_descuento&#x27;,
@@ -3549,10 +3673,6 @@ const routes: Routes &#x3D; [{
     {
       path: &#x27;soporte_descuento&#x27;,
       loadChildren: &#x27;./soporte_descuento/soporte_descuento.module#SoporteDescuentoModule&#x27;,
-    },
-    {
-      path: &#x27;requisito_academico&#x27;,
-      loadChildren: &#x27;./requisito_academico/requisito_academico.module#RequisitoAcademicoModule&#x27;,
     },
     {
       path: &#x27;requisito_programa_academico&#x27;,
