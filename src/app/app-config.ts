@@ -27,6 +27,7 @@ export const Config = {
     PRODUCCION_ACADEMICA_SERVICE: 'http://localhost:9012/v1/',
     PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
     PROGRAMA_OIKOS_SERVICE: 'https://autenticacion.portaloas.udistrital.edu.co/apioas/oikos_crud_api/v1/',
+    RECIBO_SERVICE: 'http://localhost:9017/v1/',
     UBICACION_SERVICE: 'http://localhost:8085/v1/',
     // #revisar
     VALIDACION_OIKOS_SERVICE: 'https://autenticacion.portaloas.udistrital.edu.co/apioas/academica_jbpm/v1/',
@@ -38,7 +39,6 @@ export const Config = {
     // #falta
     PAGO_SERVICE: 'http://prueba.campusvirtual.udistrital.edu.co/pagos/',
     // #falta
-    RECIBO_SERVICE: 'http://localhost:9017/v1/',
     TOKEN: {
         AUTORIZATION_URL: 'https://autenticacion.portaloas.udistrital.edu.co/oauth2/authorize',
         CLIENTE_ID: 'e36v1MPQk2jbz9KM4SmKhk8Cyw0a',
@@ -72,6 +72,7 @@ export const Config = {
     PRODUCCION_ACADEMICA_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/produccion_acad/v1/',
     PROGRAMA_ACADEMICO_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/programa/v1/',
     PROGRAMA_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/programa_ud/v1/',
+    RECIBO_SERVICE: 'http://api.planestic.udistrital.edu.co:9017/v1/',
     UBICACION_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/ubicacion/v1/',
     VALIDACION_OIKOS_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/homologacion/v1/',
     VALIDACION_SNIES_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/snies/v1/',
