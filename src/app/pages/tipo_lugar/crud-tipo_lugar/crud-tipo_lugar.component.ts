@@ -65,7 +65,7 @@ export class CrudTipoLugarComponent implements OnInit {
     if (this.tipo_lugar_id !== undefined && this.tipo_lugar_id !== 0) {
       this.ubicacionService.get('tipo_lugar/?query=id:' + this.tipo_lugar_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_tipo_lugar = <TipoLugar>res[0];
           }
         },
@@ -102,13 +102,12 @@ export class CrudTipoLugarComponent implements OnInit {
         this.info_tipo_lugar = <TipoLugar>tipoLugar;
         this.ubicacionService.put('tipo_lugar', this.info_tipo_lugar)
           .subscribe(res => {
-            this.loadTipoLugar();
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
               this.translate.instant('GLOBAL.confirmarActualizar'));
             this.info_tipo_lugar = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
         },
           (error: HttpErrorResponse) => {
             Swal({
@@ -141,13 +140,12 @@ export class CrudTipoLugarComponent implements OnInit {
         this.info_tipo_lugar = <TipoLugar>tipoLugar;
         this.ubicacionService.post('tipo_lugar', this.info_tipo_lugar)
           .subscribe(res => {
-            this.info_tipo_lugar = <TipoLugar>res;
-            this.eventChange.emit(true);
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.tipo_lugar') + ' ' +
               this.translate.instant('GLOBAL.confirmarCrear'));
             this.info_tipo_lugar = undefined;
             this.clean = !this.clean;
+            this.eventChange.emit(true);
           },
             (error: HttpErrorResponse) => {
               Swal({

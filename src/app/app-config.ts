@@ -15,6 +15,7 @@ export const Config = {
     DOCUMENTO_PROGRAMA_SERVICE: 'http://localhost:9014/v1/',
     ENTE_SERVICE: 'http://localhost:8096/v1/',
     EVALUACION_INSCRIPCION_SERVICE: 'http://localhost:9016/v1/',
+    EVENTO_SERVICE: 'http://localhost:8081/v1/',
     EXPERIENCIA_SERVICE: 'http://localhost:8099/v1/',
     FORMACION_ACADEMICA_SERVICE: 'http://localhost:8098/v1/',
     FORMULARIO_SERVICE: 'http://localhost:9011/v1/',
@@ -26,7 +27,6 @@ export const Config = {
     PRODUCCION_ACADEMICA_SERVICE: 'http://localhost:9012/v1/',
     PROGRAMA_ACADEMICO_SERVICE: 'http://localhost:8101/v1/',
     PROGRAMA_OIKOS_SERVICE: 'https://autenticacion.portaloas.udistrital.edu.co/apioas/oikos_crud_api/v1/',
-    SESIONES_SERVICE: 'http://localhost:8081/v1/',
     UBICACION_SERVICE: 'http://localhost:8085/v1/',
     // #revisar
     VALIDACION_OIKOS_SERVICE: 'https://autenticacion.portaloas.udistrital.edu.co/apioas/academica_jbpm/v1/',
@@ -61,6 +61,7 @@ export const Config = {
     DOCUMENTO_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/documento/v1/',
     ENTE_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/ente/v1/',
     EVALUACION_INSCRIPCION_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/evaluacion_inscripcion/v1/',
+    EVENTO_SERVICE: 'http://api.planestic.udistrital.edu.co:8081/v1/',
     EXPERIENCIA_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/experiencia_laboral/v1/',
     FORMACION_ACADEMICA_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/formacion_academica/v1/',
     IDIOMA_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/idioma/v1/',
