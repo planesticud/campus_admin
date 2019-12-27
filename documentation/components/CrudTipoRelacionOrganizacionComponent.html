@@ -4400,7 +4400,7 @@ export class CrudTipoRelacionOrganizacionComponent implements OnInit {
 
   public loadTipoRelacionOrganizacion(): void {
     if (this.tipo_relacion_organizacion_id !&#x3D;&#x3D; undefined &amp;&amp; this.tipo_relacion_organizacion_id !&#x3D;&#x3D; 0) {
-      this.organizacionService.get(&#x27;tipo_relacion_organizacion/?query&#x3D;Id:&#x27; + this.tipo_relacion_organizacion_id)
+      this.organizacionService.get(&#x27;tipo_relacion_organizaciones/?query&#x3D;Id:&#x27; + this.tipo_relacion_organizacion_id)
         .subscribe(res &#x3D;&gt; {
           if (res !&#x3D;&#x3D; null &amp;&amp; JSON.stringify(res).toString() !&#x3D;&#x3D; &#x27;[{}]&#x27;) {
             this.info_tipo_relacion_organizacion &#x3D; &lt;TipoRelacionOrganizacion&gt;res[0];
@@ -4437,7 +4437,7 @@ export class CrudTipoRelacionOrganizacionComponent implements OnInit {
     .then((willDelete) &#x3D;&gt; {
       if (willDelete.value) {
         this.info_tipo_relacion_organizacion &#x3D; &lt;TipoRelacionOrganizacion&gt;tipoRelacionOrganizacion;
-        this.organizacionService.put(&#x27;tipo_relacion_organizacion&#x27;, this.info_tipo_relacion_organizacion)
+        this.organizacionService.put(&#x27;tipo_relacion_organizaciones&#x27;, this.info_tipo_relacion_organizacion)
           .subscribe(res &#x3D;&gt; {
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.actualizar&#x27;),
               this.translate.instant(&#x27;GLOBAL.tipo_relacion_organizacion&#x27;) + &#x27; &#x27; +
@@ -4475,7 +4475,7 @@ export class CrudTipoRelacionOrganizacionComponent implements OnInit {
     .then((willDelete) &#x3D;&gt; {
       if (willDelete.value) {
         this.info_tipo_relacion_organizacion &#x3D; &lt;TipoRelacionOrganizacion&gt;tipoRelacionOrganizacion;
-        this.organizacionService.post(&#x27;tipo_relacion_organizacion&#x27;, this.info_tipo_relacion_organizacion)
+        this.organizacionService.post(&#x27;tipo_relacion_organizaciones&#x27;, this.info_tipo_relacion_organizacion)
           .subscribe(res &#x3D;&gt; {
             this.showToast(&#x27;info&#x27;, this.translate.instant(&#x27;GLOBAL.crear&#x27;),
               this.translate.instant(&#x27;GLOBAL.tipo_relacion_organizacion&#x27;) + &#x27; &#x27; +

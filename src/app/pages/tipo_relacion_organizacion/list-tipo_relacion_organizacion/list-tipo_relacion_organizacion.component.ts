@@ -100,7 +100,7 @@ export class ListTipoRelacionOrganizacionComponent implements OnInit {
   }
 
   loadData(): void {
-    this.organizacionService.get('tipo_relacion_organizacion/?limit=0').subscribe(res => {
+    this.organizacionService.get('tipo_relacion_organizaciones/?limit=0').subscribe(res => {
       if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         const data = <Array<any>>res;
         this.source.load(data);
@@ -145,7 +145,7 @@ export class ListTipoRelacionOrganizacionComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.organizacionService.delete('tipo_relacion_organizacion', event.data).subscribe(res => {
+        this.organizacionService.delete('tipo_relacion_organizaciones', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

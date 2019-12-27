@@ -64,7 +64,7 @@ export class CrudTipoRelacionOrganizacionComponent implements OnInit {
 
   public loadTipoRelacionOrganizacion(): void {
     if (this.tipo_relacion_organizacion_id !== undefined && this.tipo_relacion_organizacion_id !== 0) {
-      this.organizacionService.get('tipo_relacion_organizacion/?query=Id:' + this.tipo_relacion_organizacion_id)
+      this.organizacionService.get('tipo_relacion_organizaciones/?query=Id:' + this.tipo_relacion_organizacion_id)
         .subscribe(res => {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_tipo_relacion_organizacion = <TipoRelacionOrganizacion>res[0];
@@ -101,7 +101,7 @@ export class CrudTipoRelacionOrganizacionComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_relacion_organizacion = <TipoRelacionOrganizacion>tipoRelacionOrganizacion;
-        this.organizacionService.put('tipo_relacion_organizacion', this.info_tipo_relacion_organizacion)
+        this.organizacionService.put('tipo_relacion_organizaciones', this.info_tipo_relacion_organizacion)
           .subscribe(res => {
             this.showToast('info', this.translate.instant('GLOBAL.actualizar'),
               this.translate.instant('GLOBAL.tipo_relacion_organizacion') + ' ' +
@@ -139,7 +139,7 @@ export class CrudTipoRelacionOrganizacionComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_relacion_organizacion = <TipoRelacionOrganizacion>tipoRelacionOrganizacion;
-        this.organizacionService.post('tipo_relacion_organizacion', this.info_tipo_relacion_organizacion)
+        this.organizacionService.post('tipo_relacion_organizaciones', this.info_tipo_relacion_organizacion)
           .subscribe(res => {
             this.showToast('info', this.translate.instant('GLOBAL.crear'),
               this.translate.instant('GLOBAL.tipo_relacion_organizacion') + ' ' +
