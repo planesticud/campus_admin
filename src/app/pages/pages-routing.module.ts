@@ -44,6 +44,14 @@ const routes: Routes = [{
       loadChildren: './dependencia/dependencia.module#DependenciaModule',
     },
     {
+      path: 'dependencia_padre',
+      loadChildren: './dependencia_padre/dependencia_padre.module#DependenciaPadreModule',
+    },
+    {
+      path: 'dependencia_tipo_dependencia',
+      loadChildren: './dependencia_tipo_dependencia/dependencia_tipo_dependencia.module#DependenciaTipoDependenciaModule',
+    },
+    {
       path: 'estado_autor_produccion',
       loadChildren: './estado_autor_produccion/estado_autor_produccion.module#EstadoAutorProduccionModule',
     },
@@ -74,6 +82,10 @@ const routes: Routes = [{
     {
       path: 'grupo_investigacion',
       loadChildren: './grupo_investigacion/grupo_investigacion.module#GrupoInvestigacionModule',
+    },
+    {
+      path: 'grupo_linea_investigacion',
+      loadChildren: './grupo_linea_investigacion/grupo_linea_investigacion.module#GrupoLineaInvestigacionModule',
     },
     {
       path: 'idioma',

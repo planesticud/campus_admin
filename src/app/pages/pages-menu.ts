@@ -50,6 +50,16 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'dependencia',
       },
       {
+        title: 'Dependencia Padre Oikos',
+        link: '/pages/dependencia_padre/list-dependencia_padre',
+        key: 'dependencia_padre',
+      },
+      {
+        title: 'Dependencia Tipo Dependencia Oikos',
+        link: '/pages/dependencia_tipo_dependencia/list-dependencia_tipo_dependencia',
+        key: 'dependencia_tipo_dependencia',
+      },
+      {
         title: 'Estado Autor Produccion',
         link: '/pages/estado_autor_produccion/list-estado_autor_produccion',
         key: 'estado_autor_produccion',
@@ -88,6 +98,11 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Grupo Investigacion',
         link: '/pages/grupo_investigacion/list-grupo_investigacion',
         key: 'grupo_investigacion',
+      },
+      {
+        title: 'Grupo Linea Investigacion',
+        link: '/pages/grupo_linea_investigacion/list-grupo_linea_investigacion',
+        key: 'grupo_linea_investigacion',
       },
       {
         title: 'Idioma',
