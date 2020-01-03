@@ -108,8 +108,16 @@ const routes: Routes = [{
       loadChildren: './nivel_idioma/nivel_idioma.module#NivelIdiomaModule',
     },
     {
+      path: 'nucleo_basico_conocimiento',
+      loadChildren: './nucleo_basico_conocimiento/nucleo_basico_conocimiento.module#NucleoBasicoConocimientoModule',
+    },
+    {
       path: 'perfil_profesional',
       loadChildren: './perfil_profesional/perfil_profesional.module#PerfilProfesionalModule',
+    },
+    {
+      path: 'periodo',
+      loadChildren: './periodo/periodo.module#PeriodoModule',
     },
     {
       path: 'requisito',
@@ -240,20 +248,29 @@ const routes: Routes = [{
       loadChildren: './unidad_tiempo/unidad_tiempo.module#UnidadTiempoModule',
     },
     {
-      path: 'persona',
-      loadChildren: './persona/persona.module#PersonaModule',
-    },
-    {
       path: 'lugar',
       loadChildren: './lugar/lugar.module#LugarModule',
     },
     {
-      path: 'programa_academico',
-      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
+      path: 'relacion_lugar',
+      loadChildren: './relacion_lugar/relacion_lugar.module#RelacionLugarModule',
     },
     {
-      path: 'periodo',
-      loadChildren: './periodo/periodo.module#PeriodoModule',
+      path: 'valor_atributo_lugar',
+      loadChildren: './valor_atributo_lugar/valor_atributo_lugar.module#ValorAtributoLugarModule',
+    },
+
+
+
+
+
+    {
+      path: 'persona',
+      loadChildren: './persona/persona.module#PersonaModule',
+    },
+    {
+      path: 'programa_academico',
+      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
     },
     {
       path: 'tipo_descuento',

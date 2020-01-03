@@ -2,21 +2,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { CrudLugarUbicacionComponent } from './crud-lugar_ubicacion.component';
+import { CrudRelacionLugarComponent } from './crud-relacion_lugar.component';
 
-describe('CrudLugarUbicacionComponent', () => {
-  let component: CrudLugarUbicacionComponent;
-  let fixture: ComponentFixture<CrudLugarUbicacionComponent>;
+describe('CrudRelacionLugarComponent', () => {
+  let component: CrudRelacionLugarComponent;
+  let fixture: ComponentFixture<CrudRelacionLugarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrudLugarUbicacionComponent ],
+      declarations: [ CrudRelacionLugarComponent ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrudLugarUbicacionComponent);
+    fixture = TestBed.createComponent(CrudRelacionLugarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

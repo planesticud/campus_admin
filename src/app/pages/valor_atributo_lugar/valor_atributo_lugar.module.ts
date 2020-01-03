@@ -1,16 +1,16 @@
-import { LugarUbicacionRoutingModule, routedComponents } from './lugar_ubicacion-routing.module';
+import { ValorAtributoLugarRoutingModule, routedComponents } from './valor_atributo_lugar-routing.module';
 import { NgModule } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
 import { UbicacionService } from '../../@core/data/ubicacion.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
-import { CrudLugarUbicacionComponent } from './crud-lugar_ubicacion/crud-lugar_ubicacion.component';
+import { CrudValorAtributoLugarComponent } from './crud-valor_atributo_lugar/crud-valor_atributo_lugar.component';
 
 @NgModule({
   imports: [
     ThemeModule,
-    LugarUbicacionRoutingModule,
+    ValorAtributoLugarRoutingModule,
     Ng2SmartTableModule,
     ToasterModule,
     SharedModule,
@@ -22,7 +22,7 @@ import { CrudLugarUbicacionComponent } from './crud-lugar_ubicacion/crud-lugar_u
     UbicacionService,
   ],
   exports: [
-    CrudLugarUbicacionComponent,
+    CrudValorAtributoLugarComponent,
   ],
 })
-export class LugarUbicacionModule { }
+export class ValorAtributoLugarModule { }

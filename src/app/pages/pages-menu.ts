@@ -130,9 +130,19 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'nivel_idioma',
       },
       {
+        title: 'Nucleo Basico Conocimiento',
+        link: '/pages/nucleo_basico_conocimiento/list-nucleo_basico_conocimiento',
+        key: 'nucleo_basico_conocimiento',
+      },
+      {
         title: 'Perfil Profesional',
         link: '/pages/perfil_profesional/list-perfil_profesional',
         key: 'perfil_profesional',
+      },
+      {
+        title: 'Periodo',
+        link: '/pages/periodo/list-periodo',
+        key: 'periodo',
       },
       {
         title: 'Requisito Descuento',
@@ -302,6 +312,29 @@ export const MENU_ITEMS: MenuItem[] = [
     ],
   },
   {
+    title: 'Lugar',
+    icon: 'nb-compose',
+    link: '/pages/lugar',
+    key: 'lugar',
+    children: [
+      {
+        title: 'Lugar',
+        link: '/pages/lugar/list-lugar',
+        key: 'lugar',
+      },
+      {
+        title: 'Relacion Lugar',
+        link: '/pages/relacion_lugar/list-relacion_lugar',
+        key: 'relacion_lugar',
+      },
+      {
+        title: 'Valor Atributo Lugar',
+        link: '/pages/valor_atributo_lugar/list-valor_atributo_lugar',
+        key: 'valor_atributo_lugar',
+      },
+    ],
+  },
+  {
     title: 'Persona',
     icon: 'nb-compose',
     link: '/pages/persona',
@@ -317,19 +350,9 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/persona/crud-persona',
         key: 'crud_persona',
       },
-    ],
-  },
-  {
-    title: 'Lugar',
-    icon: 'nb-compose',
-    link: '/pages/lugar',
-    key: 'lugar',
-    children: [
-      {
-        title: 'Lista Lugar',
-        link: '/pages/lugar/list-lugar',
-        key: 'lista_lugar',
-      },
+
+
+
 
 
 
@@ -361,11 +384,6 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Programa Academico',
         link: '/pages/programa_academico/list-programa_academico',
         key: 'programa_academico',
-      },
-      {
-        title: 'Lista Periodo',
-        link: '/pages/periodo/list-periodo',
-        key: 'periodo_academico',
       },
       {
         title: 'Lista Requisito Tipo Descuento',

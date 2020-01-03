@@ -154,7 +154,9 @@
       "metodologia": "Methodology",
       "nivel_formacion": "Education level",
       "nivel_idioma": "Language level",
+      "nucleo_basico_conocimiento": "Basic knowledge core",
       "perfil_profesional": "Professional profile",
+      "periodo": "Academic period",
       "requisito": "Discount requirement",
       "requisito_academico": "Enrollment requirement",
       "rol_encargado_evento": "Event manager role",
@@ -199,6 +201,16 @@
       "requisito_programa_academico": "Enrollment requirements by program",
       "evaluacion_inscripcion": "Enrollment assessments"      
     },
+    "lugar": {
+      "lugar": "Place",
+      "relacion_lugar": "Place relationship",
+      "valor_atributo_lugar": "Place attribute value"
+    },
+
+
+
+
+
     "admisiones": {
       "admisiones": "Admissions",
       "entrevistas": "Entrance Interview",
@@ -220,80 +232,15 @@
       "nuevo_banner": "New banner",
       "gestion_banner": "Banners management"
     },
-    "genero": {
-      "genero": "Gender",
-      "lista_genero": "Gender list",
-      "crud_genero": "Gender crud"
-    },
-    "grupo_etnico": {
-      "grupo_etnico": "Ethnic group",
-      "lista_grupo_etnico": "Ethnic group list",
-      "crud_grupo_etnico": "Ethnic group crud"
-    },
-    "estado_civil": {
-      "estado_civil": "Civil status",
-      "lista_estado_civil": "Civil status list",
-      "crud_estado_civil": "Civil status crud"
-    },
-    "tipo_discapacidad": {
-      "tipo_discapacidad": "Impairment type",
-      "lista_tipo_discapacidad": "Impairment type list",
-      "crud_tipo_discapacidad": "Impairment type crud"
-    },
     "persona": {
       "persona": "Person",
       "lista_persona": "Person list",
       "crud_persona": "Person crud"
     },
-    "tipo_lugar": {
-      "tipo_lugar": "Place type",
-      "lista_tipo_lugar": "Place type list",
-      "crud_tipo_lugar": "Place type crud"
-    },
-    "lugar": {
-      "lugar": "Place",
-      "lista_lugar": "Place list",
-      "crud_lugar": "Place crud"
-    },
-    "lugar_ubicacion": {
-      "lugar_ubicacion": "Location of place",
-      "lista_lugar_ubicacion": "Location of place list",
-      "crud_lugar_ubicacion": "Location of place crud"
-    },
-    "tipo_contacto": {
-      "tipo_contacto": "Contact type",
-      "lista_tipo_contacto": "Contact type list",
-      "crud_tipo_contacto": "Contact type crud"
-    },
-    "idioma": {
-      "idioma": "Language",
-      "lista_idioma": "Language list",
-      "crud_idioma": "Language crud"
-    },
-    "nivel_idioma": {
-      "nivel_idioma": "Language level",
-      "lista_nivel_idioma": "Language level list",
-      "crud_nivel_idioma": "Language level crud"
-    },
-    "clasificacion_nivel_idioma": {
-      "clasificacion_nivel_idioma": "Language classification",
-      "lista_clasificacion_nivel_idioma": "Language classification list",
-      "crud_clasificacion_nivel_idioma": "Language classification crud"
-    },
-    "tipo_duracion": {
-      "tipo_duracion": "Duration type",
-      "lista_tipo_duracion": "Duration type list",
-      "crud_tipo_duracion": "Duration type crud"
-    },
     "tipo_descuento": {
       "tipo_descuento": "Discount type",
       "lista_tipo_descuento": "Discount type list",
       "crud_tipo_descuento": "Discount type crud"
-    },
-    "requisito": {
-      "requisito": "Requirement",
-      "lista_requisito": "Requirement list",
-      "crud_requisito": "Requirement crud"
     },
     "requisito_tipo_descuento": {
       "requisito_tipo_descuento": "Discount type requirement",
@@ -324,11 +271,6 @@
       "requisito_programa_academico": "Enrollment requirements by program",
       "lista_requisito_programa_academico": "Enrollment requirements by program list",
       "crud_requisito_programa_academico": "Enrollment requirements by program crud"
-    },
-    "requisito_academico": {
-      "requisito_academico": "Enrollment requirements",
-      "lista_requisito": "Enrollment requirements list",
-      "crud_requisito": "Enrollment requirements crud"
     },
     "evaluacion_inscripcion": {
       "evaluacion_inscripcion": "Enrollment assessments",
@@ -447,10 +389,14 @@
     "grupo_linea_investigacion": "Line of research group",
     "idioma": "Language",
     "linea_investigacion": "Research lines",
+    "lugar": "Place",
     "metodologia": "Methodology",
     "nivel_formacion": "Education level",
     "nivel_idioma": "Language level",
+    "nucleo_basico_conocimiento": "Basic knowledge core",
     "perfil_profesional": "Professional profile",
+    "periodo": "Period",
+    "relacion_lugar": "Place relationship",
     "requisito": "Discount requirement",
     "requisito_academico": "Enrollment requirement",
     "rol_encargado_evento": "Event manager role",
@@ -483,6 +429,7 @@
     "tipo_vinculacion": "Type contract",
     "titulacion": "Academic program title",
     "unidad_tiempo": "Time unit",
+    "valor_atributo_lugar": "Place attribute value",
     "placeholder_area_conocimiento": "E.g.: Knowledge area",
     "placeholder_atributo_lugar": "E.g.: Place attribute",
     "placeholder_atributo_ubicacion": "E.g.: Location attribute",
@@ -503,10 +450,14 @@
     "placeholder_grupo_linea_investigacion": "E.g.: Line of research group",
     "placeholder_idioma": "E.g.: Language",
     "placeholder_linea_investigacion": "E.g.: Research lines",
+    "placeholder_lugar": "E.g.: Place",
     "placeholder_metodologia": "E.g.: Methodology",
     "placeholder_nivel_formacion": "E.g.: Education level",
     "placeholder_nivel_idioma": "E.g.: Language level",
+    "placeholder_nucleo_basico_conocimiento": "E.g.: Basic knowledge core",
     "placeholder_perfil_profesional": "E.g.: Professional profile",
+    "placeholder_periodo": "E.g.: Period",
+    "placeholder_relacion_lugar": "E.g.: Place relationship",
     "placeholder_requisito": "E.g.: Discount requirement",
     "placeholder_requisito_academico": "E.g.: Enrollment requirement",
     "placeholder_rol_encargado_evento": "E.g.: Event manager role",
@@ -539,6 +490,7 @@
     "placeholder_tipo_vinculacion": "E.g.: Type contract",
     "placeholder_titulacion": "E.g.: Academic program title",
     "placeholder_unidad_tiempo": "E.g.: Time unit",
+    "placeholder_valor_atributo_lugar": "E.g.: Place attribute value",
     "id": "Id",
     "placeholder_id": "E.g.: 55",
     "nombre": "Name",
@@ -577,7 +529,14 @@
     "placeholder_grupo_investigacion_id": "E.g.: Research group",
     "linea_investigacion_id": "Research line",
     "placeholder_lina_investigacion_id": "E.g.: Research line",
-
+    "area_conocimiento_id": "Knowledge area",
+    "placeholder_area_conocimiento_id": "E.g.: Knowledge area",
+    "tipo_periodo_id": "Period Type",
+    "placeholder_tipo_periodo_id": "E.g.: Period Type",
+    "lugar_padre": "Father place",
+    "placeholder_lugar_padre": "E.g.: Father place",
+    "lugar_hijo": "Son place",
+    "placeholder_lugar_hijo": "E.g.: Son place",
 
 
 
@@ -588,8 +547,6 @@
     "alerta_documental_documento": "The document has been saved in our document manager",
     "persona": "Person",
     "placeholder_persona": "E.g.: Person",
-    "lugar": "Place",
-    "placeholder_lugar": "E.g.: Place",
     "lugar_ubicacion": "Location of place",
     "placeholder_lugar_ubicacion": "E.g.: 54",
     "primer_nombre": "First surname",

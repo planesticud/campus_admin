@@ -32,6 +32,7 @@ export class ListLugarComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -85,7 +86,7 @@ export class ListLugarComponent implements OnInit {
   }
 
   loadData(): void {
-    this.ubicacionService.get('lugar/?limit=0').subscribe(res => {
+    this.ubicacionService.get('lugar/?limit=5').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);
@@ -130,7 +131,7 @@ export class ListLugarComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.ubicacionService.delete('lugar/', event.data).subscribe(res => {
+        this.ubicacionService.delete('lugar', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

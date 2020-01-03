@@ -87,7 +87,7 @@ export class CrudLugarComponent implements OnInit {
 
   public loadLugar(): void {
     if (this.lugar_id !== undefined && this.lugar_id !== 0) {
-      this.ubicacionService.get('lugar/?query=id:' + this.lugar_id)
+      this.ubicacionService.get('lugar/?query=Id:' + this.lugar_id)
         .subscribe(res => {
           if (res !== null) {
             this.info_lugar = <Lugar>res[0];

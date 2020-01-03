@@ -154,7 +154,9 @@
       "metodologia": "Metodología",
       "nivel_formacion": "Nivel de formación",
       "nivel_idioma": "Nivel del idioma",
+      "nucleo_basico_conocimiento": "Núcleo básico conocimiento",
       "perfil_profesional": "Perfil profesional",
+      "periodo": "Periodo académico",
       "requisito": "Requisito de descuento",
       "requisito_academico": "Requisitos de inscripción",
       "rol_encargado_evento": "Rol de encargado del evento",
@@ -199,6 +201,16 @@
       "requisito_programa_academico": "Requisitos de inscripción programas",
       "evaluacion_inscripcion": "Evaluaciones de inscripción"
     },
+    "lugar": {
+      "lugar": "Lugar",
+      "relacion_lugar": "Relación de lugar",
+      "valor_atributo_lugar": "Valor de atributo de lugar"
+    },
+
+
+
+
+
     "admisiones": {
       "admisiones": "Admisiones",
       "entrevistas": "Entrevista de ingreso",
@@ -220,82 +232,17 @@
       "nuevo_banner": "Nuevo banner",
       "gestion_banner": "Gestión de banners"
     },
-    "genero": {
-      "genero": "Género",
-      "lista_genero": "Listado de género",
-      "crud_genero": "Crud de género"
-    },
-    "grupo_etnico": {
-      "grupo_etnico": "Grupo étnico",
-      "lista_grupo_etnico": "Lista de grupo étnico",
-      "crud_grupo_etnico": "Crud de grupo étnico"
-    },
-    "estado_civil": {
-      "estado_civil": "Estado civil",
-      "lista_estado_civil": "Listado de estado civil",
-      "crud_estado_civil": "Crud de estado civil"
-    },
-    "tipo_discapacidad": {
-      "tipo_discapacidad": "Tipo de discapacidad",
-      "lista_tipo_discapacidad": "Listado de tipo de discapacidad",
-      "crud_tipo_discapacidad": "Crud de tipo de discapacidad"
-    },
     "persona": {
       "persona": "Persona",
       "lista_persona": "Listado de persona",
       "crud_persona": "Crud de persona"
-    },
-    "tipo_lugar": {
-      "tipo_lugar": "Tipo de lugar",
-      "lista_tipo_lugar": "Listado de tipo de lugar",
-      "crud_tipo_lugar": "Crud de tipo de lugar"
-    },
-    "lugar": {
-      "lugar": "Lugar",
-      "lista_lugar": "Listado de lugar",
-      "crud_lugar": "Crud de lugar"
-    },
-    "lugar_ubicacion": {
-      "lugar_ubicacion": "Ubicación de lugar",
-      "lista_lugar_ubicacion": "Listado de ubicación de lugar",
-      "crud_lugar_ubicacion": "Crud de ubicación de lugar"
-    },
-    "tipo_contacto": {
-      "tipo_contacto": "Tipo de contacto",
-      "lista_tipo_contacto": "Listado de tipo de contacto",
-      "crud_tipo_contacto": "Crud de tipo de contacto"
-    },
-    "idioma": {
-      "idioma": "Idiomas",
-      "lista_idioma": "Listado de idiomas",
-      "crud_idioma": "Crud de idiomas"
-    },
-    "nivel_idioma": {
-      "nivel_idioma": "Niveles del idioma",
-      "lista_nivel_idioma": "Listado de niveles del idioma",
-      "crud_nivel_idioma": "Crud de niveles del idioma"
-    },
-    "clasificacion_nivel_idioma": {
-      "clasificacion_nivel_idioma": "Clasificación del nivel del idioma",
-      "lista_clasificacion_nivel_idioma": "Listado de clasificación del nivel del idioma",
-      "crud_clasificacion_nivel_idioma": "Crud de clasificación del nivel del idioma"
-    },
-    "tipo_duracion": {
-      "tipo_duracion": "Tipos de duración",
-      "lista_tipo_duracion": "Lista de tipos de duración",
-      "crud_tipo_duracion": "Crud de tipos de duración"
     },
     "tipo_descuento": {
       "tipo_descuento": "Tipos de descuento",
       "lista_tipo_descuento": "Lista de tipos de descuento",
       "crud_tipo_descuento": "Crud de tipos de descuento"
     },
-    "requisito": {
-      "requisito": "Requisitos",
-      "lista_requisito": "Lista de requisitos",
-      "crud_requisito": "Crud de requisitos"
-    },
-    "requisito_tipo_descuento": {
+   "requisito_tipo_descuento": {
       "requisito_tipo_descuento": "Requisitos de tipos de descuento",
       "lista_requisito_tipo_descuento": "Lista de requisitos de tipos de descuento",
       "crud_requisito_tipo_descuento": "Crud de requisitos de tipos de descuento"
@@ -324,11 +271,6 @@
       "requisito_programa_academico": "Requisitos de inscripción programas",
       "lista_requisito_programa_academico": "Lista de requisitos de inscripción programas",
       "crud_requisito_programa_academico": "Crud de requisitos de inscripción programas"
-    },
-    "requisito_academico": {
-      "requisito_academico": "Requisitos de inscripción",
-      "lista_requisito": "Lista de requisitos de inscripción",
-      "crud_requisito": "Crud de requisitos de inscripción"
     },
     "evaluacion_inscripcion": {
       "evaluacion_inscripcion": "Evaluaciones de inscripción",
@@ -447,10 +389,14 @@
     "grupo_linea_investigacion": "Linea del grupo de investigación",
     "idioma": "Idioma",
     "linea_investigacion": "Línea de investigación",
+    "lugar": "Lugar",
     "metodologia": "Metodología",
     "nivel_formacion": "Nivel de formación",
     "nivel_idioma": "Nivel del idioma",
+    "nucleo_basico_conocimiento": "Núcleo básico conocimiento",
     "perfil_profesional": "Perfil profesional",
+    "periodo": "Periodo",
+    "relacion_lugar": "Relación de lugar",
     "requisito": "Requisito de descuento",
     "requisito_academico": "Requisitos de inscripción",
     "rol_encargado_evento": "Rol de encargado del evento",
@@ -483,6 +429,7 @@
     "tipo_vinculacion": "Tipo de vinculación",
     "titulacion": "Titulación de programa académico",
     "unidad_tiempo": "Unidad de tiempo",
+    "valor_atributo_lugar": "Valor de atributo de lugar",
     "placeholder_area_conocimiento": "Ej: Área de conocimiento",
     "placeholder_atributo_lugar": "Ej: Atributo de lugar",
     "placeholder_atributo_ubicacion": "Ej: Atributo de ubicación",
@@ -503,10 +450,14 @@
     "placeholder_grupo_linea_investigacion": "Ej: Linea del grupo de investigación",
     "placeholder_idioma": "Ej: Idioma",
     "placeholder_linea_investigacion": "Ej: Línea de investigación",
+    "placeholder_lugar": "Ej: Lugar",
     "placeholder_metodologia": "Ej: Metodología",
     "placeholder_nivel_formacion": "Ej: Nivel de formación",
     "placeholder_nivel_idioma": "Ej: Nivel del idioma",
+    "placeholder_nucleo_basico_conocimiento": "Ej: Núcleo básico conocimiento",
     "placeholder_perfil_profesional": "Ej: Perfil profesional",
+    "placeholder_periodo": "Ej: Periodo",
+    "placeholder_relacion_lugar": "Ej: Relación de lugar",
     "placeholder_requisito": "Ej: Requisito de descuento",
     "placeholder_requisito_academico": "Ej: Requisitos de inscripción",
     "placeholder_rol_encargado_evento": "Ej: Rol de encargado del evento",
@@ -539,6 +490,7 @@
     "placeholder_tipo_vinculacion": "Ej: Tipo de vinculación",
     "placeholder_titulacion": "Ej: Titulación de programa académico",
     "placeholder_unidad_tiempo": "Ej: Unidad de tiempo",
+    "placeholder_valor_atributo_lugar": "Ej: Valor de atributo de lugar",
     "id": "Id",
     "placeholder_id": "Ej: 55",
     "nombre": "Nombre",
@@ -577,6 +529,14 @@
     "placeholder_grupo_investigacion_id": "Ej: Grupo de investigación",
     "linea_investigacion_id": "Linea de investigación",
     "placeholder_lina_investigacion_id": "Ej: Linea de investigación",
+    "area_conocimiento_id": "Área de conocimiento",
+    "placeholder_area_conocimiento_id": "Ej: Área de conocimiento",
+    "tipo_periodo_id": "Tipo de periodo",
+    "placeholder_tipo_periodo_id": "Ej: Tipo de periodo",
+    "lugar_padre": "Lugar padre",
+    "placeholder_lugar_padre": "Ej: Lugar padre",
+    "lugar_hijo": "Lugar hijo",
+    "placeholder_lugar_hijo": "Ej: Lugar hijo",
 
 
 
@@ -588,8 +548,6 @@
     "alerta_documental_documento": "El documento se ha guardado en nuestro gestor documental",
     "persona": "Persona",
     "placeholder_persona": "Ej: Persona",
-    "lugar": "Lugar",
-    "placeholder_lugar": "Ej: Lugar",
     "lugar_ubicacion": "Ubicación de lugar",
     "placeholder_lugar_ubicacion": "Ej: 54",
     "primer_nombre": "Primer nombre",

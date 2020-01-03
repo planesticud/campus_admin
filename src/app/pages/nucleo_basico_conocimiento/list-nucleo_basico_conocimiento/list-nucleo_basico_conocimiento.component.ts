@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UbicacionService } from '../../../@core/data/ubicacion.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
 @Component({
-  selector: 'ngx-list-lugar-ubicacion',
-  templateUrl: './list-lugar_ubicacion.component.html',
-  styleUrls: ['./list-lugar_ubicacion.component.scss'],
-  })
-export class ListLugarUbicacionComponent implements OnInit {
+  selector: 'ngx-list-nucleo-basico-conocimiento',
+  templateUrl: './list-nucleo_basico_conocimiento.component.html',
+  styleUrls: ['./list-nucleo_basico_conocimiento.component.scss'],
+})
+export class ListNucleoBasicoConocimientoComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
   source: LocalDataSource = new LocalDataSource();
+  data: any;
 
-  constructor(private translate: TranslateService, private ubicacionService: UbicacionService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService,
+    private coreService: CoreService,
+    private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -32,6 +35,7 @@ export class ListLugarUbicacionComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -55,29 +59,29 @@ export class ListLugarUbicacionComponent implements OnInit {
             return value;
           },
         },
-        Lugar: {
-          title: this.translate.instant('GLOBAL.lugar'),
-          width: '30%',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        Direccion: {
-          title: this.translate.instant('GLOBAL.direccion'),
-          width: '30%',
-          valuePrepareFunction: (value) => {
-            return value;
-          },
-        },
-        CodigoPostal: {
-          title: this.translate.instant('GLOBAL.codigo_postal'),
+        Nombre: {
+          title: this.translate.instant('GLOBAL.nombre'),
           width: '25%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
-        Estrato: {
-          title: this.translate.instant('GLOBAL.estrato'),
+        Descripcion: {
+          title: this.translate.instant('GLOBAL.descripcion'),
+          width: '30%',
+          valuePrepareFunction: (value) => {
+            return value;
+          },
+        },
+        AreaConocimientoId: {
+          title: this.translate.instant('GLOBAL.area_conocimiento_id'),
+          width: '30%',
+          valuePrepareFunction: (value) => {
+            return value.Nombre;
+          },
+        },
+        Activo: {
+          title: this.translate.instant('GLOBAL.activo'),
           width: '10%',
           valuePrepareFunction: (value) => {
             return value;
@@ -92,10 +96,28 @@ export class ListLugarUbicacionComponent implements OnInit {
   }
 
   loadData(): void {
-    this.ubicacionService.get('lugar_ubicacion/?limit=0').subscribe(res => {
-      if (res !== null) {
-        const data = <Array<any>>res;
-        this.source.load(data);
+    this.coreService.get('nucleo_basico_conocimiento/?limit=0').subscribe(res => {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+        this.data = <Array<any>>res;
+        this.data.forEach(element => {
+          this.coreService.get('area_conocimiento/?query=Id:' + element.AreaConocimientoId.Id)
+          .subscribe(resGrupo => {
+            if (resGrupo !== null && JSON.stringify(resGrupo).toString() !== '[{}]') {
+              element.AreaConocimientoId = <any>resGrupo[0];
+            }
+            this.source.load(this.data);
+          },
+            (error: HttpErrorResponse) => {
+              Swal({
+                type: 'error',
+                title: error.status + '',
+                text: this.translate.instant('ERROR.' + error.status),
+                footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                  this.translate.instant('GLOBAL.area_conocimiento_id'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+            });
+        });
       }
     },
       (error: HttpErrorResponse) => {
@@ -104,7 +126,7 @@ export class ListLugarUbicacionComponent implements OnInit {
           title: error.status + '',
           text: this.translate.instant('ERROR.' + error.status),
           footer: this.translate.instant('GLOBAL.cargar') + '-' +
-            this.translate.instant('GLOBAL.lugar_ubicacion'),
+            this.translate.instant('GLOBAL.nucleo_basico_conocimiento'),
           confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
         });
       });
@@ -137,11 +159,11 @@ export class ListLugarUbicacionComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.ubicacionService.delete('lugar_ubicacion/', event.data).subscribe(res => {
+        this.coreService.delete('nucleo_basico_conocimiento', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
-              this.translate.instant('GLOBAL.lugar_ubicacion') + ' ' +
+              this.translate.instant('GLOBAL.nucleo_basico_conocimiento') + ' ' +
               this.translate.instant('GLOBAL.confirmarEliminar'));
           }
         },
@@ -151,7 +173,7 @@ export class ListLugarUbicacionComponent implements OnInit {
               title: error.status + '',
               text: this.translate.instant('ERROR.' + error.status),
               footer: this.translate.instant('GLOBAL.eliminar') + '-' +
-                this.translate.instant('GLOBAL.lugar_ubicacion'),
+                this.translate.instant('GLOBAL.nucleo_basico_conocimiento'),
               confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
             });
           });
