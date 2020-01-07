@@ -160,6 +160,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'rol_encargado_evento',
       },
       {
+        title: 'Subipo Documento',
+        link: '/pages/subtipo_documento/list-subtipo_documento',
+        key: 'subtipo_documento',
+      },
+      {
         title: 'Tipo Contacto',
         link: '/pages/tipo_contacto/list-tipo_contacto',
         key: 'tipo_contacto',
@@ -178,6 +183,16 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Tipo Dependencia',
         link: '/pages/tipo_dependencia/list-tipo_dependencia',
         key: 'tipo_dependencia',
+      },
+      {
+        title: 'Tipo Dependencia Descuento',
+        link: '/pages/tipo_dependencia_descuento/list-tipo_dependencia_descuento',
+        key: 'tipo_dependencia_descuento',
+      },
+      {
+        title: 'Tipo Descuento',
+        link: '/pages/tipo_descuento/list-tipo_descuento',
+        key: 'tipo_descuento',
       },
       {
         title: 'Tipo Discapacidad',
@@ -389,11 +404,6 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Requisito Tipo Descuento',
         link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
         key: 'requisito_tipo_descuento',
-      },
-      {
-        title: 'Lista Tipo Descuento',
-        link: '/pages/tipo_descuento/list-tipo_descuento',
-        key: 'tipo_descuento',
       },
     ],
   },

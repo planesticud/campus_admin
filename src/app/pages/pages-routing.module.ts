@@ -132,6 +132,10 @@ const routes: Routes = [{
       loadChildren: './rol_encargado_evento/rol_encargado_evento.module#RolEncargadoEventoModule',
     },
     {
+      path: 'subtipo_documento',
+      loadChildren: './subtipo_documento/subtipo_documento.module#SubtipoDocumentoModule',
+    },
+    {
       path: 'tipo_contacto',
       loadChildren: './tipo_contacto/tipo_contacto.module#TipoContactoModule',
     },
@@ -146,6 +150,14 @@ const routes: Routes = [{
     {
       path: 'tipo_dependencia',
       loadChildren: './tipo_dependencia/tipo_dependencia.module#TipoDependenciaModule',
+    },
+    {
+      path: 'tipo_dependencia_descuento',
+      loadChildren: './tipo_dependencia_descuento/tipo_dependencia_descuento.module#TipoDependenciaDescuentoModule',
+    },
+    {
+      path: 'tipo_descuento',
+      loadChildren: './tipo_descuento/tipo_descuento.module#TipoDescuentoModule',
     },
     {
       path: 'tipo_discapacidad',
@@ -271,10 +283,6 @@ const routes: Routes = [{
     {
       path: 'programa_academico',
       loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
-    },
-    {
-      path: 'tipo_descuento',
-      loadChildren: './tipo_descuento/tipo_descuento.module#TipoDescuentoModule',
     },
     {
       path: 'requisito_tipo_descuento',
