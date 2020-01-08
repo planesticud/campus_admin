@@ -60,6 +60,16 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'dependencia_tipo_dependencia',
       },
       {
+        title: 'Descuento por dependencia',
+        link: '/pages/descuentos_dependencia/list-descuentos_dependencia',
+        key: 'descuentos_dependencia',
+      },
+      {
+        title: 'Documento por programa',
+        link: '/pages/documento_programa/list-documento_programa',
+        key: 'documento_programa',
+      },
+      {
         title: 'Estado Autor Produccion',
         link: '/pages/estado_autor_produccion/list-estado_autor_produccion',
         key: 'estado_autor_produccion',
@@ -145,6 +155,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'periodo',
       },
       {
+        title: 'Relacion Cargo',
+        link: '/pages/relacion_cargo/list-relacion_cargo',
+        key: 'relacion_cargo',
+      },
+      {
         title: 'Requisito Descuento',
         link: '/pages/requisito/list-requisito',
         key: 'requisito',
@@ -158,6 +173,11 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Rol Encargado Evento',
         link: '/pages/rol_encargado_evento/list-rol_encargado_evento',
         key: 'rol_encargado_evento',
+      },
+      {
+        title: 'Subipo Documento',
+        link: '/pages/subtipo_documento/list-subtipo_documento',
+        key: 'subtipo_documento',
       },
       {
         title: 'Tipo Contacto',
@@ -178,6 +198,16 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Tipo Dependencia',
         link: '/pages/tipo_dependencia/list-tipo_dependencia',
         key: 'tipo_dependencia',
+      },
+      {
+        title: 'Tipo Dependencia Descuento',
+        link: '/pages/tipo_dependencia_descuento/list-tipo_dependencia_descuento',
+        key: 'tipo_dependencia_descuento',
+      },
+      {
+        title: 'Tipo Descuento',
+        link: '/pages/tipo_descuento/list-tipo_descuento',
+        key: 'tipo_descuento',
       },
       {
         title: 'Tipo Discapacidad',
@@ -208,6 +238,11 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Tipo Entrevista',
         link: '/pages/tipo_entrevista/list-tipo_entrevista',
         key: 'tipo_entrevista',
+      },
+      {
+        title: 'Tipo Evento',
+        link: '/pages/tipo_evento/list-tipo_evento',
+        key: 'tipo_evento',
       },
       {
         title: 'Tipo Identificacion',
@@ -389,11 +424,6 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Requisito Tipo Descuento',
         link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
         key: 'requisito_tipo_descuento',
-      },
-      {
-        title: 'Lista Tipo Descuento',
-        link: '/pages/tipo_descuento/list-tipo_descuento',
-        key: 'tipo_descuento',
       },
     ],
   },

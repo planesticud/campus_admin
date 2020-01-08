@@ -52,6 +52,14 @@ const routes: Routes = [{
       loadChildren: './dependencia_tipo_dependencia/dependencia_tipo_dependencia.module#DependenciaTipoDependenciaModule',
     },
     {
+      path: 'descuentos_dependencia',
+      loadChildren: './descuentos_dependencia/descuentos_dependencia.module#DescuentosDependenciaModule',
+    },
+    {
+      path: 'documento_programa',
+      loadChildren: './documento_programa/documento_programa.module#DocumentoProgramaModule',
+    },
+    {
       path: 'estado_autor_produccion',
       loadChildren: './estado_autor_produccion/estado_autor_produccion.module#EstadoAutorProduccionModule',
     },
@@ -120,6 +128,10 @@ const routes: Routes = [{
       loadChildren: './periodo/periodo.module#PeriodoModule',
     },
     {
+      path: 'relacion_cargo',
+      loadChildren: './relacion_cargo/relacion_cargo.module#RelacionCargoModule',
+    },
+    {
       path: 'requisito',
       loadChildren: './requisito/requisito.module#RequisitoModule',
     },
@@ -130,6 +142,10 @@ const routes: Routes = [{
     {
       path: 'rol_encargado_evento',
       loadChildren: './rol_encargado_evento/rol_encargado_evento.module#RolEncargadoEventoModule',
+    },
+    {
+      path: 'subtipo_documento',
+      loadChildren: './subtipo_documento/subtipo_documento.module#SubtipoDocumentoModule',
     },
     {
       path: 'tipo_contacto',
@@ -146,6 +162,14 @@ const routes: Routes = [{
     {
       path: 'tipo_dependencia',
       loadChildren: './tipo_dependencia/tipo_dependencia.module#TipoDependenciaModule',
+    },
+    {
+      path: 'tipo_dependencia_descuento',
+      loadChildren: './tipo_dependencia_descuento/tipo_dependencia_descuento.module#TipoDependenciaDescuentoModule',
+    },
+    {
+      path: 'tipo_descuento',
+      loadChildren: './tipo_descuento/tipo_descuento.module#TipoDescuentoModule',
     },
     {
       path: 'tipo_discapacidad',
@@ -170,6 +194,10 @@ const routes: Routes = [{
     {
       path: 'tipo_entrevista',
       loadChildren: './tipo_entrevista/tipo_entrevista.module#TipoEntrevistaModule',
+    },
+    {
+      path: 'tipo_evento',
+      loadChildren: './tipo_evento/tipo_evento.module#TipoEventoModule',
     },
     {
       path: 'tipo_identificacion',
@@ -273,16 +301,8 @@ const routes: Routes = [{
       loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
     },
     {
-      path: 'tipo_descuento',
-      loadChildren: './tipo_descuento/tipo_descuento.module#TipoDescuentoModule',
-    },
-    {
       path: 'requisito_tipo_descuento',
       loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
-    },
-    {
-      path: 'descuentos_dependencia',
-      loadChildren: './descuentos_dependencia/descuentos_dependencia.module#DescuentosDependenciaModule',
     },
     {
       path: 'solicitud_descuento',
