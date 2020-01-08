@@ -1,7 +1,7 @@
 export class RelacionLugar {
   Id: number;
-  LugarPadreId: string;
-  LugarHijoId: string;
+  LugarPadreId: any;
+  LugarHijoId: any;
   TipoRelacionLugarId: string;
   Activo: boolean;
 }

@@ -60,6 +60,16 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'dependencia_tipo_dependencia',
       },
       {
+        title: 'Descuento por dependencia',
+        link: '/pages/descuentos_dependencia/list-descuentos_dependencia',
+        key: 'descuentos_dependencia',
+      },
+      {
+        title: 'Documento por programa',
+        link: '/pages/documento_programa/list-documento_programa',
+        key: 'documento_programa',
+      },
+      {
         title: 'Estado Autor Produccion',
         link: '/pages/estado_autor_produccion/list-estado_autor_produccion',
         key: 'estado_autor_produccion',
@@ -145,6 +155,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'periodo',
       },
       {
+        title: 'Relacion Cargo',
+        link: '/pages/relacion_cargo/list-relacion_cargo',
+        key: 'relacion_cargo',
+      },
+      {
         title: 'Requisito Descuento',
         link: '/pages/requisito/list-requisito',
         key: 'requisito',
@@ -223,6 +238,11 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Tipo Entrevista',
         link: '/pages/tipo_entrevista/list-tipo_entrevista',
         key: 'tipo_entrevista',
+      },
+      {
+        title: 'Tipo Evento',
+        link: '/pages/tipo_evento/list-tipo_evento',
+        key: 'tipo_evento',
       },
       {
         title: 'Tipo Identificacion',
