@@ -59,7 +59,7 @@ export class CrudRelacionCargoComponent implements OnInit {
 
   loadOptionsCargo(): void {
     let cargo: Array<any> = [];
-    this.experienciaService.get('cargo/?limit=5')
+    this.experienciaService.get('cargo/?limit=0')
       .subscribe(res => {
         if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
           cargo = <Array<Cargo>>res;

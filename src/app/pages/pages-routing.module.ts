@@ -136,6 +136,10 @@ const routes: Routes = [{
       loadChildren: './relacion_cargo/relacion_cargo.module#RelacionCargoModule',
     },
     {
+      path: 'relacion_organizacion',
+      loadChildren: './relacion_organizacion/relacion_organizacion.module#RelacionOrganizacionModule',
+    },
+    {
       path: 'requisito',
       loadChildren: './requisito/requisito.module#RequisitoModule',
     },

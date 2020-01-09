@@ -161,6 +161,7 @@
       "perfil_profesional": "Professional profile",
       "periodo": "Academic period",
       "relacion_cargo": "Role relationship",
+      "relacion_organizacion": "Organization relationship",
       "requisito": "Discount requirement",
       "requisito_academico": "Enrollment requirement",
       "requisito_programa": "Enrollment requirement by program",
@@ -406,6 +407,7 @@
     "periodo": "Period",
     "relacion_cargo": "Role relationship",
     "relacion_lugar": "Place relationship",
+    "relacion_organizacion": "Organization relationship",
     "requisito": "Discount requirement",
     "requisito_academico": "Enrollment requirement",
     "requisito_programa": "Enrollment requirement by program",
@@ -477,6 +479,7 @@
     "placeholder_periodo": "E.g.: Period",
     "placeholder_relacion_cargo": "E.g.: Role relationship",
     "placeholder_relacion_lugar": "E.g.: Place relationship",
+    "placeholder_relacion_organizacion": "E.g.: Organization relationship",
     "placeholder_requisito": "E.g.: Discount requirement",
     "placeholder_requisito_academico": "E.g.: Enrollment requirement",
     "placeholder_requisito_programa": "E.g.: Enrollment requirement by program",
@@ -594,6 +597,10 @@
     "placeholder_cupos_habilitados": "Ej: 10",
     "cupos_opcionados": "Opted number",
     "placeholder_cupos_opcionados": "Ej: 10",
+    "organizacion_padre": "Father organization",
+    "placeholder_organizacion_padre": "E.g.: Father organization",
+    "organizacion_hija": "Daughter organization",
+    "placeholder_organizacion_hija": "E.g.: Daughter organization",
 
 
     

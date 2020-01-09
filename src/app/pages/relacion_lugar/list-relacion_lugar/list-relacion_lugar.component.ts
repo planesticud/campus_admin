@@ -191,7 +191,7 @@ export class ListRelacionLugarComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.lugarService.delete('relacion_lugar', event.data).subscribe(res => {
+        this.lugarService.delete('relacion_lugares', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),

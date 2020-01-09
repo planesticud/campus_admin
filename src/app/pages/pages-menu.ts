@@ -165,6 +165,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'relacion_cargo',
       },
       {
+        title: 'Relacion Organizacion',
+        link: '/pages/relacion_organizacion/list-relacion_organizacion',
+        key: 'relacion_organizacion',
+      },
+      {
         title: 'Requisito Descuento',
         link: '/pages/requisito/list-requisito',
         key: 'requisito',

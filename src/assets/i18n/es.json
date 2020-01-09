@@ -161,6 +161,7 @@
       "perfil_profesional": "Perfil profesional",
       "periodo": "Periodo académico",
       "relacion_cargo": "Relación de cargo",
+      "relacion_organizacion": "Relación de organización",
       "requisito": "Requisito de descuento",
       "requisito_academico": "Requisitos de inscripción",
       "requisito_programa": "Requisito de inscripción por programa",
@@ -406,6 +407,7 @@
     "periodo": "Periodo",
     "relacion_cargo": "Relación de cargo",
     "relacion_lugar": "Relación de lugar",
+    "relacion_organizacion": "Relación de organización",
     "requisito": "Requisito de descuento",
     "requisito_academico": "Requisito de inscripción",
     "requisito_programa": "Requisito de inscripción por programa",
@@ -477,6 +479,7 @@
     "placeholder_periodo": "Ej: Periodo",
     "placeholder_relacion_cargo": "Ej: Relación de cargo",
     "placeholder_relacion_lugar": "Ej: Relación de lugar",
+    "placeholder_relacion_organizacion": "Ej: Relación de organización",
     "placeholder_requisito": "Ej: Requisito de descuento",
     "placeholder_requisito_academico": "Ej: Requisito de inscripción",
     "placeholder_requisito_programa": "Ej: Requisito de inscripción por programa",
@@ -594,10 +597,14 @@
     "placeholder_cupos_habilitados": "Ej: 10",
     "cupos_opcionados": "Cupos para opcionados",
     "placeholder_cupos_opcionados": "Ej: 10",
-
+    "organizacion_padre": "Organización padre",
+    "placeholder_organizacion_padre": "Ej: Organización padre",
+    "organizacion_hija": "Organización hija",
+    "placeholder_organizacion_hija": "Ej: Organización hija",
 
     
     
+
     "inscrito": "Ha sido inscrito al período académico:",
     "soporte_documento":"Soporte de documento",
     "alerta_documental_image": "La imagen se ha guardado en nuestro gestor documental",
