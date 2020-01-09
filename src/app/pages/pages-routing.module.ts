@@ -40,6 +40,10 @@ const routes: Routes = [{
       loadChildren: './concepto_academico/concepto_academico.module#ConceptoAcademicoModule',
     },
     {
+      path: 'cupo_dependencia',
+      loadChildren: './cupo_dependencia/cupo_dependencia.module#CupoDependenciaModule',
+    },
+    {
       path: 'dependencia',
       loadChildren: './dependencia/dependencia.module#DependenciaModule',
     },
@@ -138,6 +142,14 @@ const routes: Routes = [{
     {
       path: 'requisito_academico',
       loadChildren: './requisito_academico/requisito_academico.module#RequisitoAcademicoModule',
+    },
+    {
+      path: 'requisito_programa',
+      loadChildren: './requisito_programa/requisito_programa.module#RequisitoProgramaModule',
+    },
+    {
+      path: 'requisito_tipo_descuento',
+      loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
     },
     {
       path: 'rol_encargado_evento',
@@ -299,10 +311,6 @@ const routes: Routes = [{
     {
       path: 'programa_academico',
       loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
-    },
-    {
-      path: 'requisito_tipo_descuento',
-      loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
     },
     {
       path: 'solicitud_descuento',

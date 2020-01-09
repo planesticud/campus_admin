@@ -137,6 +137,7 @@
       "cargo": "Appointment",
       "clasificacion_nivel_idioma": "Language classification",
       "concepto_academico": "Academic concept",
+      "cupo_dependencia": "Admitted number by program",
       "dependencia": "Office - OIKOS",
       "dependencia_padre": "Office relationship - OIKOS",
       "dependencia_tipo_dependencia": "Office type of office - OIKOS",
@@ -162,6 +163,7 @@
       "relacion_cargo": "Role relationship",
       "requisito": "Discount requirement",
       "requisito_academico": "Enrollment requirement",
+      "requisito_programa": "Enrollment requirement by program",
       "requisito_tipo_descuento": "Discount type requirement",
       "rol_encargado_evento": "Event manager role",
       "subtipo_documento": "Document subtype",
@@ -378,6 +380,7 @@
     "cargo": "Appointment",
     "clasificacion_nivel_idioma": "Language classification",
     "concepto_academico": "Academic concept",
+    "cupo_dependencia": "Admitted number by program",
     "dependencia": "Office - OIKOS",
     "dependencia_padre": "Office relationship - OIKOS",
     "dependencia_tipo_dependencia": "Office type of office - OIKOS",
@@ -405,6 +408,7 @@
     "relacion_lugar": "Place relationship",
     "requisito": "Discount requirement",
     "requisito_academico": "Enrollment requirement",
+    "requisito_programa": "Enrollment requirement by program",
     "requisito_tipo_descuento": "Discount type requirement",
     "rol_encargado_evento": "Event manager role",
     "subtipo_documento": "Document subtype",
@@ -447,6 +451,7 @@
     "placeholder_cargo": "E.g.: Appointment",
     "placeholder_clasificacion_nivel_idioma": "E.g.: Language classification",
     "placeholder_concepto_academico": "E.g.: Academic concept",
+    "placeholder_cupo_dependencia": "E.g.: Admitted number by program",
     "placeholder_dependencia": "E.g.: Office - OIKOS",
     "placeholder_dependencia_padre": "E.g.: Office relationship - OIKOS",
     "placeholder_dependencia_tipo_dependencia": "E.g.: Office type of office - OIKOS",
@@ -474,6 +479,7 @@
     "placeholder_relacion_lugar": "E.g.: Place relationship",
     "placeholder_requisito": "E.g.: Discount requirement",
     "placeholder_requisito_academico": "E.g.: Enrollment requirement",
+    "placeholder_requisito_programa": "E.g.: Enrollment requirement by program",
     "placeholder_requisito_tipo_descuento": "E.g.: Discount type requirement",
     "placeholder_rol_encargado_evento": "E.g.: Event manager role",
     "placeholder_subtipo_documento": "E.g.: Document subtype",
@@ -582,6 +588,12 @@
     "placeholder_cargo_padre": "E.g.: Father role",
     "cargo_hijo": "Son role",
     "placeholder_cargo_hijo": "E.g.: Son role",
+    "porcentaje": "Percentage",
+    "placeholder_porcentaje": "E.g.: 10%",
+    "cupos_habilitados": "Admitted number",
+    "placeholder_cupos_habilitados": "Ej: 10",
+    "cupos_opcionados": "Opted number",
+    "placeholder_cupos_opcionados": "Ej: 10",
 
 
     
@@ -661,8 +673,6 @@
     "inscripcion": "Enrollment",
     "placeholder_inscripcion": "E.g.: Enrollment",
     "nota": "Assigned rating",
-    "placeholder_nota": "E.g.: 100",
-    "porcentaje": "Percentage",
-    "placeholder_porcentaje": "E.g.: 10%"    
+    "placeholder_nota": "E.g.: 100"  
   }
 }
