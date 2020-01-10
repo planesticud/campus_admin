@@ -132,6 +132,10 @@ const routes: Routes = [{
       loadChildren: './periodo/periodo.module#PeriodoModule',
     },
     {
+      path: 'programa_academico',
+      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
+    },
+    {
       path: 'relacion_cargo',
       loadChildren: './relacion_cargo/relacion_cargo.module#RelacionCargoModule',
     },
@@ -311,10 +315,6 @@ const routes: Routes = [{
     {
       path: 'persona',
       loadChildren: './persona/persona.module#PersonaModule',
-    },
-    {
-      path: 'programa_academico',
-      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
     },
     {
       path: 'solicitud_descuento',

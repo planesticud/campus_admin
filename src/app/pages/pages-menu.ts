@@ -160,6 +160,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'periodo',
       },
       {
+        title: 'Programa Academico',
+        link: '/pages/programa_academico/list-programa_academico',
+        key: 'programa_academico',
+      },
+      {
         title: 'Relacion Cargo',
         link: '/pages/relacion_cargo/list-relacion_cargo',
         key: 'relacion_cargo',
@@ -434,11 +439,6 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Requisito Programa Academico Criterios',
         link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
         key: 'requisito_programa_academico',
-      },
-      {
-        title: 'Lista Programa Academico',
-        link: '/pages/programa_academico/list-programa_academico',
-        key: 'programa_academico',
       },
     ],
   },

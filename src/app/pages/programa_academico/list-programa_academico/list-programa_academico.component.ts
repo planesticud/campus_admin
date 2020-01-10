@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
+import { OrganizacionService } from '../../../@core/data/organizacion.service';
+import { CoreService } from '../../../@core/data/core.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,10 +19,12 @@ export class ListProgramaAcademicoComponent implements OnInit {
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
-
+  data: any;
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private translate: TranslateService, private programaAcademicoService: ProgramaAcademicoService, private toasterService: ToasterService) {
+  constructor(private translate: TranslateService, private programaAcademicoService: ProgramaAcademicoService,
+    private coreService: CoreService, private organizacionService: OrganizacionService,
+    private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -33,6 +37,7 @@ export class ListProgramaAcademicoComponent implements OnInit {
       actions: {
         columnTitle: '',
       },
+      noDataMessage: 'No se encuentran datos (No data found)',
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
@@ -56,7 +61,7 @@ export class ListProgramaAcademicoComponent implements OnInit {
             return value;
           },
         },
-        CodigoSnies: {
+        Codigo: {
           title: this.translate.instant('GLOBAL.codigo_snies'),
           width: '5%',
           valuePrepareFunction: (value) => {
@@ -74,7 +79,7 @@ export class ListProgramaAcademicoComponent implements OnInit {
           title: this.translate.instant('GLOBAL.institucion'),
           width: '16%',
           valuePrepareFunction: (value) => {
-            return value;
+            return value.Nombre;
           },
         },
         Titulacion: {
@@ -109,7 +114,7 @@ export class ListProgramaAcademicoComponent implements OnInit {
           title: this.translate.instant('GLOBAL.unidad_tiempo'),
           width: '10%',
           valuePrepareFunction: (value) => {
-            return value;
+            return value.Nombre;
           },
         },
       },
@@ -121,10 +126,63 @@ export class ListProgramaAcademicoComponent implements OnInit {
   }
 
   loadData(): void {
-    this.programaAcademicoService.get('programa_academico/?limit=0').subscribe(res => {
-      if (res !== null) {
-        const data = <Array<any>>res;
-        this.source.load(data);
+    this.programaAcademicoService.get('programa_academico/?limit=10').subscribe(res => {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+        this.data = <Array<any>>res;
+        this.data.forEach(element => {
+          this.coreService.get('nucleo_basico_conocimiento/' + element.NucleoBasicoConocimiento)
+            .subscribe(nucleo => {
+              if (nucleo !== null && JSON.stringify(nucleo).toString() !== '[{}]') {
+                element.NucleoBasicoConocimiento = <any>nucleo;
+                this.coreService.get('unidad_tiempo/' + element.UnidadTiempo)
+                  .subscribe(tiempo => {
+                    if (tiempo !== null && JSON.stringify(tiempo).toString() !== '[{}]') {
+                      element.UnidadTiempo = <any>tiempo;
+                      this.organizacionService.get('organizacion/' +  element.Institucion)
+                        .subscribe(institucion => {
+                          if (institucion !== null && JSON.stringify(institucion).toString() !== '[{}]') {
+                            element.Institucion = <any>institucion;
+                          }
+                          this.source.load(this.data);
+                        },
+                          (error: HttpErrorResponse) => {
+                            Swal({
+                              type: 'error',
+                              title: error.status + '',
+                              text: this.translate.instant('ERROR.' + error.status),
+                              footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                              this.translate.instant('GLOBAL.programa_academico') + '|' +
+                              this.translate.instant('GLOBAL.institucion'),
+                              confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                            });
+                          });
+                    }
+                  },
+                    (error: HttpErrorResponse) => {
+                      Swal({
+                        type: 'error',
+                        title: error.status + '',
+                        text: this.translate.instant('ERROR.' + error.status),
+                        footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                          this.translate.instant('GLOBAL.programa_academico') + '|' +
+                          this.translate.instant('GLOBAL.unidad_tiempo'),
+                        confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                      });
+                    });
+              }
+            },
+              (error: HttpErrorResponse) => {
+                Swal({
+                  type: 'error',
+                  title: error.status + '',
+                  text: this.translate.instant('ERROR.' + error.status),
+                  footer: this.translate.instant('GLOBAL.cargar') + '-' +
+                    this.translate.instant('GLOBAL.programa_academico') + '|' +
+                    this.translate.instant('GLOBAL.nucleo_basico_conocimiento'),
+                  confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+                });
+              });
+        });
       }
     },
       (error: HttpErrorResponse) => {
@@ -166,7 +224,7 @@ export class ListProgramaAcademicoComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-        this.programaAcademicoService.delete('programa_academico/', event.data).subscribe(res => {
+        this.programaAcademicoService.delete('programa_academico', event.data).subscribe(res => {
           if (res !== null) {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
