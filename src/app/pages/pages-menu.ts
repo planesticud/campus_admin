@@ -45,6 +45,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'concepto_academico',
       },
       {
+        title: 'Cupo Programa',
+        link: '/pages/cupo_dependencia/list-cupo_dependencia',
+        key: 'cupo_dependencia',
+      },
+      {
         title: 'Dependencia Oikos',
         link: '/pages/dependencia/list-dependencia',
         key: 'dependencia',
@@ -125,6 +130,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'linea_investigacion',
       },
       {
+        title: 'Metadato Subtipo Produccion',
+        link: '/pages/metadato_subtipo_produccion/list-metadato_subtipo_produccion',
+        key: 'metadato_subtipo_produccion',
+      },
+      {
         title: 'Metodologia',
         link: '/pages/metodologia/list-metodologia',
         key: 'metodologia',
@@ -155,9 +165,19 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'periodo',
       },
       {
+        title: 'Programa Academico',
+        link: '/pages/programa_academico/list-programa_academico',
+        key: 'programa_academico',
+      },
+      {
         title: 'Relacion Cargo',
         link: '/pages/relacion_cargo/list-relacion_cargo',
         key: 'relacion_cargo',
+      },
+      {
+        title: 'Relacion Organizacion',
+        link: '/pages/relacion_organizacion/list-relacion_organizacion',
+        key: 'relacion_organizacion',
       },
       {
         title: 'Requisito Descuento',
@@ -170,14 +190,29 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'requisito_academico',
       },
       {
+        title: 'Requisito Evaluacion Programa',
+        link: '/pages/requisito_programa/list-requisito_programa',
+        key: 'requisito_programa',
+      },
+      {
+        title: 'Requisito Tipo Descuento',
+        link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
+        key: 'requisito_tipo_descuento',
+      },
+      {
         title: 'Rol Encargado Evento',
         link: '/pages/rol_encargado_evento/list-rol_encargado_evento',
         key: 'rol_encargado_evento',
       },
       {
-        title: 'Subipo Documento',
+        title: 'Subtipo Documento',
         link: '/pages/subtipo_documento/list-subtipo_documento',
         key: 'subtipo_documento',
+      },
+      {
+        title: 'Subtipo Produccion',
+        link: '/pages/subtipo_produccion/list-subtipo_produccion',
+        key: 'subtipo_produccion',
       },
       {
         title: 'Tipo Contacto',
@@ -414,16 +449,6 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Requisito Programa Academico Criterios',
         link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
         key: 'requisito_programa_academico',
-      },
-      {
-        title: 'Lista Programa Academico',
-        link: '/pages/programa_academico/list-programa_academico',
-        key: 'programa_academico',
-      },
-      {
-        title: 'Lista Requisito Tipo Descuento',
-        link: '/pages/requisito_tipo_descuento/list-requisito_tipo_descuento',
-        key: 'requisito_tipo_descuento',
       },
     ],
   },

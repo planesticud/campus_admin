@@ -6,10 +6,11 @@ export class ProgramaAcademico {
   Id: number;
   CodigoSnies: number;
   Nombre: string;
-  Institucion: number;
+  Institucion: any;
   Metodologia: Metodologia;
   NivelFormacion: NivelFormacion;
   Titulacion: Titulacion;
   Duracion: number;
-  UnidadTiempo: Array<string>;
+  UnidadTiempo: any;
+  NucleoBasicoConocimiento: any;
 }

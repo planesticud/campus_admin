@@ -40,6 +40,10 @@ const routes: Routes = [{
       loadChildren: './concepto_academico/concepto_academico.module#ConceptoAcademicoModule',
     },
     {
+      path: 'cupo_dependencia',
+      loadChildren: './cupo_dependencia/cupo_dependencia.module#CupoDependenciaModule',
+    },
+    {
       path: 'dependencia',
       loadChildren: './dependencia/dependencia.module#DependenciaModule',
     },
@@ -104,6 +108,10 @@ const routes: Routes = [{
       loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
     },
     {
+      path: 'metadato_subtipo_produccion',
+      loadChildren: './metadato_subtipo_produccion/metadato_subtipo_produccion.module#MetadatoSubtipoProduccionModule',
+    },
+    {
       path: 'metodologia',
       loadChildren: './metodologia/metodologia.module#MetodologiaModule',
     },
@@ -128,8 +136,16 @@ const routes: Routes = [{
       loadChildren: './periodo/periodo.module#PeriodoModule',
     },
     {
+      path: 'programa_academico',
+      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
+    },
+    {
       path: 'relacion_cargo',
       loadChildren: './relacion_cargo/relacion_cargo.module#RelacionCargoModule',
+    },
+    {
+      path: 'relacion_organizacion',
+      loadChildren: './relacion_organizacion/relacion_organizacion.module#RelacionOrganizacionModule',
     },
     {
       path: 'requisito',
@@ -140,12 +156,24 @@ const routes: Routes = [{
       loadChildren: './requisito_academico/requisito_academico.module#RequisitoAcademicoModule',
     },
     {
+      path: 'requisito_programa',
+      loadChildren: './requisito_programa/requisito_programa.module#RequisitoProgramaModule',
+    },
+    {
+      path: 'requisito_tipo_descuento',
+      loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
+    },
+    {
       path: 'rol_encargado_evento',
       loadChildren: './rol_encargado_evento/rol_encargado_evento.module#RolEncargadoEventoModule',
     },
     {
       path: 'subtipo_documento',
       loadChildren: './subtipo_documento/subtipo_documento.module#SubtipoDocumentoModule',
+    },
+    {
+      path: 'subtipo_produccion',
+      loadChildren: './subtipo_produccion/subtipo_produccion.module#SubtipoProduccionModule',
     },
     {
       path: 'tipo_contacto',
@@ -295,14 +323,6 @@ const routes: Routes = [{
     {
       path: 'persona',
       loadChildren: './persona/persona.module#PersonaModule',
-    },
-    {
-      path: 'programa_academico',
-      loadChildren: './programa_academico/programa_academico.module#ProgramaAcademicoModule',
-    },
-    {
-      path: 'requisito_tipo_descuento',
-      loadChildren: './requisito_tipo_descuento/requisito_tipo_descuento.module#RequisitoTipoDescuentoModule',
     },
     {
       path: 'solicitud_descuento',
