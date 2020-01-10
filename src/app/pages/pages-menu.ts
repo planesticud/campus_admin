@@ -130,6 +130,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'linea_investigacion',
       },
       {
+        title: 'Metadato Subtipo Produccion',
+        link: '/pages/metadato_subtipo_produccion/list-metadato_subtipo_produccion',
+        key: 'metadato_subtipo_produccion',
+      },
+      {
         title: 'Metodologia',
         link: '/pages/metodologia/list-metodologia',
         key: 'metodologia',
@@ -203,6 +208,11 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Subtipo Documento',
         link: '/pages/subtipo_documento/list-subtipo_documento',
         key: 'subtipo_documento',
+      },
+      {
+        title: 'Subtipo Produccion',
+        link: '/pages/subtipo_produccion/list-subtipo_produccion',
+        key: 'subtipo_produccion',
       },
       {
         title: 'Tipo Contacto',

@@ -126,7 +126,7 @@ export class ListProgramaAcademicoComponent implements OnInit {
   }
 
   loadData(): void {
-    this.programaAcademicoService.get('programa_academico/?limit=10').subscribe(res => {
+    this.programaAcademicoService.get('programa_academico/?limit=0').subscribe(res => {
       if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         this.data = <Array<any>>res;
         this.data.forEach(element => {

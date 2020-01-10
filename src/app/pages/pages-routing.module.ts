@@ -108,6 +108,10 @@ const routes: Routes = [{
       loadChildren: './linea_investigacion/linea_investigacion.module#LineaInvestigacionModule',
     },
     {
+      path: 'metadato_subtipo_produccion',
+      loadChildren: './metadato_subtipo_produccion/metadato_subtipo_produccion.module#MetadatoSubtipoProduccionModule',
+    },
+    {
       path: 'metodologia',
       loadChildren: './metodologia/metodologia.module#MetodologiaModule',
     },
@@ -166,6 +170,10 @@ const routes: Routes = [{
     {
       path: 'subtipo_documento',
       loadChildren: './subtipo_documento/subtipo_documento.module#SubtipoDocumentoModule',
+    },
+    {
+      path: 'subtipo_produccion',
+      loadChildren: './subtipo_produccion/subtipo_produccion.module#SubtipoProduccionModule',
     },
     {
       path: 'tipo_contacto',
