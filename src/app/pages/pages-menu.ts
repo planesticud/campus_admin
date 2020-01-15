@@ -30,6 +30,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'atributo_ubicacion',
       },
       {
+        title: 'Calendario Evento',
+        link: '/pages/calendario_evento/list-calendario_evento',
+        key: 'calendario_evento',
+      },
+      {
         title: 'Cargo',
         link: '/pages/cargo/list-cargo',
         key: 'cargo',
@@ -153,6 +158,11 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Nucleo Basico Conocimiento',
         link: '/pages/nucleo_basico_conocimiento/list-nucleo_basico_conocimiento',
         key: 'nucleo_basico_conocimiento',
+      },
+      {
+        title: 'Organizacion',
+        link: '/pages/organizacion/list-organizacion',
+        key: 'organizacion',
       },
       {
         title: 'Perfil Profesional',

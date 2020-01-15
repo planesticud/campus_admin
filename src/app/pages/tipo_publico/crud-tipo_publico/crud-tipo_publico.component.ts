@@ -2,6 +2,7 @@ import { TipoPublico } from './../../../@core/data/models/tipo_publico';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventoService } from '../../../@core/data/evento.service';
 import { FORM_TIPO_PUBLICO } from './form-tipo_publico';
+import { CalendarioEvento } from '../../../@core/data/models/calendario_evento';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
@@ -38,6 +39,7 @@ export class CrudTipoPublicoComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
+    this.loadOptionsCalendarioEventoId();
   }
 
   construirForm() {
@@ -47,6 +49,28 @@ export class CrudTipoPublicoComponent implements OnInit {
       this.formTipoPublico.campos[i].label = this.translate.instant('GLOBAL.' + this.formTipoPublico.campos[i].label_i18n);
       this.formTipoPublico.campos[i].placeholder = this.translate.instant('GLOBAL.placeholder_' + this.formTipoPublico.campos[i].label_i18n);
     }
+  }
+
+  loadOptionsCalendarioEventoId(): void {
+    let calendario: Array<any> = [];
+    this.eventoService.get('calendario_evento/?limit=0')
+      .subscribe(res => {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
+          calendario = <Array<CalendarioEvento>>res;
+        }
+        this.formTipoPublico.campos[ this.getIndexForm('CalendarioEventoId') ].opciones = calendario;
+      },
+        (error: HttpErrorResponse) => {
+          Swal({
+            type: 'error',
+            title: error.status + '',
+            text: this.translate.instant('ERROR.' + error.status),
+            footer: this.translate.instant('GLOBAL.cargar') + '-' +
+              this.translate.instant('GLOBAL.tipo_publico') + '|' +
+              this.translate.instant('GLOBAL.calendario_evento'),
+            confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+          });
+        });
   }
 
   useLanguage(language: string) {

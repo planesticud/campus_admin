@@ -60,14 +60,14 @@ export class ListTipoPublicoComponent implements OnInit {
         },
         Nombre: {
           title: this.translate.instant('GLOBAL.nombre'),
-          width: '25%',
+          width: '20%',
           valuePrepareFunction: (value) => {
             return value;
           },
         },
         Descripcion: {
           title: this.translate.instant('GLOBAL.descripcion'),
-          width: '30%',
+          width: '20%',
           valuePrepareFunction: (value) => {
             return value;
           },
@@ -79,11 +79,11 @@ export class ListTipoPublicoComponent implements OnInit {
             return value;
           },
         },
-        NumeroOrden: {
-          title: this.translate.instant('GLOBAL.numero_orden'),
-          width: '15%',
+        CalendarioEventoId: {
+          title: this.translate.instant('GLOBAL.calendario_evento'),
+          width: '30%',
           valuePrepareFunction: (value) => {
-            return value;
+            return value.Descripcion;
           },
         },
         Activo: {
