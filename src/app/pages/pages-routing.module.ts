@@ -28,6 +28,10 @@ const routes: Routes = [{
       loadChildren: './atributo_ubicacion/atributo_ubicacion.module#AtributoUbicacionModule',
     },
     {
+      path: 'calendario_evento',
+      loadChildren: './calendario_evento/calendario_evento.module#CalendarioEventoModule',
+    },
+    {
       path: 'cargo',
       loadChildren: './cargo/cargo.module#CargoModule',
     },
@@ -62,6 +66,10 @@ const routes: Routes = [{
     {
       path: 'documento_programa',
       loadChildren: './documento_programa/documento_programa.module#DocumentoProgramaModule',
+    },
+    {
+      path: 'encargado_evento',
+      loadChildren: './encargado_evento/encargado_evento.module#EncargadoEventoModule',
     },
     {
       path: 'estado_autor_produccion',
@@ -126,6 +134,10 @@ const routes: Routes = [{
     {
       path: 'nucleo_basico_conocimiento',
       loadChildren: './nucleo_basico_conocimiento/nucleo_basico_conocimiento.module#NucleoBasicoConocimientoModule',
+    },
+    {
+      path: 'organizacion',
+      loadChildren: './organizacion/organizacion.module#OrganizacionModule',
     },
     {
       path: 'perfil_profesional',

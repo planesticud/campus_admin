@@ -11,7 +11,7 @@ import 'style-loader!angular2-toaster/toaster.css';
   selector: 'ngx-list-perfil-profesional',
   templateUrl: './list-perfil_profesional.component.html',
   styleUrls: ['./list-perfil_profesional.component.scss'],
-  })
+})
 export class ListPerfilProfesionalComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;

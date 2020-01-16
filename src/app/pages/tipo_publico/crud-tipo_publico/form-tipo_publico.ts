@@ -24,6 +24,16 @@ export let FORM_TIPO_PUBLICO = {
       tipo: 'text',
     },
     {
+      etiqueta: 'select',
+      claseGrid: 'col-lg-12 col-md-12 col-sm-12 col-xs-12',
+      nombre: 'CalendarioEventoId',
+      label_i18n: 'calendario_evento',
+      placeholder_i18n: 'calendario_evento',
+      tipo: 'CalendarioEvento',
+      key: 'Descripcion',
+      opciones: [],
+    },
+    {
       etiqueta: 'input',
       claseGrid: 'col-lg-4 col-md-6 col-sm-12 col-xs-12',
       nombre: 'CodigoAbreviacion',

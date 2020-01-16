@@ -171,7 +171,7 @@ export class DinamicformComponent implements OnInit, OnChanges {
       this.interlaced.emit(c);
     }
     if (c.etiqueta === 'select') {
-      if (c.valor == null) {
+      if (c.requerido && c.valor == null) {
         c.clase = 'form-control form-control-danger';
         c.alerta = 'Seleccione el campo';
         return false;
