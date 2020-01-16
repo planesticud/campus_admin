@@ -144,6 +144,7 @@
       "dependencia_tipo_dependencia": "Dependencia tipo dependencia - OIKOS",
       "descuentos_dependencia": "Descuento de dependencia",
       "documento_programa": "Documento de programa",
+      "encargado_evento": "Encargado del evento",
       "estado_autor_produccion": "Estado de autor de producción",
       "estado_civil": "Estado civil",
       "estado_entrevista": "Estado de entrevista",
@@ -392,6 +393,7 @@
     "dependencia_tipo_dependencia": "Dependencia tipo dependencia - OIKOS",
     "descuentos_dependencia": "Descuento de dependencia",
     "documento_programa": "Documento de programa",
+    "encargado_evento": "Encargado del evento",
     "estado_autor_produccion": "Estado de autor de producción",
     "estado_civil": "Estado civil",
     "estado_entrevista": "Estado de entrevista",
@@ -468,6 +470,7 @@
     "placeholder_dependencia_tipo_dependencia": "Ej: Dependencia tipo dependencia - OIKOS",
     "placeholder_descuentos_dependencia": "Ej: Descuento de dependencia",
     "placeholder_documento_programa": "Ej: Documento de programa",
+    "placeholder_encargado_evento": "Ej: Encargado del evento",
     "placeholder_estado_autor_produccion": "Ej: Estado de autor de producción",
     "placeholder_estado_civil": "Ej: Estado civil",
     "placeholder_estado_entrevista": "Ej: Estado de entrevista",
@@ -623,6 +626,8 @@
     "placeholder_numero_identificacion": "Ej: Número de identificación",     
     "evento_padre": "Evento padre",
     "placeholder_evento_padre": "Ej: Evento padre",
+    "encargado_id": "Encargado",
+    "placeholder_encargado_id": "Ej: Encargado",
 
 
 

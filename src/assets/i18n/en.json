@@ -144,6 +144,7 @@
       "dependencia_tipo_dependencia": "Office type of office - OIKOS",
       "descuentos_dependencia": "Program discount",
       "documento_programa": "Program document",
+      "encargado_evento": "Event manager",
       "estado_autor_produccion": "Production author status",
       "estado_civil": "Civil status",
       "estado_entrevista": "Interview status",
@@ -392,6 +393,7 @@
     "dependencia_tipo_dependencia": "Office type of office - OIKOS",
     "descuentos_dependencia": "Program discount",
     "documento_programa": "Program document",
+    "encargado_evento": "Event manager",
     "estado_autor_produccion": "Production Author Status",
     "estado_civil": "Civil status",
     "estado_entrevista": "Interview status",
@@ -468,6 +470,7 @@
     "placeholder_dependencia_tipo_dependencia": "E.g.: Office type of office - OIKOS",
     "placeholder_descuentos_dependencia": "E.g.: Program discount",
     "placeholder_documento_programa": "E.g.: Program document",
+    "placeholder_encargado_evento": "E.g.: Event manager",
     "placeholder_estado_autor_produccion": "E.g.: Production Author Status",
     "placeholder_estado_civil": "E.g.: Civil status",
     "placeholder_estado_entrevista": "E.g.: Interview status",
@@ -623,6 +626,8 @@
     "placeholder_numero_identificacion": "E.g.: Identification number",     
     "evento_padre": "Father event",
     "placeholder_evento_padre": "E.g.: Father event",
+    "encargado_id": "Manager",
+    "placeholder_encargado_id": "E.g.: Manager",
 
 
 

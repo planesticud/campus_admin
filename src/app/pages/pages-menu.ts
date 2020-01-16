@@ -80,6 +80,11 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'documento_programa',
       },
       {
+        title: 'Encargado Evento',
+        link: '/pages/encargado_evento/list-encargado_evento',
+        key: 'encargado_evento',
+      },
+      {
         title: 'Estado Autor Produccion',
         link: '/pages/estado_autor_produccion/list-estado_autor_produccion',
         key: 'estado_autor_produccion',

@@ -68,6 +68,10 @@ const routes: Routes = [{
       loadChildren: './documento_programa/documento_programa.module#DocumentoProgramaModule',
     },
     {
+      path: 'encargado_evento',
+      loadChildren: './encargado_evento/encargado_evento.module#EncargadoEventoModule',
+    },
+    {
       path: 'estado_autor_produccion',
       loadChildren: './estado_autor_produccion/estado_autor_produccion.module#EstadoAutorProduccionModule',
     },

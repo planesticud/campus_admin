@@ -279,7 +279,6 @@ export class CrudCalendarioEventoComponent implements OnInit {
   }
 
   validarForm(event) {
-    console.info(JSON.stringify(event.data.CalendarioEvento));
     if (event.valid) {
       if (this.info_calendario_evento === undefined) {
         this.createCalendarioEvento(event.data.CalendarioEvento);
