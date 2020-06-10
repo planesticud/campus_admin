@@ -223,17 +223,17 @@
       "relacion_lugar": "Place relationship",
       "valor_atributo_lugar": "Place attribute value"
     },
-
-
-
-
     "admisiones": {
       "admisiones": "Admissions",
+      "configuracion_fechas": "Enrollment dates setting",
+
+
+
+
       "entrevistas": "Entrance Interview",
       "carga_notas": "Grades uploading",
       "estado_admisiones": "Admission status",
       "asignacion_entrevista": "Interviews assignment",
-      "configuracion_fechas": "Enrollment dates setting",
       "criterios_admision": "Admission criteria",
       "seleccion_aspirantes": "Admitted selection",
       "matricula_admitidos": "Admitted tuition",
@@ -609,9 +609,9 @@
     "porcentaje": "Percentage",
     "placeholder_porcentaje": "E.g.: 10%",
     "cupos_habilitados": "Admitted number",
-    "placeholder_cupos_habilitados": "Ej: 10",
+    "placeholder_cupos_habilitados": "E.g.: 10",
     "cupos_opcionados": "Opted number",
-    "placeholder_cupos_opcionados": "Ej: 10",
+    "placeholder_cupos_opcionados": "E.g.: 10",
     "organizacion_padre": "Father organization",
     "placeholder_organizacion_padre": "E.g.: Father organization",
     "organizacion_hija": "Daughter organization",
@@ -628,6 +628,22 @@
     "placeholder_evento_padre": "E.g.: Father event",
     "encargado_id": "Manager",
     "placeholder_encargado_id": "E.g.: Manager",
+    "fecha_inicio_inscripcion": "Registration start date",
+    "placeholder_fecha_inicio_inscripcion": "E.g.: 12/15/1995",
+    "fecha_fin_inscripcion": "Registration end date",
+    "placeholder_fecha_fin_inscripcion": "E.g.: 12/15/1995",
+    "valor_inscripcion": "Registration value",
+    "placeholder_valor_inscripcion": "E.g.: 100000",
+    "fecha_pago": "Payday limit",
+    "placeholder_fecha_pago": "E.g.: 12/15/1995",
+    "fecha_inicio_evaluacion": "Assessment start date",
+    "placeholder_fecha_inicio_evaluacion": "E.g.: 12/15/1995",
+    "fecha_fin_evaluacion": "Assessment end date",
+    "placeholder_fecha_fin_evaluacion": "E.g.: 12/15/1995",
+    "fecha_inicio_admision": "Admission start date",
+    "placeholder_fecha_inicio_admision": "E.g.: 12/15/1995",
+    "fecha_fin_admision": "Admission end date",
+    "placeholder_fecha_fin_admision": "E.g.: 12/15/1995",
 
 
 

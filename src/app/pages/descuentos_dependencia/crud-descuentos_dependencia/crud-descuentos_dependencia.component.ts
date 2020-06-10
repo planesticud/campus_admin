@@ -1,5 +1,6 @@
 import { TipoDescuento } from './../../../@core/data/models/tipo_descuento';
 import { ProgramaAcademico } from './../../../@core/data/models/programa_academico';
+import { Periodo } from '../../../@core/data/models/periodo';
 import { DescuentosDependencia } from './../../../@core/data/models/descuentos_dependencia';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DescuentoAcademicoService } from '../../../@core/data/descuento_academico.service';
@@ -100,7 +101,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
             title: error.status + '',
             text: this.translate.instant('ERROR.' + error.status),
             footer: this.translate.instant('GLOBAL.cargar') + '-' +
-              this.translate.instant('GLOBAL.tipo_descuento'),
+              this.translate.instant('GLOBAL.programa_academico'),
             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
           });
         });
@@ -111,7 +112,7 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
     this.core.get('periodo/?limit=0')
       .subscribe(res => {
         if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
-          periodoId = <Array<ProgramaAcademico>>res;
+          periodoId = <Array<Periodo>>res;
         }
         this.formDescuentosDependencia.campos[ this.getIndexForm('PeriodoId') ].opciones = periodoId;
       },

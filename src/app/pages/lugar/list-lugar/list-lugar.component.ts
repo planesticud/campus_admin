@@ -86,7 +86,7 @@ export class ListLugarComponent implements OnInit {
   }
 
   loadData(): void {
-    this.ubicacionService.get('lugar/?limit=5').subscribe(res => {
+    this.ubicacionService.get('lugar/?limit=0').subscribe(res => {
       if (res !== null) {
         const data = <Array<any>>res;
         this.source.load(data);

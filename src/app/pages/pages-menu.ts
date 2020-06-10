@@ -420,6 +420,24 @@ export const MENU_ITEMS: MenuItem[] = [
     ],
   },
   {
+    title: 'Admisiones',
+    icon: 'nb-compose',
+    link: '/pages/admisiones',
+    key: 'admisiones',
+    children: [
+      {
+        title: 'Configuración periodo',
+        link: '/pages/configuracion_fechas/list-configuracion_fechas',
+        key: 'configuracion_fechas',
+      },
+    ],
+  },
+
+
+
+
+
+  {
     title: 'Persona',
     icon: 'nb-compose',
     link: '/pages/persona',

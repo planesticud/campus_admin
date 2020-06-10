@@ -327,6 +327,11 @@ const routes: Routes = [{
       path: 'valor_atributo_lugar',
       loadChildren: './valor_atributo_lugar/valor_atributo_lugar.module#ValorAtributoLugarModule',
     },
+    {
+      path: 'configuracion_fechas',
+      loadChildren: './configuracion_fechas/configuracion_fechas.module#ConfiguracionFechasModule',
+    },
+
 
 
 

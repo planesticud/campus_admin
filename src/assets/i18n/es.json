@@ -223,17 +223,17 @@
       "relacion_lugar": "Relación de lugar",
       "valor_atributo_lugar": "Valor de atributo de lugar"
     },
-
-
-
-
     "admisiones": {
       "admisiones": "Admisiones",
+      "configuracion_fechas": "Configuración de fechas inscripción",
+
+
+
+
       "entrevistas": "Entrevista de ingreso",
       "carga_notas": "Carga de notas",
       "estado_admisiones": "Estado de admisión",
       "asignacion_entrevista": "Asignación de entrevistas",
-      "configuracion_fechas": "Configuración de fechas inscripción",
       "criterios_admision": "Criterios de admisión",
       "seleccion_aspirantes": "Selección de admitidos",
       "matricula_admitidos": "Matrícula de admitidos",
@@ -628,6 +628,22 @@
     "placeholder_evento_padre": "Ej: Evento padre",
     "encargado_id": "Encargado",
     "placeholder_encargado_id": "Ej: Encargado",
+    "fecha_inicio_inscripcion": "Fecha de inicio de inscripción",
+    "placeholder_fecha_inicio_inscripcion": "Ej: 12/15/1995",
+    "fecha_fin_inscripcion": "Fecha de fin de inscripción",
+    "placeholder_fecha_fin_inscripcion": "Ej: 12/15/1995",
+    "valor_inscripcion": "Valor de inscripción",
+    "placeholder_valor_inscripcion": "Ej: 100000",
+    "fecha_pago": "Fecha límite de pago",
+    "placeholder_fecha_pago": "Ej: 12/15/1995",
+    "fecha_inicio_evaluacion": "Fecha de inicio de evaluación",
+    "placeholder_fecha_inicio_evaluacion": "Ej: 12/15/1995",
+    "fecha_fin_evaluacion": "Fecha de fin de evaluación",
+    "placeholder_fecha_fin_evaluacion": "Ej: 12/15/1995",
+    "fecha_inicio_admision": "Fecha de inicio de admisión",
+    "placeholder_fecha_inicio_admision": "Ej: 12/15/1995",
+    "fecha_fin_admision": "Fecha de fin de admisión",
+    "placeholder_fecha_fin_admision": "Ej: 12/15/1995",
 
 
 
