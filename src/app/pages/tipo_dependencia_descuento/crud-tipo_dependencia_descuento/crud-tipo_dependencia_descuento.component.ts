@@ -117,8 +117,6 @@ export class CrudTipoDependenciaDescuentoComponent implements OnInit {
       this.descuentosService.get('tipo_dependencia_descuento/?query=Id:' + this.tipo_dependencia_descuento_id)
         .subscribe(res => {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
-            console.info(JSON.stringify(res));
-
             const tipo = <TipoDependenciaDescuento>res[0];
             this.descuentosService.get('tipo_descuento/' + tipo.TipoDescuentoId.Id)
               .subscribe(res2 => {

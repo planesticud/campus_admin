@@ -119,10 +119,10 @@ export class CrudDependenciaPadreComponent implements OnInit {
             this.element.PadreId = this.element.Padre;
             this.element.HijaId = this.element.Hija;
             this.programaAcademico.get('dependencia/' + this.element.PadreId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.PadreId = <any>res2;
                 this.programaAcademico.get('dependencia/' + this.element.HijaId.Id).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.HijaId = <any>res3;
                   }
                   this.info_dependencia_padre = this.element;

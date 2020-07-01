@@ -96,10 +96,10 @@ export class CrudRelacionCargoComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <RelacionCargo>res[0];
             this.experienciaService.get('cargo/' + this.element.CargoPadre.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.CargoPadre = <Cargo>res2;
                 this.experienciaService.get('cargo/' + this.element.CargoHijo.Id).subscribe(res3 => {
-                  if (res3 !== null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.CargoHijo = <any>res3;
                   }
                   this.info_relacion_cargo = this.element;

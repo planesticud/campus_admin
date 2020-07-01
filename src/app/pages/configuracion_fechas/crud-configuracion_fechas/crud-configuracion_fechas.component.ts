@@ -506,7 +506,6 @@ export class CrudConfiguracionFechasComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_configuracion_fechas = <any>configuracionFechas;
-        console.info(JSON.stringify(this.info_configuracion_fechas));
         this.eventoService.get('tipo_evento/?query=Nombre:Inscripción,DependenciaId:' +
           this.info_configuracion_fechas.DependenciaId.Id).subscribe(tipoins => {
           if (tipoins !== null && JSON.stringify(tipoins).toString() !== '[{}]') {

@@ -118,10 +118,10 @@ export class CrudDependenciaTipoDependenciaComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <DependenciaTipoDependencia>res[0];
             this.programaAcademico.get('dependencia/' + this.element.DependenciaId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.DependenciaId = <any>res2;
                 this.programaAcademico.get('tipo_dependencia/' + this.element.TipoDependenciaId.Id).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.TipoDependenciaId = <any>res3;
                   }
                   this.info_dependencia_tipo_dependencia = this.element;

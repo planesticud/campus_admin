@@ -38,7 +38,7 @@ export class ListOrganizacionComponent implements OnInit {
       },
       noDataMessage: 'No se encuentran datos (No data found)',
       add: {
-        addButtonContent: '<i class="nb-plus"></i>',
+        addButtonContent: '<i class="nb-plus" title="' + this.translate.instant('GLOBAL.agregar') + '"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },

@@ -119,13 +119,13 @@ export class CrudRelacionLugarComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <RelacionLugar>res[0];
             this.ubicacionService.get('lugar/' + this.element.LugarPadre.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.LugarPadre = <Lugar>res2;
                 this.ubicacionService.get('lugar/' + this.element.LugarHijo.Id).subscribe(res3 => {
-                  if (res3 !== null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.LugarHijo = <any>res3;
                     this.ubicacionService.get('tipo_relacion_lugar/' + this.element.TipoRelacionLugar.Id).subscribe(res4 => {
-                      if (res4 != null) {
+                      if (res4 !== null && JSON.stringify(res4).toString() !== '[{}]') {
                         this.element.TipoRelacionLugar = <any>res4;
                       }
                       this.info_relacion_lugar = this.element;

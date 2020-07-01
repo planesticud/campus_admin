@@ -14,4 +14,5 @@ export class Inscripcion {
   TipoInscripcionId: TipoInscripcion;
   EstadoInscripcionId: EstadoInscripcion;
   Activo: boolean;
+  PuntajeTotal: number;
 }

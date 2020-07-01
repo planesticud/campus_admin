@@ -37,17 +37,17 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
       },
       noDataMessage: 'No se encuentran datos (No data found)',
       add: {
-        addButtonContent: '<i class="nb-plus"></i>',
+        addButtonContent: '<i class="nb-plus" title="' + this.translate.instant('GLOBAL.agregar') + '"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       edit: {
-        editButtonContent: '<i class="nb-edit"></i>',
+        editButtonContent: '<i class="nb-edit" title="' + this.translate.instant('GLOBAL.editar') + '"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       delete: {
-        deleteButtonContent: '<i class="nb-trash"></i>',
+        deleteButtonContent: '<i class="nb-trash" title="' + this.translate.instant('GLOBAL.eliminar') + '"></i>',
         confirmDelete: true,
       },
       mode: 'external',
@@ -90,14 +90,14 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
 
   loadData(): void {
     this.descuentosService.get('requisito_tipo_descuento/?limit=0').subscribe(res => {
-      if (res !== null) {
+      if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
         this.data = <Array<any>>res;
         this.data.forEach(element => {
           this.descuentosService.get('requisito/' + element.RequisitoId.Id).subscribe(res2 => {
-            if (res2 !== null) {
+            if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
               element.RequisitoId = <any>res2;
               this.descuentosService.get('tipo_descuento/' + element.TipoDescuentoId.Id).subscribe(res3 => {
-                if (res3 !== null) {
+                if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                   element.TipoDescuentoId = <any>res3;
                 }
                 this.source.load(this.data);
@@ -165,10 +165,9 @@ export class ListRequisitoTipoDescuentoComponent implements OnInit {
     };
     Swal(opt)
     .then((willDelete) => {
-
       if (willDelete.value) {
         this.descuentosService.delete('requisito_tipo_descuento', event.data).subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
               this.translate.instant('GLOBAL.requisito_tipo_descuento') + ' ' +

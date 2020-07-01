@@ -118,13 +118,13 @@ export class CrudCupoDependenciaComponent implements OnInit {
     if (this.cupo_dependencia_id !== undefined && this.cupo_dependencia_id !== 0) {
       this.requisitoService.get('cupos_por_dependencia/?query=Id:' + this.cupo_dependencia_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <CupoDependencia>res[0];
             this.programaAcademico.get('dependencia/' + this.element.DependenciaId).subscribe(res3 => {
-              if (res3 != null) {
+              if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                 this.element.DependenciaId = <any>res3;
                 this.core.get('periodo/' + this.element.PeriodoId).subscribe(res4 => {
-                  if (res4 != null) {
+                  if (res4 !== null && JSON.stringify(res4).toString() !== '[{}]') {
                     this.element.PeriodoId = <any>res4;
                   }
                   this.info_cupo_dependencia = this.element;

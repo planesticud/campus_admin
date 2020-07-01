@@ -96,7 +96,7 @@ export class CrudTipoDescuentoComponent implements OnInit {
             const tipo = <TipoDescuento>res[0];
             this.coreService.get('concepto_academico/' + tipo.ConceptoAcademicoId)
               .subscribe(res3 => {
-                if (res3 !== null) {
+                if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                   tipo.ConceptoAcademicoId = <ConceptoAcademico>res3;
                   this.info_tipo_descuento = tipo;
                 }

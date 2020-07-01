@@ -117,13 +117,13 @@ export class CrudTipoEventoComponent implements OnInit {
     if (this.tipo_evento_id !== undefined && this.tipo_evento_id !== 0) {
       this.eventoService.get('tipo_evento/?query=Id:' + this.tipo_evento_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <TipoEvento>res[0];
             this.eventoService.get('tipo_recurrencia/' + this.element.TipoRecurrenciaId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.TipoRecurrenciaId = <any>res2;
                 this.programaAcademico.get('dependencia/' + this.element.DependenciaId).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.DependenciaId = <any>res3;
                   }
                   this.info_tipo_evento = this.element;

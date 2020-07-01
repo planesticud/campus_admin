@@ -1,0 +1,34 @@
+<nb-card *ngIf="ente">
+  <nb-card-header>{{"GLOBAL.pago_recibo" | translate}}
+  </nb-card-header>
+  <nb-card-body class="row container">
+    <div class="col-md-12">
+      <table class="table-responsive">
+        <tbody *ngIf="info_recibo">
+          <tr>
+            <td>
+              <p *ngIf="info_recibo.TipoReciboId"><b>{{"GLOBAL.tipo_recibo" | translate}}:</b> 
+                {{info_recibo.TipoReciboId.Nombre}}</p>
+              <p *ngIf="info_recibo.EstadoReciboId"><b>{{"GLOBAL.estado_recibo" | translate}}:</b> 
+                {{info_recibo.EstadoReciboId.Nombre}}</p>
+              <p *ngIf="info_recibo.Referencia !== 0"><b>{{"GLOBAL.referencia" | translate}}:</b> 
+                {{info_recibo.Referencia}}</p>
+              <p *ngIf="info_recibo.ValorOrdinario"><b>{{"GLOBAL.valor_pago" | translate}}:</b> 
+                {{info_recibo.ValorOrdinario}}</p>
+              <p *ngIf="info_recibo.FechaOrdinaria"><b>{{"GLOBAL.fecha_pago" | translate}}:</b> 
+                {{info_recibo.FechaOrdinaria | date:'dd/MM/yyyy'}} </p>
+            </td>
+            <td *ngIf="info_pago">
+              <p *ngIf="info_pago.TipoPagoId"><b>{{"GLOBAL.tipo_pago" | translate}}:</b> 
+                {{info_pago.TipoPagoId.Nombre}}</p>
+              <p *ngIf="info_pago.FechaPago"><b>{{"GLOBAL.fecha_recibo" | translate}}:</b> 
+                {{info_pago.FechaPago | date:'dd/MM/yyyy'}} </p>
+              <p *ngIf="info_pago.Comprobante"><b>{{"GLOBAL.comprobante" | translate}}:</b> (<a [href]=info_pago.Comprobante download="Pago.pdf">
+                {{"GLOBAL.soporte_documento" | translate}}</a>)</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </nb-card-body>
+</nb-card>

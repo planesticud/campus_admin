@@ -141,16 +141,16 @@ export class CrudDocumentoProgramaComponent implements OnInit {
     if (this.documento_programa_id !== undefined && this.documento_programa_id !== 0) {
       this.documentoService.get('documento_programa/?query=Id:' + this.documento_programa_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <DocumentoPrograma>res[0];
             this.documentoService.get('tipo_documento_programa/' + this.element.TipoDocumentoProgramaId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.TipoDocumentoProgramaId = <any>res2;
                 this.programaAcademico.get('dependencia/' + this.element.ProgramaId).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.ProgramaId = <any>res3;
                     this.core.get('periodo/' + this.element.PeriodoId).subscribe(res4 => {
-                      if (res4 != null) {
+                      if (res4 !== null && JSON.stringify(res4).toString() !== '[{}]') {
                         this.element.PeriodoId = <any>res4;
                       }
                       this.info_documento_programa = this.element;

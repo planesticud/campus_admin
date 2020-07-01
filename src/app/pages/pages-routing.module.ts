@@ -331,8 +331,30 @@ const routes: Routes = [{
       path: 'configuracion_fechas',
       loadChildren: './configuracion_fechas/configuracion_fechas.module#ConfiguracionFechasModule',
     },
-
-
+    {
+      path: 'descuentos_dependencia_coor',
+      loadChildren: './descuentos_dependencia_coor/descuentos_dependencia.module#DescuentosDependenciaModule',
+    },
+    {
+      path: 'documento_programa_coor',
+      loadChildren: './documento_programa_coor/documento_programa.module#DocumentoProgramaModule',
+    },
+    {
+      path: 'requisito_programa_coor',
+      loadChildren: './requisito_programa_coor/requisito_programa_academico.module#RequisitoProgramaAcademicoModule',
+    },
+    {
+      path: 'inscripcion_estado',
+      loadChildren: './inscripcion_estado/inscripcion.module#InscripcionModule',
+    },
+    {
+      path: 'idioma_examen',
+      loadChildren: './idioma_examen/idioma.module#IdiomaModule',
+    },
+    {
+      path: 'validar_pago',
+      loadChildren: './validar_pago/validar_pago.module#ValidarPagoModule',
+    },
 
 
 
@@ -352,10 +374,6 @@ const routes: Routes = [{
     {
       path: 'soporte_descuento',
       loadChildren: './soporte_descuento/soporte_descuento.module#SoporteDescuentoModule',
-    },
-    {
-      path: 'requisito_programa_academico',
-      loadChildren: './requisito_programa_academico/requisito_programa_academico.module#RequisitoProgramaAcademicoModule',
     },
     {
       path: 'evaluacion_inscripcion',

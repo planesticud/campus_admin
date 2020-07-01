@@ -330,11 +330,6 @@ export const MENU_ITEMS: MenuItem[] = [
         key: 'tipo_periodo',
       },
       {
-        title: 'Tipo Periodo',
-        link: '/pages/tipo_periodo/list-tipo_periodo',
-        key: 'tipo_periodo',
-      },
-      {
         title: 'Tipo Produccion',
         link: '/pages/tipo_produccion/list-tipo_produccion',
         key: 'tipo_produccion',
@@ -430,6 +425,36 @@ export const MENU_ITEMS: MenuItem[] = [
         link: '/pages/configuracion_fechas/list-configuracion_fechas',
         key: 'configuracion_fechas',
       },
+      {
+        title: 'Descuento por dependencia',
+        link: '/pages/descuentos_dependencia_coor/list-descuentos_dependencia',
+        key: 'seleccion_descuentos',
+      },
+      {
+        title: 'Documento por programa',
+        link: '/pages/documento_programa_coor/list-documento_programa',
+        key: 'seleccion_documentos',
+      },
+      {
+        title: 'Requisito Evaluacion Programa',
+        link: '/pages/requisito_programa_coor/list-requisito_programa_academico',
+        key: 'seleccion_requisito',
+      },
+      {
+        title: 'Inscripción Listado de Estado',
+        link: '/pages/inscripcion_estado/list-inscripcion',
+        key: 'inscripcion_estado',
+      },
+      {
+        title: 'Idioma para Examen',
+        link: '/pages/idioma_examen/list-idioma',
+        key: 'idioma_examen',
+      },
+      {
+        title: 'Validar Pago',
+        link: '/pages/validar_pago/list-validar_pago',
+        key: 'validar_pago',
+      },
     ],
   },
 
@@ -477,11 +502,6 @@ export const MENU_ITEMS: MenuItem[] = [
         title: 'Lista Soporte Descuento',
         link: '/pages/soporte_descuento/list-soporte_descuento',
         key: 'soporte_descuento',
-      },
-      {
-        title: 'Lista Requisito Programa Academico Criterios',
-        link: '/pages/requisito_programa_academico/list-requisito_programa_academico',
-        key: 'requisito_programa_academico',
       },
     ],
   },

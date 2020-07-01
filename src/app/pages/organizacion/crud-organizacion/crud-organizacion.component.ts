@@ -159,7 +159,7 @@ export class CrudOrganizacionComponent implements OnInit {
     if (this.paisSeleccionado) {
       this.lugarService.get('relacion_lugares/?query=LugarPadre.Id:' + this.paisSeleccionado.Id + ',LugarHijo.Activo:true&limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             consultaHijos = <Array<Lugar>>res;
             for (let i = 0; i < consultaHijos.length; i++) {
               departamento.push(consultaHijos[i].LugarHijo);
@@ -187,7 +187,7 @@ export class CrudOrganizacionComponent implements OnInit {
     if (this.departamentoSeleccionado) {
       this.lugarService.get('relacion_lugares/?query=LugarPadre.Id:' + this.departamentoSeleccionado.Id + ',LugarHijo.Activo:true&limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             consultaHijos = <Array<Lugar>>res;
             for (let i = 0; i < consultaHijos.length; i++) {
               ciudad.push(consultaHijos[i].LugarHijo);
@@ -212,8 +212,7 @@ export class CrudOrganizacionComponent implements OnInit {
   addUbicacionOrganizacion(ubicacion: any): void {
     this.midService.post('organizacion/registar_ubicacion', ubicacion)
       .subscribe(res => {
-        const r = res as any;
-        if (res !== null && r.Type === 'error') {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
           this.showToast('info', this.translate.instant('GLOBAL.crear'),
             this.translate.instant('GLOBAL.organizacion') + ' ' +
             this.translate.instant('GLOBAL.confirmarCrear'));

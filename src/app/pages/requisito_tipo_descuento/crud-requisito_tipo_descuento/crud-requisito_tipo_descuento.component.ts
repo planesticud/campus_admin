@@ -118,10 +118,10 @@ export class CrudRequisitoTipoDescuentoComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <RequisitoTipoDescuento>res[0];
             this.descuentosService.get('requisito/' + this.element.RequisitoId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.RequisitoId = <any>res2;
                 this.descuentosService.get('tipo_descuento/' + this.element.TipoDescuentoId.Id).subscribe(res3 => {
-                  if (res3 !== null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.TipoDescuentoId = <any>res3;
                     this.info_requisito_tipo_descuento = this.element
                   }

@@ -65,7 +65,7 @@ export class CrudEstadoInscripcionComponent implements OnInit {
     if (this.estado_inscripcion_id !== undefined && this.estado_inscripcion_id !== 0) {
       this.admisionesService.get('estado_inscripcion/?query=Id:' + this.estado_inscripcion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_estado_inscripcion = <EstadoInscripcion>res[0];
           }
         },

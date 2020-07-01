@@ -38,17 +38,17 @@ export class ListTipoDescuentoComponent implements OnInit {
       },
       noDataMessage: 'No se encuentran datos (No data found)',
       add: {
-        addButtonContent: '<i class="nb-plus"></i>',
+        addButtonContent: '<i class="nb-plus" title="' + this.translate.instant('GLOBAL.agregar') + '"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       edit: {
-        editButtonContent: '<i class="nb-edit"></i>',
+        editButtonContent: '<i class="nb-edit" title="' + this.translate.instant('GLOBAL.editar') + '"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       delete: {
-        deleteButtonContent: '<i class="nb-trash"></i>',
+        deleteButtonContent: '<i class="nb-trash" title="' + this.translate.instant('GLOBAL.eliminar') + '"></i>',
         confirmDelete: true,
       },
       mode: 'external',
@@ -124,7 +124,7 @@ export class ListTipoDescuentoComponent implements OnInit {
         data.forEach(element => {
           this.coreService.get('concepto_academico/' + element.ConceptoAcademicoId)
             .subscribe(res3 => {
-              if (res3 !== null) {
+              if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                 element.ConceptoAcademicoId = <any>res3;
               }
               this.source.load(data);
@@ -182,7 +182,7 @@ export class ListTipoDescuentoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.descuentosService.delete('tipo_descuento', event.data).subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
               this.translate.instant('GLOBAL.tipo_descuento') + ' ' +

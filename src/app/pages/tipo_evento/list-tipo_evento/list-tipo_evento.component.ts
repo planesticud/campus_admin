@@ -39,17 +39,17 @@ export class ListTipoEventoComponent implements OnInit {
       },
       noDataMessage: 'No se encuentran datos (No data found)',
       add: {
-        addButtonContent: '<i class="nb-plus"></i>',
+        addButtonContent: '<i class="nb-plus" title="' + this.translate.instant('GLOBAL.agregar') + '"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       edit: {
-        editButtonContent: '<i class="nb-edit"></i>',
+        editButtonContent: '<i class="nb-edit" title="' + this.translate.instant('GLOBAL.editar') + '"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       delete: {
-        deleteButtonContent: '<i class="nb-trash"></i>',
+        deleteButtonContent: '<i class="nb-trash" title="' + this.translate.instant('GLOBAL.eliminar') + '"></i>',
         confirmDelete: true,
       },
       mode: 'external',
@@ -110,10 +110,10 @@ export class ListTipoEventoComponent implements OnInit {
         this.data = <Array<any>>res;
         this.data.forEach(element => {
           this.eventoService.get('tipo_recurrencia/' + element.TipoRecurrenciaId.Id).subscribe(res2 => {
-            if (res2 !== null) {
+            if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
               element.TipoRecurrenciaId = <any>res2;
               this.programaAcademico.get('dependencia/' + element.DependenciaId).subscribe(res3 => {
-                if (res3 != null) {
+                if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                   element.DependenciaId = <any>res3;
                 }
                 this.source.load(this.data);
@@ -183,7 +183,7 @@ export class ListTipoEventoComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.eventoService.delete('tipo_evento', event.data).subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.loadData();
             this.showToast('info', this.translate.instant('GLOBAL.eliminar'),
               this.translate.instant('GLOBAL.tipo_evento') + ' ' +

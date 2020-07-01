@@ -57,7 +57,7 @@ export class CrudLugarComponent implements OnInit {
     let tipoLugar: Array<any> = [];
       this.ubicacionService.get('tipo_lugar/?limit=0')
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             tipoLugar = <Array<TipoLugar>>res;
           }
           this.formLugar.campos[ this.getIndexForm('TipoLugar') ].opciones = tipoLugar;
@@ -89,7 +89,7 @@ export class CrudLugarComponent implements OnInit {
     if (this.lugar_id !== undefined && this.lugar_id !== 0) {
       this.ubicacionService.get('lugar/?query=Id:' + this.lugar_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_lugar = <Lugar>res[0];
           }
         },

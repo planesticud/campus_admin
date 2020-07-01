@@ -119,13 +119,13 @@ export class CrudRelacionOrganizacionComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <RelacionOrganizacion>res[0];
             this.organizacionService.get('organizacion/' + this.element.OrganizacionPadre).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.OrganizacionPadre = <Organizacion>res2;
                 this.organizacionService.get('organizacion/' + this.element.OrganizacionHija).subscribe(res3 => {
-                  if (res3 !== null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.OrganizacionHija = <any>res3;
                     this.organizacionService.get('tipo_relacion_organizaciones/' + this.element.TipoRelacionOrganizaciones.Id).subscribe(res4 => {
-                      if (res4 != null) {
+                      if (res4 !== null && JSON.stringify(res4).toString() !== '[{}]') {
                         this.element.TipoRelacionOrganizaciones = <any>res4;
                       }
                       this.info_relacion_organizacion = this.element;

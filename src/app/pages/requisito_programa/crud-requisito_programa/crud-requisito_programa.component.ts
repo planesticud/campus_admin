@@ -11,6 +11,7 @@ import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-t
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
+import { Periodo } from '../../../@core/data/models/periodo';
 
 @Component({
   selector: 'ngx-crud-requisito-programa',
@@ -111,7 +112,7 @@ export class CrudRequisitoProgramaComponent implements OnInit {
     this.core.get('periodo/?limit=0')
       .subscribe(res => {
         if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
-          periodoId = <Array<ProgramaAcademico>>res;
+          periodoId = <Array<Periodo>>res;
         }
         this.formRequisitoPrograma.campos[ this.getIndexForm('PeriodoId') ].opciones = periodoId;
       },
@@ -141,16 +142,16 @@ export class CrudRequisitoProgramaComponent implements OnInit {
     if (this.requisito_programa_id !== undefined && this.requisito_programa_id !== 0) {
       this.requisitoService.get('requisito_programa_academico/?query=Id:' + this.requisito_programa_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <RequisitoProgramaAcademico>res[0];
             this.requisitoService.get('requisito/' + this.element.RequisitoId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.RequisitoId = <any>res2;
                 this.programaAcademico.get('dependencia/' + this.element.ProgramaAcademicoId).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.ProgramaAcademicoId = <any>res3;
                     this.core.get('periodo/' + this.element.PeriodoId).subscribe(res4 => {
-                      if (res4 != null) {
+                      if (res4 !== null && JSON.stringify(res4).toString() !== '[{}]') {
                         this.element.PeriodoId = <any>res4;
                       }
                       this.info_requisito_programa = this.element;

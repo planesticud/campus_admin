@@ -142,16 +142,16 @@ export class CrudDescuentosDependenciaComponent implements OnInit {
     if (this.descuentos_dependencia_id !== undefined && this.descuentos_dependencia_id !== 0) {
       this.descuentosService.get('descuentos_dependencia/?query=id:' + this.descuentos_dependencia_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <DescuentosDependencia>res[0];
             this.descuentosService.get('tipo_descuento/' + this.element.TipoDescuentoId.Id).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.TipoDescuentoId = <any>res2;
                 this.programaAcademico.get('dependencia/' + this.element.DependenciaId).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.DependenciaId = <any>res3;
                     this.core.get('periodo/' + this.element.PeriodoId).subscribe(res4 => {
-                      if (res4 != null) {
+                      if (res4 !== null && JSON.stringify(res4).toString() !== '[{}]') {
                         this.element.PeriodoId = <any>res4;
                       }
                       this.info_descuentos_dependencia = this.element;

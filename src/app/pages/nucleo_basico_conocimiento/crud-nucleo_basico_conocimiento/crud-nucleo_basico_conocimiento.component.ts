@@ -95,7 +95,7 @@ export class CrudNucleoBasicoConocimientoComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <NucleoBasicoConocimiento>res[0];
             this.coreService.get('area_conocimiento/' + this.element.AreaConocimientoId.Id).subscribe(res2 => {
-              if (res2 != null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.AreaConocimientoId = <any>res2;
               }
               this.info_nucleo_basico_conocimiento = this.element;

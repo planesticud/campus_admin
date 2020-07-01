@@ -79,12 +79,12 @@ export class ListConfiguracionFechasComponent implements OnInit {
   cargarCampos() {
     this.settings = {
       add: {
-        addButtonContent: '<i class="nb-plus"></i>',
+        addButtonContent: '<i class="nb-plus" title="' + this.translate.instant('GLOBAL.agregar') + '"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
       edit: {
-        editButtonContent: '<i class="nb-edit"></i>',
+        editButtonContent: '<i class="nb-edit" title="' + this.translate.instant('GLOBAL.editar') + '"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
       },
@@ -138,16 +138,19 @@ export class ListConfiguracionFechasComponent implements OnInit {
           data.forEach(element => {
             this.eventoService.get('tipo_evento?query=Id:' + element.TipoEventoId.Id)
               .subscribe(tipo => {
+                if (tipo !== null && JSON.stringify(tipo).toString() !== '[{}]') {
                 const temp2 = <any>tipo[0];
                 element.TipoEventoId = temp2;
-                console.info(JSON.stringify(temp2));
                 this.programaService.get('dependencia/?query=Id:' + temp2.DependenciaId)
                   .subscribe(prog => {
+                    if (prog !== null && JSON.stringify(prog).toString() !== '[{}]') {
                     element.DependenciaId = <any>prog[0];
                     this.coreService.get('periodo/?query=Id:' + element.PeriodoId)
                       .subscribe(peri => {
-                        element.PeriodoId = <any>peri[0];
-                        this.source.load(data);
+                        if (peri !== null && JSON.stringify(peri).toString() !== '[{}]') {
+                          element.PeriodoId = <any>peri[0];
+                          this.source.load(data);
+                        }
                       },
                         (error: HttpErrorResponse) => {
                           Swal({
@@ -159,6 +162,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
                             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
                           });
                         });
+                    }
                   },
                     (error: HttpErrorResponse) => {
                       Swal({
@@ -170,6 +174,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
                         confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
                       });
                     });
+                }
               },
                 (error: HttpErrorResponse) => {
                   Swal({
@@ -207,16 +212,19 @@ export class ListConfiguracionFechasComponent implements OnInit {
           data.forEach(element => {
             this.eventoService.get('tipo_evento?query=Id:' + element.TipoEventoId.Id)
               .subscribe(tipo => {
+                if (tipo !== null && JSON.stringify(tipo).toString() !== '[{}]') {
                 const temp2 = <any>tipo[0];
                 element.TipoEventoId = temp2;
-                console.info(JSON.stringify(temp2));
                 this.programaService.get('dependencia/?query=Id:' + temp2.DependenciaId)
                   .subscribe(prog => {
+                    if (prog !== null && JSON.stringify(prog).toString() !== '[{}]') {
                     element.DependenciaId = <any>prog[0];
                     this.coreService.get('periodo/?query=Id:' + element.PeriodoId)
                       .subscribe(peri => {
+                        if (peri !== null && JSON.stringify(peri).toString() !== '[{}]') {
                         element.PeriodoId = <any>peri[0];
                         this.source.load(data);
+                        }
                       },
                         (error: HttpErrorResponse) => {
                           Swal({
@@ -228,6 +236,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
                             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
                           });
                         });
+                    }
                   },
                     (error: HttpErrorResponse) => {
                       Swal({
@@ -239,6 +248,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
                         confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
                       });
                     });
+                }
               },
                 (error: HttpErrorResponse) => {
                   Swal({
@@ -271,23 +281,15 @@ export class ListConfiguracionFechasComponent implements OnInit {
     }
   }
 
-  Filtrar() {
-    console.info(JSON.stringify(this.selectedValuePrograma));
-    console.info(JSON.stringify(this.selectedValuePeriodo));
+  filtrar() {
     if (this.selectedValuePrograma && !this.selectedValuePeriodo) {
-      console.info('1');
-
       this.loadData('calendario_evento?query=TipoEventoId.Nombre:Inscripción,TipoEventoId.DependenciaId:' +
         this.selectedValuePrograma.Id);
     } else if ( !this.selectedValuePrograma && this.selectedValuePeriodo ) {
-      console.info('2');
-
       this.loadData('calendario_evento?query=TipoEventoId.Nombre:Inscripción,PeriodoId:' +
         this.selectedValuePeriodo.Id);
     } else if ( (this.selectedValuePrograma !== undefined && this.selectedValuePrograma !== 0 )
     && (this.selectedValuePeriodo !== undefined && this.selectedValuePeriodo !== 0 ) ) {
-      console.info('3');
-
       this.loadData('calendario_evento?query=TipoEventoId.Nombre:Inscripción,TipoEventoId.DependenciaId:' +
         this.selectedValuePrograma.Id + ',PeriodoId:' + this.selectedValuePeriodo.Id);
     } else {
@@ -298,8 +300,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
   loadInfoSelectFiltro() {
     this.programaService.get('dependencia/?limit=0')
       .subscribe(res => {
-        const r = <any>res;
-        if (res !== null && r.Type !== 'error') {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
           this.posgrados = <any>res;
           this.loadData();
         }
@@ -316,8 +317,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
         });
       this.coreService.get('periodo/?limit=0')
       .subscribe(res => {
-        const r = <any>res;
-        if (res !== null && r.Type !== 'error') {
+        if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
           this.periodo = <any>res;
           this.loadData();
         }
@@ -334,7 +334,7 @@ export class ListConfiguracionFechasComponent implements OnInit {
         });
   }
 
-  ClearFiltro() {
+  clearFiltro() {
     this.loadData();
     this.selectedValuePrograma = '--Seleccionar--'
     this.selectedValuePrograma = 0;

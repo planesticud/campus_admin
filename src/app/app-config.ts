@@ -68,6 +68,7 @@ export const Config = {
     INSCRIPCION_SERVICE: ' https://autenticacion.udistrital.edu.co/apioas/inscripcion/v1/',
     MENU_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/configuracion/v1/menu_opcion_padre/ArbolMenus/',
     ORGANIZACION_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/organizacion/v1/',
+    PAGO_SERVICE: 'http://prueba.campusvirtual.udistrital.edu.co/pagos/',
     PERSONA_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/persona/v1/',
     PRODUCCION_ACADEMICA_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/produccion_acad/v1/',
     PROGRAMA_ACADEMICO_SERVICE: 'https://autenticacion.udistrital.edu.co/apioas/programa/v1/',
@@ -79,7 +80,7 @@ export const Config = {
     WSO2_SERVICE: 'http://jbpm.udistritaloas.edu.co:8280/services',
     TOKEN: {
       AUTORIZATION_URL: 'https://autenticacion.udistrital.edu.co/oauth2/authorize',
-      CLIENTE_ID: 'Uf_OLwqAD_HkBEvqw_hj2iFc0y8a',
+      CLIENTE_ID: 'O2RP1OiL7yNEL0QvCdhhBD4lVksa',
       RESPONSE_TYPE: 'id_token token',
       SCOPE: 'openid email role documento',
       REDIRECT_URL: 'https://admin.campusvirtual.udistrital.edu.co/',
@@ -162,7 +163,7 @@ export const Config = {
     CONFIGURACION_SERVICE: '',
     NOTIFICACION_SERVICE: '',
     WSO2_SERVICE: 'http://jbpm.udistritaloas.edu.co:8280/services',
-    PAGO_SERVICE: '',
+    PAGO_SERVICE: 'https://campusvirtual.udistrital.edu.co/pagos/',
     RECIBO_SERVICE: '',
     TOKEN: {
       AUTORIZATION_URL: 'https://autenticacion.portaloas.udistrital.edu.co/oauth2/authorize',

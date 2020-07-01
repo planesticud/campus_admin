@@ -118,10 +118,10 @@ export class CrudGrupoLineaInvestigacionComponent implements OnInit {
           if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.element = <GrupoLineaInvestigacion>res[0];
             this.coreService.get('grupo_investigacion/' + this.element.GrupoInvestigacionId).subscribe(res2 => {
-              if (res2 !== null) {
+              if (res2 !== null && JSON.stringify(res2).toString() !== '[{}]') {
                 this.element.GrupoInvestigacionId = <any>res2;
                 this.coreService.get('linea_investigacion/' + this.element.LineaInvestigacionId).subscribe(res3 => {
-                  if (res3 != null) {
+                  if (res3 !== null && JSON.stringify(res3).toString() !== '[{}]') {
                     this.element.LineaInvestigacionId = <any>res3;
                   }
                   this.info_grupo_linea_investigacion = this.element;

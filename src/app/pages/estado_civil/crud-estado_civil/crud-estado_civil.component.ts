@@ -65,7 +65,7 @@ export class CrudEstadoCivilComponent implements OnInit {
     if (this.estado_civil_id !== undefined && this.estado_civil_id !== 0) {
       this.personaService.get('estado_civil/?query=Id:' + this.estado_civil_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_estado_civil = <EstadoCivil>res[0];
           }
         },

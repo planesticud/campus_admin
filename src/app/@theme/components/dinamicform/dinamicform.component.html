@@ -160,7 +160,7 @@
           </select>
 
           <!-- input-file -->
-          <input type="file" name="{{c.nombre}}" class="{{c.clase}}" *ngSwitchCase="'file'" (change)="onChange($event,c)" />
+          <input type="file" name="{{c.nombre}}" class="{{c.clase}}" *ngSwitchCase="'file'" (change)="onChange($event,c)" [disabled]="c.deshabilitar"/>
         </div>
       </div>
     </fieldset>
@@ -240,7 +240,7 @@
 
           <!-- input-file -->
           <div class="{{c.clase}} ">
-            <input type="file" name="{{c.nombre}}" class="{{c.clase}}" *ngSwitchCase="'file'" (change)="onChange($event,c)" />
+            <input type="file" name="{{c.nombre}}" class="{{c.clase}}" *ngSwitchCase="'file'" (change)="onChange($event,c)" [disabled]="c.deshabilitar"/>
             <div class="{{c.clase}}">
               <nb-card size="small">
                 <nb-card-body>
@@ -350,7 +350,7 @@
                   <label for="{{c.nombre}}" class="upload-file">
                     {{c.requerido?'* '+c.label:c.label}}
                   </label>
-                  <input type="file" id="{{c.nombre}}" (change)="onChange($event,c)" />
+                  <input type="file" id="{{c.nombre}}" (change)="onChange($event,c)" [disabled]="c.deshabilitar"/>
                   <br>
                   <mat-hint class="text-danger">{{c.alerta}}</mat-hint>
                 </div>

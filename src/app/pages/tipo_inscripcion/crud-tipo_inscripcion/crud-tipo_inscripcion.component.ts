@@ -65,7 +65,7 @@ export class CrudTipoInscripcionComponent implements OnInit {
     if (this.tipo_inscripcion_id !== undefined && this.tipo_inscripcion_id !== 0) {
       this.admisionesService.get('tipo_inscripcion/?query=Id:' + this.tipo_inscripcion_id)
         .subscribe(res => {
-          if (res !== null) {
+          if (res !== null && JSON.stringify(res).toString() !== '[{}]') {
             this.info_tipo_inscripcion = <TipoInscripcion>res[0];
           }
         },
