@@ -99,7 +99,11 @@ export class ListCalendarioEventoComponent implements OnInit {
           title: this.translate.instant('GLOBAL.evento_padre'),
           width: '22%',
           valuePrepareFunction: (value) => {
-            return value.Descripcion;
+            if (value !== null) {
+              return value.Descripcion;
+            } else {
+              return '';
+            }
           },
         },
         Activo: {
@@ -127,7 +131,7 @@ export class ListCalendarioEventoComponent implements OnInit {
                     if (periodo !== null && JSON.stringify(periodo).toString() !== '[{}]') {
                       element.PeriodoId = <any>periodo;
                       if (element.EventoPadreId !== null) {
-                        this.eventoService.get('calendario_evento/' + element.EventoPadreId)
+                        this.eventoService.get('calendario_evento/' + element.EventoPadreId.Id)
                           .subscribe(padre => {
                             if (padre !== null && JSON.stringify(padre).toString() !== '[{}]') {
                               element.EventoPadreId = <any>padre;
