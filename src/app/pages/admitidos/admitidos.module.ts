@@ -8,6 +8,7 @@ import { CampusMidService } from '../../@core/data/campus_mid.service';
 import { PersonaService } from '../../@core/data/persona.service';
 import { ExcelService } from '../../@core/data/excel.service';
 import { ProgramaAcademicoService } from '../../@core/data/programa_academico.service';
+import { ProgramaOikosService } from '../../@core/data/programa_oikos.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
@@ -27,6 +28,7 @@ import { SharedModule } from '../../shared/shared.module';
   providers: [
     InscripcionService,
     ProgramaAcademicoService,
+    ProgramaOikosService,
     PersonaService,
     ExcelService,
     CampusMidService,

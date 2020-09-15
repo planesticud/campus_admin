@@ -14,7 +14,7 @@
                     <div class="col">
                       <mat-form-field style="width: 70%;">
                         <mat-label>{{ 'GLOBAL.programa_academico' | translate }} :</mat-label>
-                        <mat-select [(ngModel)]="selectedValuePrograma">
+                        <mat-select [(ngModel)]="selectedValuePrograma" (selectionChange)="activarBoton($event)">
                           <mat-option>--Seleccionar--</mat-option>
                           <mat-option *ngFor="let item of posgrados" [value]="item">
                             {{item.Nombre}}
@@ -25,7 +25,7 @@
                     <div class="col">
                       <mat-form-field style="width: 35%;">
                         <mat-label>{{ 'GLOBAL.periodo_academico' | translate }} :</mat-label>
-                        <mat-select [(ngModel)]="selectedValuePeriodo">
+                        <mat-select [(ngModel)]="selectedValuePeriodo" (selectionChange)="activarBoton($event)">
                           <mat-option>--Seleccionar--</mat-option>
                           <mat-option *ngFor="let item_periodo of periodo" [value]="item_periodo">
                             {{item_periodo.Nombre}}
@@ -49,11 +49,8 @@
                 </div>
                 <div class="row">
                   <div class="col">
-                    <button (click)="filtrar()" class="btn btn-info btn-sm"><i class="nb-search"></i> {{ 'GLOBAL.filtrar' | translate }}</button>
+                    <button class="btn btn-info btn-sm" (click)="activarBoton($event)" [disabled]="!filtrarActivo" ><i class="nb-search"></i> {{ 'GLOBAL.filtrar' | translate }}</button>
                   </div>
-                  <!-- <div class="col">
-                    <button (click)="ClearFiltro()" class="btn btn-info btn-sm">{{ 'GLOBAL.Limpiar' | translate }}</button>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -61,26 +58,20 @@
             <br />
               <ng2-smart-table matSort [settings]="settings" [source]="source" (delete)="onDelete($event)" (rowSelect)="itemselec($event)" (edit)="onEdit($event)" (create)="onCreate($event)">
               </ng2-smart-table>
-              <!--button (click)="activetab()" >cambiar</button-->
           </nb-tab>
-            <!-- <nb-tab tabTitle="{{ 'GLOBAL.formulario' | translate }}" [active]="cambiotab">
-              <ngx-crud-admitidos [admitidos_id]="uid" (eventChange)="onChange($event)"></ngx-crud-admitidos>
-              <button (click)="activetab()" class="btn btn-info btn-sm"> <i class="nb-arrow-dropleft"></i> {{ 'GLOBAL.regresar' | translate }}</button>
-            </nb-tab> -->
           </nb-tabset>
     </nb-card-body>
   </nb-card>
   <nb-card>
     <nb-card-body>
-      <!-- <button style="margin: 10px" _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="calcularNotas()">
+      <button style="margin: 10px" _ngcontent-c3="" class="btn btn-primary btn-with-icon login" [disabled]="!botonActivo" type="button" (click)="calcularNotas()">
         <i _ngcontent-c3="" class="fa fa-file-excel-o"></i>
-        <span _ngcontent-c3="">Calcular Notas</span>
-      </button> -->
-      <button _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" (click)="exportAsXLSX()">
+        <span _ngcontent-c3="">Volver a Calcular</span>
+      </button>
+      <button _ngcontent-c3="" class="btn btn-primary btn-with-icon login" type="button" [disabled]="!botonActivo" (click)="exportAsXLSX()">
           <i _ngcontent-c3="" class="fa fa-file-excel-o"></i>
           <span _ngcontent-c3="">Descargar</span>
       </button>
-        <!-- <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button> -->
     </nb-card-body>
   </nb-card>
 </div>

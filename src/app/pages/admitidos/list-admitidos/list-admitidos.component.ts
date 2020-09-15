@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-// import { Inscripcion } from './../../../@core/data/models/inscripcion';
-
 import { InscripcionService } from '../../../@core/data/inscripcion.service';
-// import { InscripcionService } from '../../../@core/data/admision.service';
 import { CampusMidService } from '../../../@core/data/campus_mid.service';
 import { CoreService } from '../../../@core/data/core.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
+// import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
+import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
 import { PersonaService } from '../../../@core/data/persona.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -23,6 +21,8 @@ import { ExcelService } from '../../../@core/data/excel.service';
 export class ListAdmitidosComponent implements OnInit {
   uid: number;
   cambiotab: boolean = false;
+  botonActivo: boolean = false;
+  filtrarActivo: boolean = false;
   config: ToasterConfig;
   settings: any;
   posgrados = [];
@@ -32,25 +32,24 @@ export class ListAdmitidosComponent implements OnInit {
   selectedValuePrograma: any;
   selectedValuePeriodo: any;
   selectedValueEstado: any;
+  loadSource: boolean = false;
 
   source: LocalDataSource = new LocalDataSource();
-  // dataExcel = [];
   data_export: any;
   constructor(private translate: TranslateService,
     private admisionesService: InscripcionService,
     private personaService: PersonaService,
-    private programaAcademicoService: ProgramaAcademicoService,
+    // private programaAcademicoService: ProgramaAcademicoService,
+    private programaOikosService: ProgramaOikosService,
     private campusMidService: CampusMidService,
     private coreService: CoreService,
     private excelService: ExcelService,
     private toasterService: ToasterService) {
-    // this.loadData();
     this.cargarCampos();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.cargarCampos();
     });
     this.loadInfoSelectFiltro();
-    // this.dataExcel = []
   }
 
   cargarCampos() {
@@ -101,7 +100,7 @@ export class ListAdmitidosComponent implements OnInit {
           title: this.translate.instant('GLOBAL.nombre'),
           // type: 'persona;',
           valuePrepareFunction: (value) => {
-            return value.PrimerNombre;
+            return value.PrimerNombre + ' ' + value.PrimerApellido;
           },
         },
         ProgramaAcademico: {
@@ -142,75 +141,82 @@ export class ListAdmitidosComponent implements OnInit {
 
   loadData(query?: string): void {
     if (query) {
-      console.info('QUERY: ', query);
-     this.admisionesService.get(query).subscribe(res => {
-       if (res !== null) {
+      this.admisionesService.get(query).subscribe(res => {
+       if (Object.keys(res[0]).length > 0) {
          const data = <Array<any>>res;
          const data_info = <Array<any>>[];
          this.dataExcel = [];
          data.forEach(element => {
-           this.programaAcademicoService.get('programa_academico/?query=Id:' + element.ProgramaAcademicoId)
+           // this.programaAcademicoService.get('programa_academico/?query=Id:' + element.ProgramaAcademicoId)
+           this.programaOikosService.get('dependencia/' + element.ProgramaAcademicoId)
              .subscribe(programa => {
-             if (programa !== null) {
-               const programa_info = <any>programa[0];
-               element.ProgramaAcademico = programa_info;
-               this.personaService.get('persona/?query=Id:' + element.PersonaId)
-                .subscribe(persona => {
-                  if (persona !== null) {
-                    const regExcel: any = {
-                      Id: 0,
-                      ProgramaAcademico: '',
-                      TipoDocumento: '',
-                      NumeroDocumento: 0,
-                      Nombre: '',
-                      Estado: '',
-                      Puntaje: 0,
-                    };
-                    const persona_info = <any>persona[0];
-                    element.Persona = persona_info;
-                    this.coreService.get('periodo/' + element.PeriodoId)
+               if (programa !== null) {
+                 const programa_info = <any>programa;
+                 element.ProgramaAcademico = programa_info;
+                 this.personaService.get('persona/?query=Id:' + element.PersonaId)
+                  .subscribe(persona => {
+                    if (persona !== null) {
+                      const regExcel: any = {
+                        Id: 0,
+                        ProgramaAcademico: '',
+                        TipoDocumento: '',
+                        NumeroDocumento: 0,
+                        Nombre: '',
+                        Estado: '',
+                        Puntaje: 0,
+                      };
+                      const persona_info = <any>persona[0];
+                      element.Persona = persona_info;
+                      this.coreService.get('periodo/' + element.PeriodoId)
                        .subscribe(periodo => {
                          if (periodo !== null) {
 
-                              this.campusMidService.get('persona/ConsultaPersona/?id=' + element.PersonaId)
-                                .subscribe(persona2 => {
-                                  if (persona2 !== null) {
-                                    const datos_persona = <any>persona2;
-                                    element.NumeroDocumento = datos_persona.NumeroDocumento;
-                                    element.TipoIdentificacion = datos_persona.TipoIdentificacion
-                           const periodo_info = <any>periodo;
-                           element.Periodo = periodo_info;
-                    // data_info.push(element);
-                    regExcel.Id = element.Id;
-                    regExcel.ProgramaAcademico = element.ProgramaAcademico.Nombre;
-                    regExcel.Nombre = element.Persona.PrimerNombre;
-                    regExcel.TipoDocumento = element.TipoIdentificacion.CodigoAbreviacion;
-                    regExcel.NumeroDocumento = element.NumeroDocumento;
-                    regExcel.Estado = element.EstadoInscripcionId.Nombre
-                    regExcel.Puntaje = element.PuntajeTotal
-                    this.dataExcel.push(regExcel);
-                    // console.info ('DATA_EXCEL: ', JSON.stringify(this.dataExcel));
-
-                    data_info.push(element);
-                    data_info.sort(function(a, b){return b.PuntajeTotal - a.PuntajeTotal});
-                    // data_info.sort((a, b) => (a.PuntajeTotal < b.PuntajeTotal) ? 1 : -1)
-                    this.source.load(data_info);
-                  }
-             });
-           }
-         });
-
+                           this.campusMidService.get('persona/consultar_persona/' + element.PersonaId)
+                            .subscribe(persona2 => {
+                              if (persona2 !== null) {
+                                const datos_persona = <any>persona2;
+                                element.NumeroDocumento = datos_persona.NumeroIdentificacion;
+                                element.TipoIdentificacion = datos_persona.TipoIdentificacion;
+                                const periodo_info = <any>periodo;
+                                element.Periodo = periodo_info;
+                                // data_info.push(element);
+                                regExcel.Id = element.Id;
+                                regExcel.ProgramaAcademico = element.ProgramaAcademico.Nombre;
+                                regExcel.Nombre = element.Persona.PrimerNombre + ' ' + element.Persona.PrimerApellido;
+                                regExcel.TipoDocumento = element.TipoIdentificacion.CodigoAbreviacion;
+                                regExcel.NumeroDocumento = element.NumeroDocumento;
+                                regExcel.Estado = element.EstadoInscripcionId.Nombre
+                                regExcel.Puntaje = element.PuntajeTotal
+                                this.dataExcel.push(regExcel);
+                                data_info.push(element);
+                                data_info.sort(function(a, b){return b.PuntajeTotal - a.PuntajeTotal});
+                                // data_info.sort((a, b) => (a.PuntajeTotal < b.PuntajeTotal) ? 1 : -1)
+                                this.source.load(data_info);
+                                this.loadSource = true;
+                              }
+                            });
+                          }
+                        });
+                      }
+                    });
                   }
                 });
-              }
             });
-
-
-         });
-       }
-    });
-   }
-  }
+            this.botonActivo = true;
+          } else {
+            this.botonActivo = false;
+            const data_info = [];
+            this.source.load(data_info);
+              Swal({
+                type: 'info',
+                title: this.translate.instant('GLOBAL.sin_datos'),
+                text: this.translate.instant('GLOBAL.info_sin_datos'),
+                confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
+              });
+          }
+        });
+      }
+    }
 
   ngOnInit() {
   }
@@ -262,24 +268,35 @@ export class ListAdmitidosComponent implements OnInit {
 
   onChange(event) {
     if (event) {
-      // this.loadData();
       this.cambiotab = !this.cambiotab;
     }
   }
 
-
   itemselec(event): void {
   }
 
+  activarBoton(event) {
+    if (event) {
+      this.filtrar();
+      if (this.selectedValuePeriodo && this.selectedValuePrograma) {
+        this.filtrarActivo = true;
+        if (this.loadSource) {
+          this.botonActivo = true;
+        }
+      } else {
+        this.botonActivo = false;
+        this.filtrarActivo = false;
+      }
+    }
+  }
+
   loadInfoSelectFiltro() {
-    // TODO: Cambiar por OIKOS
-    this.programaAcademicoService.get('programa_academico/?limit=10')
+    this.programaOikosService.get('dependencia/?query=DependenciaTipoDependencia.TipoDependenciaId.Id:15')
       .subscribe(res => {
         const r = <any>res;
-        if (res !== null && r.Type !== 'error') {
-          this.posgrados = <any>res;
-          // this.loadData();
-        }
+            if (res !== null && r.Type !== 'error') {
+              this.posgrados = <any>res;
+            }
       },
         (error: HttpErrorResponse) => {
           Swal({
@@ -296,7 +313,6 @@ export class ListAdmitidosComponent implements OnInit {
         const r = <any>res;
         if (res !== null && r.Type !== 'error') {
           this.periodo = <any>res;
-          // this.loadData();
         }
       },
         (error: HttpErrorResponse) => {
@@ -314,7 +330,6 @@ export class ListAdmitidosComponent implements OnInit {
             const r = <any>res;
             if (res !== null && r.Type !== 'error') {
               this.estados = <any>res;
-              // this.loadData();
             }
           },
             (error: HttpErrorResponse) => {
@@ -323,7 +338,7 @@ export class ListAdmitidosComponent implements OnInit {
                 title: error.status + '',
                 text: this.translate.instant('ERROR.' + error.status),
                 footer: this.translate.instant('GLOBAL.cargar') + '-' +
-                  this.translate.instant('GLOBAL.programa_academico'),
+                  this.translate.instant('GLOBAL.estado_inscripcion'),
                 confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
               });
             });
@@ -331,39 +346,22 @@ export class ListAdmitidosComponent implements OnInit {
 
   private filtrar() {
     if (this.selectedValuePeriodo && this.selectedValuePrograma) {
-      this.admisionesService.get('inscripcion/?query=ProgramaAcademicoId:' + this.selectedValuePrograma.Id ).subscribe(res => {
-        const inscripciones = <Array<any>>res;
-        inscripciones.forEach(element => {
-            this.campusMidService.get('evaluacion_inscripcion/' + element.Id).subscribe(resNota => {
-              if (resNota) {
-              // this.loadData(`inscripcion/?query=ProgramaAcademico:${this.selectedValuePrograma.Id}`);
-              if (this.selectedValueEstado !== undefined && this.selectedValueEstado !== 0 ) {
-                  // tslint:disable-next-line:max-line-length
-                  this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id},EstadoInscripcionId:${this.selectedValueEstado.Id}`);
-              } else {
-                this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id}`);
-              }
-            }
-            });
-        })
-      });
-      } else {
-      // TODO: Mensaje solicitando periodo;
-        console.info ('Solicitar Programa y periodo');
+                  if (this.selectedValueEstado !== undefined && this.selectedValueEstado !== 0 ) {
+                    this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id},
+                      EstadoInscripcionId:${this.selectedValueEstado.Id}`);
+                  } else {
+                    this.loadData(`inscripcion/?query=ProgramaAcademicoId:${this.selectedValuePrograma.Id},PeriodoId:${this.selectedValuePeriodo.Id}`);
+                  }
       }
   }
 
 
   ClearFiltro() {
-    this.loadData();
+    // this.loadData();
     this.selectedValuePrograma = '--Seleccionar--'
     this.selectedValuePrograma = 0;
     this.selectedValuePeriodo = '--Seleccionar--'
     this.selectedValuePeriodo = 0;
-    // TODO: Borrar
-    this.filtrar();
-    this.exportAsXLSX();
-    // TODO: \Borrar
   }
 
   private showToast(type: string, title: string, body: string) {
@@ -387,20 +385,24 @@ export class ListAdmitidosComponent implements OnInit {
     this.toasterService.popAsync(toast);
   }
 
+  /* tslint:disable:no-unused-variable */
   private exportAsXLSX(): void {
     this.dataExcel.sort(function(a, b){return a - b});
     this.excelService.exportAsExcelFile(this.dataExcel, 'sample')
   }
 
-  // private calcularNotas() {
-  //   this.admisionesService.get('inscripcion/?query=ProgramaAcademicoId:' + this.selectedValuePrograma.Id ).subscribe(res => {
-  //     const inscripciones = <Array<any>>res;
-  //     inscripciones.forEach(element => {
-  //         this.campusMidService.get('evaluacion_inscripcion/' + element.Id).subscribe(resNota => {
-  //           resNota;
-  //         });
-  //     })
-  //   });
-  //   return true;
-  // }
+  /* tslint:disable:no-unused-variable */
+  private calcularNotas() {
+    this.admisionesService.get('inscripcion/?query=ProgramaAcademicoId:' + this.selectedValuePrograma.Id ).subscribe(res => {
+      const inscripciones = <Array<any>>res;
+      inscripciones.forEach(element => {
+          this.campusMidService.get('evaluacion_inscripcion/' + element.Id).subscribe(resNota => {
+            resNota;
+            this.showToast('info', this.translate.instant('GLOBAL.actualizar');
+            // console.log(resNota);
+          });
+      })
+    });
+    return true;
+  }
 }
