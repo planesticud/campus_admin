@@ -359,6 +359,8 @@
     "soporte_documento":"Document support",
     "alerta_documental_image": "The image has been saved in our document manager",
     "alerta_documental_documento": "The document has been saved in our document manager",
+    "sin_datos": "No data found",
+    "info_sin_datos": "No data found to display",
     "id": "Id",
     "placeholder_id": "E.g.: 55",
     "nombre": "Name",

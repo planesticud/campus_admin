@@ -1,8 +1,8 @@
 
 export class Entrevistador {
   Id: number;
-  PersonaId: number;
-  // Nombre: string;
+  Persona: number;
+  Nombre: string;
   ProgramaAcademico: number;
   Activo: boolean;
 }

@@ -9,7 +9,7 @@
                     </ng2-smart-table>
             </nb-tab>
             <nb-tab tabTitle="{{ 'GLOBAL.formulario' | translate }}" [active]="cambiotab" *ngIf="crear" >
-              <ngx-crud-asignar-entrevista [inscripcion_id]="uid" (eventChange)="onChange($event)"></ngx-crud-asignar-entrevista>
+              <ngx-crud-asignar-entrevista [inscripcion_id]="uid" [programa_id]="uprograma" (eventChange)="onChange($event)"></ngx-crud-asignar-entrevista>
               <button (click)="regresar()" class="btn btn-info btn-sm"> <i class="nb-arrow-dropleft"></i> {{ 'GLOBAL.regresar' | translate }}</button>
             </nb-tab>
           </nb-tabset>

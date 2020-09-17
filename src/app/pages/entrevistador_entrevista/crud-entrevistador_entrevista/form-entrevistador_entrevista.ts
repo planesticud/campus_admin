@@ -1,0 +1,42 @@
+
+export let FORM_ENTREVISTADOR_ENTREVISTA = {
+    titulo: 'EntrevistadorEntrevista',
+    tipo_formulario: 'mini',
+    btn: 'Guardar',
+    alertas: true,
+    modelo: 'EntrevistadorEntrevista',
+    campos: [
+    {
+        etiqueta: 'input',
+        claseGrid: 'col-6',
+        nombre: 'inscripcion_id',
+        label_i18n: 'inscripcionId',
+        placeholder_i18n: 'inscripcionId',
+        requerido: true,
+        deshabilitar: true,
+        tipo: 'number',
+    },
+    {
+        etiqueta: 'select',
+        claseGrid: 'col-6',
+        nombre: 'EntrevistadorId',
+        label_i18n: 'entrevistador',
+        placeholder_i18n: 'entrevistador',
+        requerido: true,
+        tipo: 'EntrevistadorId',
+        key: 'Nombre',
+        opciones: [],
+    },
+    {
+        etiqueta: 'input',
+        claseGrid: 'col-6',
+        nombre: 'NotaParcial',
+        label_i18n: 'nota_parcial',
+        placeholder_i18n: 'nota_parcial',
+        requerido: true,
+        tipo: 'number',
+        // minimo: 10,
+        maximo: 50,
+    },
+    ],
+}

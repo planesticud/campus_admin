@@ -3,7 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { EntrevistaService } from '../../../@core/data/entrevista.service';
 import { InscripcionService } from '../../../@core/data/inscripcion.service';
 import { PersonaService } from '../../../@core/data/persona.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
+import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
 import { CoreService } from '../../../@core/data/core.service';
 // import { EntrevistaService } from '../../../@core/data/entrevista.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
@@ -18,6 +18,7 @@ import 'style-loader!angular2-toaster/toaster.css';
   })
 export class ListAsignarEntrevistaComponent implements OnInit {
   uid: number;
+  uprograma: number;
   crear = false;
   cambiotab: boolean = false;
   config: ToasterConfig;
@@ -31,7 +32,7 @@ export class ListAsignarEntrevistaComponent implements OnInit {
     private inscripcionService: InscripcionService,
     private personaService: PersonaService,
     private entrevistaService: EntrevistaService,
-    private programaAcademicoService: ProgramaAcademicoService,
+    private programaOikosService: ProgramaOikosService,
     private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
@@ -122,7 +123,7 @@ export class ListAsignarEntrevistaComponent implements OnInit {
 
   loadData(): void {
     this.inscripcionService.get('inscripcion/?query=estado_inscripcion_id:3').subscribe(res => { // TODO: Cambiar el estado al codigo correspondiente
-      if (res !== null) {
+      if (res !== null  && JSON.stringify(res) !== '[{}]') {
         const data = <Array<any>>res;
         const data_info = <Array<any>>[];
         // let cantEntrevistas = 0;
@@ -136,18 +137,23 @@ export class ListAsignarEntrevistaComponent implements OnInit {
                     element.EntrevistasAsignadas = Object.keys(dataEntrevista).length
                   }
               }
-              this.programaAcademicoService.get('programa_academico/' + element.ProgramaAcademicoId).subscribe(programa => {
-                if (programa !== null) {
-                  const dataPrograma = <any>programa;
-                  element.ProgramaAcademicoId = dataPrograma;
-                }
-              });
+
+              this.programaOikosService.get('dependencia/' + element.ProgramaAcademicoId)
+                .subscribe(res_Programa => {
+                  if (res_Programa !== null) {
+                    const dataPrograma = <any>res_Programa;
+                    element.ProgramaAcademicoId = dataPrograma;
+                    this.source.load(data_info);
+                  }
+                });
+
               this.coreService.get('periodo/' + element.PeriodoId).subscribe(periodo => {
                 if (periodo !== null) {
                   const dataPrograma = <any>periodo;
                   element.PeriodoId = dataPrograma;
                 }
               });
+
               this.personaService.get('persona/' + element.PersonaId).subscribe(persona => {
                 if (persona !== null) {
                           const persona2 = <any>persona;
@@ -160,7 +166,17 @@ export class ListAsignarEntrevistaComponent implements OnInit {
               });
             });
           });
-          }
+        } else {
+          const opt: any = {
+            title: 'Sin inscritos',
+            text: 'No hay aspirantes en estado inscrito',
+            icon: 'info',
+            buttons: true,
+            dangerMode: true,
+            showCancelButton: false,
+          };
+          Swal(opt);
+        }
     });
   }
 
@@ -169,11 +185,13 @@ export class ListAsignarEntrevistaComponent implements OnInit {
 
   onEdit(event): void {
     this.uid = event.data.Id;
+    this.uprograma = event.data.ProgramaAcademicoId.Id;
     this.activetab();
   }
 
   onCreate(event): void {
     this.uid = event.data.Id;
+    this.uprograma = event.data.ProgramaAcademicoId.Id;
     this.crear = true;
     this.activetab();
   }

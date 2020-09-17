@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { EntrevistaService } from '../../../@core/data/entrevista.service';
-import { PersonaService } from '../../../@core/data/persona.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
-// import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
+import { DocenteService } from '../../../@core/data/docente.service';
+import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+// import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 
@@ -16,6 +16,7 @@ import 'style-loader!angular2-toaster/toaster.css';
   })
 export class ListEntrevistadorComponent implements OnInit {
   uid: number;
+  uprograma: number;
   cambiotab: boolean = false;
   config: ToasterConfig;
   settings: any;
@@ -24,9 +25,8 @@ export class ListEntrevistadorComponent implements OnInit {
 
   constructor(private translate: TranslateService,
     private entrevistaService: EntrevistaService,
-    private personaService: PersonaService,
-    private programaAcademicoService: ProgramaAcademicoService,
-    // private programaOikosService: ProgramaOikosService,
+    private docenteService: DocenteService,
+    private programaOikosService: ProgramaOikosService,
     private toasterService: ToasterService) {
     this.loadData();
     this.cargarCampos();
@@ -89,48 +89,51 @@ export class ListEntrevistadorComponent implements OnInit {
   }
 
   loadData(): void {
+    // let docentes: Array<any> = [];
     this.entrevistaService.get('entrevistador/?limit=0').subscribe(res => {
     if (res !== null) {
       const data = <Array<any>>res;
-      // data
        for (let index = 0; index < data.length; index++) {
          const datos = data[index];
+         this.docenteService.get('docentes_por_proyecto/' + datos.ProgramaAcademicoId)
+          .subscribe(res_Docentes => {
+            const docentes = <Array<any>>res_Docentes['docentesCollection']['docentes'];
+            if (Object.keys(docentes).length !== 0) {
+              docentes.forEach ( element => {
+                if (parseInt(element.identificacion, 10) === datos.PersonaId) {
+                  const NombreCompleto = element['nombres'] + ' ' + element['apellidos'];
+                  data[index].Persona = element;
+                  data[index].Persona.NombreCompleto = NombreCompleto.toUpperCase();
+                }
+              });
+              this.source.load(data);
+            }
+          });
 
-         this.personaService.get('persona?query=id:' + datos.PersonaId)
-          .subscribe(res_persona => {
-           if (res_persona !== null) {
-              const NombreCompleto = res_persona[0].PrimerApellido + ' ' + res_persona[0].SegundoApellido
-              + ' ' + res_persona[0].PrimerNombre + ' ' + res_persona[0].SegundoNombre;
-               data[index].Persona = res_persona[0];
-               data[index].Persona.NombreCompleto = NombreCompleto.toUpperCase();
-
-               this.programaAcademicoService.get('programa_academico/' + datos.ProgramaAcademicoId)
-                .subscribe(res_programa => {
-                 if (res_programa !== null) {
-                     data[index].ProgramaAcademico = res_programa;
-                       this.source.load(data);
-                 }
-               })
-
-           }
-         })
-
+          this.programaOikosService.get('dependencia/' + datos.ProgramaAcademicoId)
+            .subscribe(res_programa => {
+              if (res !== null) {
+                data[index].ProgramaAcademico = res_programa;
+                this.source.load(data);
+              }
+            });
+          }
       }
-      this.source.load(data);
-        }
-  });
-}
+    });
+  }
 
   ngOnInit() {
   }
 
   onEdit(event): void {
     this.uid = event.data.Id;
+    this.uprograma = event.data.ProgramaAcademicoId
     this.activetab();
   }
 
   onCreate(event): void {
     this.uid = 0;
+    this.uprograma = 0;
     this.activetab();
   }
 
@@ -147,12 +150,18 @@ export class ListEntrevistadorComponent implements OnInit {
     .then((willDelete) => {
 
       if (willDelete.value) {
-        this.entrevistaService.delete('entrevistador/', event.data).subscribe(res => {
-          if (res !== null) {
-            this.loadData();
-            this.showToast('info', 'deleted', 'Entrevistador deleted');
-            }
-         });
+        this.entrevistaService.get('entrevistador_entrevista/?query=entrevistador_id:' + event.data.Id).subscribe(res => {
+          if (Object.keys(res[0]).length === 0) {
+            this.entrevistaService.delete('entrevistador', event.data).subscribe(res_del => {
+              if (res_del !== null) {
+                this.loadData();
+                this.showToast('info', 'deleted', 'Entrevistador deleted');
+                }
+             });
+          } else {
+            this.showToast('error', 'Error al eliminar', 'Entrevistador ya está asignado a una entrevista');
+          }
+        });
       }
     });
   }
@@ -178,7 +187,6 @@ export class ListEntrevistadorComponent implements OnInit {
 
 
   itemselec(event): void {
-    // console.log("afssaf");
   }
 
   private showToast(type: string, title: string, body: string) {

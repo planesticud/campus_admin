@@ -1,14 +1,10 @@
 import { EstadoEntrevista } from './../../../@core/data/models/estado_entrevista';
 import { TipoEntrevista } from './../../../@core/data/models/tipo_entrevista';
-
-import { Entrevista } from './../../../@core/data/models/entrevista';
-// import { Entrevistador } from './../../../@core/data/models/entrevistador';
-// import { EntrevistadorEntrevista } from './../../../@core/data/models/entrevistador_entrevista';
 import { Persona } from './../../../@core/data/models/persona';
+import { Entrevista } from './../../../@core/data/models/entrevista';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EntrevistaService } from '../../../@core/data/entrevista.service';
 import { DocenteService } from '../../../@core/data/docente.service';
-import { PersonaService } from '../../../@core/data/persona.service';
 import { FORM_ASIGNAR_ENTREVISTA } from './form-asignar_entrevista';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
@@ -25,6 +21,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 export class CrudAsignarEntrevistaComponent implements OnInit {
   config: ToasterConfig;
   inscripcion_id: number;
+  programa_id: number;
   tipoEntrevista: TipoEntrevista;
   estadoEntrevista: EstadoEntrevista;
   fecha_entrevista: string;
@@ -33,7 +30,12 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   @Input('inscripcion_id')
   set name(inscripcion_id: number) {
     this.inscripcion_id = inscripcion_id;
-    this.loadEntrevista();
+  }
+
+  @Input('programa_id')
+  set namep(programa_id: number) {
+    this.programa_id = programa_id;
+    this.loadAsignarEntrevista();
   }
 
   @Output() eventChange = new EventEmitter();
@@ -44,6 +46,7 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   entrevistadores: Array<any>;
   formAsignarEntrevista: any;
   regEntrevista: any;
+  regEntrevistador: any;
   clean: boolean;
   entrevistadorSeleccionado: any;
   source_entrevistadores: Array<any> = [];
@@ -51,9 +54,8 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   settings_entrevistadores: any;
   cleanEntrevistador: boolean;
 
-  constructor(private translate: TranslateService,
+  constructor(public translate: TranslateService,
      private entrevistaService: EntrevistaService,
-     private personaService: PersonaService,
      private docenteService: DocenteService,
      private toasterService: ToasterService) {
     this.formAsignarEntrevista = FORM_ASIGNAR_ENTREVISTA;
@@ -63,7 +65,6 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
     });
     this.loadOptionsEstadoEntrevista();
     this.loadOptionsTipoEntrevista();
-    this.loadOptionsEntrevistador();
     this.settings_entrevistadores = {
       add: {
         addButtonContent: '<i class="nb-plus"></i>',
@@ -125,7 +126,6 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
 
   loadOptionsTipoEntrevista(): Promise<any> {
     return new Promise ((resolve, reject) => {
-    // let tipoEntrevista: Array<any> = [];
       this.entrevistaService.get('tipo_entrevista/?limit=0')
         .subscribe(res => {
           if (Object.keys(res[0]).length > 0) {
@@ -145,25 +145,25 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
     return new Promise ((resolve, reject) => {
       // let nuevoEntrevistador: Array<any> = [];
       // this.docenteService.get('docentes_por_proyecto/20')
-      this.docenteService.get('api')
-        .subscribe(res => {
-          console.info (res);
-        })
-      this.entrevistaService.get('entrevistador/?limit=0')
+      this.entrevistaService.get('entrevistador/?query=ProgramaAcademicoId:' + this.programa_id)
         .subscribe(res => {
           if (Object.keys(res[0]).length > 0) {
             this.entrevistadores = <Array<any>>res;
             this.entrevistadores.forEach( (entrevistador: any) => {
-              this.personaService.get('persona/?query=Id:' + entrevistador.PersonaId)
-                .subscribe(resPersona => {
-                  if (Object.keys(resPersona[0]).length > 0) {
-                    const persona = <Persona>resPersona;
-                      entrevistador['Nombre'] = this.getNombreEntrevistador(persona[0]);
-                  }
-                  resolve(true);
-                }, (error: HttpErrorResponse) => {
-                  reject(error);
-                });
+              this.docenteService.get('docentes_por_proyecto/' + entrevistador.ProgramaAcademicoId)
+               .subscribe(res_Docentes => {
+                 const docentes = <Array<any>>res_Docentes['docentesCollection']['docentes'];
+                 if (Object.keys(docentes).length !== 0) {
+                   const arrayFilter = docentes.filter(e => e.identificacion === entrevistador.PersonaId + '');
+                   const persona = arrayFilter;
+                   entrevistador['Nombre'] = persona[0].nombres + ' ' + persona[0].apellidos;
+                 }
+                   resolve(true);
+                 }, (error: HttpErrorResponse) => {
+                   reject(error);
+              });
+
+
                 resolve(true);
             }, (error: HttpErrorResponse) => {
               reject(error);
@@ -194,8 +194,9 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   }
 
 
-  public loadEntrevista(): void {
+  public loadAsignarEntrevista(): void {
     if (this.inscripcion_id !== undefined && this.inscripcion_id !== 0) {
+      this.loadOptionsEntrevistador();
     } else  {
       this.info_entrevista = undefined;
       this.clean = !this.clean;
@@ -203,24 +204,10 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   }
 
   asignarEntrevistador(entrevistadorEntrevista: any): void {
-    const opt: any = {
-      title: 'Create?',
-      text: 'ASignar Entrevistador!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-      showCancelButton: true,
-    };
-    Swal(opt)
-    .then((willDelete) => {
-      if (willDelete.value) {
         this.entrevistaService.post('entrevistador_entrevista', entrevistadorEntrevista)
           .subscribe(res => {
-            this.eventChange.emit(true);
             this.showToast('info', 'created', 'Entrevistador  asignado');
           });
-      }
-    });
   }
 
   agregarEntrevistador(mostrarError: boolean, idEntrevistador: number): void {
@@ -282,21 +269,26 @@ onDeleteEntrevistador(event): void {
               this.entrevistaService.get('entrevistador/' + element.IdEntrevistador)
                 .subscribe(resEntrevistador => {
                     if (resEntrevistador !== null) {
+
                       element.EntrevistadorId = resEntrevistador;
                       element.EntrevistaId = res;
+                      this.asignarEntrevistador(element);
+                      // this.clean = !this.clean;
                     }
                 });
-              this.asignarEntrevistador(element);
+              // this.asignarEntrevistador(element);
             });
             this.eventChange.emit(true);
             this.showToast('info', 'created', 'Entrevista created');
+            this.info_entrevista = undefined;
+            this.clean = !this.clean;
           });
       }
     });
   }
 
   ngOnInit() {
-    this.loadEntrevista();
+    this.loadAsignarEntrevista();
   }
 
   validarForm() {

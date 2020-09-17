@@ -359,6 +359,8 @@
     "soporte_documento":"Soporte de documento",
     "alerta_documental_image": "La imagen se ha guardado en nuestro gestor documental",
     "alerta_documental_documento": "El documento se ha guardado en nuestro gestor documental",
+    "sin_datos": "Sin datos",
+    "info_sin_datos": "No se encontraron datos para mostrar",
     "id": "Id",
     "placeholder_id": "Ej: 55",
     "nombre": "Nombre",

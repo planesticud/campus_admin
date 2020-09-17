@@ -4,7 +4,7 @@ import { Entrevista } from './entrevista';
 export class EntrevistadorEntrevista {
   Id: number;
   Entrevistador: Entrevistador;
-  Esntrevista: Entrevista;
+  Entrevista: Entrevista;
   CodigoAbreviacion: string;
   Activo: boolean;
 }

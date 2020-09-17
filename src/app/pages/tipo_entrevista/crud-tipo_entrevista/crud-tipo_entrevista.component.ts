@@ -114,11 +114,14 @@ export class CrudTipoEntrevistaComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_tipo_entrevista = <TipoEntrevista>tipoEntrevista;
+        // console.info(JSON.stringify(this.info_tipo_entrevista));
         this.entrevistaService.post('tipo_entrevista', this.info_tipo_entrevista)
           .subscribe(res => {
             this.info_tipo_entrevista = <TipoEntrevista>res;
             this.eventChange.emit(true);
             this.showToast('info', 'created', 'TipoEntrevista created');
+            this.clean = !this.clean;
+            this.info_tipo_entrevista = undefined;
           });
       }
     });

@@ -6,8 +6,7 @@ import { throwError } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
+     'Accept': 'application/json',
     'authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
   }),
 }
@@ -53,7 +52,7 @@ export class ValidacionOikosService {
       // The response body may contain clues as to what went wrong,
       console.error(
         `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `body was: ${JSON.stringify(error.error)}`);
     }
     // return an observable with a user-facing error message
     return throwError({

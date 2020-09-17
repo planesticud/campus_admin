@@ -1,18 +1,16 @@
 
 import { Entrevistador } from './../../../@core/data/models/entrevistador';
-import { Persona } from './../../../@core/data/models/persona';
 import { ProgramaAcademico } from './../../../@core/data/models/programa_academico';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EntrevistaService } from '../../../@core/data/entrevista.service';
-import { PersonaService } from '../../../@core/data/persona.service';
-import { ProgramaAcademicoService } from '../../../@core/data/programa_academico.service';
+import { DocenteService } from '../../../@core/data/docente.service';
+import { ProgramaOikosService } from '../../../@core/data/programa_oikos.service';
 import { FORM_ENTREVISTADOR } from './form-entrevistador';
 import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 import { HttpErrorResponse } from '@angular/common/http';
-// import { MatLabe } from '@angular/material/label_i18n';
 
 @Component({
   selector: 'ngx-crud-entrevistador',
@@ -22,34 +20,42 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class CrudEntrevistadorComponent implements OnInit {
   config: ToasterConfig;
   entrevistador_id: number;
+  programa_id: number;
 
   @Input('entrevistador_id')
   set name(entrevistador_id: number) {
     this.entrevistador_id = entrevistador_id;
+    // this.loadEntrevistador();
+  }
+  @Input('programa_id')
+  set namep(programa_id: number) {
+    this.programa_id = programa_id;
     this.loadEntrevistador();
   }
 
   @Output() eventChange = new EventEmitter();
+  // @Output('result') result: EventEmitter<any> = new EventEmitter();
 
   info_entrevistador: any;
   info_persona: any;
   info_progarama: ProgramaAcademico;
   formEntrevistador: any;
   regEntrevistador: any;
+  programaSeleccionado: any;
   clean: boolean;
-  element: any;
+  // element: any;
 
   constructor(private translate: TranslateService,
     private entrevistaService: EntrevistaService,
-    private personaService: PersonaService,
-    private programaAcademicoService: ProgramaAcademicoService,
+    private docenteService: DocenteService,
+    private programaOikosService: ProgramaOikosService,
     private toasterService: ToasterService) {
     this.formEntrevistador = FORM_ENTREVISTADOR;
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
     });
-    this.loadOptionsEntrevistador();
+    // this.loadOptionsEntrevistador();
     this.loadOptionsProgramaAcademico();
    }
 
@@ -77,9 +83,16 @@ export class CrudEntrevistadorComponent implements OnInit {
     return 0;
   }
 
+  getSeleccion(event) {
+    if (event.nombre === 'ProgramaAcademico') {
+      this.programaSeleccionado = event.valor;
+      this.loadOptionsEntrevistador();
+    }
+  }
+
   loadOptionsProgramaAcademico(): void {
     let programa: Array<any> = [];
-    this.programaAcademicoService.get('programa_academico/?limit=10')
+    this.programaOikosService.get('dependencia/?query=DependenciaTipoDependencia.TipoDependenciaId.Id:15')
       .subscribe(res => {
         if (res !== null) {
           programa = <Array<ProgramaAcademico>>res;
@@ -92,61 +105,63 @@ export class CrudEntrevistadorComponent implements OnInit {
             title: error.status + '',
             text: this.translate.instant('ERROR.' + error.status),
             footer: this.translate.instant('GLOBAL.cargar') + '-' +
-              this.translate.instant('GLOBAL.descuento_matricula') + '|' +
-              this.translate.instant('GLOBAL.tipo_descuento_matricula'),
+              this.translate.instant('GLOBAL.programa_academico') + '|' +
+              this.translate.instant('GLOBAL.programa_academico'),
             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
           });
-        });
+      });
   }
+
   loadOptionsEntrevistador(): void {
-    let entrevistador: Array<any> = [];
-    const data_entrevistador = <Array<any>>[];
-    this.personaService.get('persona/?limit=0')
-      .subscribe(res => {
-        if (res !== null) {
-          entrevistador = <Array<Persona>>res;
-          entrevistador.forEach ( element => {
-            element.NombreCompleto = (element.PrimerNombre).toUpperCase() + ' ' + (element.PrimerApellido).toUpperCase();
-            element.NombreCompleto = element.PrimerApellido.toUpperCase() + ' ' + element.SegundoApellido.toUpperCase()
-            + ' ' + element.PrimerNombre.toUpperCase() + ' ' + element.SegundoNombre.toUpperCase();
-            data_entrevistador.push(element);
+    // const docente: Array<any> = [];
+    this.docenteService.get('docentes_por_proyecto/' + this.programaSeleccionado.Id)
+      .subscribe(res_docente => {
+        if (Object.keys(res_docente['docentesCollection']).length !== 0) {
+        const listDocentes = <Array<any>>res_docente['docentesCollection']['docentes'];
+        // if (Object.keys(listDocentes).length !== 0) {
+          listDocentes.forEach ( (docente: any) => {
+            const persona = <any>docente;
+            docente['Id'] = parseInt(persona.identificacion, 10);
+            docente['Nombre'] = persona.nombres + ' ' + persona.apellidos;
           });
-        }
-        this.formEntrevistador.campos[this.getIndexForm('Persona')].opciones = data_entrevistador;
-      },
-        (error: HttpErrorResponse) => {
+          this.formEntrevistador.campos[this.getIndexForm('EntrevistadorId')].opciones = listDocentes;
+        } else {
           Swal({
-            type: 'error',
-            title: error.status + '',
-            text: this.translate.instant('ERROR.' + error.status),
-            footer: this.translate.instant('GLOBAL.cargar') + '-' +
-              this.translate.instant('GLOBAL.descuento_matricula') + '|' +
-              this.translate.instant('GLOBAL.tipo_descuento_matricula'),
+            type: 'info',
+            title: this.translate.instant('GLOBAL.sin_datos'),
+            text: this.translate.instant('GLOBAL.info_sin_datos'),
             confirmButtonText: this.translate.instant('GLOBAL.aceptar'),
           });
-        });
+          this.formEntrevistador.campos[this.getIndexForm('EntrevistadorId')].opciones = [];
+        }
+      });
+      // this.formEntrevistadorEntrevista.campos[ this.getIndexForm('EntrevistadorId') ].opciones = entrevistadores;
   }
 
   public loadEntrevistador(): void {
+    // const docente;
+    // docente = [];
     if (this.entrevistador_id !== undefined && this.entrevistador_id !== 0) {
       this.entrevistaService.get('entrevistador/?query=id:' + this.entrevistador_id)
         .subscribe(res => {
           if (res !== null) {
-            this.element = <any>res[0];
-            this.programaAcademicoService.get('programa_academico/' + res[0].ProgramaAcademicoId)
+            this.regEntrevistador = <any>res[0];
+            this.programaOikosService.get('dependencia/' + res[0].ProgramaAcademicoId)
               .subscribe(res_Programa => {
               if (res_Programa !== null) {
                 const dataPrograma = <any>res_Programa;
-                this.element.ProgramaAcademico = dataPrograma
-                this.personaService.get('persona/' + res[0].PersonaId)
-                 .subscribe(res_Persona => {
-                   if (res_Persona !== null) {
-                     const dataPersona = <any>res_Persona;
-                     dataPersona.NombreCompleto = dataPersona['PrimerNombre'] + ' ' + dataPersona['PrimerApellido']
-                     this.element.Persona = dataPersona;
-                   }
-                   this.info_entrevistador = this.element;
-                   // console.info ('DATA PERSONA:' + JSON.stringify(this.info_entrevistador) );
+                this.regEntrevistador.ProgramaAcademico = dataPrograma;
+                this.docenteService.get('docentes_por_proyecto/' + this.regEntrevistador.ProgramaAcademico.Id)
+                  .subscribe(res_docente => {
+                    const listDocentes = <Array<any>>res_docente['docentesCollection']['docentes'];
+                    if (Object.keys(listDocentes).length !== 0) {
+                      const docente: any = listDocentes.filter(e => e.identificacion + '' === this.regEntrevistador.PersonaId + '');
+                      const persona = <any>docente[0];
+                      docente[0]['Id'] = parseInt(persona.identificacion, 10);
+                      docente[0]['Nombre'] = persona.nombres + ' ' + persona.apellidos;
+                      this.regEntrevistador.EntrevistadorId = docente[0];
+                      this.info_entrevistador = this.regEntrevistador;
+                    }
                 });
               }
              });
@@ -172,6 +187,8 @@ export class CrudEntrevistadorComponent implements OnInit {
     .then((willDelete) => {
       if (willDelete.value) {
         this.info_entrevistador = <Entrevistador>entrevistador;
+        this.info_entrevistador.PersonaId = entrevistador.EntrevistadorId.Id;
+        this.info_entrevistador.ProgramaAcademicoId = entrevistador.ProgramaAcademico.Id;
         this.entrevistaService.put('entrevistador', this.info_entrevistador)
           .subscribe(res => {
             this.loadEntrevistador();
@@ -194,9 +211,9 @@ export class CrudEntrevistadorComponent implements OnInit {
     Swal(opt)
     .then((willDelete) => {
       if (willDelete.value) {
-         this.info_entrevistador = <Entrevistador>entrevistador;
-        this.info_entrevistador.Persona = entrevistador.Persona.Id
-        this.info_entrevistador.ProgramaAcademico = entrevistador.ProgramaAcademico.Id
+        this.info_entrevistador = <Entrevistador>entrevistador;
+        this.info_entrevistador.PersonaId = entrevistador.EntrevistadorId.Id
+        this.info_entrevistador.ProgramaAcademicoId = entrevistador.ProgramaAcademico.Id
         this.info_entrevistador.Activo = entrevistador.Activo
         this.entrevistaService.post('entrevistador', this.info_entrevistador)
           .subscribe(res => {
@@ -214,6 +231,7 @@ export class CrudEntrevistadorComponent implements OnInit {
 
   validarForm(event) {
     if (event.valid) {
+        // alert("Cambio");
       if (this.info_entrevistador === undefined) {
         this.createEntrevistador(event.data.Entrevistador);
       } else {

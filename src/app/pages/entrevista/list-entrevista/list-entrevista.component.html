@@ -12,10 +12,15 @@
               <!--button (click)="activetab()" >cambiar</button-->
             </nb-tab>
             <nb-tab tabTitle="{{ 'GLOBAL.formulario' | translate }}" [active]="cambiotab">
-              <ngx-crud-entrevistador [entrevistador_id]="uid" [programa_id]="uprograma" (eventChange)="onChange($event)"></ngx-crud-entrevistador>
+              <ngx-crud-entrevista [entrevista_id]="uid" (eventChange)="onChange($event)"></ngx-crud-entrevista>
               <button (click)="activetab()" class="btn btn-info btn-sm"> <i class="nb-arrow-dropleft"></i> {{ 'GLOBAL.regresar' | translate }}</button>
             </nb-tab>
           </nb-tabset>
     </nb-card-body>
   </nb-card>
 </div>
+
+
+
+
+

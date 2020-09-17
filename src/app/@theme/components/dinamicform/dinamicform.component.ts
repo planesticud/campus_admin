@@ -101,12 +101,10 @@ export class DinamicformComponent implements OnInit, OnChanges {
   }
 
   onChange(event, c) {
-    console.info(c.valor);
     if (c.valor !== undefined) {
       c.urlTemp = URL.createObjectURL(event.srcElement.files[0])
       c.url = this.cleanURL(c.urlTemp);
       c.valor = event.srcElement.files[0];
-      console.info(c);
       this.validCampo(c);
       c.File = event.srcElement.files[0];
     }
@@ -157,6 +155,14 @@ export class DinamicformComponent implements OnInit, OnChanges {
       if (c.valor < c.minimo) {
         c.clase = 'form-control form-control-danger';
         c.alerta = 'El valor no puede ser menor que ' + c.minimo;
+        return false;
+      }
+    }
+    if (c.etiqueta === 'input' && c.tipo === 'number') {
+      c.valor = parseInt(c.valor, 10);
+      if (c.valor > c.maximo) {
+        c.clase = 'form-control form-control-danger';
+        c.alerta = 'El valor no puede ser mayor que ' + c.maximo;
         return false;
       }
     }

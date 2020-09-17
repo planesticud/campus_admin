@@ -143,18 +143,18 @@ const routes: Routes = [{
       path: 'entrevistador',
       loadChildren: './entrevistador/entrevistador.module#EntrevistadorModule',
     },
-    // {
-    //   path: 'entrevista',
-    //   loadChildren: './entrevista/entrevista.module#EntrevistaModule',
-    // },
+    {
+      path: 'entrevista',
+      loadChildren: './entrevista/entrevista.module#EntrevistaModule',
+    },
     {
       path: 'asignar_entrevista',
       loadChildren: './asignar_entrevista/asignar_entrevista.module#AsignarEntrevistaModule',
     },
-    // {
-    //   path: 'entrevistador_entrevista',
-    //   loadChildren: './entrevistador_entrevista/entrevistador_entrevista.module#EntrevistadorEntrevistaModule',
-    // },
+    {
+      path: 'entrevistador_entrevista',
+      loadChildren: './entrevistador_entrevista/entrevistador_entrevista.module#EntrevistadorEntrevistaModule',
+    },
     // {
     //   path: 'asignar_entrevistador',
     //   loadChildren: './entrevista/entrevista.module#EntrevistaModule',
