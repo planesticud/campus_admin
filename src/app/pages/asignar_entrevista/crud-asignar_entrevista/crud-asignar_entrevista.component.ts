@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import 'style-loader!angular2-toaster/toaster.css';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LocalDataSource } from 'ng2-smart-table';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 @Component({
   selector: 'ngx-crud-asignar-entrevista',
@@ -25,7 +26,9 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   tipoEntrevista: TipoEntrevista;
   estadoEntrevista: EstadoEntrevista;
   fecha_entrevista: string;
+  hora_entrevista: string;
   tipo_entrevista_selected: TipoEntrevista;
+  amazingTimePicker: AmazingTimePickerModule;
 
   @Input('inscripcion_id')
   set name(inscripcion_id: number) {
@@ -44,6 +47,7 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
   tiposEntrevista: Array<TipoEntrevista>;
   estadosEntrevista: Array<EstadoEntrevista>;
   entrevistadores: Array<any>;
+  entrevistador: any;
   formAsignarEntrevista: any;
   regEntrevista: any;
   regEntrevistador: any;
@@ -59,6 +63,7 @@ export class CrudAsignarEntrevistaComponent implements OnInit {
      private docenteService: DocenteService,
      private toasterService: ToasterService) {
     this.formAsignarEntrevista = FORM_ASIGNAR_ENTREVISTA;
+    this.hora_entrevista = '07:00';
     this.construirForm();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.construirForm();
@@ -303,6 +308,14 @@ onDeleteEntrevistador(event): void {
         if (Object.keys(this.tipoEntrevista).length > 0 && Object.keys(this.estadoEntrevista).length > 0 && this.fecha_entrevista !== undefined ) {
           this.info_entrevista = new Entrevista();
           this.info_entrevista.InscripcionId = this.inscripcion_id;
+
+          // console.info(this.fecha_entrevista);
+          const fecha = new Date(this.fecha_entrevista);
+          const time = this.hora_entrevista.split(':');
+          fecha.setHours(parseInt(time[0], 10));
+          fecha.setMinutes(parseInt(time[1], 10));
+          this.fecha_entrevista = <any>fecha;
+          // console.info(this.fecha_entrevista);
           this.info_entrevista.FechaEntrevista = this.fecha_entrevista;
           this.info_entrevista.EstadoEntrevistaId = this.estadoEntrevista;
           this.info_entrevista.TipoEntrevistaId = this.tipoEntrevista;

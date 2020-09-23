@@ -31,8 +31,10 @@ export let FORM_ENTREVISTA = {
         nombre: 'FechaEntrevista',
         label_i18n: 'fecha_entrevista',
         placeholder_i18n: 'fecha_entrevista',
+        deshabilitar: true,
         requerido: true,
         tipo: 'text',
+
     },
     // {
     //     etiqueta: 'input',

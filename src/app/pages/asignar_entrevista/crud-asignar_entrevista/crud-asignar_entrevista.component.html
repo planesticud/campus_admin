@@ -40,13 +40,20 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                 </div>
-
+                <div class="col-3">
+                        <mat-label>* {{'GLOBAL.hora_entrevista' | translate}}:</mat-label>
+                        <input type="time" atp-time-picker [(ngModel)]="hora_entrevista" name="hora_entrevista"/>
+                </div>
             </div>
         </fieldset>
     </form>
     </div>
 </div>
 <div class="dinamic-form" align="center">
+<!-- <mat-card class="col-6"> -->
+<!-- <mat-card-title>{{'GLOBAL.entrevistador' | translate}}</mat-card-title> -->
+<!-- <mat-card-actions> -->
+<!-- <div class="row" align="center"> -->
 <div class="col-8" align="center">
 <form class="form-horizontal" align="center">
     <fieldset [ngClass]="{'fieldseter':true}">
@@ -57,7 +64,7 @@
             <div class="col-10" align="center">
                 <mat-form-field style="width: 100%;" floatLabel="always">
                     <mat-label>*{{'GLOBAL.agregar_entrevistador' | translate}}:</mat-label>
-                    <mat-select [placeholder]="translate.instant('GLOBAL.placeholder_agregar_entrevistador')" [(ngModel)]="entrevistadores" [ngModelOptions]="{standalone: true}" [(value)]="entrevistadorSeleccionado">
+                    <mat-select [placeholder]="translate.instant('GLOBAL.placeholder_agregar_entrevistador')" [(ngModel)]="entrevistador" [ngModelOptions]="{standalone: true}" [(value)]="entrevistadorSeleccionado">
                         <mat-option>--Seleccionar--</mat-option>
                         <mat-option *ngFor="let entrevistado of entrevistadores" [value]="entrevistado">
                           {{entrevistado.Nombre}}
@@ -74,13 +81,16 @@
         </div>
         <div class="row">
             <div class="col-12">
-                    <ng2-smart-table [settings]="settings_entrevistadores" [(source)]="source" (delete)="onDeleteEntrevistador($event)"> <!-- (create)="onCreateEntrevistador($event)" -->
+                    <ng2-smart-table [settings]="settings_entrevistadores" [(source)]="source" (delete)="onDeleteEntrevistador($event)">
                         </ng2-smart-table>
             </div>
         </div>
     </fieldset>
 </form>
 </div>
+<!-- </div> -->
+<!-- </mat-card-actions> -->
+<!-- </mat-card> -->
 </div>
 
 <div align="right" class="form-group">

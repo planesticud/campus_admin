@@ -12,12 +12,14 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ToasterModule } from 'angular2-toaster';
 import { SharedModule } from '../../shared/shared.module';
 import { CrudAsignarEntrevistaComponent } from './crud-asignar_entrevista/crud-asignar_entrevista.component';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 @NgModule({
   imports: [
     ThemeModule,
     AsignarEntrevistaRoutingModule,
     Ng2SmartTableModule,
+    AmazingTimePickerModule,
     ToasterModule,
     SharedModule,
   ],

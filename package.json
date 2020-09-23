@@ -57,6 +57,7 @@
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
     "@swimlane/ngx-charts": "7.0.1",
+    "amazing-time-picker": "^1.8.0",
     "angular-tree-component": "7.2.0",
     "angular2-chartjs": "0.4.1",
     "angular2-toaster": "6.0.0",
