@@ -4,6 +4,7 @@ COPY . .
 RUN apt-get update -y
 RUN apt-get install -y zip
 RUN rm -rf node_modules
+RUN rm package-lock.json
 RUN npm i
 RUN npm install node-sass
 RUN npm run lint
