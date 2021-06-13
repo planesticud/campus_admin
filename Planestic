@@ -1,5 +1,4 @@
-FROM node:14
- AS my-app-build
+FROM node:14 AS my-app-build
 WORKDIR /app
 COPY . .
 RUN apt-get update -y
