@@ -10,11 +10,9 @@ services:
      container_name: campus-admin
      networks:
         - campus_virtual
-     ports:
-          - 80:80
      labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.campus-admin.rule=Host(`campusadmin.planestic.udistrital.edu.co`)"
+        - "traefik.http.routers.campus-admin.rule=Host(`admin.campusvirtual.udistrital.edu.co`)"
         #- "traefik.http.routers.campus-admin.middlewares=campus-admin-stripprefix"
         #- "traefik.http.middlewares.campus-admin-stripprefix.stripprefix.prefixes=/campus-admin"
         - "traefik.http.routers.campus-admin.tls=true"
