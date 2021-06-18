@@ -1,0 +1,40 @@
+<p>admitidos opcionados worksss </p>
+
+
+<div class="col-md-12 col-lg-12 ">
+  <nb-card>
+    <nb-card-body>
+        <toaster-container [toasterconfig]="config"></toaster-container>
+        <nb-tabset fullWidth>
+            <nb-tab tabTitle="{{ 'GLOBAL.lista' | translate }}" [active]="!cambiotab">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">apellido</th>
+                      <th scope="col">Identificacion</th>
+                      <th class="d-none d-sm-block" scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-info" *ngFor="let item of fakeData">
+                      <th scope="row">{{ item.name}}</th>
+                      <td>{{item.lastName}}</td>
+                      <td>{{item.id}}</td>
+                      <td class="bnt-group d-none d-sm-block" role="group">
+                        <button type="button" class="btn btn-outline-warning m-1" (click)="onGoToEdit(item)">Marcar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
+            </nb-tab>
+
+
+          </nb-tabset>
+    </nb-card-body>
+  </nb-card>
+</div>
