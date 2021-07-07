@@ -15,6 +15,7 @@ import { ClasificacionNivelIdioma } from '../data/models/clasificacion_idioma';
 import { Genero } from '../data/models/genero';
 import { Titulacion } from '../data/models/titulacion';
 import { TipoIdentificacion } from '../data/models/tipo_identificacion';
+import { RequisitoProgramaAcademico } from '../data/models/requisito_programa_academico';
 // import { TipoProyecto } from '../data/models/tipo_proyecto';
 // import { GrupoInvestigacion } from '../data/models/grupo_investigacion';
 // import { PeriodoAcademico } from '../data/models/periodo_academico';
@@ -40,6 +41,7 @@ export interface IAppState {
   listTipoLugar: TipoLugar[],
   listTitulacion: Titulacion[],
   listTipoIdentificacion: TipoIdentificacion[],
+  listRequisitoProgramaAcademico: RequisitoProgramaAcademico[],
   // listTipoProyecto: TipoProyecto[],
   // listGrupoInvestigacion: GrupoInvestigacion[],
   // listPeriodoAcademico: PeriodoAcademico[],
